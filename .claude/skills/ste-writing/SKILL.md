@@ -207,6 +207,7 @@ An -ing word that is a noun or a technical name passes: nothing, during, warning
 - Tables, fenced code blocks, and front matter are exempt from every rule. Keep cell text short.
 - Headings are titles. They count as one word (8.6). The checker reads no rule on a heading.
 - Text in backticks, in double quotes, or in parentheses is one word (8.5, 8.6). The grammar rules do not read inside it.
+- An HTML comment on one line is not prose, and the checker removes it. Keep each comment on one line, because a comment across lines is not supported.
 - A numbered list item is a procedural step. Rule 5.1 applies, max 20 words.
 - A bullet list item is one unit. Rule 6.3 applies, max 25 words.
 - The "plain-English" paragraphs in the design doc are descriptive text. Rule 6.3 applies.

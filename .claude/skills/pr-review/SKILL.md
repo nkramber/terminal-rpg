@@ -436,7 +436,7 @@ Stop at the third assessment of one id. Write the pattern in the review record, 
 
 ## The automated pass
 
-An automated reviewer, gitar, comments on every PR after a push (D-14). The author answers every comment before the hand-over to the other provider, or before the override request on a documentation PR. This pass comes before the cross-provider review and never replaces it (T-4). Until the owner installs gitar (OQ-1), skip this section and say so in the handoff.
+An automated reviewer, gitar, comments on every PR after a push (D-14). The author answers every comment before the hand-over to the other provider, or before the override request on a documentation PR. This pass comes before the cross-provider review and never replaces it (T-4). A documentation PR answers the pass too (D-66).
 
 Do these steps after each push.
 

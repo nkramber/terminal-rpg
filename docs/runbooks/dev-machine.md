@@ -25,10 +25,9 @@ Facts checked on 2026-09-12:
 
 ## Owner actions on GitHub
 
-1. Install the gitar app on the repository (OQ-1, D-14).
-2. Create the label `review-override` on the repository (D-16).
-3. After PR-3 merges, require the `ci`, `ste-check`, and `review-gate` checks on `main` (OQ-3, D-4). GitHub lists a check as a choice only after it ran once.
-4. Turn off "Allow merge commits" and "Allow rebase merging", and keep "Allow squash merging" (D-8).
+1. Create the label `review-override` on the repository (D-16).
+2. After PR-3 merges, require the `ci`, `ste-check`, and `review-gate` checks on `main` (OQ-3, D-4). GitHub lists a check as a choice only after it ran once.
+3. Turn off "Allow merge commits" and "Allow rebase merging", and keep "Allow squash merging" (D-8).
 
 ## Session start
 

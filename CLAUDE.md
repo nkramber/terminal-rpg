@@ -103,7 +103,7 @@ An automated reviewer, gitar, comments on every PR after a push (D-14). The auth
 - When gitar reports a pause of its automatic reviews for the period, post the comment `Gitar review` on the PR. That runs the pass on demand.
 - The reviewing provider reads the existing PR comments into its review and never addresses gitar.
 - The `pr-review` skill holds both procedures. A reply names no provider, harness, or model as the source of work (T-6).
-- Until the owner installs gitar on this repository (OQ-1), the pass does not run, and the hand-over follows the Codex review alone.
+- Every PR answers the pass, a documentation PR included (D-66). The `review-override` label exempts a documentation PR from the Codex review alone.
 
 ## Build and test commands
 

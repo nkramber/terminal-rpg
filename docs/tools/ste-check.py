@@ -120,6 +120,9 @@ def strip_md(line: str) -> str:
     # Curly quotes count like straight ones (rule 8.6), and a curly
     # apostrophe hides a contraction from the check.
     line = line.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
+    # An HTML comment on one line is author guidance, not prose. A comment
+    # that spans lines is not supported: keep each comment on one line.
+    line = re.sub(r"<!--.*?-->", "", line)
     line = re.sub(r"`[^`]*`", "X", line)
     line = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", line)
     line = re.sub(r"https?://\S+", "URL", line)

@@ -14,7 +14,7 @@ How to file a question (D-19, D-24):
 
 ## Register
 
-1. **OQ-1. Install gitar.** The gitar GitHub app is not on this repository. Owner action: install it from the GitHub Marketplace on `nkramber/terminal-rpg`. Blocks the automated pass (D-14). Until then, the hand-over follows the Codex review alone.
+1. **OQ-1. Install gitar.** The session claimed the app was absent, on no check. Resolved 2026-09-12: gitar is installed, and its pass ran on PR #1 at 22:49 UTC (F-12, D-66). The trial quota pauses the automatic pass, and the comment `Gitar review` runs it (D-14).
 2. **OQ-2. Install Rust.** The dev machine has no `rustc` or `cargo`. Owner action: install rustup, then run `rustup default stable`. The runbook `docs/runbooks/dev-machine.md` gives the steps. Blocks PR-1 (D-1).
 3. **OQ-3. Branch protection.** Owner action after PR-3 merges: require the CI, `ste-check`, and `review-gate` checks on `main` (D-4, D-15). A check must run once before GitHub lists it as required. Blocks the enforced gate, not the code.
 4. **OQ-4. The eligible set for `review-override`.** D-16 applied `docs/`, `CLAUDE.md`, `AGENTS.md`, `.claude/`, and `.github/pull_request_template.md`. Confirm or change the set. Recommendation: keep it, because each path holds text and no executable check. Blocks PR-3, which encodes the set.

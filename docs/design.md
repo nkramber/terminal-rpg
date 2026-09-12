@@ -92,6 +92,8 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-8 | D-42 empties a caster's MP across a dungeon, and no decision gives a job a no-MP action | 2026-09-12 | ⚠ Binds the job content of PR-12: every job has at least one ability with no MP cost |
 | F-9 | D-48 sets the floor at 120 by 40, and a default macOS Terminal window is 80 by 24 | 2026-09-12 | ⚠ Binds PR-7: the size message names the floor and how to resize |
 | F-10 | D-62 puts the run record in the save, and a record grows without bound over 20 to 40 hours (D-30) | 2026-09-12 | ⚠ Binds PR-6: the record format needs a compaction rule, a snapshot plus the inputs since it |
+| F-11 | The interim checker read an HTML comment as prose. A fixture comment with a semicolon, a modal, a passive, and 30 words raised four findings. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The script removes a one-line comment. ⚠ Binds PR-2: the Rust port carries the rule |
+| F-12 | The session wrote in `CLAUDE.md`, the PR template, the skill, and OQ-1 that gitar was absent, on no evidence. The pass ran on PR #1 within a minute | 2026-09-12 | ✅ doc. D-66. Every claim about a tool needs a check |
 
 ## 6. Guardrails (the safety contract for every PR)
 

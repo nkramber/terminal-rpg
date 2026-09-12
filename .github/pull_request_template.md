@@ -12,7 +12,7 @@ Each line holds before the owner merges (`CLAUDE.md`, PR gate).
 - [ ] The `det-lint` job is green (G-2, G-3, G-7). PR-4 creates it.
 - [ ] The `replay-identity` job is green (G-5). PR-4 creates it.
 - [ ] The `ste-check` job is green (G-12). PR-1 creates it.
-- [ ] The automated pass of gitar approved the head, or every comment of the pass has its answer (D-14). Until OQ-1 closes, the pass does not run.
+- [ ] The automated pass of gitar approved the head, or every comment of the pass has its answer (D-14, D-66).
 - [ ] The other provider reviewed it, and `docs/reviews/pr-<number>.md` has the verdict `Ready for owner merge` for the effective head (T-4, D-17). A PR that changes no code is exempt when the owner adds the `review-override` label (D-16).
 - [ ] The `review-gate` check is green (D-15). PR-3 creates it.
 - [ ] `docs/decisions.md` has every new decision.
