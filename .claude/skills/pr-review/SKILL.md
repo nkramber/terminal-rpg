@@ -1,0 +1,578 @@
+---
+name: pr-review
+description: Review a pull request at principal-engineer depth, or answer a review as the author. Require the opposite provider, precise evidence, regression checks, and a revision-specific verdict. A finding is a claim, not a fact, and the author can refute one with evidence. Use for PR reviews, repeat reviews after fixes, and any request to address, answer, or fix review findings or review feedback.
+---
+
+# PR review skill
+
+Review the change as the engineer accountable for its effect on the whole system.
+Judge correctness, contracts, failure recovery, test quality, and future maintenance.
+Apply this standard to code, content, tools, CI, skills, and document PRs.
+A green test suite or a persuasive PR description does not establish correctness.
+
+## Mandatory provider gate
+
+**The reviewer MUST NOT come from the provider that wrote the PR.**
+This requirement applies before the substantive review starts and before any approval (T-4, D-17).
+
+| Provider that wrote the PR | Required reviewer |
+|---|---|
+| Claude Code, Anthropic | Codex, OpenAI |
+| Codex, OpenAI | Claude Code, Anthropic |
+
+A different model, account, session, or subagent from the same provider does not qualify.
+A prompt that assigns the other provider's name does not change the actual provider.
+Author self-checks and automated tests do not satisfy this gate.
+
+Substantive changes alter code, data, configuration, requirements, or executable instructions.
+Review findings and test reports alone do not make the reviewer a PR author.
+
+1. Identify the actual reviewer provider from the active environment.
+2. Identify every provider that contributed substantive changes or fixes to this PR.
+3. Verify authorship from the owner's statement or the relevant handoff and review records.
+4. Match each source to this PR and its revision.
+5. Record the providers, source, and eligibility result in the review file.
+
+The newest handoff entry can describe a review rather than authorship. A Git account alone does not identify the provider.
+Do not infer authorship from prose style, commit email, or a branch name.
+
+**Stop with `Blocked` if the providers match, authorship is unknown, or the evidence conflicts.**
+State the fact or the eligible reviewer that the review needs. Ask the owner to supply that fact or start the opposite-provider session.
+Do not perform a substitute review with another model from the same provider.
+
+If both providers wrote substantive changes in the PR, neither qualifies for the whole PR.
+Record the conflict and request an owner decision about how to separate the changes.
+Do not approve through reciprocal review of selected hunks.
+
+## Establish the review scope
+
+- Follow the read order in `AGENTS.md`.
+- Load `.claude/skills/ste-writing/SKILL.md` before any review text (D-10).
+- Load `.claude/skills/rust-conventions/SKILL.md` before any Rust review (D-21).
+- Read the PR request, its acceptance criteria, prior review, and applicable focused roadmap.
+- Resolve decision revisions through the `Effect` column in `docs/decisions.md`. `Superseded by D-N` replaces the whole answer. `Revised in part by D-N` changes only the named part, and the rest of that decision stays current.
+- Check `docs/questions.md` for unresolved choices that affect this change (D-19).
+- Read every existing comment on the PR: the automated pass of gitar and the author's replies (D-14). Take each one into the review as a claim to verify, and never as a finding of your own. See "Do not address the automated reviewer".
+- Record the PR number, target branch, base commit, merge base, and head commit.
+- Verify that the local checkout and diff represent those commits.
+- Preserve unrelated local edits. Use an isolated checkout when necessary.
+- Inspect the complete diff: deleted files, renamed files, configuration, content, schemas, and tests.
+- Read each changed file in context. Follow affected callers, consumers, and persistence paths beyond the diff.
+- Continue through the scope after the first finding. Record any area that remains uninspected.
+
+The PR description states intent. The diff and verified behavior establish what the PR does.
+Label an uncommitted patch review as provisional. It cannot satisfy a review gate for an unidentified PR revision.
+If the base or head changes, assess the new diff and affected evidence before a final verdict.
+
+## Stay inside the pull request
+
+A review judges the change in front of it. It does not design the next one.
+
+Read the roadmap entry for this PR and its exit tests before the first finding. Those two texts set the boundary. This section limits the reach of a review. It never lowers the standard for the code that the PR changes.
+
+A concern is in scope when one of these holds:
+
+- The changed code gives a wrong result under a supported condition.
+- The change breaks a caller, a saved file, or a build that exists today.
+- A stated exit test of this PR does not hold.
+- A guardrail that the PR names does not hold for the code that this PR adds.
+
+A concern belongs to a later PR when one of these holds:
+
+- It asks a tool that this PR creates to cover a surface that no exit test names.
+- It asks for behavior that the roadmap gives to a later PR.
+- It repeats a class of defect that this PR corrected, in a surface that this PR does not touch.
+- It needs an owner decision about scope, and not a correction.
+
+Write the second kind under `## Out of scope` in the review record. Name the PR or the roadmap item that holds it. Give it no severity. A line in that section never blocks the merge.
+
+A PR that creates a check must pass that check (G-16). A new check does not cover the whole platform on the first day. A gap in a new tool is a defect of this PR only when a stated exit test names the missing case.
+
+## Principal-engineer review standard
+
+Build an independent account of the behavior before comparison with the author's explanation.
+For each changed behavior, trace the input, state transition, output, side effects, and recovery path.
+State the invariant that each boundary must preserve.
+
+### Correctness and system effects
+
+- Check normal use, boundary values, absent data, invalid data, repeated actions, and interrupted actions where applicable.
+- Trace state ownership and lifetime across `core`, `tui`, and `tools`.
+- Inspect initialization, cancellation, cleanup, restart, and replay when the change affects those paths.
+- Check event order, resource disposal, integer bounds, and overflow where they affect the result.
+- Inspect compatibility with current callers, content, saves, and records.
+- Check whether a local fix creates a defect in another consumer of the same contract.
+- Verify each acceptance criterion against implementation and evidence.
+
+Do not expand the review into an unrelated rewrite.
+Distinguish defects introduced by the PR, defects it exposes, and independent pre-existing defects.
+A pre-existing defect blocks this PR only when it prevents the changed behavior or a required gate.
+
+### Project contracts
+
+Apply each relevant row. Record why an area does not apply when its omission can mislead a reviewer.
+
+| Area | Required examination |
+|---|---|
+| Core boundary | No terminal, file, network, clock, or OS dependency in `core`. Trace data flow, not only imports (G-1). |
+| Determinism | Integer math, seed ownership, one stream per subsystem, fixed iteration and event order, no clock or OS random (T-7, G-2 to G-4). |
+| Replay | The record holds the seed, the content hash, the versions, and every input. A replay reproduces the state hash. Verify the simulation version bump for a `core` behavior change (G-5, G-17). |
+| Errors | Required context, visible failure, safe recovery, and assertions in release builds. An `unwrap`, a swallowed `Result`, or a silent default violates T-2 (G-18). |
+| Content | RON with unknown fields refused. An absent field reports the file, the field, and the reason. Check identifier references and file name case (D-7, G-6). |
+| Strings | No inline player string. Every player string has an id in the string table (G-7). |
+| Input and CI boundaries | Check size limits, file paths, and validation at affected external inputs. Inspect CI permissions, secret access, and execution of untrusted content when those boundaries change. |
+| Gameplay | The rules the design doc and the decisions set for the affected system. Trace repeated runs as well as one run. |
+| Presentation | The three terminal targets, color and Unicode fallbacks, and the minimum terminal size the design sets (D-2). Headless tests do not establish visual quality or game feel. |
+| Dependencies and cost | A decision justifies each dependency (G-13). Performance claims include a profile before the change and a measurement after it (G-14). |
+
+Do not reintroduce an earlier contract that a later decision supersedes.
+
+### Design, maintainability, and documents
+
+- Confirm one concern per PR and a clear reason for every changed subsystem (G-8).
+- Check helper depth against T-1: one level deep.
+- Require two concrete uses before an abstraction (T-1).
+- Prefer explicit ownership and visible control flow over hidden coupling.
+- Explain the concrete maintenance cost of a design objection.
+- Do not report personal style preferences as correctness defects.
+- Check that design text, decisions, questions, code, and acceptance criteria agree.
+- Check each roadmap prerequisite against the first gate that needs it.
+- Distinguish proposed work, implemented work, measured behavior, and owner approval.
+- Verify material external claims against dated primary sources.
+- Check the document dispositions in the PR template.
+- Confirm `AGENTS.md` and `CLAUDE.md` remain identical when either changes (D-20).
+- Check attribution restrictions in commits, PR text, comments, and deliverables (D-22).
+
+Documentation and skill PRs require the same provider independence and evidence discipline as code PRs.
+For a skill change, examine its trigger, scope, instructions, references, and behavior on a realistic request.
+Treat contradictory instructions and gates that cannot pass as defects.
+
+## Verification
+
+Run the focused checks that can falsify the changed behavior. Complete the applicable project gates.
+Use the current build commands in `AGENTS.md`. Do not invent a successful command when no workspace or tool exists.
+
+- Read the tests as critically as the implementation.
+- Verify that each bug fix has a regression test that fails on the old behavior (T-3).
+- Use an isolated comparison when execution of the regression test against the base is practical.
+- Otherwise, explain the causal reason the old behavior fails the assertion and state the execution limit.
+- Check test assertions against the contract, not a copy of the implementation.
+- Inspect seed coverage, state diversity, boundary cases, and failure context.
+- Check test discovery, skipped tests, mocks, fixtures, and assertions that can pass without the intended behavior.
+- Distinguish a passed check from a skipped, unavailable, failed, or author-reported check.
+- Record the command, revision, environment, result, and relevant artifact for each required check.
+- Verify CI results against the reviewed revision and configured test target.
+- Check the three-platform `replay-identity` result once PR-4 creates it (G-5).
+
+Use the initial-check clause only as G-16 permits.
+Name the absent check and the PR that creates it. A PR that creates a check must pass it.
+The clause does not excuse a failed existing check.
+
+Do not repeat broad suites without a new change, failure, or unresolved risk.
+Do not weaken a test or threshold to obtain a pass.
+Absent required evidence blocks approval. Optional evidence gaps belong in the limitations.
+
+## Precise findings
+
+Investigate each suspected defect before it becomes a finding.
+Search for a caller guarantee, validation layer, existing test, or later decision that can refute the concern.
+Use a reproduction, failed assertion, or complete causal trace as evidence.
+Separate a verified defect from an unresolved question or an optional suggestion.
+
+Each finding contains:
+
+- A stable local id, severity, and short title that states the defect.
+- The reviewed commit and the smallest useful file and line range.
+- The input or state that triggers the defect.
+- Expected behavior, with the relevant contract or D-# id.
+- Actual behavior and its consequence for the player, data, build, or maintainer.
+- Evidence, with the seed, command, trace, or artifact when applicable.
+- A correction direction and the regression check that will establish the fix.
+
+Group repeated symptoms under one cause. Identify other affected locations without duplicate findings.
+Do not prescribe a broad rewrite when a smaller correction restores the contract.
+Do not invent findings to meet a quota. A thorough review can produce no actionable findings.
+
+Answer two questions before a finding enters the record:
+
+1. Does the changed code break a contract that this PR names?
+2. Does a stated exit test of this PR fail?
+
+A finding needs one yes. A concern with two answers of no goes under `## Out of scope`.
+
+| Severity | Meaning |
+|---|---|
+| P0 | Immediate critical failure, such as broad durable data loss or a release that cannot start. State the demonstrated scope. |
+| P1 | Major correctness, recovery, determinism, or required-gate failure. Resolve before merge. |
+| P2 | A concrete defect or material contract gap under a supported condition. Resolve before merge or obtain an explicit owner disposition. |
+| P3 | An optional improvement with no broken required contract. It does not block merge. |
+
+Scope decides whether a concern enters the table at all. Severity decides how much it blocks. A concern outside the scope of this PR takes no severity.
+
+Severity describes impact and urgency. It does not replace evidence or the project gate.
+Do not reduce severity because the patch is small or the author calls the change safe.
+Quote both statements when owner decisions conflict. File the question in `docs/questions.md` and stop dependent work (D-19).
+
+## Review record
+
+Use one file per PR in `docs/reviews/` (D-17). Reuse its existing name and finding ids on repeat reviews.
+For a new record, use `docs/reviews/pr-<number>.md` with the actual PR number, not the roadmap id.
+Record provider names only in the permitted review record and handoff author fields (D-22).
+Omit those names from any PR description or GitHub comment.
+
+The `review-gate` job reads this file once PR-3 creates it (D-15). Three parts of it are machine-read. Keep their format exact:
+
+| Part | Exact form | Rule |
+|---|---|---|
+| The file name | `docs/reviews/pr-<number>.md` | The number is the GitHub PR number, not the roadmap id. |
+| The head field | `- Head: ` and the hash in backticks, in the Identity list | The hash is the effective head. A short hash is permitted. |
+| The verdict | One of the three verdict names, in the `## Verdict` section | Write the name exactly. Do not reword it. |
+
+The effective head is the newest commit that changes a path outside the metadata set.
+The metadata set is `docs/reviews/`, `docs/session-handoff.md`, and `docs/session-handoff-archive.md`.
+A commit that changes only those paths is a metadata commit, and it does not change the effective head.
+The required review commit holds the review record and the handoff entry, so it is always a metadata commit.
+Without that rule the review commit invalidates the review that it publishes.
+Record the effective head, not the tip, when the review commit is the last commit.
+
+Use this skeleton. Keep the heading text and the order.
+
+```markdown
+# PR-<number> review
+
+Date: <YYYY-MM-DD>
+
+## Identity
+
+- PR: <number>
+- Target: `main`
+- Base: `<sha>`
+- Merge base: `<sha>`
+- Head: `<effective head sha>`
+- Branch: `<branch>`
+
+## Provider gate
+
+State the author provider, the source of that fact, and the reviewer provider.
+State the gate result against T-4 and D-17.
+
+## Intended behavior and scope
+
+State the intent, what the review inspected, and every affected contract.
+Name any area that remains uninspected.
+
+## Findings
+
+One subsection per finding, in severity order. Use the finding format below.
+Write "No finding." when the review found none.
+
+## Out of scope
+
+One line per concern that a later PR holds. Name that PR or roadmap item.
+Give no severity here. Write "None." when the review found none.
+
+## PR comments
+
+One line per existing comment thread on the PR: the claim, the author's answer, and what the review verified (D-14).
+Write "None." when the PR holds no comment.
+
+## Description edits
+
+One line per correction that this review made to the PR description.
+Give the old value and the new one. Write "None." when the review changed nothing.
+
+## Verification
+
+One line per command or check, with its result.
+Name each check that did not run and the reason.
+End with the push line: `- Push: <sha> is the head of origin/<branch>, verified with gh pr view.`
+
+## Open questions and accepted risks
+
+Name each open OQ-# and each accepted risk with its D-# id.
+
+## Verdict
+
+**<Blocked | Changes required | Ready for owner merge>.** This verdict applies to head `<sha>`.
+Give the reason in one or two sentences.
+```
+
+## Correct the PR description
+
+A PR description is part of the documentation set. A description that names a stale head, an old count, or a superseded correction misleads the owner at the merge.
+
+The reviewer corrects such a description directly. It needs no finding, and the author needs no extra pass for it.
+
+The reviewer changes only a fact that the review verified:
+
+- the effective head, the base, or the merge base.
+- a count that the review ran, such as the test total or the finding total.
+- a check result that the review read.
+- a sentence that names a correction that a later commit replaced.
+
+The reviewer never changes:
+
+- what the author says the PR does, or why.
+- a decision, a tradeoff, or a recommendation.
+- a gate line that the owner ticks.
+
+Name no provider, agent, harness, or model in the description (T-6, D-22).
+
+Write one line for each edit in the review record, under `## Description edits`. Give the old value and the new one. The owner then reads every change in one place.
+
+A claim that is wrong in substance stays a finding. The reviewer corrects a stale fact, and the author corrects a wrong statement.
+
+## Verdicts
+
+| Verdict | Required condition |
+|---|---|
+| Blocked | Provider independence, the review target, a necessary owner decision, or required evidence remains unresolved. Record any verified defects too. |
+| Changes required | The eligible review found in-scope defects or contract violations that need correction. List the required changes. |
+| Ready for owner merge | The provider gate passes, the complete scope has review coverage, all required checks pass, and no blocking finding remains. |
+
+A line under `## Out of scope` never gives the verdict `Changes required`.
+No findings does not mean no risk. State material limits without a claim of zero regressions.
+Approval applies only to the recorded revision. A new base or head requires assessment of the changed scope and evidence.
+The owner alone merges the PR (D-8).
+
+When the review record enters the PR, retain the assessed implementation head in that file.
+Check any later metadata commit before the final verdict.
+Do not require the review file to contain its own commit hash.
+A metadata commit cannot hide code, content, requirement, or test changes.
+
+## Finding format
+
+Give each finding a stable id: the letter `P`, the severity number, a hyphen, and an index. `P1-1` is the first P1 finding.
+Keep the id for the life of the PR. Never renumber a finding on a repeat review.
+
+```markdown
+### P<severity>-<n>: <short title that states the defect>
+
+Status: <open | fixed in `<sha>` | accepted risk, D-# | withdrawn>.
+
+File: `<path>:<line range>`, or Commit: `<sha>`.
+
+Trigger: the input or state that produces the defect.
+
+Expected: the required behavior, with the contract, tenet, guardrail, or D-# id.
+
+Actual: the observed behavior.
+
+Consequence: the effect on the player, the data, the build, or the maintainer.
+
+Correction: the smallest change that restores the contract.
+
+Regression check: the command or test that establishes the fix, and the result that must appear.
+```
+
+A withdrawn finding stays in the file with the evidence that refuted it. Never delete a finding.
+
+## Do not raise a tool name as attribution
+
+T-6 and D-22 prohibit text that names an agent, harness, or model **as the source of the work**.
+A tool name that identifies a configured file, a schema, or a verified version is not attribution.
+
+| Raise it | Do not raise it |
+|---|---|
+| A commit body that says an agent wrote the change. | The path `.claude/settings.json`. |
+| A co-author trailer or a generation line. | A decision that names the schema it was verified against. |
+| A PR description that credits a model. | A document that records which tool rejected a file. |
+
+Apply the same test to every file before a finding. A reading that condemns the decision register is too broad.
+
+## The review gate check
+
+PR-3 adds a `review-gate` check (D-15). It applies three rules:
+
+1. `docs/reviews/pr-<number>.md` exists for the PR number.
+2. The verdict is `Ready for owner merge`.
+3. The head in the Identity list is the effective head.
+
+The check has three states. Read the color before you start:
+
+| Color | Meaning | What to do |
+|---|---|---|
+| Grey | No review record exists for this PR. The job line reads red. | Write one. This is the normal state before a review. |
+| Red | A review record exists, and it does not approve this head. | Read the findings. The author corrects them. |
+| Green | An approved review covers the effective head. | The owner may merge (D-8). |
+
+Rule 3 fails when the author pushes code after the approval. That result is correct.
+Reassess the new diff, then update the head field and the verdict together.
+Rule 3 does not fail when the last commit changes only the metadata paths.
+
+Until PR-3 merges, the check does not exist. The owner reads the verdict in the review record by hand, and the PR template names PR-3 as the creator of the check (G-16).
+
+## Repeat review procedure
+
+Do these steps in order after the author revises the PR.
+
+1. Read the response file when one exists.
+2. Check the provider gate again. A reviewer fix changes eligibility.
+3. Read the new head, the new base, and the diff since the reviewed head.
+4. Verify each claimed fix against its original trigger and its regression check.
+5. Set the `Status` line of each prior finding. Keep every id and every piece of evidence.
+6. Inspect the new diff for new defects and affected consumers.
+7. Add any new finding with the next index in its severity.
+8. Update the Identity list to the new effective head.
+9. Update the Verification section with the commands that ran on the new head.
+10. Write the verdict against the new head. Keep one verdict name in the Verdict section.
+11. Commit the review record and the handoff entry together, then run the session end gate.
+
+Edit the existing `docs/reviews/pr-<number>.md`. Do not create a second file for the same PR.
+Do not delete the prior verdict. Replace it, and keep each finding and its history.
+
+Put the earlier verdict in a section above the Verdict section, under the heading `## Earlier verdicts`. The gate reads the section under the exact heading `## Verdict`, and it fails a section that names two verdicts. The count reads the prose too, so the reason after the verdict names no other verdict: write "the earlier findings are fixed" and not "the changes required are done".
+
+Close a finding only when the evidence establishes the fix or an owner decision resolves it.
+Record any required check that still waits for a result.
+
+### When a finding closes
+
+A finding closes when the correction makes its stated trigger pass and its regression check pass. Set the status to `fixed in <sha>` then.
+
+A new trigger for the same class of defect is a new finding with a new id. Assess that new finding against the scope rules above. It is not a reason to hold the old id open.
+
+Stop at the third assessment of one id. Write the pattern in the review record, and ask the owner whether this PR carries the whole surface, or a later PR does. A fourth correction of one finding is a scope question, and not a defect.
+
+## The automated pass
+
+An automated reviewer, gitar, comments on every PR after a push (D-14). The author answers every comment before the hand-over to the other provider, or before the override request on a documentation PR. This pass comes before the cross-provider review and never replaces it (T-4). Until the owner installs gitar (OQ-1), skip this section and say so in the handoff.
+
+Do these steps after each push.
+
+1. Wait for the pass. It ends with a PR comment that says approved or that requests changes, plus a line comment for each issue. When the comment reports a pause of the automatic reviews for the period, post the comment `Gitar review` on the PR. The pass then runs on demand.
+2. Read each comment as a claim, not a fact. Reproduce the trigger and read the contract it names, as for a review finding.
+3. For a comment with no merit, reply on its thread with the reason, and resolve the thread.
+4. For a comment with merit, make the smallest change that restores the contract. Commit, push, and reply on the thread with the commit.
+5. Wait for the next pass, and repeat from step 2 for each new comment.
+6. Stop when the pass approves the PR, or when every comment has its answer and a new pass adds none. Tell the owner that the PR is ready for the other provider, or for the override.
+
+A reply names no provider, harness, or model as the source of the work (T-6, D-22). It states the evidence: the command, the test, the decision id, or the commit. Never accept a comment only to close the pass faster, and never widen a change past the contract that the comment names.
+
+A resolve needs the thread id. The GitHub API lists the review threads of a PR, and `gh api graphql` resolves one with the `resolveReviewThread` mutation. A comment on the PR itself has no thread, and the reply is a comment on the PR.
+
+Record the pass in the handoff entry: the count of comments, the count with merit, and the commit that answered each one.
+
+## Do not address the automated reviewer
+
+The reviewing provider reads the existing PR comments and takes them into its own review context (D-14). It never replies to gitar, never resolves a thread, and never writes a comment on the PR.
+
+- A comment of the automated pass is a claim about the code, like any finding. Verify it against the head, and record the result under `## PR comments` in the review record.
+- An author reply is evidence, and the review checks it: the trigger, the contract, and the commit it names.
+- An automated comment that the author refuted with evidence is not a finding. An automated comment that the author fixed is a fix to verify. An automated comment that stays open without an answer blocks the verdict, because the author's pass is not complete.
+- The automated pass does not make gitar an author. The provider gate reads the providers of the substantive commits alone.
+
+## Address review findings
+
+Use this section when you answer a review. The author does this work, not the reviewer.
+
+**A finding is a claim, not a fact.** A review can be wrong. Assess each finding against the evidence before you change anything. A finding carries no authority that the evidence does not give it.
+
+1. Run `git fetch` and `git status --short --branch`. If the checkout is ahead of the remote with the reviewer's commit, push it first. Record that in the response file.
+2. Read the finding, then read the file and the lines it names.
+3. Reproduce the trigger. A finding that does not reproduce has no merit.
+4. Read the contract the finding cites. Check the `Effect` column of `docs/decisions.md` for a later revision.
+5. Decide the disposition: full merit, partial merit, or no merit.
+6. Correct every finding that has merit. Use the smallest change that restores the contract.
+7. Record each disposition in `docs/reviews/pr-<number>-response.md`.
+8. Commit the response, the corrections, and the handoff entry, then run the session end gate.
+
+Push back when the evidence supports it. State the reason and show the proof:
+
+| Reason to push back | What to show |
+|---|---|
+| The finding reads a rule too broadly. | Quote the rule. Name the other files that the broad reading also condemns. |
+| The finding cites a superseded decision. | Quote the `Effect` column and name the current decision. |
+| The finding calls a partial revision a supersession. | Quote the `Revised in part by` marker and the part that still stands. |
+| The trigger does not reproduce. | Give the command, the revision, and the result. |
+| The correction breaks another contract. | Name the contract and the caller that it breaks. |
+| The finding states a style preference. | Name the contract that the code does not break. |
+| The finding repeats a risk that a decision already accepted. | Quote the D-# id and its accepted risk. |
+| The finding asks for work outside the PR scope. | Quote the roadmap entry and the exit tests. Name the PR that holds the work. |
+| The finding reopens one id for the third time. | Name the three triggers and ask the owner to settle the scope (D-19). |
+
+A disagreement belongs in the response file, with the evidence. Never delete a finding from the review record.
+The reviewer sets a refuted finding to `withdrawn` and keeps the evidence that refuted it.
+
+Never accept a finding only to close the review faster. A wrong correction costs more than a written disagreement.
+Never widen a correction past the contract that the finding names.
+Ask the owner when a finding and an owner decision conflict. Quote both (D-19, D-24).
+
+Partial merit is common. Correct the part that has merit, and refute the rest in the same entry.
+
+## The response file
+
+The author answers a review in `docs/reviews/pr-<number>-response.md`.
+This file is a convention, not a gate. `review-gate` does not read it.
+Write one when the verdict is `Changes required` or `Blocked`. A clean first pass needs none.
+
+The response file states, for each finding:
+
+- The disposition: full merit, partial merit, or no merit.
+- The evidence, when the disposition is partial merit or no merit.
+- The correction that landed, with the file and the decision id.
+- The regression check that ran, and its result.
+
+The response also lists each new D-# and F-# id, and the final PR head.
+A disagreement with a finding belongs here, with the evidence. Do not remove the finding from the review file.
+
+## Commit the record
+
+Always commit the review record and the session handoff, then push them to the PR branch. Do it in the session that writes them.
+
+| After | Commit these files | Who commits |
+|---|---|---|
+| A review or a repeat review | `docs/reviews/pr-<number>.md` and `docs/session-handoff.md` | The reviewer |
+| Work that answers a review | `docs/reviews/pr-<number>-response.md`, each corrected file, and `docs/session-handoff.md` | The author |
+
+Make one commit that holds the record and its handoff entry. Never leave either file uncommitted or unpushed.
+A push is the only way `review-gate` sees the record, because the gate reads the PR head.
+A review is complete only when the remote holds the record. The session end gate below proves it.
+
+An uncommitted review record has three effects:
+
+- The next commit from the other provider absorbs it, and the history no longer shows who wrote what.
+- An author can commit an approval that the author never read, and then report the wrong verdict.
+- `review-gate` cannot read the record, because the record is not on the PR head.
+
+Write the commit message in an impersonal voice. Name no provider, agent, harness, or model (T-6, D-22).
+
+Fetch the remote and read the handoff again before you write the entry. Take the highest session number and add one.
+Name the remote head in the state of the build.
+Add the handoff entry at the top of the file, as a new entry (D-18).
+
+Another provider can add an entry above yours while you work. Add your own entry. Never append to an older one, and never edit theirs.
+
+## Session end gate
+
+Run these four commands after the commit, in this order. The evidence comes from the remote, not from the local checkout.
+
+```
+git push origin <branch>
+git fetch origin
+git status --short --branch
+gh pr view <number> --json headRefOid --jq .headRefOid
+```
+
+The status line must show no `[ahead N]`. The hash from `gh pr view` must equal `git rev-parse HEAD`.
+Write the push line in the Verification section of the review record, and name the remote head in the handoff entry.
+A record with no push line is incomplete, and the next session treats it as unpushed.
+
+If the remote refuses the push, the review is not complete. Do not end the session.
+Ask the owner to approve the push, and say in the handoff that the record has a commit and no push.
+A sandbox that blocks the network denies the push without a message from git, so read the status line and not the push output.
+
+At the start of a review or a repeat review, run `git fetch` and `git status --short --branch` too.
+If the checkout is ahead of the remote with a commit from the other provider, push it first. Record that in the review file.
+
+## Scope limits
+
+A review request authorizes these actions and no other:
+
+- Inspection, verification, the review record, and the handoff entry.
+- A commit of those two files, and a push of that commit to the PR branch.
+- A correction of a stale fact in the PR description, under "Correct the PR description".
+
+It does not by itself authorize a code fix, a merge, or another external message. A reply to the automated reviewer is an external message, and the reviewer never writes one (D-14). A reviewer never pushes to `main` (D-8). Honor explicit authorization already present in the session.
+
+If the reviewer writes a substantive fix, reassess provider eligibility. The reviewer cannot approve its own contribution. Do not disguise a fix as review metadata to bypass the provider gate.

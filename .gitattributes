@@ -1,0 +1,5 @@
+# One line ending on every platform. The STE checker, hashes, and diffs depend on it.
+* text=auto eol=lf
+
+# Binary assets
+*.png binary
