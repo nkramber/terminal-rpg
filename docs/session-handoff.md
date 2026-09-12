@@ -17,7 +17,7 @@ Session: establish the documents, the skills, the agents, the registers, and the
 - Copied the decktome STE checker to `docs/tools/ste-check.py` as the interim checker (D-10). The MtG names left its allow list, and game names entered it.
 - Wrote `docs/design.md` v1: thesis, lessons, system map, cost model, findings F-1 to F-10, tenets, guardrails G-1 to G-22, five phases with PR-1 to PR-33, and the sequence.
 - Ran the checker over every document, skill, and agent file, and corrected each finding.
-- The gitar pass on PR #1 left two comments, both with merit. The checker now removes a one-line HTML comment (F-11), and the PR description count reads 15 files. One commit answered both, and the reply on each thread names it. The session had claimed gitar was absent without a check (F-12), and D-66 records the owner's instruction that every PR answers the pass.
+- The gitar pass on PR #1 left two comments, both with merit. The checker now removes a one-line HTML comment (F-11), and the PR description count reads 15 files. One commit answered both, `0b2539a`, and the reply on each thread names it. The second pass, run by the comment `Gitar review`, approved that head at 23:10 UTC with both findings resolved. The session had claimed gitar was absent without a check (F-12), and D-66 records the owner's instruction that every PR answers the pass.
 
 ### State of the build
 
