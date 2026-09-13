@@ -6,7 +6,7 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-12 pivot pass: v2 refutes the terminal premise of v1 twice. D-78 moved the game out of the terminal into a window with a terminal look. D-98 ended the terminal look and made the game sprite-based. D-99 replaced Rust with Godot 4 and C#. The v1 file stays in the archive unchanged. The ids of v1 stand: an item that keeps its purpose keeps its number, PR-32 is retired, and new items start at PR-34 (G-10).
 
-2026-09-12 world and full-plan pass: the world-building interview set the setting (D-123 to D-159) in `docs/world/`. Two owner instructions widened the PR. D-139 plans 2D effects from the start, and D-142 puts a full roadmap before PR-1. Region one became a free prologue, a Steam demo of the full game (D-133, D-143). F-21 and F-22 record two faults of the interview options, and F-23 records a gate that headless CI cannot run.
+2026-09-12 world and full-plan pass: the world-building interview set the setting (D-123 to D-159) in `docs/world/`. Two owner instructions widened the PR. D-139 plans 2D effects from the start, and D-142 puts a full roadmap before PR-1. Region one became a free prologue, a Steam demo of the full game (D-133, D-143). F-21 and F-22 record two faults of the interview options, and F-23 records a gate that headless CI cannot run. D-227 and D-228 replaced the 640 by 360 frame with 1280 by 800 and 32-pixel tiles.
 
 External facts, verified 2026-09-12:
 
@@ -27,7 +27,7 @@ Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence
 
 ## 1. Thesis
 
-terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 16-pixel sprites at 640 by 360 (D-27, D-103, D-107). A fixed cast of five (D-33, D-58) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Every character changes jobs at a hub, keeps every ability learned, and carries one secondary set (D-32).
+terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). Its tentative name is The Thing Below (D-215). A fixed cast of five (D-33, D-58) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Every character changes jobs at a hub, keeps every ability learned, and carries one secondary set (D-32).
 
 Combat is hard because enemies think and resources run out (D-35), and a fallen character stays down until a hub (D-36). Decisions close routes, lose allies, and change hubs (D-40).
 
@@ -103,7 +103,7 @@ Measurements that answer the unknowns:
 - M-3: the night run wall time and the crash and softlock counts, over the first seven nights (D-64).
 - M-4: turns per encounter and party downs per dungeon by bot policy, on the first dungeon. Binds the resource numbers of D-35.
 - M-5: the owner's play time from the first hub to the end of the arc, against D-56.
-- M-6: the Deck frame time on the first playable, and the readability of the 8-pixel font and the 16-pixel sprites at 2x. It reads both with the CRT on and off (D-92, D-120).
+- M-6: the Deck frame time on the first playable, and the readability of the 16-pixel font and the 32-pixel sprites at 1x. It reads both with the CRT on and off (D-92, D-120, D-228).
 
 ## 5. Defect and finding register
 
@@ -125,7 +125,7 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-12 | The session wrote in `CLAUDE.md`, the PR template, the skill, and OQ-1 that gitar was absent, on no evidence. The pass ran on PR #1 within a minute | 2026-09-12 | ✅ doc. D-66. Every claim about a tool needs a check |
 | F-13 | The first interview fixed the language before the medium. Two pivots in one day, D-78 and D-98, reopened 30 decisions | 2026-09-12 | ✅ doc. D-99. L-14 |
 | F-14 | D-88 chose curvature and bleed, and the SDL2 2D renderer of D-83 ran no shader | 2026-09-12 | ✅ doc. D-91, then D-99 moved the shader to Godot. OQ-19 |
-| F-15 | A 16 by 16 sprite did not divide the 10 by 20 text cell of D-82 | 2026-09-12 | ✅ doc. D-103 sets a 16-pixel tile and a 640 by 360 frame |
+| F-15 | A 16 by 16 sprite did not divide the 10 by 20 text cell of D-82 | 2026-09-12 | ✅ doc. D-103 sets a 16-pixel tile and a 640 by 360 frame. D-228 later sets a 32-pixel tile and a 1280 by 800 frame |
 | F-16 | D-7 chose RON, and C# has no RON reader | 2026-09-12 | ✅ doc. D-116, JSON with a schema |
 | F-17 | The 32-color palette (D-89) had 13 free colors for eight elements and ten statuses | 2026-09-12 | ✅ doc. D-121 grows it to 48, and D-181 to 64. Binds PR-34 |
 | F-18 | The full CRT (D-105) is on by default on the Deck (D-120) before any Deck measurement | 2026-09-12 | ⚠ Binds M-6 and Gate 2: the Deck play measures readability with it on |
@@ -134,6 +134,7 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-21 | The plan gives each region one story arc (D-56), and the glossary defined an arc as "the story of one region". No text said how an arc relates to the main story of D-28, or what the first release ends on. An interview option read the gap as a faction that falls inside region one, and the owner refuted it | 2026-09-12 | ✅ doc. D-131: every plotline converges at the end of the game. The glossary now defines an arc as one part of the main story. D-133 resolves OQ-26: region one is a free prologue on Steam. The Phase 4 summary and Phase 5 now name the prologue. Binds the arc block of OQ-18 |
 | F-22 | The interview options used Final Fantasy Tactics as a template, not a feel. Three recorded answers sit close to its plot devices: unpaid veterans turned bandit (D-127), a hidden power behind the politics (D-128), and church leaders who know the faith is a lie (D-137). The waystones (D-134) risk a fourth: stones that carry the evil | 2026-09-12 | ⚠ D-136 and D-140: keep the shapes, and ban the devices. The list lives in `docs/world/`. Binds every later option of OQ-18 |
 | F-23 | The gates of PR-10 and PR-37 need a rendered screen: a screen test of a fixture battle, and two screenshots of the CRT toggle. The smoke job runs Godot with `--headless` on hosted runners (D-117). Godot proposal 5790 says that `--headless` "disables all rendering code", and the Godot docs name no way to capture an image in that mode. what-you-carry met the same wall: its contact sheet needs a window and runs on a desktop alone (its D-306) | 2026-09-12 | ⚠ D-172: a Linux CI job renders under Xvfb with a pinned Mesa, and desktop contact sheets show the real renderer at milestones. Binds the technical and graphics roadmaps, PR-10, and PR-37. Sources: the Godot 4.7 command line page and proposal 5790, read 2026-09-12 |
+| F-24 | D-228 doubles the tile size after the art, effect, and light decisions of this interview. Every grid holds four times the pixels: a 32 by 32 frame is 1,024 characters of text, and a party member has about twelve frames plus normal-map overrides (D-184, D-199, D-200). The Deck lights and fills four times the pixels of a 640 by 400 frame | 2026-09-12 | ⚠ Binds the graphics roadmap, the Deck test of D-160 at 1280 by 800, and M-6. The PNG import of D-107 matters more for hand edits |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -169,7 +170,7 @@ The tenets are the constitution. When a tenet conflicts with speed or convenienc
 16. **G-16.** A PR that creates a check passes that check. A PR names any check that does not exist yet, with the PR that creates it (L-11).
 17. **G-17.** Every `core` behavior change bumps the simulation version constant, and the review confirms it.
 18. **G-18.** No empty `catch` and no silent default. Every error carries its context (T-2).
-19. **G-19.** Every screen designs to 640 by 360 at integer scale. The Steam Deck at 2x with the CRT on is the floor (D-92, D-103, D-120).
+19. **G-19.** Every screen designs to 1280 by 800 with 32-pixel tiles. The Steam Deck at 1x with the CRT on is the floor (D-92, D-120, D-228). Other screens fit the height, with whole-number scale as a setting (D-232).
 20. **G-20.** Every player string follows the `game-text-style` skill, and the owner approves each text batch in its PR (D-57, D-63).
 21. **G-21.** Every enemy profile validates at load, and a profile that can never act fails the load (D-65, T-2).
 22. **G-22.** The night gate is green before merge, once PR-15 creates it. It needs a success record from a night inside 48 hours (D-64).
@@ -202,7 +203,7 @@ Gate: the checker passes on itself, on this file, and on the skills, and it fail
 > *In plain English:* this replaces the borrowed script with a tool in the project language. Documents are the project's memory, so the tool guards that memory.
 
 **PR-3: Review gate.**
-Port the what-you-carry `ReviewGate` command into Tools and its workflow on `pull_request_target` (D-15, D-101). The workflow runs the tool from the base branch and fetches the PR head as data. The tool applies the three rules of the `pr-review` skill and the override rules of D-16 with the eligible set of D-71. It publishes a check run.
+Port the what-you-carry `ReviewGate` command into Tools and its workflow on `pull_request_target` (D-15, D-101). The workflow runs the tool from the base branch and fetches the PR head as data. The tool applies the three rules of the `pr-review` skill and the override rules of D-16 with the eligible set of D-71 and D-239. It publishes a check run.
 Gate: the job gives success on a fixture PR with an approved record, and failure on a stale head. It gives success on a documentation PR with the label.
 > *In plain English:* this adds a check that turns red when a change has no approved review from the other provider. The owner then requires it on `main` (OQ-3).
 
@@ -226,7 +227,7 @@ Gate: the replay of a recorded run gives the same hash on all three platforms, a
 > *In plain English:* the game writes down its start state and every input. That record then plays any run again, so every bug becomes repeatable, and the save file is that record.
 
 **PR-34: Atlas tool, palette, and the grid format.**
-Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 16 by 16 grid. A portrait is a 32 by 32 grid. A sprite has a frame list.
+Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 32 by 32 grid, and a portrait is a 64 by 64 grid (D-228, D-234). The session redraws the four test sprites at 32 by 32 for the owner's approval (D-233). A sprite has a frame list.
 
 The palette is the 64-color file (D-121, D-181). The tool also builds a normal map for each grid, with optional override grids (D-183, D-184). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
 
@@ -241,7 +242,7 @@ Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the fou
 
 **PR-7: Tile map, movement, sight, and the map scene.**
 Define the layout content format: a grid of tile ids, doors, chests, save points, spawn points, and markers for secrets (D-39, D-41). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core. 
-Draw the map scene in Game at 640 by 360 with the camera on the leader and integer scale to the window (D-103, D-106). Map the arrow keys, the gamepad stick and pad, and the mouse click to intents (D-84).
+Draw the map scene in Game at 1280 by 800, fit to the window (D-232), with the camera on the leader (D-106, D-228). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
 Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never shows a tile outside the map.
 > *In plain English:* this is the first thing you can open and move in. The dungeon is a grid of tiles, the party walks it one tile at a time, and the view follows.
 
@@ -282,7 +283,7 @@ Gate: the party walks the hub, rests, buys, changes jobs, swaps a reserve charac
 > *In plain English:* the hub is a place you walk through, where the party recovers, trades, and reshapes itself before the next dungeon.
 
 **PR-36: Scene runner, dialogue box, and portraits.**
-Define the scene script format (D-109, D-114). Sprites move and face by script. A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. Five cast portraits as 32 by 32 grids.
+Define the scene script format (D-109, D-114). Sprites move and face by script. A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. Five cast portraits as 64 by 64 grids (D-234).
 Gate: a fixture scene walks two sprites, shows a line with a portrait, and records a choice in the run record.
 > *In plain English:* the story plays out on the map with the characters you already know, and your choices land in the box under them.
 
@@ -292,7 +293,7 @@ Gate: ten thousand night runs of the two policies on the fixture dungeon complet
 > *In plain English:* simple robots play thousands of runs every night without a screen. They find crashes and dead ends before a person ever sees them.
 
 **PR-16: Dungeon parts, death, and save points.**
-Implement treasure, locked doors and keys, traps and hazards, and save points with the party swap (D-36, D-41, D-58). A wipe reloads the autosave. The dungeon exit returns the party to the region map.
+Implement treasure, locked doors and keys, traps and hazards, and save points with the party swap (D-36, D-41, D-58). A wipe reloads the newer of the slot save and the autosave (D-231). The dungeon exit returns the party to the region map.
 Gate: a bot run that wipes reloads and continues, and a two-character party after a down can still reach the exit in the fixture.
 > *In plain English:* the dungeon gains its chests, doors, traps, and resting places, and death now costs what the design says it costs.
 
@@ -320,7 +321,7 @@ Gate: the owner plays from the hub through the dungeon and back on the desktop a
 
 **M-4: Encounter numbers.** Record turns per encounter and party downs per dungeon by bot policy on the first dungeon. Binds the resource numbers of D-35.
 
-**M-6: The Deck.** Record the frame time on the first playable. Record the readability of the font and the sprites at 2x, with the CRT on and off (D-92, D-120, F-18).
+**M-6: The Deck.** Record the frame time on the first playable. Record the readability of the font and the sprites at 1x, with the CRT on and off (D-92, D-120, D-228, F-18).
 
 ### Phase 3: Story systems (gate: the owner plays a branch that closes a route and a scene that changes a relationship)
 
@@ -381,7 +382,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. The full-plan docs PR: the world, the phase roadmaps, and the area roadmaps (D-142, D-144, D-146). Then the rename (D-102).
+2. The full-plan docs PR: the world, the phase roadmaps, and the area roadmaps (D-142, D-144, D-146). Then the rename to the-thing-below, and the move to the external SSD (D-215 to D-217).
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.

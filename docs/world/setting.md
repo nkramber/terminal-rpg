@@ -17,7 +17,7 @@ The text that the player reads has its own voice (D-11). This file gives facts f
 
 A war between two crowns ran for twenty years and ended six years ago (D-154). The old crown signed region one over to the enemy crown in a treaty (D-127). The treaty also brought the church of the enemy crown, and that church banned the old faith (D-137).
 
-The peace cost the region. Unpaid soldiers turned bandit, the old lords bent the knee to the new crown, and commoners pay both sides (D-127). The bandits still roam after six years, and the reason is open (OQ-36).
+The peace cost the region. Unpaid soldiers turned bandit, the old lords bent the knee to the new crown, and commoners pay both sides (D-127). The bandits still roam after six years, because the passes pay: tolls, ore trains, and travelers make banditry a trade (D-249).
 
 ## The land and its people
 
@@ -91,7 +91,6 @@ The samples show the sound. They are not cast names.
 
 ## Open items
 
-- The reason that the bandits still roam after six years (OQ-36).
 - Whether a battle rule tracks the feeding of the thing below (OQ-35).
 - How a party gets papers for a licensed job (OQ-34).
 - The factions, the hubs, the dungeons, and the routes, in the places block (D-146).

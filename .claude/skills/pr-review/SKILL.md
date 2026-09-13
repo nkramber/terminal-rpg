@@ -122,7 +122,7 @@ Apply each relevant row. Record why an area does not apply when its omission can
 | Strings | No inline player string. Every player string has an id in the string table (G-7). |
 | Input and CI boundaries | Check size limits, file paths, and validation at affected external inputs. Inspect CI permissions, secret access, and execution of untrusted content when those boundaries change. |
 | Gameplay | The rules the design doc and the decisions set for the affected system. Trace repeated runs as well as one run. |
-| Presentation | Gamepad and keyboard play, the 640 by 360 frame, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-103, D-105, D-107). Headless tests do not establish visual quality or game feel. |
+| Presentation | Gamepad and keyboard play, the 1280 by 800 frame with 32-pixel tiles, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-105, D-107, D-228). Headless tests do not establish visual quality or game feel. |
 | Dependencies and cost | A decision justifies each dependency (G-13). Performance claims include a profile before the change and a measurement after it (G-14). |
 
 Do not reintroduce an earlier contract that a later decision supersedes.

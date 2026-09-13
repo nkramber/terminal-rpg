@@ -87,7 +87,7 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 - Every dependency needs a decision entry (G-13).
 - Every optimization needs a profile before and a measurement after (G-14).
 - Every `Core` behavior change bumps the simulation version constant, and the review confirms it (G-17).
-- Every screen designs to 640 by 360 at integer scale, and the Steam Deck is the readability and performance floor (D-92, D-103, G-19).
+- Every screen designs to 1280 by 800 with 32-pixel tiles, and the Steam Deck at 1x is the readability and performance floor (D-92, D-228, G-19).
 
 ## Git rules
 

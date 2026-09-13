@@ -116,7 +116,7 @@ Source: ASD-STE100 Issue 8 (2021-04-30), Part 1, Writing rules. Issue 9 (2025-01
 
 The rules permit these as written. They are technical names (rule 1.5):
 
-- The working title: terminal-rpg (D-9).
+- The working title: terminal-rpg (D-9). The tentative name, with capitals: The Thing Below (D-215).
 - Tools and platforms: Godot, C#, .NET, xUnit, dotnet format, JSON, Steam, Steamworks, Steam Deck, Aseprite, Makefile, GitHub Actions, gitar, Python.
 - The two harnesses: Claude Code, Codex.
 - Project names: Core, Game, Tools, Tests, once PR-1 creates them (D-118).
@@ -167,14 +167,26 @@ Game terms from the roadmap interview of 2026-09-12:
 | job level | the level of one job from ability points (D-34) | rank, mastery |
 | profile | an enemy's personality data (D-65) | personality, brain |
 | evaluator | the tactical scorer in core (D-65) | planner, AI, alone |
-| tile | one 16 by 16 map position (D-103) | cell, square, glyph |
+| tile | one 32 by 32 map position (D-228) | cell, square, glyph |
 | sprite | the drawing of a character, an enemy, or an item (D-107) | glyph, icon, image |
 | grid | the text source of a sprite or a tile (D-107) | matrix, bitmap |
 | atlas | the PNG the tool renders from every grid (D-107) | sheet, texture |
-| portrait | the 32 by 32 face in the dialogue box (D-109) | avatar, face |
+| portrait | the 64 by 64 face in the dialogue box (D-109, D-234) | avatar, face |
 | backdrop | the battle background of a place (D-111) | background, stage |
 | region map | the node and route screen between places (D-113) | overworld, world map |
 | scene | a scripted story beat on the map (D-114) | cutscene, event |
+
+World terms from the world-building interview of 2026-09-12:
+
+| Term | Use for | Do not use |
+|---|---|---|
+| the thing below | the power under the old ground that answers spilled blood (D-128). With capitals, The Thing Below is the tentative name of the game (D-215) | the old evil, the demon |
+| wrong things | the rare creatures that appear near spilled blood (D-155) | monsters, demons |
+| waystone | the standing stone of an older age, as an object in the world (D-134, D-141) | save point, when the text means the stone |
+| hidden job | a job with no legal papers, such as the Hexer and the Cutpurse (D-150) | illegal job, banned job |
+| hidden source | the rare, hidden place or teacher where a character takes a hidden job (D-138, D-151) | illegal source, black market |
+| foreign church | the church of the enemy crown, which holds the license law (D-137) | new church, the church, alone |
+| old faith | the banned faith of region one (D-137) | old church, pagans |
 
 ## The checker
 
