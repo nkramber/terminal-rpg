@@ -27,6 +27,7 @@ The game runs on Godot 4 with C# (D-99). The simulation lives in an engine-free 
 The goal is a Steam release, and the Steam Deck is the readability and performance floor (D-85, D-92).
 
 The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is one hub and one dungeon with job change and a shop (D-51). The owner judges feel there, on the desktop and on the Deck. 
+
 The story systems come third, because they need the loop. Region one, two hubs and four dungeons in one arc, is the first release (D-56). Five gated phases hold that order.
 
 ## 2. Lessons learned (carry into every PR)
@@ -211,7 +212,9 @@ Gate: the replay of a recorded run gives the same hash on all three platforms, a
 > *In plain English:* the game writes down its start state and every input. That record then plays any run again, so every bug becomes repeatable, and the save file is that record.
 
 **PR-34: Atlas tool, palette, and the grid format.**
-Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 16 by 16 grid. A portrait is a 32 by 32 grid. A sprite has a frame list. The palette is the 48-color file (D-121). A test proves that the committed atlas matches the grids, as the texture test of what-you-carry does. Retire the Python script.
+Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 16 by 16 grid. A portrait is a 32 by 32 grid. A sprite has a frame list.
+
+The palette is the 48-color file (D-121). A test proves that the committed atlas matches the grids, as the texture test of what-you-carry does. Retire the Python script.
 
 Gate: the tool reproduces `content/sprites/atlas.png` from the four grids, and a grid with an unknown key fails with the file, the line, and the column.
 > *In plain English:* every picture in the game is a text file of letters, one per pixel. A tool turns those letters into the image the engine draws, and a test proves the image matches the letters.
