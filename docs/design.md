@@ -21,6 +21,7 @@ External facts, verified 2026-09-12:
 - In Godot, `--headless` "disables all rendering code". Source: godot-proposals issue 5790, open, read 2026-09-12.
 - Godot's own CI runs the engine under `xvfb-run` with `--rendering-driver opengl3`. Source: `.github/actions/godot-project-test/action.yml` in the Godot repository, read 2026-09-12.
 - In Movie Maker mode, faster hardware renders sooner, "but the visual output remains identical", and "the window size is clamped by your display's resolution". Source: Godot docs, "Creating movies", read 2026-09-12.
+- HDR for 2D works "when using the Forward+ and Mobile rendering methods", and "When using the Compatibility rendering method, glow uses a different implementation". Source: Godot docs, "Environment and post-processing", read 2026-09-12.
 
 Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence-length counts.
 
@@ -126,7 +127,7 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-14 | D-88 chose curvature and bleed, and the SDL2 2D renderer of D-83 ran no shader | 2026-09-12 | ✅ doc. D-91, then D-99 moved the shader to Godot. OQ-19 |
 | F-15 | A 16 by 16 sprite did not divide the 10 by 20 text cell of D-82 | 2026-09-12 | ✅ doc. D-103 sets a 16-pixel tile and a 640 by 360 frame |
 | F-16 | D-7 chose RON, and C# has no RON reader | 2026-09-12 | ✅ doc. D-116, JSON with a schema |
-| F-17 | The 32-color palette (D-89) had 13 free colors for eight elements and ten statuses | 2026-09-12 | ✅ doc. D-121 grows it to 48. Binds PR-34 |
+| F-17 | The 32-color palette (D-89) had 13 free colors for eight elements and ten statuses | 2026-09-12 | ✅ doc. D-121 grows it to 48, and D-181 to 64. Binds PR-34 |
 | F-18 | The full CRT (D-105) is on by default on the Deck (D-120) before any Deck measurement | 2026-09-12 | ⚠ Binds M-6 and Gate 2: the Deck play measures readability with it on |
 | F-19 | D-119 and PR-34 promised an atlas match byte for byte. The compressed bytes depend on the zlib build and the encoder, so the C# tool of PR-34 cannot reproduce them. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The match test compares decoded pixels. The interim tool gained `--check`. Binds PR-34 |
 | F-20 | The interim atlas tool kept the last of two palette entries with one key, in silence, against T-2. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The tool fails on a repeated key. Binds PR-34 to the same rule |
@@ -173,7 +174,7 @@ The tenets are the constitution. When a tenet conflicts with speed or convenienc
 21. **G-21.** Every enemy profile validates at load, and a profile that can never act fails the load (D-65, T-2).
 22. **G-22.** The night gate is green before merge, once PR-15 creates it. It needs a success record from a night inside 48 hours (D-64).
 23. **G-23.** Godot physics, timers, and navigation never feed the simulation. The camera, the shader, the audio, and the input map live in Game (D-100, D-106).
-24. **G-24.** Every sprite, tile, and portrait is a text grid in content. The atlas tool renders the PNG, and a test proves the committed atlas matches (D-107).
+24. **G-24.** Every sprite, tile, and portrait is a text grid in content. The atlas tool renders the PNG, and a test proves the committed atlas matches (D-107). A normal map comes from the grid, and its atlas gets the same test (D-184).
 25. **G-25.** Every content batch the owner approves, sprites and text alike, appears in its PR description in full (D-57, D-107).
 
 ## 7. Roadmap
@@ -227,7 +228,7 @@ Gate: the replay of a recorded run gives the same hash on all three platforms, a
 **PR-34: Atlas tool, palette, and the grid format.**
 Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 16 by 16 grid. A portrait is a 32 by 32 grid. A sprite has a frame list.
 
-The palette is the 48-color file (D-121). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
+The palette is the 64-color file (D-121, D-181). The tool also builds a normal map for each grid, with optional override grids (D-183, D-184). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
 
 Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the four grids. A grid with an unknown key fails with the file, the line, and the column. A palette with a repeated key fails with the key.
 > *In plain English:* every picture in the game is a text file of letters, one per pixel. A tool turns those letters into the image the engine draws, and a test proves the image matches the letters.
