@@ -10,7 +10,9 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-13 critic pass: the design-critic agent read the plan after the frame change and found 13 defects. F-25 to F-27 record them, and D-255 to D-258 close four.
 
-2026-09-13 cast pass: the cast block of the world-building interview replaced the job system (D-267 to D-299). Characters gain abilities from lessons, the rites and drills that any character equips. Each character has a main aptitude and a hidden side aptitude. D-277 ended every port from another repository, so each tool is new work. PR-22 is retired, and PR-42 takes the lessons of region one.
+2026-09-13 cast pass: the cast block of the world-building interview replaced the job system (D-267 to D-299). Characters gain abilities from lessons, the rites and drills that any character equips. Each character has a main aptitude and a hidden side aptitude. D-277 ended every port from another repository, so each tool is new work. PR-22 is retired, and PR-42 takes the lessons of region one in Phase 4 (D-304).
+
+2026-09-13 second critic pass: the design-critic agent read the plan after the job system change and found 14 defects. F-28 records them. D-301 to D-304 close four, and OQ-48 to OQ-55 hold the questions that remain.
 
 External facts, verified 2026-09-12:
 
@@ -33,13 +35,13 @@ Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence
 
 terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). Its tentative name is The Thing Below (D-215). A fixed cast (D-33, D-299) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Any character equips lessons, the rites and drills that give abilities, and each character does one kind of ability best (D-272, D-274, D-278).
 
-Combat is hard because enemies think and resources run out (D-35), and a fallen character stays down until a hub (D-36). Decisions close routes, lose allies, and change hubs (D-40).
+Combat is hard because enemies think and resources run out (D-35), and a fallen character stays down until a hub (D-36). Decisions close routes, lose allies outside the cast, and change hubs (D-40, D-301).
 
 The game runs on Godot 4 with C# (D-99). The simulation lives in an engine-free Core library that replays any run from a seed and an input record (D-100, T-7). Sprites, tiles, and portraits are text grids in content that a tool renders into an atlas (D-107). A full CRT shader sits over the frame with a toggle (D-105, D-120). Particles, 2D light, and shaders enter the plan from the start (D-139).
 
 The goal is a Steam release, and the Steam Deck is the readability and performance floor (D-85, D-92).
 
-A full roadmap comes before any code (D-142). The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is one hub and one dungeon with lessons and a shop (D-51, D-268). The owner judges feel there, on the desktop and on the Deck. 
+A full roadmap comes before any code (D-142). The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is one hub and one dungeon with lessons and a shop (D-51, D-268, OQ-46). The owner judges feel there, on the desktop and on the Deck. 
 
 The story systems come third, because they need the loop. Region one, two hubs and four dungeons in one arc, is the first release (D-56). It ships free, as a Steam demo of the full game (D-133, D-143). Every plotline converges at the end of the game (D-131). Five gated phases hold that order.
 
@@ -139,9 +141,10 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-22 | The interview options used Final Fantasy Tactics as a template, not a feel. Three recorded answers sit close to its plot devices: unpaid veterans turned bandit (D-127), a hidden power behind the politics (D-128), and church leaders who know the faith is a lie (D-137). The waystones (D-134) risk a fourth: stones that carry the evil | 2026-09-12 | ⚠ D-136 and D-140: keep the shapes, and ban the devices. The list lives in `docs/world/`. Binds every later option of OQ-18 |
 | F-23 | The gates of PR-10 and PR-37 need a rendered screen: a screen test of a fixture battle, and two screenshots of the CRT toggle. The smoke job runs Godot with `--headless` on hosted runners (D-117). Godot proposal 5790 says that `--headless` "disables all rendering code", and the Godot docs name no way to capture an image in that mode. what-you-carry met the same wall: its contact sheet needs a window and runs on a desktop alone (its D-306) | 2026-09-12 | ⚠ D-172: a Linux CI job renders under Xvfb with a pinned Mesa, and desktop contact sheets show the real renderer at milestones. Binds the technical and graphics roadmaps, PR-10, and PR-37. Sources: the Godot 4.7 command line page and proposal 5790, read 2026-09-12 |
 | F-24 | D-228 doubles the tile size after the art, effect, and light decisions of this interview. Every grid holds four times the pixels: a 32 by 32 frame is 1,024 characters of text, and a party member has about twelve frames plus normal-map overrides (D-184, D-199, D-200). The Deck lights and fills four times the pixels of a 640 by 400 frame | 2026-09-12 | ⚠ Binds the graphics roadmap, the Deck test of D-160 at 1280 by 800, and M-6. The PNG import of D-107 matters more for hand edits |
-| F-25 | The design critic of 2026-09-13 found four holes in play and saves. Gate 2 could not reach the two hidden jobs (C-1), a save point gave endless rest (C-2), a quit autosave could trap a run (C-3), and a Core patch would refuse old saves (C-4) | 2026-09-13 | ✅ doc. D-256, D-257, and D-258 close the first three. D-259 closes the fourth: a load reads the snapshot |
+| F-25 | The design critic of 2026-09-13 found four holes in play and saves. Gate 2 could not reach the two hidden jobs (C-1), a save point gave endless rest (C-2), a quit autosave could trap a run (C-3), and a Core patch would refuse old saves (C-4) | 2026-09-13 | ✅ doc. D-256, D-257, and D-258 close the first three, and D-268 later supersedes D-256. D-259 closes the fourth: a load reads the snapshot |
 | F-26 | The critic found gates that cannot pass. No PR created the screen-test job of D-172, the PR-37 gate relied on a headless run that draws nothing, the PR-7 and PR-8 gates met small maps and routes per phase, and the Deck test of D-160 had no sequence step and no failure branch | 2026-09-13 | ✅ doc. PR-41 creates the job with fixed capture and fit tests at 1080 and 1440 rows. The gates of PR-7, PR-8, and PR-37 changed, and section 8 gains the Deck test. D-261: the owner sets a fallback only if the test misses 60 |
 | F-27 | The critic found gaps in the records. 24 earlier rows lacked their revision notes, several lines named superseded values, and D-193 disagreed with D-202 on ambient effects. Four choices had no owner: the first turn from behind, the place of systems, audio, and release in the order, effect timings in frames, and D-171 against the rule of no conditional compilation in Core | 2026-09-13 | ✅ doc for the notes and the stale text. D-260, D-262, D-265, and D-266 settle the four choices |
+| F-28 | The second critic pass of 2026-09-13 read the plan after the job system change and found 14 defects. A player choice could remove a cast member (C-1), the PR-12 gate needed the tasks of PR-19 (C-2), PR-42 came before its places (C-3), two notes overstated the aptitude count (C-4), and the law split between a license and a stamp (C-5). Stale text and notes stayed (C-6), and session readings had no owner (C-7). No PR drew the lead or wrote the tasks (C-8), a reserve swap gave fresh MP (C-9), and the watcher could stamp rites (C-10). OQ-41 gave the wrong cost of the death (C-11), three cases had no rule (C-12), words clashed (C-13), and the distance rule covers FFT alone (C-14) | 2026-09-13 | ✅ doc for C-2, C-4, C-6, C-8, C-11, and C-13. The session rejected one claim of C-6: D-282 refines D-268 and D-274 and does not revise them. D-301 to D-304 settle C-1, C-3, C-5, and the reading of D-274 in C-7. ❓ OQ-38 holds C-9, OQ-48 to OQ-51 hold C-12, and OQ-52 to OQ-55 hold the adult rule and the map sprite of C-7, then C-14 and C-10 |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -245,11 +248,11 @@ Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the fou
 
 **M-2: CI wall time per PR.** Record the wall time of each CI job per platform for the first ten PRs.
 
-### Phase 2: First playable (gate: the owner plays one hub and one dungeon with lessons and a shop, on the desktop and on the Deck, D-51, D-92, D-268)
+### Phase 2: First playable (gate: the owner plays one hub and one dungeon with lessons and a shop, on the desktop and on the Deck, D-51, D-92, D-268, OQ-46)
 
 **PR-7: Tile map, movement, sight, and the map scene.**
 Define the layout content format: a grid of tile ids, doors, chests, save points, spawn points, and markers for secrets (D-39, D-41). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core. 
-Draw the map scene in Game at 1280 by 800, fit to the window (D-232), with the camera on the leader (D-106, D-228). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
+Draw the map scene in Game at 1280 by 800, fit to the window (D-232), with the camera on the lead (D-106, D-228, D-292). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
 Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never scrolls past the edge of a map larger than the view, and a smaller map sits centered.
 > *In plain English:* this is the first thing you can open and move in. The dungeon is a grid of tiles, the party walks it one tile at a time, and the view follows.
 
@@ -266,7 +269,7 @@ Gate: property tests over one thousand seeds assert that a patrol never leaves t
 > *In plain English:* enemies stand and walk in the dungeon where you can see them. You choose the fight, or you sneak past, or they catch you.
 
 **PR-9: Battle core and timeline.**
-Implement the encounter state, the timeline, and the speed rule that orders it (D-29). Implement actions, damage in fixed-point, the eight elements with weakness, resist, and absorb, and the ten statuses (D-74, D-75). Implement haste, slow, and heavy actions as timeline shifts. Three characters and up to six enemies. Down and party wipe (D-36).
+Implement the encounter state, the timeline, and the speed rule that orders it (D-29). Implement actions, damage in fixed-point, the eight elements with weakness, resist, and absorb, and the ten statuses (D-74, D-75, OQ-44). Implement haste, slow, and heavy actions as timeline shifts. Three characters and up to six enemies. Down and party wipe (D-36).
 Gate: property tests over one thousand seeds assert that the timeline never stalls and that every status ends.
 > *In plain English:* this is the fight itself, with the order of turns visible and shaped by speed. Nothing draws it yet.
 
@@ -282,9 +285,9 @@ Gate: a fixture enemy with a protector profile heals its ally before it attacks,
 > *In plain English:* enemies think. Each one weighs what a move does before it acts, and each kind of enemy weighs it differently.
 
 **PR-12: Lessons, aptitudes, and levels.**
-Implement the character level from experience and half experience for the reserve (D-34, D-73). Implement lessons, the rites and drills that any character equips to gain abilities (D-272, D-275, D-278). Implement the main aptitude and the side aptitude of each character, with the side aptitude hidden until its task ends (D-274, D-282, D-283). Implement MP and its recovery rule (D-42). Where lessons sit, how they grow, what an aptitude does, and the action with no MP are open (OQ-38, OQ-39, OQ-40, OQ-44).
+Implement the character level from experience and half experience for the reserve (D-34, D-73). Implement lessons, the rites and drills that any character equips to gain abilities (D-272, D-275, D-278). Implement the main aptitude and the side aptitude of each character, with the side aptitude hidden until its task ends (D-274, D-282, D-283). Implement MP and its recovery rule (D-42). Where lessons sit, how they grow, and what an aptitude does are open, and PR-12 waits for OQ-38, OQ-39, OQ-40, and OQ-46.
 
-Gate: a character equips a lesson and uses its ability, and a finished task shows the side aptitude in the menu. The gate grows when OQ-38 to OQ-40 and OQ-44 close.
+Gate: a character equips a lesson and uses its ability in a fixture battle. A fixture flag unlocks a side aptitude, and the menu shows nothing there before the flag (D-283).
 > *In plain English:* abilities come from rites and drills that anyone can carry. Each character is best at one kind, and a hidden second kind opens through a personal task.
 
 **PR-13: Gear, items, and inventory.**
@@ -294,11 +297,11 @@ Gate: a character equips and removes gear in each slot, and the screen shows eac
 
 **PR-14: Hub map, NPCs, and services.**
 Implement the hub as a walkable map with NPC sprites (D-112). The services are buildings and NPCs: rest, save, party swap, and the shop with gold (D-59, D-60, D-62, D-268). Define the hub content format with the services each hub offers (D-28). Draw the service screens.
-Gate: the party walks the hub, rests, buys, swaps a reserve character, and saves, and the save reloads to the same hash.
+Gate: the party walks the hub, rests, buys, swaps a reserve character, and saves, and the save reloads to the same hash. The lead moves to the reserve, and the camera stays on the lead (D-292).
 > *In plain English:* the hub is a place you walk through, where the party recovers, trades, and reshapes itself before the next dungeon.
 
 **PR-36: Scene runner, dialogue box, and portraits.**
-Define the scene script format (D-109, D-114). Sprites move and face by script. A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. The five portraits of region one as 64 by 64 grids (D-234, D-280).
+Define the scene script format (D-109, D-114). Sprites move and face by script. A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. Fixture portraits as 64 by 64 grids, because PR-28 and PR-29 draw the portraits of the cast (D-234).
 Gate: a fixture scene walks two sprites, shows a line with a portrait, and records a choice in the run record.
 > *In plain English:* the story plays out on the map with the characters you already know, and your choices land in the box under them.
 
@@ -328,7 +331,7 @@ Gate: the tool reproduces every committed WAV file, and the battle scene plays a
 > *In plain English:* every sound comes from a small text file that the tool turns into audio. The first fight makes noise.
 
 **PR-17: The first hub and the first dungeon.**
-Author the first hub and the first dungeon as content (D-28, D-39, D-110). That is the two tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, and a placeholder scene. The characters and lessons of the first playable have their text in the voice (G-20, OQ-46).
+Author the first hub and the first dungeon as content (D-28, D-39, D-110). That is the two tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, the sprite set of Marrek, and a placeholder scene (D-292). The characters and lessons of the first playable have their text in the voice (G-20, OQ-46).
 Gate: the owner plays from the hub through the dungeon and back on the desktop and on the Deck, and signs off on feel (D-52, D-92). The M-4 numbers land inside the band the sign-off sets, and M-6 records the Deck.
 > *In plain English:* the first real place to play. Everything before this was machinery.
 
@@ -341,12 +344,12 @@ Gate: the owner plays from the hub through the dungeon and back on the desktop a
 ### Phase 3: Story systems (gate: the owner plays a branch that closes a route and a scene that changes a relationship)
 
 **PR-18: Story flags, branches, and scene choices.**
-Implement the flag set, the branch conditions in content, and the choice effects (D-40). A closed route, a lost ally, and a changed hub are three flag effects.
+Implement the flag set, the branch conditions in content, and the choice effects (D-40). A closed route, a lost ally outside the cast, and a changed hub are three flag effects (D-301).
 Gate: a fixture branch closes a route on the region map, and a replay reproduces the branch.
 
 **PR-19: Reputation, relationships, quests, and the rumor board.**
-Implement the faction reputation model, the relationship value per cast member, the quest state, and the rumor board NPC in the hub (D-40, D-59).
-Gate: a fixture quest completes, and a hub line changes with reputation.
+Implement the faction reputation model, the relationship value per cast member, the quest state, and the rumor board NPC in the hub (D-40, D-59). The quest state carries the personal tasks (D-282).
+Gate: a fixture quest completes, a hub line changes with reputation, and a finished task unlocks a side aptitude (D-282).
 
 **PR-20: Boss phases and signature moves.**
 Implement the scripted phase layer over the evaluator (D-65). A phase changes the profile and adds a move. One boss for the first dungeon, with its sprite.
@@ -356,13 +359,9 @@ Gate: the boss changes phase at the scripted threshold in every one of one thous
 Implement switches, pushable blocks, light and dark, hidden rooms, and secret markers (D-41).
 Gate: a fixture puzzle opens a door, and a hidden room stays hidden until found.
 
-**PR-22: Retired.** Jobs five to eight have no purpose after D-268. No later item takes the id (G-10).
+**PR-22: Retired.** Jobs five to eight have no purpose after D-268. No later item takes the id (G-10). PR-42 in Phase 4 takes the lessons of region one (D-304).
 
-**PR-42: The lessons of region one.**
-The rites and drills of region one as content, across the eight kinds, with their icons and their text in the voice (D-275, D-281, G-20).
-Gate: every kind has lessons in region one, and the M-4 band holds with them.
-
-> *In plain English for Phase 3:* the game learns to remember what you chose and to answer it. Bosses gain their set pieces, dungeons gain their puzzles, and the lessons of region one arrive.
+> *In plain English for Phase 3:* the game learns to remember what you chose and to answer it. Bosses gain their set pieces, and dungeons gain their puzzles.
 
 ### Phase 4: Region one content (gate: the owner plays region one end to end on the desktop and on the Deck and signs off, D-56)
 
@@ -370,13 +369,15 @@ Gate: every kind has lessons in region one, and the M-4 band holds with them.
 
 **PR-27: The second hub.** A hub of another shape than the first (D-28), with its tile set, its NPC sprites, its services, and its scenes.
 
-**PR-28 and PR-29: The arc.** The scenes, the branches, the decisions, the portraits, and the cast text of region one, in two batches (D-56, D-57, OQ-14, OQ-18).
+**PR-42: The lessons of region one.** The rites and drills of region one as content, across the eight kinds, with icons and text in the voice (D-275, D-281, D-304, G-20). Each lesson has a place in a dungeon, a hub, or a scene. Gate: every lesson has a place, and bot runs of region one with each side aptitude absent in turn stay inside the M-4 band (D-282).
+
+**PR-28 and PR-29: The arc.** The scenes, the branches, the decisions, the portraits, the personal tasks, and the cast text of region one, in two batches (D-56, D-57, D-282, OQ-14, OQ-18).
 
 **PR-30: Balance pass.** Tune the numbers of D-35 and D-60 on the M-4 band and the night runs. Every change reports the number before and after (G-14).
 
 **M-5: Region one play time.** The owner's play time from the first hub to the end of the arc, against the six to eight hours of D-56.
 
-> *In plain English for Phase 4:* the free prologue takes shape. Four dungeons, two hubs, the first part of the story, and the numbers tuned by robots and by play.
+> *In plain English for Phase 4:* the free prologue takes shape. Four dungeons, two hubs, their lessons, the first part of the story, and the numbers tuned by robots and by play.
 
 ### Phase 5: First release, the free prologue (gate: a tagged build on GitHub that a fresh machine runs, then the Steam demo on the Deck)
 
@@ -413,9 +414,9 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 13. PR-17.
 14. M-3, M-4, M-6.
 15. **← GATE 2 (first playable).** The owner plays one hub and one dungeon on the desktop and on the Deck and signs off on feel.
-16. PR-18, PR-19, PR-20, PR-21, PR-42.
+16. PR-18, PR-19, PR-20, PR-21.
 17. **← GATE 3 (story systems).** The owner plays a branch and a relationship scene.
-18. PR-23 to PR-26, PR-27.
+18. PR-23 to PR-26, PR-27, PR-42.
 19. PR-28, PR-29, PR-30.
 20. M-5.
 21. **← GATE 4 (region one).** The owner plays region one end to end on both machines.

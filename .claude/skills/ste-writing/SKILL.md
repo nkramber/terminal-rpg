@@ -146,9 +146,9 @@ Game terms from the roadmap interview of 2026-09-12:
 | Term | Use for | Do not use |
 |---|---|---|
 | lesson | a rite or a drill that a character equips to gain an ability (D-278) | job, class, materia, skill book |
-| rite | a lesson for a spell, on a page or a lead strip (D-275) | scroll, spellbook |
-| drill | a lesson for a physical skill, as a written form (D-275) | technique, manual |
-| kind | one of the eight families of ability: mend, harm, blight, boon, blade, guard, shot, theft (D-281) | school, family, when the text means these eight |
+| rite | a lesson for a spell, on a page or a strip of soft metal (D-275) | scroll, spellbook |
+| drill | a lesson for a physical ability, as a written form (D-275) | technique, manual |
+| kind | one of the eight families of ability, written with a capital letter: Mend, Harm, Blight, Boon, Blade, Guard, Shot, Theft (D-281) | school, family, when the text means these eight |
 | main aptitude | the kind that a character does best (D-274) | class, role, specialty |
 | side aptitude | the second kind of a character, which a personal task unlocks (D-282) | side role, side job, subclass |
 | lead | the one character whom scenes center on (D-267) | hero, protagonist, main character |
@@ -189,7 +189,7 @@ World terms from the world-building interview of 2026-09-12:
 | wrong things | the rare creatures that appear near spilled blood (D-155) | monsters, demons |
 | waystone | the standing stone of an older age, as an object in the world (D-134, D-141) | save point, when the text means the stone |
 | foreign church | the church of the enemy crown, which holds the license law (D-137) | new church, the church, alone |
-| stamp | the mark of the foreign church that makes a rite legal (D-275) | seal, license, when the text means a rite |
+| stamp | the mark of the foreign church on a rite, which a legal use needs together with a license (D-302) | seal, license, when the text means the mark on a rite |
 | old faith | the banned faith of region one (D-137) | old church, pagans |
 
 ## The checker

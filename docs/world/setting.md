@@ -59,11 +59,11 @@ Outside those machines, the technology is late medieval (D-129). People fight wi
 
 ## Lessons and the law
 
-No character has a job (D-268). A character gains abilities from lessons: rites for spells and drills for physical skills (D-275, D-278). A lesson teaches a form and holds no power. The file `cast.md` gives the rules of lessons and aptitudes.
+No character has a job (D-268). A character gains abilities from lessons: rites for spells and drills for physical abilities (D-275, D-278). A lesson teaches a form and holds no power. The file `cast.md` gives the rules of lessons and aptitudes.
 
-The license law reaches the rites a character uses (D-130, D-275). A rite with a church stamp is legal, and a rite with no stamp can hang its user. The guild marks its wardens, and a warden can lose the mark (D-294).
+A legal use of a rite needs two things: a church license on the caster and a church stamp on the rite (D-130, D-302). A use without either can hang the caster. The guild marks its wardens, and a warden can lose the mark (D-294).
 
-How a party gets a stamped rite is open (OQ-42). Whether a rule in play tracks an unstamped rite is open too (OQ-45).
+How a party gets a license or a stamped rite is open (OQ-42). Whether a rule in play tracks an unlawful use is open too (OQ-45).
 
 ## Rules that stay out of the story
 
@@ -90,7 +90,7 @@ The samples show the sound. They are not cast names.
 ## Open items
 
 - Whether a battle rule tracks the feeding of the thing below (OQ-35).
-- How a party gets a stamped rite (OQ-42).
+- How a party gets a license or a stamped rite (OQ-42).
 - The arc (D-146), then the systems, audio, and release areas (D-262).
 
 The places of region one are in `places.md`, and the cast is in `cast.md`.

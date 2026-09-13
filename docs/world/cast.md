@@ -10,9 +10,9 @@ The text that the player reads has its own voice (D-11). This file gives facts f
 
 No character has a job or a class (D-268, D-272). A character gains abilities from lessons, and any character can equip any lesson (D-274, D-278).
 
-- A lesson is a rite or a drill (D-275). A rite teaches a spell, on a page or a lead strip. A drill teaches a physical skill as a written form.
+- A lesson is a rite or a drill (D-275). A rite teaches a spell, on a page or a strip of soft metal. A drill teaches a physical ability as a written form.
 - A lesson holds no power. Every caster draws on the thing below (D-148).
-- A rite with a church stamp is legal. A rite with no stamp can hang its user (D-130, D-275).
+- A legal use of a rite needs a church license on the caster and a church stamp on the rite. A use without either can hang the caster (D-130, D-302).
 
 Each character has two aptitudes (D-274):
 
@@ -34,7 +34,7 @@ The eight kinds (D-281):
 
 The rules of the aptitudes:
 
-- No two characters share a main aptitude, except the replacement of D-279, which can share the main aptitude of the dead character (D-274).
+- No two characters share a main aptitude, except the replacement of D-279, which can share the main aptitude of the dead character (D-274, D-303).
 - No two characters in the whole game share a side aptitude (D-271, D-274).
 - A side aptitude never matches the main aptitude of the same character (D-281).
 - The whole cast holds eight characters at most, the replacement included, because each needs a side aptitude of its own (D-281).
@@ -81,21 +81,22 @@ Ottild smuggles goods through old mine tunnels and knows ways into the deep mine
 
 ### Elio, the clerk
 
-Elio comes from the land of the enemy crown and stamps rites at the license office of the foreign church (D-288). The church trained him in mend (D-289). The church or the governor sends him to travel with the party and report (D-290). He stays as a watcher who can turn, and the relationship with Elio decides what he reports.
+Elio comes from the land of the enemy crown and stamps rites at the license office of the foreign church (D-288). The church trained him in Mend (D-289). The church or the governor sends him to travel with the party and report (D-290). He stays as a watcher who can turn, and the relationship with Elio decides what he reports.
 
-A legal healer and an illegal caster share the party (D-289). Elio holds the only main mend in region one.
+A legal healer and an illegal caster share the party (D-289). Elio holds the only main aptitude of Mend in region one. He alone has church training, so a rite in the hands of any of the other four breaks the law (D-302).
 
 ## Later characters
 
 Three characters join after region one: two new characters and the replacement (D-299).
 
-- The main aptitude of each new character is boon, blight, or shot (D-281, D-299).
-- The side aptitudes of the three are harm, mend, and theft (D-293).
+- The main aptitude of each new character is Boon, Blight, or Shot (D-281, D-299).
+- The side aptitudes of the three are Harm, Mend, and Theft (D-293).
+- The arc sets the death before these side aptitudes, because some pairs leave the replacement no legal side aptitude (D-274, D-281).
 - Later characters can come from anywhere, the old crown included (D-273).
 
 ## The death
 
-The story kills one character in the whole game, at a set point, and the player has no choice in it (D-270, D-279). The replacement can share the main aptitude of the dead character, and its side aptitude differs (D-274). Who dies, and where, belong to the arc block.
+The story kills one character in the whole game, at a set point, and the player has no choice in it (D-270, D-279). The replacement can share the main aptitude of the dead character, and its side aptitude differs (D-274). Who dies, and where, belong to the arc block (OQ-48). No choice of the player removes a cast member, and a lost ally is someone outside the cast (D-301).
 
 ## Names
 
@@ -103,7 +104,8 @@ The names follow the two sound palettes of `setting.md` (D-159). The four local 
 
 ## Open items
 
-- Who dies, where, and what happens to the lessons of that character (OQ-41).
+- Who dies, where, and whether the lead can die (OQ-48). What happens to the lessons and the gear of that character (OQ-41).
+- Any turn of Elio stays clear of a climb to power through betrayal, a banned device (D-290, `banned-devices.md`).
 - Which power sends Elio, and when the player learns it (D-290).
 - What order Bergit refused (D-294).
 - What happened to the parent of Marrek (D-291).
