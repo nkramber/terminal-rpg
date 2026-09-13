@@ -48,7 +48,7 @@ Do not approve through reciprocal review of selected hunks.
 
 - Follow the read order in `AGENTS.md`.
 - Load `.claude/skills/ste-writing/SKILL.md` before any review text (D-10).
-- Load `.claude/skills/rust-conventions/SKILL.md` before any Rust review (D-21).
+- Load `.claude/skills/csharp-conventions/SKILL.md` before any C# review (D-21, D-99).
 - Read the PR request, its acceptance criteria, prior review, and applicable focused roadmap.
 - Resolve decision revisions through the `Effect` column in `docs/decisions.md`. `Superseded by D-N` replaces the whole answer. `Revised in part by D-N` changes only the named part, and the rest of that decision stays current.
 - Check `docs/questions.md` for unresolved choices that affect this change (D-19).
@@ -97,7 +97,7 @@ State the invariant that each boundary must preserve.
 ### Correctness and system effects
 
 - Check normal use, boundary values, absent data, invalid data, repeated actions, and interrupted actions where applicable.
-- Trace state ownership and lifetime across `core`, `tui`, and `tools`.
+- Trace state ownership and lifetime across Core, Game, Tools, and Tests.
 - Inspect initialization, cancellation, cleanup, restart, and replay when the change affects those paths.
 - Check event order, resource disposal, integer bounds, and overflow where they affect the result.
 - Inspect compatibility with current callers, content, saves, and records.
@@ -114,15 +114,15 @@ Apply each relevant row. Record why an area does not apply when its omission can
 
 | Area | Required examination |
 |---|---|
-| Core boundary | No terminal, file, network, clock, or OS dependency in `core`. Trace data flow, not only imports (G-1). |
+| Core boundary | No engine dependency or gameplay input from Godot physics, timers, or navigation in Core. Trace data flow, not only imports (G-1, D-100). |
 | Determinism | Integer math, seed ownership, one stream per subsystem, fixed iteration and event order, no clock or OS random (T-7, G-2 to G-4). |
-| Replay | The record holds the seed, the content hash, the versions, and every input. A replay reproduces the state hash. Verify the simulation version bump for a `core` behavior change (G-5, G-17). |
-| Errors | Required context, visible failure, safe recovery, and assertions in release builds. An `unwrap`, a swallowed `Result`, or a silent default violates T-2 (G-18). |
-| Content | RON with unknown fields refused. An absent field reports the file, the field, and the reason. Check identifier references and file name case (D-7, G-6). |
+| Replay | The record holds the seed, the content hash, the versions, and every input. A replay reproduces the state hash. Verify the simulation version bump for a Core behavior change (G-5, G-17). |
+| Errors | Required context, visible failure, safe recovery, and assertions in release builds. An empty `catch` or a silent default violates T-2 (G-18). |
+| Content | JSON schemas at load and in tests. An absent field reports the file, the field, and the reason. Check identifier references and file name case (D-116, G-6). |
 | Strings | No inline player string. Every player string has an id in the string table (G-7). |
 | Input and CI boundaries | Check size limits, file paths, and validation at affected external inputs. Inspect CI permissions, secret access, and execution of untrusted content when those boundaries change. |
 | Gameplay | The rules the design doc and the decisions set for the affected system. Trace repeated runs as well as one run. |
-| Presentation | The three terminal targets, color and Unicode fallbacks, and the minimum terminal size the design sets (D-2). Headless tests do not establish visual quality or game feel. |
+| Presentation | Gamepad and keyboard play, the 640 by 360 frame, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-103, D-105, D-107). Headless tests do not establish visual quality or game feel. |
 | Dependencies and cost | A decision justifies each dependency (G-13). Performance claims include a profile before the change and a measurement after it (G-14). |
 
 Do not reintroduce an earlier contract that a later decision supersedes.
@@ -150,7 +150,7 @@ Treat contradictory instructions and gates that cannot pass as defects.
 ## Verification
 
 Run the focused checks that can falsify the changed behavior. Complete the applicable project gates.
-Use the current build commands in `AGENTS.md`. Do not invent a successful command when no workspace or tool exists.
+Use the current build commands in `AGENTS.md`. Do not invent a successful command when no solution or tool exists.
 
 - Read the tests as critically as the implementation.
 - Verify that each bug fix has a regression test that fails on the old behavior (T-3).
@@ -162,7 +162,7 @@ Use the current build commands in `AGENTS.md`. Do not invent a successful comman
 - Distinguish a passed check from a skipped, unavailable, failed, or author-reported check.
 - Record the command, revision, environment, result, and relevant artifact for each required check.
 - Verify CI results against the reviewed revision and configured test target.
-- Check the three-platform `replay-identity` result once PR-4 creates it (G-5).
+- Check the three-platform `replay-identity` result once PR-4 creates it, and the smoke and night results once their PRs create them (G-5, G-22).
 
 Use the initial-check clause only as G-16 permits.
 Name the absent check and the PR that creates it. A PR that creates a check must pass it.
@@ -445,7 +445,7 @@ Do these steps after each push.
 3. For a comment with no merit, reply on its thread with the reason, and resolve the thread.
 4. For a comment with merit, make the smallest change that restores the contract. Commit, push, and reply on the thread with the commit.
 5. Wait for the next pass, and repeat from step 2 for each new comment.
-6. Stop when the pass approves the PR, or when every comment has its answer and a new pass adds none. Tell the owner that the PR is ready for the other provider, or for the override.
+6. Stop when the pass approves the PR, or when every comment has its answer and a new pass adds none. Tell the owner that the PR is ready for the other provider. On a documentation PR, apply the `review-override` label yourself at this point (D-67).
 
 A reply names no provider, harness, or model as the source of the work (T-6, D-22). It states the evidence: the command, the test, the decision id, or the commit. Never accept a comment only to close the pass faster, and never widen a change past the contract that the comment names.
 

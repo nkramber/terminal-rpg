@@ -36,7 +36,7 @@ Short sentences. Physical detail. No purple prose. Dry understatement. The world
 | Dialogue line | 3 lines at 80 characters |
 | Lore entry | 12 lines at 80 characters |
 
-The screen is 120 by 40 (D-48). A panel holds less. The limit is the panel, not the screen.
+The frame is 640 by 360 with an 8-pixel font (D-103, D-104), about 80 characters across. A panel holds less. The limit is the panel, not the frame.
 
 ## Examples
 

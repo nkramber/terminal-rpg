@@ -117,10 +117,11 @@ Source: ASD-STE100 Issue 8 (2021-04-30), Part 1, Writing rules. Issue 9 (2025-01
 The rules permit these as written. They are technical names (rule 1.5):
 
 - The working title: terminal-rpg (D-9).
-- Tools and platforms: Rust, cargo, rustup, clippy, rustfmt, ratatui, crossterm, serde, RON, Makefile, GitHub Actions, gitar, Python.
+- Tools and platforms: Godot, C#, .NET, xUnit, dotnet format, JSON, Steam, Steamworks, Steam Deck, Aseprite, Makefile, GitHub Actions, gitar, Python.
 - The two harnesses: Claude Code, Codex.
-- Crate names: core, tui, tools, once PR-1 creates them.
-- Process terms: session handoff, decision register, questions register, PR gate, cross-provider review, review record, response file, effective head, property test, seed loop, replay, state hash, simulation version, content hash, string table.
+- Project names: Core, Game, Tools, Tests, once PR-1 creates them (D-118).
+- Process terms: session handoff, decision register, questions register, PR gate, cross-provider review, review record, response file, effective head, property test, seed loop, replay, state hash, simulation version, content hash, string table, night gate, smoke session.
+- Art terms: sprite, tile, tile set, atlas, palette, portrait, backdrop, grid, frame, flip, pixel font.
 - The standard itself: ASD-STE100, STE.
 - Code identifiers in backticks.
 
@@ -166,8 +167,14 @@ Game terms from the roadmap interview of 2026-09-12:
 | job level | the level of one job from ability points (D-34) | rank, mastery |
 | profile | an enemy's personality data (D-65) | personality, brain |
 | evaluator | the tactical scorer in core (D-65) | planner, AI, alone |
-| glyph | one character cell on the map (D-38) | tile, sprite, icon |
-| tile | one map position (D-38) | cell, square |
+| tile | one 16 by 16 map position (D-103) | cell, square, glyph |
+| sprite | the drawing of a character, an enemy, or an item (D-107) | glyph, icon, image |
+| grid | the text source of a sprite or a tile (D-107) | matrix, bitmap |
+| atlas | the PNG the tool renders from every grid (D-107) | sheet, texture |
+| portrait | the 32 by 32 face in the dialogue box (D-109) | avatar, face |
+| backdrop | the battle background of a place (D-111) | background, stage |
+| region map | the node and route screen between places (D-113) | overworld, world map |
+| scene | a scripted story beat on the map (D-114) | cutscene, event |
 
 ## The checker
 
@@ -177,10 +184,10 @@ Until PR-2, the Python script `docs/tools/ste-check.py` is the checker (D-10). R
 python3 docs/tools/ste-check.py $(git ls-files '*.md' | grep -v -e '^docs/reviews/' -e '^docs/session-handoff' -e '^docs/archive/')
 ```
 
-After PR-2, the Rust tool replaces it:
+After PR-2, the C# tool replaces it:
 
 ```
-cargo run --locked -p tools -- ste-check --root .
+dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- ste-check --root .
 ```
 
 The command prints one line per finding: the file, the line, the rule id, and what the rule saw. It exits 1 on any finding. The rules and the exemptions:
@@ -200,7 +207,7 @@ Dated records are exempt by path: `docs/reviews/`, `docs/session-handoff.md`, `d
 
 The passive and participle rules are heuristics. A past participle is an irregular form from a list, or a word that ends in "ed". "is closed" is a finding, and so is "is required". Rewrite the sentence with the actor as the subject: "the build needs the SDK". "must", "can", and "will" pass, because the standard approves them.
 
-An -ing word that is a noun or a technical name passes: nothing, during, warning, heading, finding, and a list in the script. A hyphenated word never counts as an -ing form. To add a technical name, add it to `ING_ALLOW` in the script, and to the Rust list after PR-2.
+An -ing word that is a noun or a technical name passes: nothing, during, warning, heading, finding, and a list in the script. A hyphenated word never counts as an -ing form. To add a technical name, add it to `ING_ALLOW` in the script, and to the C# list after PR-2.
 
 ## Markdown notes
 

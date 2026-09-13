@@ -10,7 +10,7 @@ Read `docs/session-handoff.md` now, before any other file and before any tool ca
 
 1. `docs/session-handoff.md`: the state and the next action.
 2. This file: the tenets and the rules.
-3. `docs/design.md`: the design, the guardrails (section 6), and the roadmap (section 7).
+3. `docs/design.md`: the design, the guardrails (section 6), and the roadmap (section 7). `docs/archive/` holds the refuted plans.
 4. `docs/decisions.md`: every owner decision, D-1 onward. Cite a D-# id when you apply one.
 5. `docs/questions.md`: the open questions register, OQ-1 onward. File a new question there.
 6. `docs/reviews/`: one review file per PR, plus audits and audit responses.
@@ -62,7 +62,7 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 
 ## Text rules
 
-- All project skills live in `.claude/skills/` (D-21): `ste-writing`, `design-doc-style`, `pr-review`, `rust-conventions`, and `game-text-style`. Create every new project skill there.
+- All project skills live in `.claude/skills/` (D-21): `ste-writing`, `design-doc-style`, `pr-review`, `csharp-conventions`, and `game-text-style`. Create every new project skill there.
 - Read each required skill from `.claude/skills/<skill-name>/SKILL.md`, even if it is absent from the skill list.
 - Every `.md`, skill, and agent file follows ASD-STE100 (D-10). Load the `ste-writing` skill before you write.
 - Load the `design-doc-style` skill before you edit `docs/design.md` or a focused roadmap.
@@ -72,18 +72,21 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 
 ## Code rules
 
-- Rust only, tools included (D-1). The interim STE checker in Python is the one exception, until PR-2 replaces it (D-10).
-- The `core` crate has no terminal, no file, no network, and no OS dependency. Only the front end depends on ratatui and crossterm (G-1).
-- Integer math only in `core`. No `f32`, `f64`, `std::time`, `Instant`, or OS-seeded random in `core`. A lint enforces it (T-7, G-2, G-3).
+- C# only, tools included (D-99, D-101). No GDScript. The interim STE checker in Python is the one exception, until PR-2 replaces it (D-10).
+- `Core` has no engine dependency and no file, network, clock, or OS dependency. A test asserts its reference list (G-1, D-100).
+- Integer math only in `Core`. No `float`, `double`, `System.Random`, `DateTime`, or `Stopwatch` in `Core`. The `det-lint` tool enforces it (T-7, G-2, G-3).
 - One seeded random stream per subsystem. Every run writes a record: the seed, the content hash, the versions, and every input. A replay reproduces the state hash on every platform (G-4, G-5).
-- Content is RON. Serde reads it with unknown fields refused and an absent field as an error. A test loads every content file (D-7, G-6).
-- Every string the player reads lives in the string table. A lint refuses an inline player string (D-7, G-7).
-- No `unwrap` and no `expect` outside tests. No `let _ =` on a `Result`. Every error carries its context (T-2, G-18). Load the `rust-conventions` skill before you write Rust.
-- Clippy at the pedantic level with warnings as errors. `cargo fmt` clean.
-- Unit tests sit next to the code. Property tests are seed loops, and each failure names its seed.
+- Godot physics, timers, and navigation never feed the simulation. The camera, the shader, the audio, and the input map live in `Game` (D-100, D-106).
+- Content is JSON, validated by a schema at load and in a test. An absent field is an error. No `.tres` files (D-116, G-6).
+- Every string the player reads lives in the string table. The `det-lint` tool reads `Game` for an inline player string (G-7).
+- Sprites and tiles are text grids in content. The atlas tool renders the PNG, and a test proves the committed atlas matches (D-107).
+- No empty `catch`. Every error carries its context (T-2, G-18). Load the `csharp-conventions` skill before you write C#.
+- Nullable reference types on, warnings as errors. `dotnet format` clean.
+- xUnit. Property tests are seed loops, and each failure names its seed.
 - Every dependency needs a decision entry (G-13).
 - Every optimization needs a profile before and a measurement after (G-14).
-- Every `core` behavior change bumps the simulation version constant, and the review confirms it (G-17).
+- Every `Core` behavior change bumps the simulation version constant, and the review confirms it (G-17).
+- Every screen designs to 640 by 360 at integer scale, and the Steam Deck is the readability and performance floor (D-92, D-103, G-19).
 
 ## Git rules
 
@@ -104,23 +107,27 @@ An automated reviewer, gitar, comments on every PR after a push (D-14). The auth
 - The reviewing provider reads the existing PR comments into its review and never addresses gitar.
 - The `pr-review` skill holds both procedures. A reply names no provider, harness, or model as the source of work (T-6).
 - Every PR answers the pass, a documentation PR included (D-66). The `review-override` label exempts a documentation PR from the Codex review alone.
+- On a documentation PR, the session applies the `review-override` label itself, only after the pass approves the head (D-67). A later push needs a new approval before the label applies again.
+- Before you open a documentation PR, ask the owner every open question that the PR can settle (D-68). Ask in batches, and record the answers in the PR.
 
 ## Build and test commands
 
-The repository holds no Rust code until PR-1 merges. PR-1 creates the workspace, the Makefile, and every command below except the interim STE check. Run each command from the checkout root.
+The repository holds no code until PR-1 merges. PR-1 creates the solution, the Makefile, and every command below except the interim STE check. The project names carry the working title until D-102 renames them. Run each command from the checkout root.
 
 - Every check, on this machine: `make verify`
 - Branch, tree, and PR state: `make where`
 - Hooks, once per checkout: `make hooks`
-- Build: `cargo build --locked --workspace`
-- Test: `cargo test --locked --workspace`
-- Lint: `cargo clippy --locked --workspace --all-targets -- -D warnings`
-- Format check: `cargo fmt --all --check`
+- Build: `dotnet build TerminalRpg.slnx`
+- Test: `dotnet test TerminalRpg.slnx --no-build --filter "Category!=Smoke"`
+- Format check: `dotnet format TerminalRpg.slnx --verify-no-changes`
 - STE check, interim until PR-2: `python3 docs/tools/ste-check.py $(git ls-files '*.md' | grep -v -e '^docs/reviews/' -e '^docs/session-handoff' -e '^docs/archive/')`
-- STE check, after PR-2: `cargo run --locked -p tools -- ste-check --root .`
-- Run the game, after PR-1: `cargo run --locked -p terminal-rpg`
+- STE check, after PR-2: `dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- ste-check --root .`
+- Determinism and string lint, after PR-4: `dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- det-lint --root .`
+- Godot build check: `/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --editor --path TerminalRpg.Game --build-solutions --quit`
+- Smoke session: `/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --path TerminalRpg.Game -- --smoke`
+- Play session: `/Applications/Godot_mono.app/Contents/MacOS/Godot --path TerminalRpg.Game`
 
-The four exempt paths are dated records: `docs/reviews/`, `docs/session-handoff.md`, `docs/session-handoff-archive.md`, and `docs/archive/`. Every other `.md` file passes the checker before a commit.
+The name `Godot` is not on the command path of this machine, so each check needs the full path above. The four exempt paths of the STE check are dated records: `docs/reviews/`, `docs/session-handoff.md`, `docs/session-handoff-archive.md`, and `docs/archive/`. Every other `.md` file passes the checker before a commit.
 
 ## PR gate
 
@@ -128,10 +135,12 @@ A PR merges only when every line holds:
 
 - [ ] Tests written and green (T-3).
 - [ ] No silent failure. Every error carries context (T-2).
-- [ ] The three-platform build, test, clippy, and format job is green (D-2). PR-1 creates it.
+- [ ] The three-platform build, test, and format job is green (D-2, D-117). PR-1 creates it.
+- [ ] The `smoke` job is green on three platforms: the headless Godot session (D-117). PR-1 creates it.
 - [ ] The `det-lint` job is green: no float, clock, or OS random in `core`, and no inline player string (G-2, G-3, G-7). PR-4 creates it.
 - [ ] The `replay-identity` job is green: the same state hash on the three platforms for the fixed seed set (G-5). PR-4 creates it.
-- [ ] The `ste-check` job is green (G-12). PR-1 creates it with the interim checker, and PR-2 moves it to Rust.
+- [ ] The `night-gate` job is green: a success record from a night inside 48 hours (G-22). PR-15 creates it.
+- [ ] The `ste-check` job is green (G-12). PR-1 creates it with the interim checker, and PR-2 moves it to C#.
 - [ ] The automated pass of gitar approved the head, or every comment of the pass has its answer (D-14).
 - [ ] The other provider reviewed it, and `docs/reviews/pr-<number>.md` has the verdict `Ready for owner merge` for the effective head (T-4, D-17). A PR that changes no code is exempt when the owner adds the `review-override` label (D-16).
 - [ ] The `review-gate` check is green (D-15). PR-3 creates it.
