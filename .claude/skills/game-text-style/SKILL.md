@@ -25,6 +25,7 @@ Short sentences. Physical detail. No purple prose. Dry understatement. The world
 10. The player finds lore. Nobody tells it. A page, a carving, a corpse. Never a narrator lecture.
 11. Names are short and pronounceable. One or two syllables for people. Places can take three.
 12. Never name a mechanic in a story line. A save point is a shrine, a campfire, a bell, whatever the hub makes it.
+13. Show violence in short physical detail, in the flat tone of rule 3. Never show sexual violence. Never show harm to a child on screen (D-126).
 
 ## Length limits
 

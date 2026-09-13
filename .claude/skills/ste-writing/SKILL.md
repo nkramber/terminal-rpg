@@ -154,7 +154,7 @@ Game terms from the roadmap interview of 2026-09-12:
 | hub | a settlement with services, of any shape (D-28) | town, city, base |
 | dungeon | an authored area with enemies and a goal (D-39) | level, zone, map |
 | region | a slice of the game with hubs and dungeons (D-56) | chapter, act, world |
-| arc | the story of one region (D-56) | plot, chapter |
+| arc | the part of the main story that one region tells (D-56, D-131) | plot, chapter |
 | encounter | one battle against one enemy group | fight, combat, when a noun |
 | timeline | the visible turn order in battle (D-29) | queue, initiative |
 | turn | one action of one combatant on the timeline | move, round |

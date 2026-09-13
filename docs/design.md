@@ -1,10 +1,12 @@
 # terminal-rpg: Design and Roadmap
 
-Status: **design document v2, pre-production.** This file supersedes `docs/archive/design-v1-terminal-2026-09-12.md`, the terminal plan. Its source is the decision register `docs/decisions.md`, entries D-1 onward. The owner recorded every decision on 2026-09-12: D-1 to D-25 in the repository interview, D-26 to D-65 in the roadmap interview. D-66 to D-98 came in the pivot interviews, and D-99 to D-122 in the engine interview.
+Status: **design document v2, pre-production.** This file supersedes `docs/archive/design-v1-terminal-2026-09-12.md`, the terminal plan. Its source is the decision register `docs/decisions.md`, entries D-1 onward. The owner recorded every decision on 2026-09-12: D-1 to D-25 in the repository interview, D-26 to D-65 in the roadmap interview. D-66 to D-98 came in the pivot interviews, and D-99 to D-122 in the engine interview. D-123 onward came in the world-building interview, which D-142 widened to a full roadmap before PR-1.
 
 Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-12 pivot pass: v2 refutes the terminal premise of v1 twice. D-78 moved the game out of the terminal into a window with a terminal look. D-98 ended the terminal look and made the game sprite-based. D-99 replaced Rust with Godot 4 and C#. The v1 file stays in the archive unchanged. The ids of v1 stand: an item that keeps its purpose keeps its number, PR-32 is retired, and new items start at PR-34 (G-10).
+
+2026-09-12 world and full-plan pass: the world-building interview set the setting (D-123 to D-159) in `docs/world/`. Two owner instructions widened the PR. D-139 plans 2D effects from the start, and D-142 puts a full roadmap before PR-1. Region one became a free prologue, a Steam demo of the full game (D-133, D-143). F-21 and F-22 record two faults of the interview options, and F-23 records a gate that headless CI cannot run.
 
 External facts, verified 2026-09-12:
 
@@ -13,6 +15,10 @@ External facts, verified 2026-09-12:
 - Godot 4.7.2 is the current release for both editions, dated 2026-08-18, and the .NET LTS pin is .NET 10. Source: the what-you-carry design header, verified there on 2026-09-07. PR-1 verifies both again on the Godot download page.
 - The development machine has .NET 10.0.400 and Godot 4.7.2 .NET at `/Applications/Godot_mono.app`. Source: `dotnet --version` and the what-you-carry runbook, 2026-09-12.
 - The Steam Deck screen is 1280 by 800, a 16 to 10 aspect. Source: the Steam Deck tech specs page, read 2026-09-12.
+- A Steam demo is a separate app ID linked to the full game. It can launch while the store page of the full game says "Coming Soon". Source: Steamworks, "Demos", read 2026-09-12.
+- A demo save can move to the cloud storage of the full game through the `Shared cloud APP ID` field. Source: Steamworks, "Demos" and "Steam Cloud", read 2026-09-12. No page states whether a demo needs its own Steam Direct fee.
+- The Godot 4.7 renderer table marks 2D rendering features as supported on Forward+, Mobile, and Compatibility. Compatibility lacks 2D MSAA, particle trails, and particle SDF collision. Source: Godot docs, "Overview of renderers", read 2026-09-12.
+- In Godot, `--headless` "disables all rendering code". Source: godot-proposals issue 5790, open, read 2026-09-12.
 
 Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence-length counts.
 
@@ -22,13 +28,13 @@ terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 16
 
 Combat is hard because enemies think and resources run out (D-35), and a fallen character stays down until a hub (D-36). Decisions close routes, lose allies, and change hubs (D-40).
 
-The game runs on Godot 4 with C# (D-99). The simulation lives in an engine-free Core library that replays any run from a seed and an input record (D-100, T-7). Sprites, tiles, and portraits are text grids in content that a tool renders into an atlas (D-107). A full CRT shader sits over the frame with a toggle (D-105, D-120).
+The game runs on Godot 4 with C# (D-99). The simulation lives in an engine-free Core library that replays any run from a seed and an input record (D-100, T-7). Sprites, tiles, and portraits are text grids in content that a tool renders into an atlas (D-107). A full CRT shader sits over the frame with a toggle (D-105, D-120). Particles, 2D light, and shaders enter the plan from the start (D-139).
 
 The goal is a Steam release, and the Steam Deck is the readability and performance floor (D-85, D-92).
 
-The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is one hub and one dungeon with job change and a shop (D-51). The owner judges feel there, on the desktop and on the Deck. 
+A full roadmap comes before any code (D-142). The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is one hub and one dungeon with job change and a shop (D-51). The owner judges feel there, on the desktop and on the Deck. 
 
-The story systems come third, because they need the loop. Region one, two hubs and four dungeons in one arc, is the first release (D-56). Five gated phases hold that order.
+The story systems come third, because they need the loop. Region one, two hubs and four dungeons in one arc, is the first release (D-56). It ships free, as a Steam demo of the full game (D-133, D-143). Every plotline converges at the end of the game (D-131). Five gated phases hold that order.
 
 ## 2. Lessons learned (carry into every PR)
 
@@ -122,6 +128,9 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-18 | The full CRT (D-105) is on by default on the Deck (D-120) before any Deck measurement | 2026-09-12 | ⚠ Binds M-6 and Gate 2: the Deck play measures readability with it on |
 | F-19 | D-119 and PR-34 promised an atlas match byte for byte. The compressed bytes depend on the zlib build and the encoder, so the C# tool of PR-34 cannot reproduce them. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The match test compares decoded pixels. The interim tool gained `--check`. Binds PR-34 |
 | F-20 | The interim atlas tool kept the last of two palette entries with one key, in silence, against T-2. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The tool fails on a repeated key. Binds PR-34 to the same rule |
+| F-21 | The plan gives each region one story arc (D-56), and the glossary defined an arc as "the story of one region". No text said how an arc relates to the main story of D-28, or what the first release ends on. An interview option read the gap as a faction that falls inside region one, and the owner refuted it | 2026-09-12 | ✅ doc. D-131: every plotline converges at the end of the game. The glossary now defines an arc as one part of the main story. D-133 resolves OQ-26: region one is a free prologue on Steam. The Phase 4 summary and Phase 5 now name the prologue. Binds the arc block of OQ-18 |
+| F-22 | The interview options used Final Fantasy Tactics as a template, not a feel. Three recorded answers sit close to its plot devices: unpaid veterans turned bandit (D-127), a hidden power behind the politics (D-128), and church leaders who know the faith is a lie (D-137). The waystones (D-134) risk a fourth: stones that carry the evil | 2026-09-12 | ⚠ D-136 and D-140: keep the shapes, and ban the devices. The list lives in `docs/world/`. Binds every later option of OQ-18 |
+| F-23 | The gates of PR-10 and PR-37 need a rendered screen: a screen test of a fixture battle, and two screenshots of the CRT toggle. The smoke job runs Godot with `--headless` on hosted runners (D-117). Godot proposal 5790 says that `--headless` "disables all rendering code", and the Godot docs name no way to capture an image in that mode. what-you-carry met the same wall: its contact sheet needs a window and runs on a desktop alone (its D-306) | 2026-09-12 | ⚠ Binds the technical and graphics roadmaps, PR-10, and PR-37: a screen gate needs a runner that renders, or a desktop step. Sources: the Godot 4.7 command line page and proposal 5790, read 2026-09-12 |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -169,7 +178,7 @@ The tenets are the constitution. When a tenet conflicts with speed or convenienc
 
 Five phases. Gate 1 is a foundation gate with no play. Gates 2 to 5 are builds that the owner plays on the desktop and on the Deck. Each has a written exit test and a sign-off on feel (D-52, D-92). Ids: PR-# code changes, M-# measurements.
 
-An item that kept its purpose through the pivots kept its number. PR-32 is retired. New items start at PR-34 (G-10). Focused roadmaps in `docs/roadmaps/` expand each phase with per-PR exit tests, once a phase starts. Each entry cites its decisions and never restates them.
+An item that kept its purpose through the pivots kept its number. PR-32 is retired. New items start at PR-34 (G-10). Focused roadmaps in `docs/roadmaps/` expand each phase and each area before PR-1 (D-142, D-144). A phase roadmap gives per-PR scope and exit tests, and an area roadmap says how its area works. Each entry cites its decisions and never restates them.
 
 ### Phase 1: Foundations (gate: CI green on three platforms with an identical state hash, the smoke session green, docs and PR gate live, no play)
 
@@ -346,9 +355,9 @@ Gate: every job has a no-MP ability, and the M-4 band holds with the new jobs.
 
 **M-5: Region one play time.** The owner's play time from the first hub to the end of the arc, against the six to eight hours of D-56.
 
-> *In plain English for Phase 4:* the first release takes shape. Four dungeons, two hubs, one story, and the numbers tuned by robots and by play.
+> *In plain English for Phase 4:* the free prologue takes shape. Four dungeons, two hubs, the first part of the story, and the numbers tuned by robots and by play.
 
-### Phase 5: First release (gate: a tagged build on GitHub that a fresh machine runs, then the Steam build on the Deck)
+### Phase 5: First release, the free prologue (gate: a tagged build on GitHub that a fresh machine runs, then the Steam demo on the Deck)
 
 **PR-31: Release workflow.** Export the Game project for the three platforms on a tag and publish a GitHub Release (D-53, D-85). The runbook explains the macOS warning on an unsigned build.
 
@@ -358,9 +367,9 @@ Gate: every job has a no-MP ability, and the M-4 band holds with the new jobs.
 
 **PR-39: Deck verification pass.** Walk the Steam Deck verification checklist: gamepad glyphs, default bindings, the 2x frame, text size, and suspend and resume (D-85, D-92).
 
-**PR-40: Steam integration.** Steamworks initialization, Steam Cloud for the save directory with the newest-wins prompt, and the store build (D-85, D-93). Needs the Steam Direct fee.
+**PR-40: Steam integration.** Steamworks initialization, and Steam Cloud for the save directory with the newest-wins prompt (D-85, D-93). The store page of the full game in the "Coming Soon" state, and the prologue as its demo app (D-143). Needs the Steam Direct fee for the full game. PR-40 verifies whether the demo needs a fee of its own.
 
-> *In plain English for Phase 5:* the game becomes something a person downloads and runs. Then it becomes something they find on Steam and play on the Deck.
+> *In plain English for Phase 5:* the prologue becomes something a person downloads and runs. Then it becomes a free demo they find on Steam and play on the Deck.
 
 ### Phase 6: Region two and later
 
@@ -369,7 +378,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. The world-building interview (OQ-18), then the rename PR (D-102).
+2. The full-plan docs PR: the world, the phase roadmaps, and the area roadmaps (D-142, D-144, D-146). Then the rename (D-102).
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.
@@ -392,7 +401,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 22. PR-31, PR-33, PR-39.
 23. Owner: pay the Steam Direct fee (D-85).
 24. PR-40.
-25. **← GATE 5 (first release).** A fresh machine runs the tagged build, and the Deck runs the Steam build.
+25. **← GATE 5 (first release).** A fresh machine runs the tagged build, and the Deck runs the Steam demo.
 26. Phase 6 stays parked.
 
 ## 9. Open questions

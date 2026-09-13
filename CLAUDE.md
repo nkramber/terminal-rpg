@@ -14,9 +14,10 @@ Read `docs/session-handoff.md` now, before any other file and before any tool ca
 4. `docs/decisions.md`: every owner decision, D-1 onward. Cite a D-# id when you apply one.
 5. `docs/questions.md`: the open questions register, OQ-1 onward. File a new question there.
 6. `docs/reviews/`: one review file per PR, plus audits and audit responses.
-7. `docs/roadmaps/`: focused roadmaps, when they exist.
-8. `docs/runbooks/`: procedures for the machine and the repository.
-9. `docs/session-handoff-archive.md`: sessions older than the 10 in the handoff. Read it only when the handoff points to it.
+7. `docs/roadmaps/`: focused roadmaps, one per phase and one per area (D-144).
+8. `docs/world/`: the world, one file per topic (D-123). Read it before you write lore, content, or player text.
+9. `docs/runbooks/`: procedures for the machine and the repository.
+10. `docs/session-handoff-archive.md`: sessions older than the 10 in the handoff. Read it only when the handoff points to it.
 
 ## Tenets
 
@@ -93,7 +94,7 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 - Trunk is `main`. Every change starts on a short branch named `<prefix>/pr-<n>-<slug>`, for example `feat/pr-3-review-gate`. The owner squash-merges (D-8).
 - Never commit on `main` (D-25). After PR-1, `make hooks` installs the pre-commit hook that refuses a commit on `main`.
 - Commit subjects use a conventional prefix: `feat`, `fix`, `docs`, `test`, `chore`.
-- One concern per PR (G-8).
+- One concern per PR (G-8). The full-plan docs PR of D-142 is the one exception.
 - Run `make where` before every commit and push, after PR-1. Until then, run `git status --short --branch` and `gh pr status`.
 
 ## Automated review pass
