@@ -27,11 +27,11 @@ How to file a question (D-19, D-24):
 11. **OQ-11. Job names.** The first four jobs and the next four (D-55). The session proposes a list in the Phase 2 roadmap, and the owner approves. Blocks the job content PRs. Resolved 2026-09-12: D-76, Warden, Hexer, Mender, Cutpurse.
 12. **OQ-12. Element list.** The six to eight elements (D-43). Recommendation: fire, ice, lightning, earth, wind, water, holy, dark. Blocks the affinity PR. Resolved 2026-09-12: D-74, as recommended.
 13. **OQ-13. Status list.** The ten statuses (D-43). Recommendation: poison, blind, silence, sleep, slow, haste, stun, bleed, regen, shell. Blocks the status PR. Resolved 2026-09-12: D-75, as recommended.
-14. **OQ-14. The cast.** Five names, roles, and the story arc of region one (D-33, D-58). The session drafts, and the owner approves (D-57). Blocks the story PRs.
+14. **OQ-14. The cast.** Five names, roles, and the story arc of region one (D-33, D-58). The session drafts, and the owner approves (D-57). Blocks the story PRs. Resolved for the cast 2026-09-13: D-267 to D-299. The arc stays in OQ-18.
 15. **OQ-15. The voice skill.** Approve `.claude/skills/game-text-style/SKILL.md` as the voice (D-63). Blocks the first text PR. Resolved 2026-09-12: D-70, approved as written.
 16. **OQ-16. A low job on a high character.** How do stats combine when a level 30 character takes a level 1 job (D-34)? Recommendation: base stats from the character level, and the job gives multipliers that grow with job level. Blocks the job PR. Resolved 2026-09-12: D-77, as recommended.
 17. **OQ-17. The name.** Same as OQ-7, kept as one row. See OQ-7.
-18. **OQ-18. The world-building interview.** The owner wants a long interview on the world, the cast, and the arc, far past fifteen questions (OQ-14). It follows the pivot interview of D-78. Blocks Phase 4 and the cast text. The setting block closed on 2026-09-12 with D-123 to D-159.
+18. **OQ-18. The world-building interview.** The owner wants a long interview on the world, the cast, and the arc, far past fifteen questions (OQ-14). Blocks Phase 4 and the cast text. The setting block closed with D-123 to D-159, and the places block with D-242 to D-255. The cast block closed on 2026-09-13 with D-267 to D-299, and it replaced the job system (D-268, D-272).
 19. **OQ-19. The CRT pass against the SDL2 renderer.** D-88 wants curvature, bleed, and flicker. The SDL2 2D renderer draws textured quads and runs no shader. Asked 2026-09-12 in the pivot interview. Resolved 2026-09-12: D-91, then D-99 moved the shader to Godot.
 20. **OQ-20. Motion.** Cell-locked glyph changes, two-frame sprite flips, or sub-cell movement? The owner asked for the sprite test of D-94 first. Blocks PR-7 and the renderer design. Resolved 2026-09-12: D-97, sprites are in, and D-96 stands.
 21. **OQ-21. The engine interview.** D-98 reopens the language, the engine, the presentation, the art pipeline, and the roadmap. Asked 2026-09-12 in batches. Resolved 2026-09-12: D-99 to D-122.
@@ -67,7 +67,7 @@ How to file a question (D-19, D-24):
     - Forward+. The docs show the full feature set. It targets desktop hardware, and no Deck number exists.
     - Mobile. The docs show no 2D gap. It targets weaker hardware, and no Deck number exists either.
     - Compatibility. It targets older hardware. It loses particle trails and HDR 2D, which the effects of D-139 can need.
-34. **OQ-34. Papers for a licensed job.** A Mender needs a church license, and a Warden needs a guild mark (D-138, D-150). How does a character get the papers? Blocks the systems roadmap and PR-12.
+34. **OQ-34. Papers for a licensed job.** A Mender needs a church license, and a Warden needs a guild mark (D-138, D-150). How does a character get the papers? Blocks the systems roadmap and PR-12. Closed 2026-09-13: D-268 removes the job system, so no job needs papers. OQ-42 asks the same choice for stamped rites.
     - Gold at a hub office, the recommendation. The papers cost gold once per character at a hub. Gold gains a use (D-60), and the law shows at a counter. A poor party waits for its second job.
     - Free with the job change. The papers are story texture, and no rule prices them. The simplest rule. The law has no weight in play.
     - Standing with the church or a guild. A low standing refuses the papers (D-40). The law and the factions meet in play. A bad standing can lock a party out of its healer.
@@ -84,3 +84,43 @@ How to file a question (D-19, D-24):
     - A CI software render alone. Fully automatic. Effects that Compatibility lacks never reach a gate.
     - Desktop sheets alone, as what-you-carry chose (its D-306). The true look. No automatic screen gate between milestones.
     - No screen gates. No image tools. The gates of PR-10 and PR-37 need a rewrite.
+38. **OQ-38. Where lessons go.** Any character can equip any lesson (D-274, D-278). Where does a lesson sit, how many can a character equip, and where can a character change them? Blocks the systems roadmap and PR-12.
+    - Slots on the character, the recommendation. Each character has a slot count that grows with the character level. Lessons change anywhere outside battle, and gear stays as D-44 set it.
+    - Slots on gear, in the shape of the materia of D-272. A weapon or a piece of armor holds slots, so gear and lessons affect each other. Every gear item needs a slot count, and the balance work grows.
+    - Slots on the character, changed at hubs and save points alone. The load before a dungeon carries weight (D-35). A wrong load costs a trip back.
+39. **OQ-39. How a lesson grows.** D-268 removed the job level, the source of abilities in D-34. Does a lesson stay fixed, or does it grow with use? Blocks the systems roadmap and PR-12.
+    - Growth with use, the recommendation. A lesson gains points in battle and opens stronger forms of its ability. No lesson ever copies itself, so the loot table stays finite (D-45).
+    - Fixed lessons. A stronger ability is a separate lesson to find, so every find in a dungeon matters (D-41). No progress bar for abilities exists.
+    - Growth with use and a copy at the top. A lesson at its last level makes a copy, as the materia of D-272 does. D-45 changes, because the loot table grows without end.
+40. **OQ-40. What an aptitude does.** The main aptitude names the kind of ability that a character does best (D-274). How does that show in the numbers? Blocks the systems roadmap and PR-12.
+    - A bonus on lessons of the kind, the recommendation. The aptitude adds a basis-point bonus to lessons of its kind (D-169). Any character uses any lesson, and the right character uses it best.
+    - Forms that the aptitude alone opens. A lesson shows its top forms only to a character with the matching aptitude. The difference is sharp, and other characters meet a ceiling.
+    - Both. A bonus and the top forms together. The strongest difference between characters, with two rules to tune for each kind.
+41. **OQ-41. The lessons of the dead character.** The story kills one character (D-279). What happens to the lessons that character carries? Blocks the arc block and the systems roadmap.
+    - They pass to the party, the recommendation. Another character uses each lesson, less well than the dead character did (D-274). The death costs an aptitude, not the abilities.
+    - They go with the character. The death costs every lesson that character carried. A player who loaded that character heavily loses a large share of the build, with no warning (D-270).
+    - The replacement brings them. The replacement joins with the lessons of the dead character. The party gets its build back at once, so the death costs little in play.
+42. **OQ-42. Stamped rites.** A rite with a church stamp is legal, and a rite with no stamp can hang its user (D-275). How does a party get a stamped rite? It replaces OQ-34, which D-268 closed. Blocks the systems roadmap.
+    - Gold at the license office, the recommendation. The foreign church stamps a rite for gold at its office in the mining town (D-247). Gold gains a use (D-60), and the law shows at a counter.
+    - Church rites alone. The church sells its own stamped rites, and a found rite never gets a stamp. The line between legal and hidden stays sharp, and every found rite stays a risk.
+    - Standing with the church. A low standing refuses the stamp (D-242). The law and the factions meet in play, and a bad standing can deny a party legal healing.
+43. **OQ-43. Limits on gear.** D-44 bound gear to job restrictions, and no job exists now (D-268). Does anything limit what a character wears? Blocks PR-13.
+    - Nothing, the recommendation. Any character wears any gear, as any character equips any lesson (D-274). The aptitude carries the difference between characters, and the rule stays simple.
+    - A list per character. Each character wears some kinds of gear and not others. Each character reads as a person with a trade, and each needs a gear table.
+    - A stat limit. Heavy gear needs a strength value that the item shows. The player reads the rule on the item, and a weak character stays out of heavy gear.
+44. **OQ-44. An action with no MP.** F-8 gave every job one ability with no MP cost. No job exists now, and a character can carry rites alone (D-274). Does every character keep an action that needs no MP and no lesson? Blocks PR-9 and PR-12.
+    - A basic attack for every character, the recommendation. Each character can attack with the weapon in hand, and no lesson gives it. A caster with empty MP still acts, and F-8 holds.
+    - At least one drill. The load rules make every character equip one drill or more. The player keeps the choice, and the rule needs a check at every change.
+    - No such action. A caster with empty MP waits or uses an item (D-45). The scarcity of D-35 bites hardest, and a turn with nothing useful to do feels bad.
+45. **OQ-45. Unstamped rites in play.** A rite with no stamp can hang its user (D-275). Does a rule in play track that risk, or does the story alone carry it? Blocks the systems roadmap.
+    - The story alone, the recommendation. Scenes and dialogue carry the risk, and no new system enters Core. The law never reaches play.
+    - A search at gates. Guards search the party at set places, and an unstamped rite starts a fight or costs standing (D-242). The law reaches play, and the system needs its own tests and bot runs (D-64).
+    - A witness rule. A cast of an unstamped rite in sight of a witness lowers church standing. The risk follows each cast, and battle and the map need a sight check.
+46. **OQ-46. The first playable.** D-256 put two jobs at Gate 2, and D-268 removed jobs. Which characters and lessons does the first playable hold? Blocks PR-12, PR-17, and the Phase 2 roadmap.
+    - Three characters with a small set of lessons, the recommendation. Three characters fill the party of D-31, and a few lessons test the system in the first dungeon.
+    - Two characters with more lessons. The first playable tests lessons in depth. The party fights with two, under the three of D-31.
+    - All five characters of region one. The swap and the reserve work at Gate 2 (D-58, D-280). Five story threads need text before the arc exists.
+47. **OQ-47. Where lessons come from.** D-268 left the old-faith hexer and the fence of the cave community with no job to teach (D-246). Where does a party get lessons? Blocks the systems roadmap and PR-13.
+    - Four sources, the recommendation. Treasure in dungeons, shops in hubs, stamped rites from the church, and unstamped rites and drills from the two in the cave community. Each faction and each dungeon gives something.
+    - Treasure and story alone. Lessons come from chests and scenes (D-41, D-45). Every lesson has a place, and gold buys none of them.
+    - Shops and the church alone. Gold buys every lesson (D-60). The economy carries the build, and dungeons give gear and items alone.

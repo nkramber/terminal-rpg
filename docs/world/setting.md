@@ -57,15 +57,13 @@ An older age built machines, and a few of them survive (D-129). The airship is o
 
 Outside those machines, the technology is late medieval (D-129). People fight with crossbows and plate. The large cities have a printing press.
 
-## Jobs in the world
+## Lessons and the law
 
-A job needs papers (D-138). A caster needs a church license, and every other job needs a guild mark. The Mender carries a church license, and the Warden carries a guild mark (D-150).
+No character has a job (D-268). A character gains abilities from lessons: rites for spells and drills for physical skills (D-275, D-278). A lesson teaches a form and holds no power. The file `cast.md` gives the rules of lessons and aptitudes.
 
-The Hexer and the Cutpurse have no legal papers. Each needs a hidden source: a teacher in some major hubs, in an encampment, or in a cave (D-138, D-150). A hidden source is rare, and not every hub has one.
+The license law reaches the rites a character uses (D-130, D-275). A rite with a church stamp is legal, and a rite with no stamp can hang its user. The guild marks its wardens, and a warden can lose the mark (D-294).
 
-A change to a hidden job happens only at its source, and each change needs a return there (D-151). A change away from a hidden job, to a licensed job, happens at a hub. A character equips the abilities of a hidden job as the secondary set only at its source. The set stays equipped after the party leaves (D-152).
-
-How a party gets papers for a licensed job is open (OQ-34).
+How a party gets a stamped rite is open (OQ-42). Whether a rule in play tracks an unstamped rite is open too (OQ-45).
 
 ## Rules that stay out of the story
 
@@ -80,7 +78,7 @@ Most enemies are people: bandits, soldiers, church wardens, and hired blades (D-
 
 ## Names
 
-Names come in two sound palettes (D-159). A person takes one or two syllables, and a place takes up to three (game-text-style rule 11).
+Names come in two sound palettes (D-159). A person takes one or two syllables, a foreign person can take three, and a place takes up to three (game-text-style rule 11, D-300).
 
 | Palette | Sound | Samples |
 |---|---|---|
@@ -92,7 +90,7 @@ The samples show the sound. They are not cast names.
 ## Open items
 
 - Whether a battle rule tracks the feeding of the thing below (OQ-35).
-- How a party gets papers for a licensed job (OQ-34).
-- The cast and the arc (D-146), then the systems, audio, and release areas (D-262).
+- How a party gets a stamped rite (OQ-42).
+- The arc (D-146), then the systems, audio, and release areas (D-262).
 
-The places of region one are in `places.md`.
+The places of region one are in `places.md`, and the cast is in `cast.md`.

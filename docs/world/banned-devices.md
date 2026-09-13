@@ -19,5 +19,7 @@ The world keeps the broad shapes that the genre shares, and it bans the specific
 | Demons that possess people through stones or relics they carry | The Lucavi and the Zodiac Stones | A thing below that answers spilled blood, known to a few (D-128) |
 | A hidden scripture that proves a saint or a god a fraud | The Germonik Scriptures | Church leaders who know their god is a lie, and a player who can never be sure (D-137) |
 | Stones that hold the evil, or stones that people collect for power | The Zodiac Stones | Waystones fixed in the ground that quiet the thing below (D-134, D-141) |
+| A lead of noble birth who hides the family name to live as someone else | Ramza Beoulve | A lead of any birth who keeps their own name (D-267) |
+| Two friends, one noble and one common, split by class, where one climbs to power through betrayal | Ramza and Delita | Class war among the cast and the factions (D-125) |
 
 The session named each source from its knowledge of FFT, not from a reference it checked. Check a source against the game before a content PR cites it.

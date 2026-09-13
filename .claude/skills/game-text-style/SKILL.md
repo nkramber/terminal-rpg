@@ -23,7 +23,7 @@ Short sentences. Physical detail. No purple prose. Dry understatement. The world
 8. Battle messages state the fact and the number. "Vess takes 41." "The wolf falls."
 9. Item text gives what the item does in one line, and one line of flavor at most.
 10. The player finds lore. Nobody tells it. A page, a carving, a corpse. Never a narrator lecture.
-11. Names are short and pronounceable. One or two syllables for people. Places can take three.
+11. Names are short and pronounceable. One or two syllables for people, and up to three for a foreign person (D-300). Places can take three.
 12. Never name a mechanic in a story line. A save point is a waystone in the world (D-134).
 13. Show violence in short physical detail, in the flat tone of rule 3. Never show sexual violence. Never show harm to a child on screen (D-126).
 

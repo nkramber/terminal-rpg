@@ -10,6 +10,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-13 critic pass: the design-critic agent read the plan after the frame change and found 13 defects. F-25 to F-27 record them, and D-255 to D-258 close four.
 
+2026-09-13 cast pass: the cast block of the world-building interview replaced the job system (D-267 to D-299). Characters gain abilities from lessons, the rites and drills that any character equips. Each character has a main aptitude and a hidden side aptitude. D-277 ended every port from another repository, so each tool is new work. PR-22 is retired, and PR-42 takes the lessons of region one.
+
 External facts, verified 2026-09-12:
 
 - The GitHub repository `nkramber/terminal-rpg` is public. Source: `gh repo view`, run 2026-09-12.
@@ -29,7 +31,7 @@ Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence
 
 ## 1. Thesis
 
-terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). Its tentative name is The Thing Below (D-215). A fixed cast of five (D-33, D-58) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Every character changes jobs at a hub or a hidden source, keeps every ability learned, and carries one secondary set (D-32, D-151).
+terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). Its tentative name is The Thing Below (D-215). A fixed cast (D-33, D-299) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Any character equips lessons, the rites and drills that give abilities, and each character does one kind of ability best (D-272, D-274, D-278).
 
 Combat is hard because enemies think and resources run out (D-35), and a fallen character stays down until a hub (D-36). Decisions close routes, lose allies, and change hubs (D-40).
 
@@ -37,7 +39,7 @@ The game runs on Godot 4 with C# (D-99). The simulation lives in an engine-free 
 
 The goal is a Steam release, and the Steam Deck is the readability and performance floor (D-85, D-92).
 
-A full roadmap comes before any code (D-142). The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is one hub and one dungeon with job change and a shop (D-51). The owner judges feel there, on the desktop and on the Deck. 
+A full roadmap comes before any code (D-142). The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is one hub and one dungeon with lessons and a shop (D-51, D-268). The owner judges feel there, on the desktop and on the Deck. 
 
 The story systems come third, because they need the loop. Region one, two hubs and four dungeons in one arc, is the first release (D-56). It ships free, as a Steam demo of the full game (D-133, D-143). Every plotline converges at the end of the game (D-131). Five gated phases hold that order.
 
@@ -76,10 +78,10 @@ From the roadmap interview of 2026-09-12:
 | Tile map, movement, and sight | Core | layout content, intents | party position, sight | High. Patrols and ambushes (D-37) |
 | Battle and timeline | Core | party, enemies, abilities | turn order, damage, statuses | Total. The design risk (D-29, D-35) |
 | Evaluator and profiles | Core | battle state, enemy profile | enemy actions | High. The largest single system (D-65) |
-| Jobs, levels, and abilities | Core | job content, experience, ability points | character state | High. The build decision (D-32, D-34) |
+| Lessons, aptitudes, and levels | Core | lesson content, experience | character state | High. The build decision (D-34, D-272, D-274) |
 | Gear and items | Core | item content, inventory | equipment state | Medium (D-44, D-45) |
 | Story flags, quests, reputation, relationships | Core | scene and decision content, choices | flags, hub state | High. Branches multiply (D-40, D-59) |
-| Hub services and the region map | Core | hub content, route content, gold | party, saves, jobs, position | Medium (D-59, D-113) |
+| Hub services and the region map | Core | hub content, route content, gold | party, saves, position | Medium (D-59, D-113) |
 | Map scene, battle scene, hub scene, scene runner | Game | Core state, atlas, string table | screen, intents | Medium. Cosmetic by design (D-106, D-111, D-114) |
 | Dialogue box and portraits | Game | scene content, string table | screen | Medium (D-109) |
 | CRT shader and the frame | Game | settings | screen | Medium. The Deck floor (D-105, D-228) |
@@ -114,16 +116,16 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | # | Finding | Date | Status |
 |---|---|---|---|
 | F-1 | The harness default adds a co-author trailer to commits, and the reminder repeats in every session. D-22 forbids it | 2026-09-12 | ✅ doc. `.claude/settings.json` sets empty strings. The rule sits at the top of `CLAUDE.md` |
-| F-2 | The what-you-carry review gate and STE checker are C# tools, and D-1 chose Rust. Neither tool runs here | 2026-09-12 | 🔧 D-10 and D-15. PR-2 and PR-3 port them. The Python script is the interim checker |
+| F-2 | The what-you-carry review gate and STE checker are C# tools, and D-1 chose Rust. Neither tool runs here | 2026-09-12 | 🔧 D-10 and D-15. PR-2 and PR-3 write both tools as new code (D-277). The Python script is the interim checker |
 | F-3 | Rust is absent from the development machine | 2026-09-12 | ❓ OQ-2. Owner action before PR-1 |
 | F-4 | The repository had no commit, so no branch and no PR could exist | 2026-09-12 | ✅ D-25. The owner made the root commit `6b899dd` with an empty `CLAUDE.md` |
-| F-5 | The Python checker applies the 20-word limit to every numbered item, and the C# tool applied it under a Sequence or Procedure heading alone | 2026-09-12 | ⚠ Binds PR-2. The Rust port picks one rule, and the skill text follows it |
+| F-5 | The Python checker applies the 20-word limit to every numbered item, and the C# tool applied it under a Sequence or Procedure heading alone | 2026-09-12 | ⚠ Binds PR-2. The new checker picks one rule, and the skill text follows it (D-277) |
 | F-6 | D-39 took seeded dungeon variation on a replay premise, and D-46 removed the premise | 2026-09-12 | ✅ D-47. No variation. L-13 |
 | F-7 | D-36 leaves a fallen character down until a hub, and a three-character party (D-31) then fights with two. No decision balances the short-handed party | 2026-09-12 | ⚠ D-58 gives a reserve and a swap at save points. Binds PR-16 and M-4 |
-| F-8 | D-42 empties a caster's MP across a dungeon, and no decision gives a job a no-MP action | 2026-09-12 | ⚠ Binds the job content of PR-12: every job has at least one ability with no MP cost |
+| F-8 | D-42 empties a caster's MP across a dungeon, and no decision gives a job a no-MP action | 2026-09-12 | ⚠ Binds PR-12. D-268 removed jobs, so the action with no MP cost is open (OQ-44) |
 | F-9 | D-48 sets the floor at 120 by 40, and a default macOS Terminal window is 80 by 24 | 2026-09-12 | ⚠ Binds PR-7: the size message names the floor and how to resize |
 | F-10 | D-62 puts the run record in the save, and a record grows without bound over 20 to 40 hours (D-30) | 2026-09-12 | ⚠ Binds PR-6: the record format needs a compaction rule, a snapshot plus the inputs since it |
-| F-11 | The interim checker read an HTML comment as prose. A fixture comment with a semicolon, a modal, a passive, and 30 words raised four findings. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The script removes a one-line comment. ⚠ Binds PR-2: the Rust port carries the rule |
+| F-11 | The interim checker read an HTML comment as prose. A fixture comment with a semicolon, a modal, a passive, and 30 words raised four findings. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The script removes a one-line comment. ⚠ Binds PR-2: the new checker carries the rule (D-277) |
 | F-12 | The session wrote in `CLAUDE.md`, the PR template, the skill, and OQ-1 that gitar was absent, on no evidence. The pass ran on PR #1 within a minute | 2026-09-12 | ✅ doc. D-66. Every claim about a tool needs a check |
 | F-13 | The first interview fixed the language before the medium. Two pivots in one day, D-78 and D-98, reopened 30 decisions | 2026-09-12 | ✅ doc. D-99. L-14 |
 | F-14 | D-88 chose curvature and bleed, and the SDL2 2D renderer of D-83 ran no shader | 2026-09-12 | ✅ doc. D-91, then D-99 moved the shader to Godot. OQ-19 |
@@ -203,26 +205,26 @@ Gate: `make verify` passes on this machine, and the three CI legs, the smoke job
 > *In plain English:* this makes the empty project with its four parts and the checks that every future change must pass. It adds nothing that plays. It is safe because it changes no behavior.
 
 **PR-2: STE checker in C#.**
-Port the what-you-carry `SteCheck` command into Tools (D-101). It carries the reference check, the session number check, and the HTML comment rule (F-11). Settle F-5 on one rule for numbered items. Retire the Python script and move the `ste-check` workflow to the tool.
+Write the `ste-check` command in Tools as new code (D-101, D-277). It carries the reference check, the session number check, and the HTML comment rule (F-11). Settle F-5 on one rule for numbered items. Retire the Python script and move the `ste-check` workflow to the tool.
 Gate: the checker passes on itself, on this file, and on the skills, and it fails a fixture file for each rule.
 > *In plain English:* this replaces the borrowed script with a tool in the project language. Documents are the project's memory, so the tool guards that memory.
 
 **PR-3: Review gate.**
-Port the what-you-carry `ReviewGate` command into Tools and its workflow on `pull_request_target` (D-15, D-101). The workflow runs the tool from the base branch and fetches the PR head as data. The tool applies the three rules of the `pr-review` skill and the override rules of D-16 with the eligible set of D-71 and D-239. It publishes a check run.
+Write the `review-gate` command in Tools as new code, with its workflow on `pull_request_target` (D-15, D-101, D-277). The workflow runs the tool from the base branch and fetches the PR head as data. The tool applies the three rules of the `pr-review` skill and the override rules of D-16 with the eligible set of D-71 and D-239. It publishes a check run.
 Gate: the job gives success on a fixture PR with an approved record, and failure on a stale head. It gives success on a documentation PR with the label.
 > *In plain English:* this adds a check that turns red when a change has no approved review from the other provider. The owner then requires it on `main` (OQ-3).
 
 **PR-4: Random streams, fixed-point math, det-lint, and replay identity.**
-Implement the seeded streams, one per subsystem, split from the run seed (G-4). Implement the fixed-point types. Port the what-you-carry `DetLint` command and change its rules (D-101). In Core: no float type, no clock, no OS random, no reflection, and no `Dictionary` where order reaches the state (G-2, G-3). In Game: no inline player string (G-7). 
+Implement the seeded streams, one per subsystem, split from the run seed (G-4). Implement the fixed-point types. Write the `det-lint` command in Tools as new code, with these rules (D-101, D-277). In Core: no float type, no clock, no OS random, no reflection, and no `Dictionary` where order reaches the state (G-2, G-3). In Game: no inline player string (G-7). 
 Implement the state hash and the `replay-identity` job that runs a fixed seed set on three platforms and compares the hashes (G-5).
 
 Gate: this PR passes its own lint and its own identity job, and the lint fails a fixture that uses `double`.
 > *In plain English:* different computers can give different answers for decimal math. This adds our own integer math and a check that proves the same result everywhere on every change.
 
 **PR-5: Content loader, schemas, and the string table.**
-Port the what-you-carry JSON loader with one schema per content type (D-116, G-6). A load failure names the file, the field, and the reason. A test loads every content file. Implement the id-keyed string table (G-7).
+Write the JSON loader as new code, with one schema type per content type (D-116, D-177, D-277, G-6). A load failure names the file, the field, and the reason. A test loads every content file. Implement the id-keyed string table (G-7).
 Gate: a content file with an absent field fails the load test with the field name.
-> *In plain English:* every job, spell, and item lives in a data file with a strict shape. A file with a gap fails loudly instead of a silent zero.
+> *In plain English:* every lesson, enemy, and item lives in a data file with a strict shape. A file with a gap fails loudly instead of a silent zero.
 
 **PR-6: Simulation loop, intent record, replay, and save.**
 Implement the fixed-rate loop, the intent record for keyboard, gamepad, and mouse (D-84), and the run record. The record header holds the format version, the simulation version, the content hash, the seed, and the initial state (G-5). Implement the recorder, the replay, and the compaction rule: a snapshot plus the intents since it (F-10). A load reads the snapshot of the save alone, so a patch never breaks a save (D-259).
@@ -243,7 +245,7 @@ Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the fou
 
 **M-2: CI wall time per PR.** Record the wall time of each CI job per platform for the first ten PRs.
 
-### Phase 2: First playable (gate: the owner plays one hub and one dungeon with a job change and a shop, on the desktop and on the Deck, D-51, D-92)
+### Phase 2: First playable (gate: the owner plays one hub and one dungeon with lessons and a shop, on the desktop and on the Deck, D-51, D-92, D-268)
 
 **PR-7: Tile map, movement, sight, and the map scene.**
 Define the layout content format: a grid of tile ids, doors, chests, save points, spawn points, and markers for secrets (D-39, D-41). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core. 
@@ -279,29 +281,29 @@ Implement the tactical evaluator that scores every legal action by its simulated
 Gate: a fixture enemy with a protector profile heals its ally before it attacks, and a profile with no legal action fails the load.
 > *In plain English:* enemies think. Each one weighs what a move does before it acts, and each kind of enemy weighs it differently.
 
-**PR-12: Jobs, levels, and abilities.**
-Implement the character level from experience and the job level from ability points (D-34, D-77). Implement the ability list per job, the learned set that a character keeps, and the secondary set (D-32). Implement MP and its recovery rule (D-42). The Warden and the Mender as content for the first playable, each with one no-MP ability, and half experience for the reserve (D-73, D-76, D-256, F-8). The Hexer, the Cutpurse, and the law of hidden jobs follow with the cave community (D-151, D-246).
+**PR-12: Lessons, aptitudes, and levels.**
+Implement the character level from experience and half experience for the reserve (D-34, D-73). Implement lessons, the rites and drills that any character equips to gain abilities (D-272, D-275, D-278). Implement the main aptitude and the side aptitude of each character, with the side aptitude hidden until its task ends (D-274, D-282, D-283). Implement MP and its recovery rule (D-42). Where lessons sit, how they grow, what an aptitude does, and the action with no MP are open (OQ-38, OQ-39, OQ-40, OQ-44).
 
-Gate: a character learns an ability, changes job, and keeps it. A test proves that every job has a no-MP ability.
-> *In plain English:* each character has a job, gets better at it, and keeps what they learned when they switch. Two jobs exist at first.
+Gate: a character equips a lesson and uses its ability, and a finished task shows the side aptitude in the menu. The gate grows when OQ-38 to OQ-40 and OQ-44 close.
+> *In plain English:* abilities come from rites and drills that anyone can carry. Each character is best at one kind, and a hidden second kind opens through a personal task.
 
 **PR-13: Gear, items, and inventory.**
-Implement the six equipment slots, the job restrictions, and the inventory (D-44). Fixed items with rarity tiers as content (D-45). The equip screen shows an empty slot after a job change.
-Gate: a job change that forbids the current weapon leaves the slot empty and the screen shows it.
-> *In plain English:* weapons, armor, and accessories go on the characters, and each job wears what it can.
+Implement the six equipment slots and the inventory (D-44). Fixed items with rarity tiers as content (D-45). What limits gear is open (OQ-43).
+Gate: a character equips and removes gear in each slot, and the screen shows each empty slot.
+> *In plain English:* weapons, armor, and accessories go on the characters, and the screen shows what each one wears.
 
 **PR-14: Hub map, NPCs, and services.**
-Implement the hub as a walkable map with NPC sprites (D-112). The services are buildings and NPCs: rest, save, job change, party swap, and the shop with gold (D-59, D-60, D-62). Define the hub content format with the services each hub offers (D-28). Draw the service screens.
-Gate: the party walks the hub, rests, buys, changes jobs, swaps a reserve character, and saves, and the save reloads to the same hash.
+Implement the hub as a walkable map with NPC sprites (D-112). The services are buildings and NPCs: rest, save, party swap, and the shop with gold (D-59, D-60, D-62, D-268). Define the hub content format with the services each hub offers (D-28). Draw the service screens.
+Gate: the party walks the hub, rests, buys, swaps a reserve character, and saves, and the save reloads to the same hash.
 > *In plain English:* the hub is a place you walk through, where the party recovers, trades, and reshapes itself before the next dungeon.
 
 **PR-36: Scene runner, dialogue box, and portraits.**
-Define the scene script format (D-109, D-114). Sprites move and face by script. A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. Five cast portraits as 64 by 64 grids (D-234).
+Define the scene script format (D-109, D-114). Sprites move and face by script. A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. The five portraits of region one as 64 by 64 grids (D-234, D-280).
 Gate: a fixture scene walks two sprites, shows a line with a portrait, and records a choice in the run record.
 > *In plain English:* the story plays out on the map with the characters you already know, and your choices land in the box under them.
 
 **PR-15: Headless runner, bots, and the night gate.**
-Implement the headless runner in Tools with a random policy and a greedy policy (D-64). A few hundred runs per PR and ten thousand each night. Port the what-you-carry night job and `NightGate` command: the night writes a result record, and the `night-gate` job reads it (G-22, D-101). Each run ends as complete, softlock, crash, or budget, and each failure names its seed.
+Implement the headless runner in Tools with a random policy and a greedy policy (D-64). A few hundred runs per PR and ten thousand each night. Write the night job and the `night-gate` command as new code: the night writes a result record, and the `night-gate` job reads it (G-22, D-101, D-277). Each run ends as complete, softlock, crash, or budget, and each failure names its seed.
 Gate: ten thousand night runs of the two policies on the fixture dungeon complete with zero crashes and zero softlocks.
 > *In plain English:* simple robots play thousands of runs every night without a screen. They find crashes and dead ends before a person ever sees them.
 
@@ -321,12 +323,12 @@ Gate: the screen-test job of PR-41 captures the toggle on and off, and the two f
 > *In plain English:* the whole screen looks like an old monitor, and one setting turns it off.
 
 **PR-38: Audio synthesizer and the first sounds.**
-Port the what-you-carry synthesizer into Tools (D-101, D-115). Render WAV files from parameter content at build time, with a test that the committed files match. Six effects and one track for the first dungeon.
+Write the synthesizer in Tools as new code (D-101, D-115, D-277). Render WAV files from parameter content at build time, with a test that the committed files match. Six effects and one track for the first dungeon.
 Gate: the tool reproduces every committed WAV file, and the battle scene plays a hit sound.
 > *In plain English:* every sound comes from a small text file that the tool turns into audio. The first fight makes noise.
 
 **PR-17: The first hub and the first dungeon.**
-Author the first hub and the first dungeon as content (D-28, D-39, D-110). That is the two tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, and a placeholder scene. The two jobs of D-256 and the first three cast members have their text in the voice (G-20).
+Author the first hub and the first dungeon as content (D-28, D-39, D-110). That is the two tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, and a placeholder scene. The characters and lessons of the first playable have their text in the voice (G-20, OQ-46).
 Gate: the owner plays from the hub through the dungeon and back on the desktop and on the Deck, and signs off on feel (D-52, D-92). The M-4 numbers land inside the band the sign-off sets, and M-6 records the Deck.
 > *In plain English:* the first real place to play. Everything before this was machinery.
 
@@ -354,11 +356,13 @@ Gate: the boss changes phase at the scripted threshold in every one of one thous
 Implement switches, pushable blocks, light and dark, hidden rooms, and secret markers (D-41).
 Gate: a fixture puzzle opens a door, and a hidden room stays hidden until found.
 
-**PR-22: Jobs five to eight.**
-Four more jobs as content, with their sprites and their text (D-55, D-76).
-Gate: every job has a no-MP ability, and the M-4 band holds with the new jobs.
+**PR-22: Retired.** Jobs five to eight have no purpose after D-268. No later item takes the id (G-10).
 
-> *In plain English for Phase 3:* the game learns to remember what you chose and to answer it. Bosses gain their set pieces, dungeons gain their puzzles, and the job list doubles.
+**PR-42: The lessons of region one.**
+The rites and drills of region one as content, across the eight kinds, with their icons and their text in the voice (D-275, D-281, G-20).
+Gate: every kind has lessons in region one, and the M-4 band holds with them.
+
+> *In plain English for Phase 3:* the game learns to remember what you chose and to answer it. Bosses gain their set pieces, dungeons gain their puzzles, and the lessons of region one arrive.
 
 ### Phase 4: Region one content (gate: the owner plays region one end to end on the desktop and on the Deck and signs off, D-56)
 
@@ -409,7 +413,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 13. PR-17.
 14. M-3, M-4, M-6.
 15. **← GATE 2 (first playable).** The owner plays one hub and one dungeon on the desktop and on the Deck and signs off on feel.
-16. PR-18, PR-19, PR-20, PR-21, PR-22.
+16. PR-18, PR-19, PR-20, PR-21, PR-42.
 17. **← GATE 3 (story systems).** The owner plays a branch and a relationship scene.
 18. PR-23 to PR-26, PR-27.
 19. PR-28, PR-29, PR-30.

@@ -145,12 +145,18 @@ Game terms from the roadmap interview of 2026-09-12:
 
 | Term | Use for | Do not use |
 |---|---|---|
-| job | a character's class, changed at a hub (D-32) | class, vocation, role |
-| ability | a learned action from a job (D-32) | skill, technique, move |
+| lesson | a rite or a drill that a character equips to gain an ability (D-278) | job, class, materia, skill book |
+| rite | a lesson for a spell, on a page or a lead strip (D-275) | scroll, spellbook |
+| drill | a lesson for a physical skill, as a written form (D-275) | technique, manual |
+| kind | one of the eight families of ability: mend, harm, blight, boon, blade, guard, shot, theft (D-281) | school, family, when the text means these eight |
+| main aptitude | the kind that a character does best (D-274) | class, role, specialty |
+| side aptitude | the second kind of a character, which a personal task unlocks (D-282) | side role, side job, subclass |
+| lead | the one character whom scenes center on (D-267) | hero, protagonist, main character |
+| ability | an action that a lesson gives (D-272, D-278) | skill, technique, move |
 | spell | an ability that costs MP (D-42) | magic, cast |
 | party | the three characters in battle (D-31) | team, group |
 | reserve | the characters who wait outside the party (D-58) | bench, backup |
-| cast | the five story characters (D-33, D-58) | roster, heroes |
+| cast | the story characters who can join the party, eight in the whole game (D-33, D-299) | roster, heroes |
 | hub | a settlement with services, of any shape (D-28) | town, city, base |
 | dungeon | an authored area with enemies and a goal (D-39) | level, zone, map |
 | region | a slice of the game with hubs and dungeons (D-56) | chapter, act, world |
@@ -164,7 +170,6 @@ Game terms from the roadmap interview of 2026-09-12:
 | item | a thing in the inventory that is not gear (D-45) | consumable, object |
 | gold | the currency (D-60) | money, coins, gil |
 | character level | the level from experience (D-34) | level, alone |
-| job level | the level of one job from ability points (D-34) | rank, mastery |
 | profile | an enemy's personality data (D-65) | personality, brain |
 | evaluator | the tactical scorer in core (D-65) | planner, AI, alone |
 | tile | one 32 by 32 map position (D-228) | cell, square, glyph |
@@ -183,9 +188,8 @@ World terms from the world-building interview of 2026-09-12:
 | the thing below | the power under the old ground that answers spilled blood (D-128). With capitals, The Thing Below is the tentative name of the game (D-215) | the old evil, the demon |
 | wrong things | the rare creatures that appear near spilled blood (D-155) | monsters, demons |
 | waystone | the standing stone of an older age, as an object in the world (D-134, D-141) | save point, when the text means the stone |
-| hidden job | a job with no legal papers, such as the Hexer and the Cutpurse (D-150) | illegal job, banned job |
-| hidden source | the rare, hidden place or teacher where a character takes a hidden job (D-138, D-151) | illegal source, black market |
 | foreign church | the church of the enemy crown, which holds the license law (D-137) | new church, the church, alone |
+| stamp | the mark of the foreign church that makes a rite legal (D-275) | seal, license, when the text means a rite |
 | old faith | the banned faith of region one (D-137) | old church, pagans |
 
 ## The checker

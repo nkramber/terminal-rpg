@@ -47,7 +47,7 @@ The design doc is one file: `docs/design.md`. Its roadmap section is the high-le
 
 ## Focused roadmaps
 
-A focused roadmap covers one phase or one area, for example combat or the job system. It uses the same sections 1, 2, 7, 8, 9, and 10. It links to the design doc for the system map and the cost model. Its PR-# ids continue the global sequence. It never restates a decision. It cites the D-# id.
+A focused roadmap covers one phase or one area, for example combat or the lesson system. It uses the same sections 1, 2, 7, 8, 9, and 10. It links to the design doc for the system map and the cost model. Its PR-# ids continue the global sequence. It never restates a decision. It cites the D-# id.
 
 Each PR entry lists:
 

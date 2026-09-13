@@ -28,7 +28,7 @@ A mine gallery from before the war runs under the gorge (D-251). The guild seale
 
 - Kind: a walled mining town in a high valley (D-243).
 - Power: the miners' guild runs the mines and the streets, and a crown governor takes the tax (D-247). The foreign church holds the chapel and the license office.
-- Jobs: the church licenses the Mender, and the guild marks the Warden (D-150).
+- Law: the license office of the church stamps rites (D-275), and the guild marks its wardens (D-294).
 - The first dungeon in the town: the cells under the chapel, where hexers wait to hang (D-149, D-244).
 - The second dungeon: the deep mine, which the war dug past its limit, down to the old ground (D-128, D-244).
 
@@ -36,7 +36,7 @@ A mine gallery from before the war runs under the gorge (D-251). The guild seale
 
 - Kind: a refuge in the far cliff across the gorge (D-243, D-250).
 - People: believers of the old faith lead it, and hexers, deserters, and debtors shelter there on its terms (D-248).
-- Jobs: both hidden sources live here, an old-faith hexer and a cutpurse's fence (D-246). A change to a hidden job happens only here (D-151).
+- Two people of note: an old-faith hexer and a cutpurse's fence (D-246). What they offer the party is open (OQ-47).
 
 ## The high pass
 
@@ -52,8 +52,8 @@ Four factions track reputation in region one (D-242):
 |---|---|---|
 | The officers of the enemy crown | The mining town and the road in | The tax and the soldiers (D-247) |
 | The foreign church | The chapel of the mining town | The license law and the cells (D-130, D-149) |
-| The old faith | The cave community | The hidden sources, and the waystones it tended (D-141, D-246) |
-| The miners' guild | The mining town and the mines | The mines, the streets, and the guild marks (D-138, D-247) |
+| The old faith | The cave community | The refuge of D-248, and the waystones it tended (D-141) |
+| The miners' guild | The mining town and the mines | The mines, the streets, and the guild marks (D-247, D-294) |
 
 ## Open items
 
