@@ -79,3 +79,8 @@ How to file a question (D-19, D-24):
     - Somebody pays them, the recommendation. A power hires bandits to keep the passes unsafe, and nobody can say who. It ties to the few who use the thing below (D-128), and the blood does not stop. It stays clear of the rebel brigade in `docs/world/banned-devices.md`.
     - The passes pay. Tolls, ore trains, and travelers make banditry a trade. Grounded, with no plot needed. Less weight for the story.
     - The new crown refuses them. Veterans of the old crown have no place under the treaty. It serves the class war (D-125). It sits close to a rebel cause, so it needs care against the banned brigade.
+37. **OQ-37. How screen tests run.** Hosted runners have no GPU, and `--headless` draws nothing (F-23). Godot's own CI runs the engine under Xvfb with the `opengl3` driver. Mesa's CI gates llvmpipe on exact image checksums. Blocks the gates of PR-10 and PR-37, and the technical roadmap. Resolved 2026-09-12: D-172, a CI software render plus desktop sheets.
+    - A CI software render plus desktop sheets, the recommendation. A Linux job with a pinned Mesa compares frames by pixel with a CI baseline. At milestones, the real renderer makes a contact sheet for the owner. Two baselines, and the CI image comes from the Compatibility renderer.
+    - A CI software render alone. Fully automatic. Effects that Compatibility lacks never reach a gate.
+    - Desktop sheets alone, as what-you-carry chose (its D-306). The true look. No automatic screen gate between milestones.
+    - No screen gates. No image tools. The gates of PR-10 and PR-37 need a rewrite.
