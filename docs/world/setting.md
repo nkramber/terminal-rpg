@@ -93,5 +93,6 @@ The samples show the sound. They are not cast names.
 
 - Whether a battle rule tracks the feeding of the thing below (OQ-35).
 - How a party gets papers for a licensed job (OQ-34).
-- The factions, the hubs, the dungeons, and the routes, in the places block (D-146).
-- The cast, the arc, and the name (D-146).
+- The cast and the arc (D-146), then the systems, audio, and release areas (D-262).
+
+The places of region one are in `places.md`.

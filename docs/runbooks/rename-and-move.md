@@ -27,7 +27,7 @@ This runbook renames the repository from the working title to the tentative name
 3. Run `git fetch`, and confirm that the remote answers.
 4. Start a short branch from `main` for the rename PR (D-8).
 5. Replace the working title with the new names in `README.md`, the documents, the agent files, and the skills (D-217).
-6. Keep the dated records as they are: `docs/reviews/`, the handoff entries, and `docs/archive/`.
+6. Keep the dated records as they are: `docs/reviews/`, the handoff entries, `docs/archive/`, and the rows of the two registers.
 7. Run the STE check. Open the rename PR, and answer the automated pass (D-66).
 8. The owner merges the rename PR.
 9. Clone the repository to the SSD: `git clone git@github.com:nkramber/the-thing-below.git /Volumes/SSD-1TB/the-thing-below`.

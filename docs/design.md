@@ -8,6 +8,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-12 world and full-plan pass: the world-building interview set the setting (D-123 to D-159) in `docs/world/`. Two owner instructions widened the PR. D-139 plans 2D effects from the start, and D-142 puts a full roadmap before PR-1. Region one became a free prologue, a Steam demo of the full game (D-133, D-143). F-21 and F-22 record two faults of the interview options, and F-23 records a gate that headless CI cannot run. D-227 and D-228 replaced the 640 by 360 frame with 1280 by 800 and 32-pixel tiles.
 
+2026-09-13 critic pass: the design-critic agent read the plan after the frame change and found 13 defects. F-25 to F-27 record them, and D-255 to D-258 close four.
+
 External facts, verified 2026-09-12:
 
 - The GitHub repository `nkramber/terminal-rpg` is public. Source: `gh repo view`, run 2026-09-12.
@@ -27,7 +29,7 @@ Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence
 
 ## 1. Thesis
 
-terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). Its tentative name is The Thing Below (D-215). A fixed cast of five (D-33, D-58) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Every character changes jobs at a hub, keeps every ability learned, and carries one secondary set (D-32).
+terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). Its tentative name is The Thing Below (D-215). A fixed cast of five (D-33, D-58) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Every character changes jobs at a hub or a hidden source, keeps every ability learned, and carries one secondary set (D-32, D-151).
 
 Combat is hard because enemies think and resources run out (D-35), and a fallen character stays down until a hub (D-36). Decisions close routes, lose allies, and change hubs (D-40).
 
@@ -80,7 +82,7 @@ From the roadmap interview of 2026-09-12:
 | Hub services and the region map | Core | hub content, route content, gold | party, saves, jobs, position | Medium (D-59, D-113) |
 | Map scene, battle scene, hub scene, scene runner | Game | Core state, atlas, string table | screen, intents | Medium. Cosmetic by design (D-106, D-111, D-114) |
 | Dialogue box and portraits | Game | scene content, string table | screen | Medium (D-109) |
-| CRT shader and the frame | Game | settings | screen | Medium. The Deck floor (D-103, D-105) |
+| CRT shader and the frame | Game | settings | screen | Medium. The Deck floor (D-105, D-228) |
 | Audio player | Game | WAV files | sound | Low (D-115) |
 | Atlas tool, audio synthesizer | Tools | grids, palette, parameter files | atlas PNG, WAV files | Medium. Committed artifacts with a match test (D-107) |
 | STE checker, det-lint, review gate, night gate | Tools | source, docs, records | pass or fail | Gate |
@@ -103,7 +105,7 @@ Measurements that answer the unknowns:
 - M-3: the night run wall time and the crash and softlock counts, over the first seven nights (D-64).
 - M-4: turns per encounter and party downs per dungeon by bot policy, on the first dungeon. Binds the resource numbers of D-35.
 - M-5: the owner's play time from the first hub to the end of the arc, against D-56.
-- M-6: the Deck frame time on the first playable, and the readability of the 16-pixel font and the 32-pixel sprites at 1x. It reads both with the CRT on and off (D-92, D-120, D-228).
+- M-6: the Deck frame time on the first playable, against 60 frames per second (D-161). The readability of the 16-pixel font and the 32-pixel sprites at 1x, with the CRT on and off (D-92, D-120, D-228).
 
 ## 5. Defect and finding register
 
@@ -135,6 +137,9 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-22 | The interview options used Final Fantasy Tactics as a template, not a feel. Three recorded answers sit close to its plot devices: unpaid veterans turned bandit (D-127), a hidden power behind the politics (D-128), and church leaders who know the faith is a lie (D-137). The waystones (D-134) risk a fourth: stones that carry the evil | 2026-09-12 | ⚠ D-136 and D-140: keep the shapes, and ban the devices. The list lives in `docs/world/`. Binds every later option of OQ-18 |
 | F-23 | The gates of PR-10 and PR-37 need a rendered screen: a screen test of a fixture battle, and two screenshots of the CRT toggle. The smoke job runs Godot with `--headless` on hosted runners (D-117). Godot proposal 5790 says that `--headless` "disables all rendering code", and the Godot docs name no way to capture an image in that mode. what-you-carry met the same wall: its contact sheet needs a window and runs on a desktop alone (its D-306) | 2026-09-12 | ⚠ D-172: a Linux CI job renders under Xvfb with a pinned Mesa, and desktop contact sheets show the real renderer at milestones. Binds the technical and graphics roadmaps, PR-10, and PR-37. Sources: the Godot 4.7 command line page and proposal 5790, read 2026-09-12 |
 | F-24 | D-228 doubles the tile size after the art, effect, and light decisions of this interview. Every grid holds four times the pixels: a 32 by 32 frame is 1,024 characters of text, and a party member has about twelve frames plus normal-map overrides (D-184, D-199, D-200). The Deck lights and fills four times the pixels of a 640 by 400 frame | 2026-09-12 | ⚠ Binds the graphics roadmap, the Deck test of D-160 at 1280 by 800, and M-6. The PNG import of D-107 matters more for hand edits |
+| F-25 | The design critic of 2026-09-13 found four holes in play and saves. Gate 2 could not reach the two hidden jobs (C-1), a save point gave endless rest (C-2), a quit autosave could trap a run (C-3), and a Core patch would refuse old saves (C-4) | 2026-09-13 | ✅ doc. D-256, D-257, and D-258 close the first three. D-259 closes the fourth: a load reads the snapshot |
+| F-26 | The critic found gates that cannot pass. No PR created the screen-test job of D-172, the PR-37 gate relied on a headless run that draws nothing, the PR-7 and PR-8 gates met small maps and routes per phase, and the Deck test of D-160 had no sequence step and no failure branch | 2026-09-13 | ✅ doc. PR-41 creates the job with fixed capture and fit tests at 1080 and 1440 rows. The gates of PR-7, PR-8, and PR-37 changed, and section 8 gains the Deck test. D-261: the owner sets a fallback only if the test misses 60 |
+| F-27 | The critic found gaps in the records. 24 earlier rows lacked their revision notes, several lines named superseded values, and D-193 disagreed with D-202 on ambient effects. Four choices had no owner: the first turn from behind, the place of systems, audio, and release in the order, effect timings in frames, and D-171 against the rule of no conditional compilation in Core | 2026-09-13 | ✅ doc for the notes and the stale text. D-260, D-262, D-265, and D-266 settle the four choices |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -220,9 +225,9 @@ Gate: a content file with an absent field fails the load test with the field nam
 > *In plain English:* every job, spell, and item lives in a data file with a strict shape. A file with a gap fails loudly instead of a silent zero.
 
 **PR-6: Simulation loop, intent record, replay, and save.**
-Implement the fixed-rate loop, the intent record for keyboard, gamepad, and mouse (D-84), and the run record. The record header holds the format version, the simulation version, the content hash, the seed, and the initial state (G-5). Implement the recorder, the replay, and the compaction rule: a snapshot plus the intents since it (F-10).
+Implement the fixed-rate loop, the intent record for keyboard, gamepad, and mouse (D-84), and the run record. The record header holds the format version, the simulation version, the content hash, the seed, and the initial state (G-5). Implement the recorder, the replay, and the compaction rule: a snapshot plus the intents since it (F-10). A load reads the snapshot of the save alone, so a patch never breaks a save (D-259).
 
-Implement the save file as a record in the platform config directory, one slot and one autosave (D-62). Property tests over one thousand seeds assert that a replay reproduces the end-state hash and that a version mismatch produces a contextual report.
+Implement the save file as a record in the platform config directory: one slot, one autosave, and a one-use resume file (D-62, D-258). Property tests over one thousand seeds assert that a replay reproduces the end-state hash and that a version mismatch produces a contextual report.
 Gate: the replay of a recorded run gives the same hash on all three platforms, and a save reloads to the same hash.
 > *In plain English:* the game writes down its start state and every input. That record then plays any run again, so every bug becomes repeatable, and the save file is that record.
 
@@ -243,12 +248,19 @@ Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the fou
 **PR-7: Tile map, movement, sight, and the map scene.**
 Define the layout content format: a grid of tile ids, doors, chests, save points, spawn points, and markers for secrets (D-39, D-41). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core. 
 Draw the map scene in Game at 1280 by 800, fit to the window (D-232), with the camera on the leader (D-106, D-228). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
-Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never shows a tile outside the map.
+Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never scrolls past the edge of a map larger than the view, and a smaller map sits centered.
 > *In plain English:* this is the first thing you can open and move in. The dungeon is a grid of tiles, the party walks it one tile at a time, and the view follows.
 
+**PR-41: Screen-test job.**
+Add the Linux CI job of D-172. It installs a pinned Mesa and runs Godot under Xvfb with the OpenGL driver. It captures fixture scenes and compares the frames by pixel with a committed CI baseline.
+
+Fix every source of change at capture: the particle seeds, the CRT flicker phase, and the time of day. Capture the fit of D-232 at 1080 and 1440 screen rows, to catch aliasing in the scanlines (D-240). Add the desktop command that makes a contact sheet with the real renderer (D-172).
+Gate: the job passes on the map scene of PR-7, and it fails when one pixel of the baseline changes. Two runs give the same frames.
+> *In plain English:* the computers that check each change have no screen. This job gives them one with a fixed picture, so a broken screen fails before it merges.
+
 **PR-8: Enemies on the map.**
-Implement fixed enemies and patrols with sight (D-37). A patrol that sees the party starts an encounter, and a party that reaches an enemy from behind gets the first turn. No random encounters. Enemy sprites flip on the tick (D-108).
-Gate: property tests over one thousand seeds assert that a patrol never leaves its route and never sees through a wall.
+Implement fixed enemies and patrols with sight (D-37). A patrol that sees the party starts an encounter, and the side that reaches the other from behind acts first (D-265). No random encounters. Enemies that move walk with three views, and enemies that stand flip on the tick (D-108, D-207).
+Gate: property tests over one thousand seeds assert that a patrol never leaves the route of its phase and never sees through a wall. A large enemy never leaves its area (D-193, D-209).
 > *In plain English:* enemies stand and walk in the dungeon where you can see them. You choose the fight, or you sneak past, or they catch you.
 
 **PR-9: Battle core and timeline.**
@@ -268,9 +280,10 @@ Gate: a fixture enemy with a protector profile heals its ally before it attacks,
 > *In plain English:* enemies think. Each one weighs what a move does before it acts, and each kind of enemy weighs it differently.
 
 **PR-12: Jobs, levels, and abilities.**
-Implement the character level from experience and the job level from ability points (D-34, D-77). Implement the ability list per job, the learned set that a character keeps, and the secondary set (D-32). Implement MP and its recovery rule (D-42). The four jobs Warden, Hexer, Mender, and Cutpurse as content, each with one no-MP ability, and half experience for the reserve (D-73, D-76, F-8).
+Implement the character level from experience and the job level from ability points (D-34, D-77). Implement the ability list per job, the learned set that a character keeps, and the secondary set (D-32). Implement MP and its recovery rule (D-42). The Warden and the Mender as content for the first playable, each with one no-MP ability, and half experience for the reserve (D-73, D-76, D-256, F-8). The Hexer, the Cutpurse, and the law of hidden jobs follow with the cave community (D-151, D-246).
+
 Gate: a character learns an ability, changes job, and keeps it. A test proves that every job has a no-MP ability.
-> *In plain English:* each character has a job, gets better at it, and keeps what they learned when they switch. Four jobs exist.
+> *In plain English:* each character has a job, gets better at it, and keeps what they learned when they switch. Two jobs exist at first.
 
 **PR-13: Gear, items, and inventory.**
 Implement the six equipment slots, the job restrictions, and the inventory (D-44). Fixed items with rarity tiers as content (D-45). The equip screen shows an empty slot after a job change.
@@ -293,7 +306,7 @@ Gate: ten thousand night runs of the two policies on the fixture dungeon complet
 > *In plain English:* simple robots play thousands of runs every night without a screen. They find crashes and dead ends before a person ever sees them.
 
 **PR-16: Dungeon parts, death, and save points.**
-Implement treasure, locked doors and keys, traps and hazards, and save points with the party swap (D-36, D-41, D-58). A wipe reloads the newer of the slot save and the autosave (D-231). The dungeon exit returns the party to the region map.
+Implement treasure, locked doors and keys, traps and hazards, and save points with the party swap (D-36, D-41, D-58). A wipe reloads the newer of the slot save and the autosave (D-231). A save point restores MP once per visit, and a killed enemy stays dead until the party leaves (D-257). The dungeon exit returns the party to the region map.
 Gate: a bot run that wipes reloads and continues, and a two-character party after a down can still reach the exit in the fixture.
 > *In plain English:* the dungeon gains its chests, doors, traps, and resting places, and death now costs what the design says it costs.
 
@@ -304,7 +317,7 @@ Gate: a closed route refuses the move and the screen shows why, and a replay rep
 
 **PR-37: CRT shader and the toggle.**
 Implement the full CRT as a Godot screen shader: curvature, bleed, flicker, on by default with a toggle in settings (D-105, D-120).
-Gate: a screenshot with the toggle on and one with it off differ, and the smoke session runs with both.
+Gate: the screen-test job of PR-41 captures the toggle on and off, and the two frames differ.
 > *In plain English:* the whole screen looks like an old monitor, and one setting turns it off.
 
 **PR-38: Audio synthesizer and the first sounds.**
@@ -313,7 +326,7 @@ Gate: the tool reproduces every committed WAV file, and the battle scene plays a
 > *In plain English:* every sound comes from a small text file that the tool turns into audio. The first fight makes noise.
 
 **PR-17: The first hub and the first dungeon.**
-Author the first hub and the first dungeon as content (D-28, D-39, D-110). That is the two tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, and a placeholder scene. The four jobs and the first three cast members have their text in the voice (G-20).
+Author the first hub and the first dungeon as content (D-28, D-39, D-110). That is the two tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, and a placeholder scene. The two jobs of D-256 and the first three cast members have their text in the voice (G-20).
 Gate: the owner plays from the hub through the dungeon and back on the desktop and on the Deck, and signs off on feel (D-52, D-92). The M-4 numbers land inside the band the sign-off sets, and M-6 records the Deck.
 > *In plain English:* the first real place to play. Everything before this was machinery.
 
@@ -321,7 +334,7 @@ Gate: the owner plays from the hub through the dungeon and back on the desktop a
 
 **M-4: Encounter numbers.** Record turns per encounter and party downs per dungeon by bot policy on the first dungeon. Binds the resource numbers of D-35.
 
-**M-6: The Deck.** Record the frame time on the first playable. Record the readability of the font and the sprites at 1x, with the CRT on and off (D-92, D-120, D-228, F-18).
+**M-6: The Deck.** Record the frame time on the first playable against 60 frames per second (D-161). Record the readability of the font and the sprites at 1x, with the CRT on and off (D-92, D-120, D-228, F-18).
 
 ### Phase 3: Story systems (gate: the owner plays a branch that closes a route and a scene that changes a relationship)
 
@@ -369,7 +382,7 @@ Gate: every job has a no-MP ability, and the M-4 band holds with the new jobs.
 
 **PR-33: The title screen, settings, and the exit.** The first screen, the settings with the CRT toggle and the bindings, and a clean exit that saves.
 
-**PR-39: Deck verification pass.** Walk the Steam Deck verification checklist: gamepad glyphs, default bindings, the 2x frame, text size, and suspend and resume (D-85, D-92).
+**PR-39: Deck verification pass.** Walk the Steam Deck verification checklist: gamepad glyphs, default bindings, the 1x frame (D-228), text size, and suspend and resume (D-85, D-92).
 
 **PR-40: Steam integration.** Steamworks initialization, and Steam Cloud for the save directory with the newest-wins prompt (D-85, D-93). The store page of the full game in the "Coming Soon" state, and the prologue as its demo app (D-143). Needs the Steam Direct fee for the full game. PR-40 verifies whether the demo needs a fee of its own.
 
@@ -382,14 +395,14 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. The full-plan docs PR: the world, the phase roadmaps, and the area roadmaps (D-142, D-144, D-146). Then the rename to the-thing-below, and the move to the external SSD (D-215 to D-217).
+2. The full-plan docs PR: the world, the phase roadmaps, and the area roadmaps (D-142, D-144, D-146). Then the rename to the-thing-below, and the move to the external SSD (D-215 to D-217). The owner runs the Deck test of D-160 before PR-1.
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.
 6. M-1, M-2.
 7. **← GATE 1 (foundation).** The identity job, `dotnet test`, the smoke job, and `ste-check` are green on three platforms.
 8. Owner: pick the font (D-122).
-9. PR-7, PR-8, PR-9, PR-10.
+9. PR-7, PR-41, PR-8, PR-9, PR-10.
 10. PR-11, PR-12, PR-13, PR-14, PR-36.
 11. PR-15. One night runs, then the `night-gate` job joins the PR gate.
 12. PR-16, PR-35, PR-37, PR-38.

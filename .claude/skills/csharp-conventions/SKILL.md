@@ -24,6 +24,7 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 - Every `Core` behavior change bumps the simulation version constant (G-17).
 - Check every arithmetic operation that a content value can drive with `checked`. An overflow is an error with context, never a wrap.
 - No reflection, no `dynamic`, no LINQ in a hot loop, no conditional compilation in `Core`.
+- Debug intents and their handlers live in a separate debug assembly that only development builds reference (D-260).
 
 ## Errors (T-2)
 
@@ -44,7 +45,7 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 ## Godot
 
 - Scenes are C# classes that build their nodes in code, or minimal `.tscn` files that hold layout alone. Game data never lives in a scene.
-- The Game loop calls `Core` at a fixed rate and draws the state with interpolation off, because movement is tile-locked (D-106).
+- The Game loop calls `Core` at a fixed rate. Game draws each step as a slide between tiles, and `Core` positions stay on whole tiles (D-106, D-203).
 - The camera, the CRT shader, the audio, and the input map live in `Game` and never reach `Core`.
 - The Godot editor writes files: `project.godot`, `.csproj` target frameworks, and `.import` files. The PR review reads each one it touches.
 
