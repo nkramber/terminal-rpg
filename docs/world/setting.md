@@ -9,8 +9,8 @@ The text that the player reads has its own voice (D-11). This file gives facts f
 ## Feel and limits
 
 - Final Fantasy Tactics sets the feel: church and crown politics, class war, betrayal, and a story that turns on faction choices (D-125).
-- The world copies no plot device of FFT (D-136, D-140). The file `banned-devices.md` lists the devices.
-- Text shows violence and cruelty in short physical detail. It never shows sexual violence, and it never shows harm to a child on screen (D-126).
+- The world copies no plot device of FFT (D-136, D-140). Lessons follow the materia mechanic of Final Fantasy VII, and no gem or orb in the world stores power (D-272, D-307). The file `banned-devices.md` lists the devices.
+- Text shows violence and cruelty in short physical detail. It never shows sexual violence, and it never shows harm to a child directly (D-126, D-335). A line can imply or state that harm without detail, and a scene can show the aftermath, the dead of any age included.
 - Every plotline converges at the end of the game. No region ends with the destruction of its own faction (D-131).
 
 ## The war and the treaty
@@ -61,7 +61,7 @@ Outside those machines, the technology is late medieval (D-129). People fight wi
 
 No character has a job (D-268). A character gains abilities from lessons: rites for spells and drills for physical abilities (D-275, D-278). A lesson teaches a form and holds no power. The file `cast.md` gives the rules of lessons and aptitudes.
 
-A legal use of a rite needs two things: a church license on the caster and a church stamp on the rite (D-130, D-302). A use without either can hang the caster. The guild marks its wardens, and a warden can lose the mark (D-294).
+A legal use of a rite needs two things: a church license on the caster and a church stamp on the rite (D-130, D-302). A use without either can hang the caster. A stamp needs the seal and the ledger of the license office, so nobody stamps a rite on the road (D-308). The guild marks its wardens, and a warden can lose the mark (D-294).
 
 How a party gets a license or a stamped rite is open (OQ-42). Whether a rule in play tracks an unlawful use is open too (OQ-45).
 
@@ -91,6 +91,6 @@ The samples show the sound. They are not cast names.
 
 - Whether a battle rule tracks the feeding of the thing below (OQ-35).
 - How a party gets a license or a stamped rite (OQ-42).
-- The arc (D-146), then the systems, audio, and release areas (D-262).
+- The systems, audio, and release areas (D-262).
 
-The places of region one are in `places.md`, and the cast is in `cast.md`.
+The places of region one are in `places.md`, the cast is in `cast.md`, and the arc is in `arc.md`.

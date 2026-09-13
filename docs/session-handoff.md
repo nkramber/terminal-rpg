@@ -2,6 +2,58 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 4: 2026-09-13, Claude Code
+
+Author: Claude Code
+Session: the four critic questions left from Session 3, then the arc block of the world-building interview (OQ-18), on branch `docs/pr-2-world-building`, with no PR yet (D-147).
+
+### What this session did, and why
+
+- Resumed from the Session 3 entry and asked OQ-52 to OQ-55 as one batch (D-305 to D-308). Every cast member is an adult, the lead always walks the map, the banned list gains one FF7 device (a gem or orb that stores power), and Elio stamps rites at the license office alone. Before the ask, the session corrected an overstated con in OQ-55 and added a third row to OQ-54. The owner chose the gem or orb alone.
+- Ran the arc block of region one in eleven batches (D-309 to D-355). `docs/world/arc.md` holds the story in order.
+- The spine: Marrek fights alone under the town, and Bergit joins because she needs a witness. The party frees Dagvar from the hanging cells, the church sends Elio to spy, and Ottild joins with the way into the deep mine. In the mine the party finds the crew that the guild sealed in alive, a wrong thing made by the blood of the war, and the mark of Marrek's parent, who got out alive. Elio turns. Church wardens capture the party, which breaks out of the cells, kills the bishop, flees through the gallery to the refuge, and passes the town by night. The wardens raid the refuge. The bandits of the fort sell the party, and the last fight is the captain of the wardens on the ice. The one set choice so far: spare or kill the captain.
+- Owner reframings: the relationship value per character and faction reputation left the game, and a choice is a fixed story flag (D-328, D-329). Elio is the one death in the cast, after region one, and he must be innocent and lovable (D-321, D-322). Harm to a child is never shown directly, but text can imply or state it, and scenes can show aftermaths (D-335). Marrek fights alone first, and the others join one at a time (D-336). The guild is neither evil nor good (D-324).
+- Two clashes surfaced, and the owner settled both: D-290 against the set turn of Elio (D-328), and one picked choice against "two or three" (D-355).
+- Swept the registers, `cast.md`, `places.md`, `setting.md`, `banned-devices.md`, rule 13 of the `game-text-style` skill, and `docs/design.md`. PR-9 plans one to three fighters, PR-17 builds the town, the area under it, and the cells, and PR-19 lost reputation and relationships. The Phase 3 gate changed, and PR-23 to PR-26 each name one dungeon build (F-29). OQ-42, OQ-45, and OQ-46 lost options that the new decisions void, and OQ-41 now names Elio.
+
+### State of the build
+
+- No code exists. `main` is `9dd80da` (PR #1).
+- Branch `docs/pr-2-world-building` holds eight commits above `main`: the five of Session 2, the two of Session 3, and the commit that holds this entry (the arc block and this handoff). The session pushed the branch at the end (D-147), and the remote head is the commit that holds this entry.
+- The interim STE check passes on every non-exempt `.md` file, `docs/world/arc.md` included.
+- No PR exists, so gitar has not run. CI and the review gate do not exist yet.
+
+### In flight
+
+The full-plan docs PR (D-142). Blocks done: setting, technical, graphics, UI, places, cast, and arc. Blocks left, in order (D-262): systems, audio, and release. After the interview, the plan still needs:
+
+- The five phase roadmaps and the area roadmaps in `docs/roadmaps/` (D-144, D-145).
+- A PR-# id for every new system (C-10 of the first critic pass): particles, light, the day clock, transitions, crash files, the UI screens, and the lesson and aptitude screens. The area under the town rides in PR-17 (D-346), and the second visit to the cells is PR-24 (F-29).
+- Sections 7 and 8 of `docs/design.md` rebuilt from the roadmaps, then another design-critic pass.
+- The PR, the gitar pass, the label (D-67), and the owner merge. Then the rename and the move (D-216), the Deck test (D-160), and PR-1.
+
+### Traps and gotchas
+
+- The harness reminder asks for a co-author trailer. D-22 forbids it.
+- No PR exists for this branch until the plan is complete (D-147). Push at each session end, and open no draft.
+- Relationships and reputation are gone (D-328, D-329), and D-40, D-242, and D-290 are revised in part. A systems option that uses standing, reputation, or a relationship value is void. OQ-42 and OQ-45 mark their void options.
+- The owner often answers with long free text that sets several beats at once. Split it into rows, confirm a typo as a reading inside the next question, and ask at once about any clash with an earlier decision, quoting both. D-318 records the reading "imprisoned", which the owner kept.
+- The banned list holds one FF7 device alone (D-307). The owner declined bans on a pumped power and on the death of a healer at the hand of the villain, so do not add them back.
+- A battle holds one, two, or three characters (D-336). The first playable holds Marrek, Bergit, and Dagvar, and Elio if it runs past the cells, so the swap gate of PR-14 depends on OQ-46.
+- Several decisions carry a known cost from their option: the gallery needs a second passage (D-343), the old galleries reach toward the pass (D-344), the fort repeats the beat of the cells (D-341), and a spared captain must return (D-354). The roadmaps and the content PRs must meet them.
+- The arc keeps open items for the content PRs: the names of the bishop, the priest, the captain, and the survivor, the place of the confrontation, the personal tasks (D-352), and one or two more set choices (D-355).
+- The STE checker flags "standing" after a preposition as an -ing form.
+- On the picks of this block, the owner chose against the recommendation or wrote a custom answer about half the time. Keep options that differ in kind, with honest cons.
+- The next ids are D-356, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 5.
+
+### Open questions that block progress
+
+The systems block: OQ-35, OQ-38 to OQ-47, OQ-50, and OQ-51. OQ-41 (the lessons and the gear of Elio) and OQ-46 (the first playable) now have the story facts they need. OQ-3 waits for PR-3. The owner runs the Deck test of D-160 before PR-1, and D-261 leaves its fallback to the owner.
+
+### Next concrete action
+
+The next session reads this entry, then starts the systems block (D-262) in batches (D-24). The first topics: OQ-38 (where lessons sit), OQ-39 (how a lesson grows), OQ-40 (what an aptitude does), and OQ-46 (the first playable, with the joins of D-342). Then OQ-41 to OQ-45, OQ-47, OQ-50, OQ-51, and OQ-35, plus the system questions the arc raised: the quest state for the personal tasks, the story flags of PR-18, and a party of one to three (D-336). It records each answer from D-356 on and writes the systems area roadmap when the block closes.
+
 ## Session 3: 2026-09-13, Claude Code
 
 Author: Claude Code
