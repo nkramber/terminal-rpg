@@ -1,0 +1,81 @@
+---
+name: csharp-conventions
+description: The C# rules of this repo. The engine-free Core, integer math, error context, no silent failure, test shape, Godot boundaries, and dependency policy. Load before you write or review C#.
+---
+
+# C# conventions skill
+
+Load this skill before you write or review C# in this repo (D-21, D-99). It applies the tenets to C# and Godot. The scaffold PR, PR-1, creates the solution, and this skill needs a revision pass after it merges.
+
+## Project boundaries
+
+- `Core` is the simulation. It has no reference to Godot, the file system, the network, the clock, or the OS (G-1, D-100). It takes a seed, content, and inputs, and it returns state.
+- `Game` is the Godot project. It reads `Core` state, draws it, plays audio, and turns input into intents. Godot physics, timers, and navigation never feed the simulation.
+- `Tools` holds the STE checker, the review gate, the det-lint, the night gate, the atlas tool, the audio synthesizer, and the headless runner.
+- `Tests` holds the xUnit tests for `Core` and `Tools`, and the smoke test that starts the Game headless.
+- A test asserts the reference list of `Core`. A new package in any project needs a decision entry (G-13).
+
+## Determinism in Core (T-7)
+
+- No `float`, `double`, or `decimal`. Percentages, multipliers, and rates use fixed-point integers. Name the scale in the type or the constant, for example `Permille` or `BasisPoints`.
+- No `System.Random`, `DateTime`, `Stopwatch`, or `Environment.TickCount`. The seed and the tick are the only sources of randomness and time (G-3).
+- One random stream per subsystem, split from the run seed. A subsystem never borrows another stream.
+- Iterate in a fixed order. Use `List<T>` and `SortedDictionary<TKey, TValue>`, and never `Dictionary<TKey, TValue>` or `HashSet<T>`, where the order reaches the state (G-4).
+- Every `Core` behavior change bumps the simulation version constant (G-17).
+- Check every arithmetic operation that a content value can drive with `checked`. An overflow is an error with context, never a wrap.
+- No reflection, no `dynamic`, no LINQ in a hot loop, no conditional compilation in `Core`.
+
+## Errors (T-2)
+
+- No empty `catch`. No `catch` that logs and continues without a decision that names it.
+- Every exception type carries its context. Inside a run that is the seed, the tick, and the entity ids. Outside one it is the file path and the field.
+- An absent value is an error, never a default. `GetValueOrDefault` on a content field is a finding.
+- Assertions stay on in release builds. Use the project assertion helper, never `Debug.Assert`.
+- Nullable reference types are on, and warnings are errors.
+
+## Content (D-116)
+
+- Content is JSON. A schema validates each file at load and in a test. An unknown field and an absent field are both errors.
+- A load error names the file, the field, and the reason.
+- One test loads every file under `content/` and fails on the first error.
+- Player-visible text is a string id, never a string literal in code (G-7). The det-lint reads `Game` for the string rule.
+- No `.tres` or `.res` file holds game data. The Godot project holds scenes and settings alone.
+
+## Godot
+
+- Scenes are C# classes that build their nodes in code, or minimal `.tscn` files that hold layout alone. Game data never lives in a scene.
+- The Game loop calls `Core` at a fixed rate and draws the state with interpolation off, because movement is tile-locked (D-106).
+- The camera, the CRT shader, the audio, and the input map live in `Game` and never reach `Core`.
+- The Godot editor writes files: `project.godot`, `.csproj` target frameworks, and `.import` files. The PR review reads each one it touches.
+
+## Style
+
+- `dotnet format` clean. Warnings as errors. Suppress a warning only with a comment that names the reason, next to the pragma.
+- Explicit over implicit. No interface for a single implementation (T-1). Two concrete cases before an abstraction.
+- Helpers go one level deep. A reader understands a method from the method and the signatures of its helpers.
+- Name a method for what it does. Name a type for what it is. Avoid a `Manager`, a `Handler`, or a `Util`.
+- Public members have a doc comment that states the contract, not the implementation.
+- Comments explain a decision or a trap, and they cite a D-# id when one applies. Never a comment that repeats the code.
+
+## Tests (T-3)
+
+- xUnit. One test class per type under test.
+- A property test is a seed loop: iterate a fixed seed range, assert the property, and name the seed in the failure message.
+- A bug fix ships with a regression test that fails on the old code. The PR description names the test.
+- A test asserts the contract, not a copy of the implementation.
+- The Smoke category starts the Godot build. CI runs it in the smoke workflow alone.
+
+## Commands
+
+The Makefile is the entry point after PR-1 (D-3). The raw commands, with the working title in the names until D-102:
+
+```
+dotnet build TerminalRpg.slnx
+dotnet test TerminalRpg.slnx --no-build --filter "Category!=Smoke"
+dotnet format TerminalRpg.slnx --verify-no-changes
+dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- ste-check --root .
+dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- det-lint --root .
+/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --path TerminalRpg.Game -- --smoke
+```
+
+Pin the SDK in `global.json`. Pin the Godot version in the runbook and in CI.
