@@ -18,13 +18,14 @@ Session: establish the documents, the skills, the agents, the registers, and the
 - Made the sprite feasibility test (D-94): a palette and four 16 by 16 sprites as text grids. The owner said sprites are in (D-97). The grids, the 48-color palette (D-121), and the atlas landed under `content/sprites/` with the interim atlas tool at `docs/tools/make-atlas.py` (D-119).
 - Archived the terminal design as `docs/archive/design-v1-terminal-2026-09-12.md` and wrote `docs/design.md` v2: the Godot shape, findings F-1 to F-18, guardrails G-1 to G-25, five phases with PR-1 to PR-40, and the sequence. PR-32 is retired.
 - Replaced the `rust-conventions` skill with `csharp-conventions`, and rewrote the code rules, the build commands, the runbook, the PR template, and the glossary for Godot and C#.
+- The third gitar pass, on the pivot head, left two comments on the atlas tool, both with merit (F-19, F-20). The tool gained a pixel `--check` mode and fails on a repeated palette key. The commit named on each thread answered both.
 
 ### State of the build
 
 - No code exists. The machine has .NET 10.0.400 and Godot 4.7.2 .NET at `/Applications/Godot_mono.app`.
 - `main` holds the owner's root commit `6b899dd` alone, an empty `CLAUDE.md` (D-25).
 - Branch `docs/foundation` holds everything else, as PR #1 (D-26, D-79). The remote head is the commit that holds this entry, checked with the session end gate before the session ended.
-- The interim STE check passes on every non-exempt `.md` file. The interim atlas tool reproduces `content/sprites/atlas.png`.
+- The interim STE check passes on every non-exempt `.md` file. `python3 docs/tools/make-atlas.py --check` proves that the committed atlas matches the grids by pixel.
 - No CI exists. PR-1 creates it. The review gate does not exist. PR-3 creates it. The `review-override` label applies once the pass approves the head (D-67).
 
 ### In flight

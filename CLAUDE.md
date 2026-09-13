@@ -79,7 +79,7 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 - Godot physics, timers, and navigation never feed the simulation. The camera, the shader, the audio, and the input map live in `Game` (D-100, D-106).
 - Content is JSON, validated by a schema at load and in a test. An absent field is an error. No `.tres` files (D-116, G-6).
 - Every string the player reads lives in the string table. The `det-lint` tool reads `Game` for an inline player string (G-7).
-- Sprites and tiles are text grids in content. The atlas tool renders the PNG, and a test proves the committed atlas matches (D-107).
+- Sprites and tiles are text grids in content. The atlas tool renders the PNG, and a test proves the committed atlas matches by pixel, never by byte (D-107, F-19).
 - No empty `catch`. Every error carries its context (T-2, G-18). Load the `csharp-conventions` skill before you write C#.
 - Nullable reference types on, warnings as errors. `dotnet format` clean.
 - xUnit. Property tests are seed loops, and each failure names its seed.

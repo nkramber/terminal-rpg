@@ -120,6 +120,8 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-16 | D-7 chose RON, and C# has no RON reader | 2026-09-12 | ✅ doc. D-116, JSON with a schema |
 | F-17 | The 32-color palette (D-89) had 13 free colors for eight elements and ten statuses | 2026-09-12 | ✅ doc. D-121 grows it to 48. Binds PR-34 |
 | F-18 | The full CRT (D-105) is on by default on the Deck (D-120) before any Deck measurement | 2026-09-12 | ⚠ Binds M-6 and Gate 2: the Deck play measures readability with it on |
+| F-19 | D-119 and PR-34 promised an atlas match byte for byte. The compressed bytes depend on the zlib build and the encoder, so the C# tool of PR-34 cannot reproduce them. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The match test compares decoded pixels. The interim tool gained `--check`. Binds PR-34 |
+| F-20 | The interim atlas tool kept the last of two palette entries with one key, in silence, against T-2. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The tool fails on a repeated key. Binds PR-34 to the same rule |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -214,9 +216,9 @@ Gate: the replay of a recorded run gives the same hash on all three platforms, a
 **PR-34: Atlas tool, palette, and the grid format.**
 Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 16 by 16 grid. A portrait is a 32 by 32 grid. A sprite has a frame list.
 
-The palette is the 48-color file (D-121). A test proves that the committed atlas matches the grids, as the texture test of what-you-carry does. Retire the Python script.
+The palette is the 48-color file (D-121). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
 
-Gate: the tool reproduces `content/sprites/atlas.png` from the four grids, and a grid with an unknown key fails with the file, the line, and the column.
+Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the four grids. A grid with an unknown key fails with the file, the line, and the column. A palette with a repeated key fails with the key.
 > *In plain English:* every picture in the game is a text file of letters, one per pixel. A tool turns those letters into the image the engine draws, and a test proves the image matches the letters.
 
 **M-1: Tokens per PR.** Record the harness usage per PR for the first ten PRs.
