@@ -75,15 +75,15 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 
 ## Commands
 
-The Makefile is the entry point after PR-1 (D-3). The raw commands, with the working title in the names until D-102:
+The Makefile is the entry point after PR-1 (D-3). The raw commands, with the names of D-217:
 
 ```
-dotnet build TerminalRpg.slnx
-dotnet test TerminalRpg.slnx --no-build --filter "Category!=Smoke"
-dotnet format TerminalRpg.slnx --verify-no-changes
-dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- ste-check --root .
-dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- det-lint --root .
-/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --path TerminalRpg.Game -- --smoke
+dotnet build TheThingBelow.slnx
+dotnet test TheThingBelow.slnx --no-build --filter "Category!=Smoke"
+dotnet format TheThingBelow.slnx --verify-no-changes
+dotnet run --project TheThingBelow.Tools/TheThingBelow.Tools.csproj -- ste-check --root .
+dotnet run --project TheThingBelow.Tools/TheThingBelow.Tools.csproj -- det-lint --root .
+/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --path TheThingBelow.Game -- --smoke
 ```
 
 Pin the SDK in `global.json`. Pin the Godot version in the runbook and in CI.

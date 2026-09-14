@@ -1,4 +1,4 @@
-# terminal-rpg: agent instructions
+# The Thing Below: agent instructions
 
 `CLAUDE.md` and `AGENTS.md` are identical (D-20). Edit both together.
 
@@ -116,20 +116,20 @@ An automated reviewer, gitar, comments on every PR after a push (D-14). The auth
 
 ## Build and test commands
 
-The repository holds no code until PR-1 merges. PR-1 creates the solution, the Makefile, and every command below except the interim STE check. The project names carry the working title until D-102 renames them. Run each command from the checkout root.
+The repository holds no code until PR-1 merges. PR-1 creates the solution, the Makefile, and every command below except the interim STE check. The solution and the project names follow D-217. Run each command from the checkout root.
 
 - Every check, on this machine: `make verify`
 - Branch, tree, and PR state: `make where`
 - Hooks, once per checkout: `make hooks`
-- Build: `dotnet build TerminalRpg.slnx`
-- Test: `dotnet test TerminalRpg.slnx --no-build --filter "Category!=Smoke"`
-- Format check: `dotnet format TerminalRpg.slnx --verify-no-changes`
+- Build: `dotnet build TheThingBelow.slnx`
+- Test: `dotnet test TheThingBelow.slnx --no-build --filter "Category!=Smoke"`
+- Format check: `dotnet format TheThingBelow.slnx --verify-no-changes`
 - STE check, interim until PR-2: `python3 docs/tools/ste-check.py $(git ls-files '*.md' | grep -v -e '^docs/reviews/' -e '^docs/session-handoff' -e '^docs/archive/')`
-- STE check, after PR-2: `dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- ste-check --root .`
-- Determinism and string lint, after PR-4: `dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- det-lint --root .`
-- Godot build check: `/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --editor --path TerminalRpg.Game --build-solutions --quit`
-- Smoke session: `/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --path TerminalRpg.Game -- --smoke`
-- Play session: `/Applications/Godot_mono.app/Contents/MacOS/Godot --path TerminalRpg.Game`
+- STE check, after PR-2: `dotnet run --project TheThingBelow.Tools/TheThingBelow.Tools.csproj -- ste-check --root .`
+- Determinism and string lint, after PR-4: `dotnet run --project TheThingBelow.Tools/TheThingBelow.Tools.csproj -- det-lint --root .`
+- Godot build check: `/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --editor --path TheThingBelow.Game --build-solutions --quit`
+- Smoke session: `/Applications/Godot_mono.app/Contents/MacOS/Godot --headless --path TheThingBelow.Game -- --smoke`
+- Play session: `/Applications/Godot_mono.app/Contents/MacOS/Godot --path TheThingBelow.Game`
 
 The name `Godot` is not on the command path of this machine, so each check needs the full path above. The four exempt paths of the STE check are dated records: `docs/reviews/`, `docs/session-handoff.md`, `docs/session-handoff-archive.md`, and `docs/archive/`. Every other `.md` file passes the checker before a commit.
 
