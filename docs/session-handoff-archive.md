@@ -2,6 +2,53 @@
 
 Sessions older than the 10 in `docs/session-handoff.md`, newest first (D-18). Move an entry here word for word.
 
+## Session 15: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the rename PR, steps 4 to 7 of `docs/runbooks/rename-and-move.md`, on branch `docs/pr-5-rename`.
+
+### What this session did, and why
+
+- PR #4 merged as `a16a83e` after the repeat review of Session 14. No other PR was open, so step 4 of the runbook started (D-411).
+- The session started `docs/pr-5-rename` from `main`. The next GitHub number was 5.
+- A search of every tracked file found 41 mentions of the working title. The dated records keep theirs: `docs/archive/`, the handoff, and the rows of D-9, D-72, and D-102 (step 6).
+- The live documents now use the tentative name The Thing Below, and the commands use the names of D-217:
+  - `CLAUDE.md` and `AGENTS.md`: the title, the sentence on the project names, and 10 command names each. The two files stay identical.
+  - `README.md`: the title, and "The name is tentative."
+  - `docs/design.md`: the title, the thesis, step 2 of section 8, and a dated line for the rename pass.
+  - The `csharp-conventions` and `ste-writing` skills: the command names, and the technical name of the game.
+  - `docs/runbooks/rename-and-move.md`: the status, and steps 4 to 6 marked done.
+- The runbook keeps the old names in its table of names and in step 1, because those lines record the change.
+- OQ-7 already names D-215, D-217, and D-410, so the questions register needs no note. No owner question came up for this PR (D-68), and the PR changes no decision row.
+- The handoff held eleven entries before this one, because Session 14 added its entry and moved none. Sessions 5 and 4 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `a16a83e` (PR #4).
+- PR #5 is open on `docs/pr-5-rename`. The remote head is the commit that holds this entry.
+- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
+- The local checkout is still `~/Repos/terminal-rpg`.
+
+### In flight
+
+PR #5 answers the gitar pass. It changes no decision row, and every path is in the override set, so the session applies the `review-override` label after the pass approves the head (D-67, D-401). The owner merges. Then steps 9 to 12 of the runbook follow: the clone to the SSD, the copy of the session notes, a new session in the new checkout, and the removal of the old checkout by the owner.
+
+### Traps and gotchas
+
+- Post `Gitar review` after each push, and count the pass only from a `Gitar` check run on the head (Session 13). A request runs the pass on the PR head at the previous request, so a second request can be necessary.
+- The label needs a new approval after each push (D-67).
+- Step 10 copies `~/.claude/projects/-Users-nate-Repos-terminal-rpg/memory/` to the folder of the new path, probably `-Volumes-SSD-1TB-the-thing-below`. Check the folder name after the first session in the new checkout.
+- The dated records and the table of names in the runbook keep `terminal-rpg` on purpose. A search for the old name finds them.
+- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 16.
+
+### Open questions that block progress
+
+None for PR #5. OQ-3 waits for PR-3.
+
+### Next concrete action
+
+This session answers the gitar pass on PR #5 and applies the `review-override` label when the pass approves the head. The owner merges. Then a session runs steps 9 to 12 of `docs/runbooks/rename-and-move.md`.
+
 ## Session 14: 2026-09-14, Codex
 
 Author: Codex

@@ -2,6 +2,45 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 25: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the answer to the review of PR #10, on branch `docs/pr-10-roadmaps`.
+
+### What this session did, and why
+
+- Session 24 (Codex) reviewed PR #10 at `9355d62` and gave `Changes required` with P2-1: D-488 kept the PR number that D-490 changed, and D-490 did not mark D-488 as revised in part.
+- The owner asked the session to address the feedback. The session fetched the branch at `571e39e`, read the review record, and found no other open comment or thread.
+- P2-1, full merit: the Effect column of D-490 now revises D-484, D-488, and D-489 in part. The note on D-488 now uses the marker `Revised in part by D-490`, names the PR number as the changed part, and keeps the order of the work.
+- A search of the live documents found PR #11 as the PR of the roadmaps and the rebuild in D-484, D-488, D-489, D-490, the dated line and step 2 of section 8 in `docs/design.md`, and the handoff.
+- `docs/reviews/pr-10-response.md` records the disposition.
+- The handoff held ten entries before this one, because Session 24 moved Session 14 to the archive. Session 15 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `4f37c99` (PR #9).
+- PR #10 is open on `docs/pr-10-roadmaps`. The commit that holds this entry is the new effective head, because it changes `docs/decisions.md`.
+- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
+
+### In flight
+
+PR #10 answers a new gitar pass on the new head. Then a Codex session runs the repeat review of PR #10 and updates `docs/reviews/pr-10.md`. The owner merges. Then PR #11 starts the roadmaps on a new branch (D-488, D-490).
+
+### Traps and gotchas
+
+- After a push, the first `Gitar review` request re-runs the previous head, and it can complete an existing check run again rather than start a new one. Send the second request when the dashboard updates or an old run completes again with no run on the new head.
+- A reviewer session can move an old entry to the archive. Count the handoff entries before a rotation, and never assume the count.
+- D-488 and D-489 keep "PR #10" in their topic column as dated text. Their revision notes carry the current PR number.
+- The next ids are D-491, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 26.
+
+### Open questions that block progress
+
+None for PR #10. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR-40, and OQ-3 waits for PR-3.
+
+### Next concrete action
+
+This session answers the gitar pass on the new head and records it in the PR description. Then a Codex session runs the repeat review of PR #10 under the `pr-review` skill. The owner merges. Then a fresh session starts PR #11 with `docs/roadmaps/area-core.md`.
+
 ## Session 24: 2026-09-14, Codex
 
 Author: Codex
@@ -412,50 +451,3 @@ None for PR #6. OQ-3 waits for PR-3.
 ### Next concrete action
 
 This session answers the gitar pass on PR #6, and applies the `review-override` label when the pass approves the head. The owner merges. Then a session starts the audio block, the next docs PR (D-262, D-399). It reads the audio rows first: D-87, D-115, D-223, D-226, and PR-38 in `docs/design.md`. Then it asks the owner the audio questions in batches and records each answer. That PR adds decision rows, so the other provider reviews it (D-401).
-
-## Session 15: 2026-09-14, Claude Code
-
-Author: Claude Code
-Session: the rename PR, steps 4 to 7 of `docs/runbooks/rename-and-move.md`, on branch `docs/pr-5-rename`.
-
-### What this session did, and why
-
-- PR #4 merged as `a16a83e` after the repeat review of Session 14. No other PR was open, so step 4 of the runbook started (D-411).
-- The session started `docs/pr-5-rename` from `main`. The next GitHub number was 5.
-- A search of every tracked file found 41 mentions of the working title. The dated records keep theirs: `docs/archive/`, the handoff, and the rows of D-9, D-72, and D-102 (step 6).
-- The live documents now use the tentative name The Thing Below, and the commands use the names of D-217:
-  - `CLAUDE.md` and `AGENTS.md`: the title, the sentence on the project names, and 10 command names each. The two files stay identical.
-  - `README.md`: the title, and "The name is tentative."
-  - `docs/design.md`: the title, the thesis, step 2 of section 8, and a dated line for the rename pass.
-  - The `csharp-conventions` and `ste-writing` skills: the command names, and the technical name of the game.
-  - `docs/runbooks/rename-and-move.md`: the status, and steps 4 to 6 marked done.
-- The runbook keeps the old names in its table of names and in step 1, because those lines record the change.
-- OQ-7 already names D-215, D-217, and D-410, so the questions register needs no note. No owner question came up for this PR (D-68), and the PR changes no decision row.
-- The handoff held eleven entries before this one, because Session 14 added its entry and moved none. Sessions 5 and 4 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
-
-### State of the build
-
-- No code exists. `main` is `a16a83e` (PR #4).
-- PR #5 is open on `docs/pr-5-rename`. The remote head is the commit that holds this entry.
-- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
-- The local checkout is still `~/Repos/terminal-rpg`.
-
-### In flight
-
-PR #5 answers the gitar pass. It changes no decision row, and every path is in the override set, so the session applies the `review-override` label after the pass approves the head (D-67, D-401). The owner merges. Then steps 9 to 12 of the runbook follow: the clone to the SSD, the copy of the session notes, a new session in the new checkout, and the removal of the old checkout by the owner.
-
-### Traps and gotchas
-
-- Post `Gitar review` after each push, and count the pass only from a `Gitar` check run on the head (Session 13). A request runs the pass on the PR head at the previous request, so a second request can be necessary.
-- The label needs a new approval after each push (D-67).
-- Step 10 copies `~/.claude/projects/-Users-nate-Repos-terminal-rpg/memory/` to the folder of the new path, probably `-Volumes-SSD-1TB-the-thing-below`. Check the folder name after the first session in the new checkout.
-- The dated records and the table of names in the runbook keep `terminal-rpg` on purpose. A search for the old name finds them.
-- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 16.
-
-### Open questions that block progress
-
-None for PR #5. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-This session answers the gitar pass on PR #5 and applies the `review-override` label when the pass approves the head. The owner merges. Then a session runs steps 9 to 12 of `docs/runbooks/rename-and-move.md`.
