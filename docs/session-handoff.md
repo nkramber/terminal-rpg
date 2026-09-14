@@ -19,7 +19,7 @@ Session: cross-provider review of PR #2 at effective head `4b3d04e`.
 ### State of the build
 
 - No code exists. `main` is `9dd80da`.
-- The PR tip is `f748ee3`. The effective head under the metadata rule is `4b3d04e`.
+- The PR tip is `af7861b`. The effective head under the metadata rule is `4b3d04e`.
 - The interim STE check passes with 0 findings.
 - No GitHub checks are reported. PR-1 and PR-3 create the build and review-gate checks.
 

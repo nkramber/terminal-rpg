@@ -83,7 +83,7 @@ None.
 - `gh pr view 2 --json ...`: passed. It verified base `9dd80da`, tip `f748ee3`, effective head `4b3d04e` from the PR description, no review records, and the automated approval comment.
 - `gh pr checks 2`: no checks reported. CI and the review gate do not exist until later PRs, so no existing required check was skipped.
 - `git status --short --branch`: passed before review edits. The checkout was on `docs/pr-2-world-building` with no unrelated changes.
-- Push: `133f09f` is the head of `origin/docs/pr-2-world-building`, verified with `gh pr view`.
+- Push: `af7861b` is the head of `origin/docs/pr-2-world-building`, verified with `gh pr view`.
 
 ## Open questions and accepted risks
 
