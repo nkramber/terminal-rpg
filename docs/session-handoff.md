@@ -2,6 +2,56 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 10: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the start of the rename runbook after PR #3 merged, then a docs PR that makes every document current before the rename PR, on branch `docs/pr-4-docs-audit`.
+
+### What this session did, and why
+
+- PR #3 merged as `d29921d`. The preconditions of `docs/runbooks/rename-and-move.md` held: no open PR, the SSD mounted, and the target path and the GitHub name free.
+- A search for "The Thing Below" found no game on Steam and no United States mark. A free jam game on itch.io is called "The Thing Beneath", and its devlog once says "The Thing Below". The EU and WIPO registers did not answer. The owner chose to go ahead and to start now (D-408, D-409).
+- Steps 1 to 3 of the runbook ran: the GitHub repository is `nkramber/the-thing-below`, and the local `origin` points at it. The owner's instruction "Ensure ALL docs are up to date before you rename/move repo" arrived after those steps. The owner kept the new name (D-410) and chose a current-state audit in its own docs PR before the rename PR (D-411).
+- Three read-only audit agents read the design, the world files with the questions register, and the process files. Two scripts checked the revision notes of the decision register and the file paths in the documents. The session verified each finding against its source before a change.
+- The fixes cover these files:
+  - `docs/design.md`: the status header, the system map, F-2, F-3, F-9, T-4, PR-1, PR-6, PR-10, PR-14, PR-17, PR-34, PR-37, PR-40, the Phase 2 gate, and section 8.
+  - `docs/questions.md`: nine notes.
+  - `docs/world/`: three items.
+  - `CLAUDE.md` and `AGENTS.md`: the override set and the Python exceptions.
+  - The PR template, four skills, and one agent file.
+  - Both runbooks, the docstring of `docs/tools/ste-check.py`, and the Rust block of `.gitignore`.
+- D-78 gained its note for D-98. F-30 records the audit.
+- Findings the session did not change: the open item on the two months after region one in `places.md` already defers to region two (D-353). PR-35 keeps "one hub and one dungeon" as the first nodes, because no decision says whether the village is a node.
+
+### State of the build
+
+- No code exists. `main` is `d29921d` (PR #3) on `nkramber/the-thing-below`.
+- Branch `docs/pr-4-docs-audit` holds one commit above `main`, the commit that holds this entry.
+- The interim STE check passes with 0 findings.
+- The local checkout is still `~/Repos/terminal-rpg`. The documents keep the working title until the rename PR.
+
+### In flight
+
+PR #4, the docs audit, answers the gitar pass, then takes a Codex review, because it adds D-408 to D-411 (D-401). The owner merges. Then step 4 of the runbook starts the rename PR, and the clone to the SSD and the copy of the session notes follow (D-400, D-411).
+
+### Traps and gotchas
+
+- The GitHub repository has a new name. The old URL redirects, but set `origin` to `git@github.com:nkramber/the-thing-below.git` in any other checkout.
+- The rename PR swaps the title and the project names alone. This PR already changed the facts about the GitHub repository in `docs/design.md` and `docs/runbooks/dev-machine.md`.
+- The session notes of Claude Code key on the checkout path. Step 10 of the runbook copies the memory folder after the clone.
+- Do not renumber the steps of `docs/runbooks/rename-and-move.md`: D-400 cites step 10 by number.
+- `grep` on this machine is `ugrep`, which rejects a long bounded repeat such as `.{0,120}`. Use Python for a context search.
+- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
+- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 11.
+
+### Open questions that block progress
+
+None for PR #4. OQ-3 waits for PR-3.
+
+### Next concrete action
+
+This session answers the gitar pass on PR #4. Then a Codex session reviews PR #4 under the `pr-review` skill and writes `docs/reviews/pr-4.md` (D-401). The owner merges. Then a session runs step 4 onward of `docs/runbooks/rename-and-move.md`.
+
 ## Session 9: 2026-09-14, Codex
 
 Author: Codex

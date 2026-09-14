@@ -85,6 +85,8 @@ Elio comes from the land of the enemy crown and stamps rites at the license offi
 
 The church sends Elio after the battle in the cells, to learn where the freed hexer goes (D-316, D-325). He says that he comes to help in the deep mine, and he spies on the party. When he sees what lives below, he grows discontent and stops his reports (D-317). A priest names him as a spy, and the church imprisons him with the party (D-318). After the breakout, he declares his loyalty to the party and to the goal to stop the foreign church (D-319, D-320). No relationship value changes his turn (D-328).
 
+His turn stays clear of a climb to power through betrayal, a banned device (D-320, `banned-devices.md`).
+
 A legal healer and an illegal caster share the party (D-289). Elio holds the only main aptitude of Mend in region one. He alone has church training, so a rite in the hands of any of the other four breaks the law (D-302).
 
 ## Later characters
@@ -108,7 +110,6 @@ The names follow the two sound palettes of `setting.md` (D-159). The four local 
 ## Open items
 
 - The region of the death of Elio (D-321).
-- Any turn of Elio stays clear of a climb to power through betrayal, a banned device (D-290, `banned-devices.md`).
 - The fate of the parent of Marrek past the crawlway (D-291, D-344).
 - The personal task of each character, which PR-28 and PR-29 propose (D-282, D-352).
 - The two new characters and the replacement (D-299).

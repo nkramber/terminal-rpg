@@ -15,7 +15,7 @@ Each line holds before the owner merges (`CLAUDE.md`, PR gate).
 - [ ] The `night-gate` job is green (G-22). PR-15 creates it.
 - [ ] The `ste-check` job is green (G-12). PR-1 creates it.
 - [ ] The automated pass of gitar approved the head, or every comment of the pass has its answer (D-14, D-66).
-- [ ] The other provider reviewed it, and `docs/reviews/pr-<number>.md` has the verdict `Ready for owner merge` for the effective head (T-4, D-17). A PR that changes no code and no row of `docs/decisions.md` is exempt when the `review-override` label is on (D-16, D-401).
+- [ ] The other provider reviewed it, and `docs/reviews/pr-<number>.md` has the verdict `Ready for owner merge` for the effective head (T-4, D-17). A PR in the override set that changes no decision row is exempt when the `review-override` label is on (D-16, D-401).
 - [ ] The `review-gate` check is green (D-15). PR-3 creates it.
 - [ ] `docs/decisions.md` has every new decision.
 - [ ] `docs/questions.md` has every new question.
@@ -32,5 +32,6 @@ One line per document. Say what changed, or say "no change needed because ...".
 - `docs/decisions.md`:
 - `docs/questions.md`:
 - `docs/roadmaps/`:
+- `docs/world/`:
 - `docs/session-handoff.md`:
 - `CLAUDE.md` and `AGENTS.md`:

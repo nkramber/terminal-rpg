@@ -16,14 +16,14 @@ The design doc is one file: `docs/design.md`. Its roadmap section is the high-le
 3. **Lessons learned.** Numbered. Each lesson names the event that taught it. Carry lessons from the two reference repositories when they apply.
 4. **System map.** A table of components, what each reads, what each writes, and its sensitivity.
 5. **Cost model.** What we pay, what we do not know, and which measurement will answer it.
-6. **Guardrails.** The tenets, quoted in full, then the numbered invariants that every PR must keep.
-7. **Defect and finding register.** A numbered table. Findings carry evidence and dates. Findings bind to plan items ("binds PR-3"). The status legend:
+6. **Defect and finding register.** A numbered table. Findings carry evidence and dates. Findings bind to plan items ("binds PR-3"). The status legend:
    - ✅ done (code merged, or "doc" for a document-only correction)
    - 🔧 planned (item listed)
    - ⚠ constraint (binds a pull request)
    - ❓ needs owner input
    - ⏸ out of scope (a decision parked it)
    - 🅿 parked
+7. **Guardrails.** The tenets, quoted in full, then the numbered invariants that every PR must keep.
 8. **Roadmap.** Phases. Each entry has an id (PR-#, M-#), a technical paragraph, and a gate. It ends with a plain-English paragraph in a block quote that starts with "*In plain English:*".
 9. **Sequence.** A strict ordered list with a single owner. Mark each gate.
 10. **Open questions.** A link to `docs/questions.md` (D-19). The register there has the numbers. Record the date and the answer there when one arrives.
@@ -47,7 +47,7 @@ The design doc is one file: `docs/design.md`. Its roadmap section is the high-le
 
 ## Focused roadmaps
 
-A focused roadmap covers one phase or one area, for example combat or the lesson system. It uses the same sections 1, 2, 7, 8, 9, and 10. It links to the design doc for the system map and the cost model. Its PR-# ids continue the global sequence. It never restates a decision. It cites the D-# id.
+A focused roadmap covers one phase or one area, for example combat or the lesson system. It uses the same sections 1, 2, 6, 8, 9, and 10. It links to the design doc for the system map and the cost model. Its PR-# ids continue the global sequence. It never restates a decision. It cites the D-# id.
 
 Each PR entry lists:
 
@@ -55,3 +55,4 @@ Each PR entry lists:
 - its exit tests.
 - its review focus.
 - the questions it needs answered before it starts.
+- the area roadmap file that it cites (D-144).

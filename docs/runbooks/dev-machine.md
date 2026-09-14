@@ -1,13 +1,13 @@
 # Runbook: the development machine
 
-Status: procedure, written 2026-09-12 for the owner's Mac, revised the same day for D-99. Written in ASD-STE100.
+Status: procedure, written 2026-09-12 for the owner's Mac, revised the same day for D-99, and on 2026-09-14 for the new repository name (D-410). Written in ASD-STE100.
 
 Facts checked on 2026-09-12:
 
 - The machine is arm64 on macOS 26.5.
 - The .NET 10 SDK is present: `dotnet --version` gives 10.0.400.
 - Godot 4.7.2 .NET is present at `/Applications/Godot_mono.app`, because what-you-carry uses it. The name `Godot` is not on the command path.
-- `gh` has a login as the owner, and `git` has the `origin` remote for `nkramber/terminal-rpg`.
+- `gh` has a login as the owner, and `git` has the `origin` remote for `nkramber/the-thing-below`, checked 2026-09-14 (D-410).
 - Python 3.9.6 is present. The interim STE checker needs it until PR-2 (D-10, D-101).
 - The repository on GitHub is public (D-4, D-54).
 
@@ -19,7 +19,7 @@ Facts checked on 2026-09-12:
 
 ## Prepare a checkout
 
-1. Clone the repository: `git clone git@github.com:nkramber/terminal-rpg.git`.
+1. Clone the repository: `git clone git@github.com:nkramber/the-thing-below.git`.
 2. After PR-1 merges, run `make hooks` once. The pre-commit hook then refuses a commit on `main` (D-8).
 3. Run `make verify` before every PR. Until PR-1, run the interim STE check from `CLAUDE.md` by hand.
 
@@ -27,7 +27,7 @@ Facts checked on 2026-09-12:
 
 1. Put the Deck in desktop mode and enable SSH, or copy the Linux export by USB.
 2. Copy the Linux export of the Game project to the Deck. Run it from a shell until the Steam build exists (D-85, D-92).
-3. Record the readability and the frame time in the M-# table of the roadmap.
+3. Record the readability and the frame time under M-6 in `docs/design.md` (D-161).
 
 ## Owner actions on GitHub
 

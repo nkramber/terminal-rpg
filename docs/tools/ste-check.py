@@ -2,7 +2,8 @@
 """Check Markdown files against the ASD-STE100 rules that a script can test.
 
 The checker applies these rules (D-10). It is the interim checker until PR-2
-ports it to Rust, so a rule change here needs the same change there.
+replaces it with a new C# checker (D-101, D-277), so a rule change here needs
+the same change there.
 - 3.2/3.4: no modal verbs and no perfect tenses ("should", "has been").
 - 3.5: no "-ing" verb form at the start of a sentence, after a helper word,
   or after a preposition.

@@ -1,6 +1,6 @@
 # terminal-rpg: Design and Roadmap
 
-Status: **design document v2, pre-production.** This file supersedes `docs/archive/design-v1-terminal-2026-09-12.md`, the terminal plan. Its source is the decision register `docs/decisions.md`, entries D-1 onward. The owner recorded every decision on 2026-09-12: D-1 to D-25 in the repository interview, D-26 to D-65 in the roadmap interview. D-66 to D-98 came in the pivot interviews, and D-99 to D-122 in the engine interview. D-123 onward came in the world-building interview, which D-142 widened to a full roadmap before PR-1.
+Status: **design document v2, pre-production.** This file supersedes `docs/archive/design-v1-terminal-2026-09-12.md`, the terminal plan. Its source is the decision register `docs/decisions.md`, entries D-1 onward. The owner recorded D-1 to D-25 in the repository interview and D-26 to D-65 in the roadmap interview, both on 2026-09-12. D-66 to D-98 came in the pivot interviews, and D-99 to D-122 in the engine interview. D-123 to D-397 came in the world-building interview, which D-142 widened to a full roadmap, and D-398 onward in later sessions.
 
 Nothing in this file is code. Each plan item ships as one pull request.
 
@@ -20,9 +20,11 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-13 PR #2: the plan through the systems block goes to review as PR #2 (D-398). A docs PR that adds a decision takes the review of the other provider (D-401). The rename, the move, and one docs PR each for audio, release, and the roadmaps follow the merge (D-399, D-400).
 
+2026-09-14 sample and rename: PR #2 merged, and PR #3 saved a sample of the cast sprites (D-402 to D-404). PR #3 also removed the 16 by 16 test sprites (D-405 to D-407). A name search found no conflict that stops the name, and the GitHub repository took the name the-thing-below (D-408 to D-410). An audit of every document comes before the rename PR and the move (D-411, F-30).
+
 External facts, verified 2026-09-12:
 
-- The GitHub repository `nkramber/terminal-rpg` is public. Source: `gh repo view`, run 2026-09-12.
+- The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
 - Branch protection with required status checks is free on a public repository. Source: docs.github.com, "About protected branches", read 2026-09-12.
 - Godot 4.7.2 is the current release for both editions, dated 2026-08-18, and the .NET LTS pin is .NET 10. Source: the what-you-carry design header, verified there on 2026-09-07. PR-1 verifies both again on the Godot download page.
 - The development machine has .NET 10.0.400 and Godot 4.7.2 .NET at `/Applications/Godot_mono.app`. Source: `dotnet --version` and the what-you-carry runbook, 2026-09-12.
@@ -84,17 +86,22 @@ From the roadmap interview of 2026-09-12:
 | String table | Core | JSON files | text by id | Medium |
 | Run record, replay, and save | Core | state, intents | record file, save file | Total. The crash report and the save (D-62) |
 | Tile map, movement, and sight | Core | layout content, intents | party position, sight | High. Patrols and ambushes (D-37) |
+| Day clock | Core | ticks | time of day | High. Light and patrols follow it, and the snapshot holds it (D-190, D-193) |
 | Battle and timeline | Core | party, enemies, abilities | turn order, damage, statuses | Total. The design risk (D-29, D-35) |
 | Evaluator and profiles | Core | battle state, enemy profile | enemy actions | High. The largest single system (D-65) |
 | Lessons, aptitudes, and levels | Core | lesson content, experience | character state | High. The build decision (D-34, D-272, D-274) |
 | Gear and items | Core | item content, inventory | equipment state | Medium (D-44, D-45) |
 | Story flags and quests | Core | scene and decision content, choices | flags, hub state | High. Branches multiply (D-40, D-59, D-329) |
 | Hub services and the region map | Core | hub content, route content, gold | party, saves, position | Medium (D-59, D-113) |
+| Debug assembly | Debug assembly | debug intents | Core state, through the seam of D-260 | High. A release build never loads it (D-260) |
 | Map scene, battle scene, hub scene, scene runner | Game | Core state, atlas, string table | screen, intents | Medium. Cosmetic by design (D-106, D-111, D-114) |
 | Dialogue box and portraits | Game | scene content, string table | screen | Medium (D-109) |
 | CRT shader and the frame | Game | settings | screen | Medium. The Deck floor (D-105, D-228) |
+| Light, particles, and shaders | Game | effect content, normal maps, Core state | screen | Medium. The Deck test measures them (D-139, D-160, D-182, D-183) |
+| Crash file and replay viewer | Game | run record, crash file | crash file, screen | High. The crash report, and a viewer in development builds alone (D-170, D-175) |
 | Audio player | Game | WAV files | sound | Low (D-115) |
 | Atlas tool, audio synthesizer | Tools | grids, palette, parameter files | atlas PNG, WAV files | Medium. Committed artifacts with a match test (D-107) |
+| Map preview, tile edges, screenplay | Tools | map content, edge rules, scene content | preview PNG, screenplay text | Low. The owner approves maps and scenes from them (D-165, D-173, D-204) |
 | STE checker, det-lint, review gate, night gate | Tools | source, docs, records | pass or fail | Gate |
 | Headless runner and bots | Tools | policies, seeds | run records | High. The night gate (D-64) |
 | Export and release | CI | tag | three builds | Low (D-53, D-85) |
@@ -124,14 +131,14 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | # | Finding | Date | Status |
 |---|---|---|---|
 | F-1 | The harness default adds a co-author trailer to commits, and the reminder repeats in every session. D-22 forbids it | 2026-09-12 | ✅ doc. `.claude/settings.json` sets empty strings. The rule sits at the top of `CLAUDE.md` |
-| F-2 | The what-you-carry review gate and STE checker are C# tools, and D-1 chose Rust. Neither tool runs here | 2026-09-12 | 🔧 D-10 and D-15. PR-2 and PR-3 write both tools as new code (D-277). The Python script is the interim checker |
-| F-3 | Rust is absent from the development machine | 2026-09-12 | ❓ OQ-2. Owner action before PR-1 |
+| F-2 | The what-you-carry review gate and STE checker are C# tools, and D-1 chose Rust. Neither tool runs here | 2026-09-12 | 🔧 D-10 and D-15. D-99 replaced Rust with C#, and PR-2 and PR-3 write both tools as new code (D-101, D-277). The Python script is the interim checker |
+| F-3 | Rust is absent from the development machine | 2026-09-12 | ✅ doc. D-99 removed Rust, and OQ-2 closed with no action |
 | F-4 | The repository had no commit, so no branch and no PR could exist | 2026-09-12 | ✅ D-25. The owner made the root commit `6b899dd` with an empty `CLAUDE.md` |
 | F-5 | The Python checker applies the 20-word limit to every numbered item, and the C# tool applied it under a Sequence or Procedure heading alone | 2026-09-12 | ⚠ Binds PR-2. The new checker picks one rule, and the skill text follows it (D-277) |
 | F-6 | D-39 took seeded dungeon variation on a replay premise, and D-46 removed the premise | 2026-09-12 | ✅ D-47. No variation. L-13 |
 | F-7 | D-36 leaves a fallen character down until a hub, and a three-character party (D-31) then fights with two. No decision balances the short-handed party | 2026-09-12 | ⚠ D-58 gives a reserve and a swap at save points. Binds PR-16 and M-4 |
 | F-8 | D-42 empties a caster's MP across a dungeon, and no decision gives a job a no-MP action | 2026-09-12 | ⚠ Binds PR-9 and PR-12. D-359 gives every character a basic attack with no MP cost |
-| F-9 | D-48 sets the floor at 120 by 40, and a default macOS Terminal window is 80 by 24 | 2026-09-12 | ⚠ Binds PR-7: the size message names the floor and how to resize |
+| F-9 | D-48 sets the floor at 120 by 40, and a default macOS Terminal window is 80 by 24 | 2026-09-12 | ✅ doc. D-80 superseded D-48, D-103 superseded D-80, D-228 superseded D-103, and D-98 ended the terminal, so PR-7 has no size message |
 | F-10 | D-62 puts the run record in the save, and a record grows without bound over 20 to 40 hours (D-30) | 2026-09-12 | ⚠ Binds PR-6: the record format needs a compaction rule, a snapshot plus the inputs since it |
 | F-11 | The interim checker read an HTML comment as prose. A fixture comment with a semicolon, a modal, a passive, and 30 words raised four findings. The automated pass of PR #1 found it | 2026-09-12 | ✅ doc. The script removes a one-line comment. ⚠ Binds PR-2: the new checker carries the rule (D-277) |
 | F-12 | The session wrote in `CLAUDE.md`, the PR template, the skill, and OQ-1 that gitar was absent, on no evidence. The pass ran on PR #1 within a minute | 2026-09-12 | ✅ doc. D-66. Every claim about a tool needs a check |
@@ -152,6 +159,7 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-27 | The critic found gaps in the records. 24 earlier rows lacked their revision notes, several lines named superseded values, and D-193 disagreed with D-202 on ambient effects. Four choices had no owner: the first turn from behind, the place of systems, audio, and release in the order, effect timings in frames, and D-171 against the rule of no conditional compilation in Core | 2026-09-13 | ✅ doc for the notes and the stale text. D-260, D-262, D-265, and D-266 settle the four choices |
 | F-28 | The second critic pass of 2026-09-13 read the plan after the job system change and found 14 defects. A player choice could remove a cast member (C-1), the PR-12 gate needed the tasks of PR-19 (C-2), PR-42 came before its places (C-3), two notes overstated the aptitude count (C-4), and the law split between a license and a stamp (C-5). Stale text and notes stayed (C-6), and session readings had no owner (C-7). No PR drew the lead or wrote the tasks (C-8), a reserve swap gave fresh MP (C-9), and the watcher could stamp rites (C-10). OQ-41 gave the wrong cost of the death (C-11), three cases had no rule (C-12), words clashed (C-13), and the distance rule covers FFT alone (C-14) | 2026-09-13 | ✅ doc for C-2, C-4, C-6, C-8, C-11, and C-13. The session rejected one claim of C-6: D-282 refines D-268 and D-274 and does not revise them. D-301 to D-304 settle C-1, C-3, C-5, and the reading of D-274 in C-7. D-305 and D-306 settle the other two readings of C-7, D-307 settles C-14, and D-308 settles C-10. D-309 and D-351 settle OQ-48 and OQ-49 of C-12. D-356 settles C-9: a swap at a save point can bring fresh MP, and the balance must hold with it. D-363 and D-375 settle OQ-50 and OQ-51, the rest of C-12 |
 | F-29 | PR-23 to PR-26 held four ids for dungeons two to four, which are three dungeons. The count came unchanged from v1, and no text said what the fourth id held | 2026-09-13 | ✅ doc. The second visit to the hanging cells (D-327) makes four dungeon builds after the first, and each id names one in the order of play (D-313) |
+| F-30 | Before the rename, an audit of every document found stale text in the design, the registers, the world files, the skills, the agent files, and the runbooks. Section 8 still put PR #2 next and a font pick before PR-7. Three rules read the override set as "no code". The design-doc skill swapped two sections, and nine resolved questions lacked the later decisions that changed them | 2026-09-14 | ✅ doc. D-411. One docs PR fixes each item before the rename PR |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -162,7 +170,7 @@ The tenets are the constitution. When a tenet conflicts with speed or convenienc
 - **T-1. Readable, simple, not wasteful.** Explicit over implicit. A fresh model must understand a function from the function and its helper signatures. Helpers go one level deep. Two concrete cases before any abstraction. No clever one-liners. Tune only on measurement.
 - **T-2. Zero silent failures.** No swallowed error. An absent value is an error, never a zero. Every error carries its context. Assertions stay on in shipped builds.
 - **T-3. Tests cover everything.** No merge without tests. A bug fix ships with a regression test that fails on the old code.
-- **T-4. Cross-provider review before merge.** The provider that wrote the code does not review it. The review file records the findings (D-17).
+- **T-4. Cross-provider review before merge.** The provider that wrote the code does not review it. The review file records the findings (D-17). A PR in the override set that changes no decision row merges without a review when the `review-override` label is on (D-16, D-71, D-239, D-401).
 - **T-5. Document everything.** Continuity is the first duty. Each session adds its handoff entry. The other documents update when intent, a decision, or a plan changes.
 - **T-6. No attribution.** No code, game text, commit, PR description, or GitHub comment names an agent, harness, or model as the source of work (D-22). Two places are exempt: the author field in the session handoff, and the review files.
 - **T-7. Deterministic simulation.** Every run replays from a seed and an input record. The core uses integer math, seeded random streams, and no clock. A replay gives the same state hash on every platform (D-6).
@@ -210,7 +218,7 @@ Add `Directory.Build.props` with nullable on and warnings as errors. Add the Mak
 
 Add the CI workflow that builds, tests, and checks the format on hosted Linux, Windows, and macOS (D-2, D-117). Add the `smoke` workflow that installs the pinned Godot binary and runs the headless smoke session on each platform. The session boots, starts a run, and quits with no log errors. Add the `ste-check` workflow on the interim Python script (D-10).
 
-Add a test that asserts `CLAUDE.md` and `AGENTS.md` are identical (D-20) and a test that asserts the Core reference list (G-1). The Phase 1 roadmap proposes three OFL pixel fonts with samples (D-122). No game code.
+Add a test that asserts `CLAUDE.md` and `AGENTS.md` are identical (D-20) and a test that asserts the Core reference list (G-1). No game code.
 Gate: `make verify` passes on this machine, and the three CI legs, the smoke job, and `ste-check` pass on the PR.
 > *In plain English:* this makes the empty project with its four parts and the checks that every future change must pass. It adds nothing that plays. It is safe because it changes no behavior.
 
@@ -239,14 +247,16 @@ Gate: a content file with an absent field fails the load test with the field nam
 **PR-6: Simulation loop, intent record, replay, and save.**
 Implement the fixed-rate loop, the intent record for keyboard, gamepad, and mouse (D-84), and the run record. The record header holds the format version, the simulation version, the content hash, the seed, and the initial state (G-5). Implement the recorder, the replay, and the compaction rule: a snapshot plus the intents since it (F-10). A load reads the snapshot of the save alone, so a patch never breaks a save (D-259).
 
-Implement the save file as a record in the platform config directory: one slot, one autosave, and a one-use resume file (D-62, D-258). Property tests over one thousand seeds assert that a replay reproduces the end-state hash and that a version mismatch produces a contextual report.
+Implement the save file as a record in the platform config directory: one slot, one autosave, and a one-use resume file (D-62, D-258). A snapshot stores content ids and state, never copies of content, and each snapshot format has a version and a migration (D-163, D-166). A save writes to a temporary file with a checksum, then replaces the old save in one step (D-178). A crash writes a crash file beside the save, and every log line is one JSON object (D-170, D-179).
+
+Property tests over one thousand seeds assert that a replay reproduces the end-state hash and that a version mismatch produces a contextual report.
 Gate: the replay of a recorded run gives the same hash on all three platforms, and a save reloads to the same hash.
 > *In plain English:* the game writes down its start state and every input. That record then plays any run again, so every bug becomes repeatable, and the save file is that record.
 
 **PR-34: Atlas tool, palette, and the grid format.**
-Port `docs/tools/make-atlas.py` into Tools as the `atlas` command for the 32 by 32 grids (D-107, D-119, D-406). Define the grid schema (D-108, D-109). A sprite or a tile is a 32 by 32 grid, and a portrait is a 64 by 64 grid (D-228, D-234). The cast grids come into `content/sprites/` from the approved sample in `docs/samples/` (D-233, D-402, D-405). A sprite has a frame list.
+Port `docs/tools/make-atlas.py` into Tools as the `atlas` command for the 32 by 32 grids (D-107, D-119, D-406). Define the grid schema (D-108, D-109). A tile or a character sprite is a 32 by 32 grid, and a portrait is a 64 by 64 grid (D-228, D-234). Enemy grids are 32 by 32, 64 by 64, or 96 by 96 and larger (D-236). The cast grids come into `content/sprites/` from the approved sample in `docs/samples/` (D-233, D-402, D-405). A sprite has a frame list.
 
-The palette is the 64-color file (D-121, D-181). The tool also builds a normal map for each grid, with optional override grids (D-183, D-184). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
+The palette grows from 48 to 64 colors, with a swatch sheet for the owner's approval (D-181, D-185, D-238). The tool also builds a normal map for each grid, with optional override grids (D-183, D-184). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
 
 Gate: the tool builds `content/sprites/atlas.png` from the five cast grids, and the pixel test of F-19 passes. A grid with an unknown key fails with the file, the line, and the column. A palette with a repeated key fails with the key.
 > *In plain English:* every picture in the game is a text file of letters, one per pixel. A tool turns those letters into the image the engine draws, and a test proves the image matches the letters.
@@ -255,7 +265,7 @@ Gate: the tool builds `content/sprites/atlas.png` from the five cast grids, and 
 
 **M-2: CI wall time per PR.** Record the wall time of each CI job per platform for the first ten PRs.
 
-### Phase 2: First playable (gate: the owner plays one hub and one dungeon with lessons and a shop, on the desktop and on the Deck, D-51, D-92, D-268, D-362)
+### Phase 2: First playable (gate: the owner plays the village, one hub, and one dungeon with lessons and a shop, on the desktop and on the Deck, D-51, D-92, D-268, D-362, D-369)
 
 **PR-7: Tile map, movement, sight, and the map scene.**
 Define the layout content format: a grid of tile ids, doors, pickable locks, traps, chests, save points, spawn points, and markers for secrets (D-39, D-41, D-386). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core.
@@ -284,7 +294,7 @@ Gate: property tests over one thousand seeds assert that the timeline never stal
 > *In plain English:* this is the fight itself, with the order of turns visible and shaped by speed. Nothing draws it yet.
 
 **PR-10: Battle scene.**
-Draw the side view with the pixel font the owner picked (D-104, D-111, D-122). Enemies sit on the left and the party on the right, each side in a front row and a back row (D-377). The timeline strip runs across the top, and the command menu and the status sit at the bottom. The attack pose plays on an action, and a color flash on a hit (D-96, D-108). Every message comes from the string table in the game voice (G-7, G-20). A backdrop per place.
+Draw the side view with Terminus TTF, the body font that the owner picked (D-104, D-111, D-122, D-263). Enemies sit on the left and the party on the right, each side in a front row and a back row (D-377). The timeline strip runs across the top, and the command menu and the status sit at the bottom. The attack pose plays on an action, and a color flash on a hit (D-96, D-108). Every message comes from the string table in the game voice (G-7, G-20). A backdrop per place.
 
 Gate: a screen test renders a fixture battle, and the owner reads a fight from the screen alone.
 > *In plain English:* the fight appears on screen: who acts next, who is low, what you can do. Every line reads in the voice of the game.
@@ -310,7 +320,8 @@ Gate: a character equips and removes gear in each slot, and the screen shows eac
 
 **PR-14: Hub map, NPCs, and services.**
 Implement the hub as a walkable map with NPC sprites (D-112). The services are buildings and NPCs: rest, save, party swap, and the shop with gold (D-59, D-60, D-62, D-268). Define the hub content format with the services each hub offers (D-28). Draw the service screens.
-Gate: a fixture party of four walks the hub, rests, buys, swaps the reserve, and saves, and the save reloads to the same hash (D-362). The lead moves to the reserve, and the lead still walks the map with the camera on it (D-292, D-306).
+
+Gate: a fixture party of four walks the hub, rests, buys, swaps the reserve and a lesson, and saves (D-356, D-362). The save reloads to the same hash. The lead moves to the reserve, and the lead still walks the map with the camera on it (D-292, D-306).
 > *In plain English:* the hub is a place you walk through, where the party recovers, trades, and reshapes itself before the next dungeon.
 
 **PR-36: Scene runner, dialogue box, and portraits.**
@@ -336,7 +347,7 @@ Gate: a closed route refuses the move and the screen shows why, and a replay rep
 > *In plain English:* between places the party travels on a map of the region, along routes the story opens and closes.
 
 **PR-37: CRT shader and the toggle.**
-Implement the full CRT as a Godot screen shader: curvature, bleed, flicker, on by default with a toggle in settings (D-105, D-120).
+Implement the full CRT as a Godot screen shader: curvature, bleed, flicker, and faint scanlines, on by default with a toggle in settings (D-105, D-120, D-240).
 Gate: the screen-test job of PR-41 captures the toggle on and off, and the two frames differ.
 > *In plain English:* the whole screen looks like an old monitor, and one setting turns it off.
 
@@ -347,7 +358,8 @@ Gate: the tool reproduces every committed WAV file, and the battle scene plays a
 
 **PR-17: The village, the first hub, and the first dungeon.**
 Author the village and the land near it, the mining town, and the hanging cells as content (D-28, D-39, D-110, D-313, D-369, D-370). That is the tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, the sprite set of Marrek, and a placeholder scene (D-292). Marrek, Bergit, and Dagvar and the lessons of the first playable have their text in the voice (G-20, D-362).
-Gate: the owner plays from the hub through the dungeon and back on the desktop and on the Deck, and signs off on feel (D-52, D-92). The M-4 numbers land inside the band the sign-off sets, and M-6 records the Deck.
+
+Gate: the owner plays from the village until Dagvar joins in the hanging cells, on the desktop and on the Deck (D-362). The owner signs off on feel (D-52, D-92). The M-4 numbers land inside the band the sign-off sets, and M-6 records the Deck.
 > *In plain English:* the first real place to play. Everything before this was machinery.
 
 **M-3: Night run wall time.** Record the night duration and the crash and softlock counts for seven nights.
@@ -404,7 +416,7 @@ Gate: a fixture puzzle opens a door, and a hidden room stays hidden until found.
 
 **PR-39: Deck verification pass.** Walk the Steam Deck verification checklist: gamepad glyphs, default bindings, the 1x frame (D-228), text size, and suspend and resume (D-85, D-92).
 
-**PR-40: Steam integration.** Steamworks initialization, and Steam Cloud for the save directory with the newest-wins prompt (D-85, D-93). The store page of the full game in the "Coming Soon" state, and the prologue as its demo app (D-143). Needs the Steam Direct fee for the full game. PR-40 verifies whether the demo needs a fee of its own.
+**PR-40: Steam integration.** Steamworks initialization, and Steam Cloud for the save directory with the newest-wins prompt (D-85, D-93). The store page of the full game in the "Coming Soon" state, and the prologue as its demo app (D-143). Needs the Steam Direct fee for the full game. PR-40 verifies whether the demo needs a fee of its own. Before the store page goes public, PR-40 checks the EU and WIPO trademark registers for the name (D-215, D-408).
 
 > *In plain English for Phase 5:* the prologue becomes something a person downloads and runs. Then it becomes a free demo they find on Steam and play on the Deck.
 
@@ -415,20 +427,20 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. PR #2: the plan through the systems block, with the gitar pass and the review of the other provider (D-398, D-401). Then the rename to the-thing-below and the move to the external SSD (D-216, D-400). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
+2. PR #2 and PR #3 merged on 2026-09-14 (D-398, D-402). The GitHub repository took its new name (D-410). Then a docs audit PR, the rename PR, and the move to the external SSD (D-400, D-411). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.
 6. M-1, M-2.
 7. **← GATE 1 (foundation).** The identity job, `dotnet test`, the smoke job, and `ste-check` are green on three platforms.
-8. Owner: pick the font (D-122).
+8. The fonts are set: Terminus TTF and Terminus TTF Bold (D-263, D-264).
 9. PR-7, PR-41, PR-8, PR-9, PR-10.
 10. PR-11, PR-12, PR-13, PR-14, PR-36.
 11. PR-15. One night runs, then the `night-gate` job joins the PR gate.
 12. PR-16, PR-35, PR-37, PR-38.
 13. PR-17.
 14. M-3, M-4, M-6.
-15. **← GATE 2 (first playable).** The owner plays one hub and one dungeon on the desktop and on the Deck and signs off on feel.
+15. **← GATE 2 (first playable).** The owner plays the village, one hub, and one dungeon on both machines and signs off on feel (D-362).
 16. PR-18, PR-19, PR-20, PR-21.
 17. **← GATE 3 (story systems).** The owner plays a branch and a hub that changes with an earlier choice.
 18. PR-23 to PR-26, PR-27, PR-42.

@@ -5,7 +5,7 @@ description: The voice of every string the player reads: dialogue, lore, item te
 
 # Game text style skill
 
-This skill holds the voice of the game (D-11, D-27, D-63). It binds every string the player reads. It does not bind documents, which follow `ste-writing`. The owner approves this skill under OQ-15, and every text batch after it (D-57).
+This skill holds the voice of the game (D-11, D-27, D-63). It binds every string the player reads. It does not bind documents, which follow `ste-writing`. The owner approved this skill (D-70), and approves every text batch after it (D-57).
 
 ## The voice in one line
 
