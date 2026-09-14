@@ -20,11 +20,11 @@ Session: cross-provider review of PR #10 at effective head `9355d62`.
 
 - No code exists. `main` is `4f37c99` (PR #9).
 - PR #10 is open on `docs/pr-10-roadmaps`. Its effective head is `9355d62`.
-- The interim STE check passes with 0 findings. The review record is not pushed yet.
+- The interim STE check passes with 0 findings. The review record and handoff are pushed in `95fd404`.
 
 ### In flight
 
-PR #10 needs the D-488 revision note, a new review commit, and a repeat review. The owner merges after the verdict covers the new effective head.
+PR #10 needs the D-488 revision note and a repeat review. The owner merges after the verdict covers the new effective head.
 
 ### Traps and gotchas
 
