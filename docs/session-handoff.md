@@ -20,7 +20,7 @@ Session: the rename PR, steps 4 to 7 of `docs/runbooks/rename-and-move.md`, on b
   - `docs/runbooks/rename-and-move.md`: the status, and steps 4 to 6 marked done.
 - The runbook keeps the old names in its table of names and in step 1, because those lines record the change.
 - OQ-7 already names D-215, D-217, and D-410, so the questions register needs no note. No owner question came up for this PR (D-68), and the PR changes no decision row.
-- The handoff held ten entries, so Session 5 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+- The handoff held eleven entries before this one, because Session 14 added its entry and moved none. Sessions 5 and 4 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
 
 ### State of the build
 
