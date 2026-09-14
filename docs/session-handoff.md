@@ -2,6 +2,52 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 19: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the audit of every document before a context reset, after PR #7 merged, on branch `docs/pr-8-docs-current`.
+
+### What this session did, and why
+
+- Session 18 (Codex) reviewed PR #7 at `138e5cf` with no finding and the verdict `Ready for owner merge`. The owner merged PR #7 as `cf2b197`.
+- The owner asked: "Ensure ALL docs are up to date in preparation for context reset."
+- A search of the live documents for the old clock, the old audio rules, and the state of PR #7 found two stale texts:
+  - `CLAUDE.md` and `AGENTS.md` named PR #2 as the one exception to G-8, but D-437 made PR #7 a second exception.
+  - Step 2 of section 8 in `docs/design.md` did not show PR #6 and PR #7 as merged.
+- Two owner items lived only in the conversation, and a reset would lose them. The session asked both:
+  - The reading of D-442 on the wrong things. The owner chose placement by the story, at any time of day (D-446). D-442, D-193, and the effect of D-414 gained notes.
+  - The levers for an earlier playable build. The owner filed them as OQ-56 for the roadmaps PR.
+- The skills, the agents, the runbooks, the README, the PR template, and the world files hold no stale text. There, "clock" means the wall clock, and "phase" means a roadmap phase or a boss phase.
+- `docs/design.md` gained a dated line for this pass.
+- The handoff held eleven entries before this one, because Session 18 added its entry and moved none. Sessions 9 and 8 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `cf2b197` (PR #7).
+- PR #8 is open on `docs/pr-8-docs-current`. The remote head is the commit that holds this entry.
+- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
+
+### In flight
+
+PR #8 answers the gitar pass. It adds D-446, so it takes a Codex review, and no `review-override` label applies (D-401). The owner merges. Then the release block docs PR starts (D-399).
+
+### Traps and gotchas
+
+- The push line of `docs/reviews/pr-7.md` keeps the placeholder `<review metadata sha>`. The review commit is `a0cf252`. The record belongs to the reviewer, so this session left it as it is.
+- The wrong things have no time rule now (D-446). Outside the dated records and the superseded rows, a text that says they walk after dusk or at night is stale.
+- OQ-56 blocks only the rebuild of section 8 in the roadmaps PR. The release block docs PR comes first, unless the owner answers OQ-56 sooner.
+- Gitar runs one pass by itself on a new PR. After a later push, post `Gitar review`. When a new dashboard appears with no `Gitar` check run on the head, post the second request within a minute.
+- In the audio block, the owner often picked the fullest option, then cut scope for cost. Show the running count of tracks, light setups, or tests in each batch.
+- The next ids are D-447, OQ-57, F-32, L-16, G-26, PR-43, M-7, and Session 20.
+
+### Open questions that block progress
+
+None for PR #8. OQ-3 waits for PR-3. OQ-56 waits for the roadmaps PR.
+
+### Next concrete action
+
+This session answers the gitar pass on PR #8. Then a Codex session reviews PR #8 under the `pr-review` skill and writes `docs/reviews/pr-8.md` (D-401). The owner merges. Then a session starts the release block as its own docs PR (D-262, D-399). It reads D-53, D-85, D-93, D-143, and the Phase 5 entries of `docs/design.md`, then asks the owner the release questions in batches.
+
 ## Session 18: 2026-09-14, Codex
 
 Author: Codex
@@ -415,85 +461,3 @@ None for PR #4. OQ-3 waits for PR-3.
 ### Next concrete action
 
 This session answers the gitar pass on PR #4. Then a Codex session reviews PR #4 under the `pr-review` skill and writes `docs/reviews/pr-4.md` (D-401). The owner merges. Then a session runs step 4 onward of `docs/runbooks/rename-and-move.md`.
-
-## Session 9: 2026-09-14, Codex
-
-Author: Codex
-Session: cross-provider review of PR #3 at effective head `f684ed5`.
-
-### What this session did, and why
-
-- Verified the PR target, base, merge base, branch, effective head, changed paths, and all three substantive commits.
-- Confirmed the provider gate. The handoff identifies Claude Code as the author, and Codex is the reviewer.
-- Read the complete diff, the design roadmap, the decision and question registers, the cast file, the project guidance, the atlas script, the sample readme, the five grids, and both review sheets.
-- Confirmed that the sample grids have 32 rows of 32 characters, all keys exist in the 48-color palette, and the visual sheets match the stated sample.
-- Confirmed that the deleted 16 by 16 files have no broken current consumer. The retained atlas script fails with the documented contextual error until PR-34 ports it.
-- Wrote `docs/reviews/pr-3.md` with the verdict `Ready for owner merge`.
-
-### State of the build
-
-- No code exists. `main` is `7375310` (PR #2).
-- The effective head is `f684ed5`. The review commit and this handoff entry are metadata commits and do not change that head.
-- The interim STE check passes with 0 findings. `git diff --check origin/main...HEAD` is clean.
-- PR #3 is open. The automated pass approved the final head with zero issues. No CI or review-gate checks exist yet.
-
-### In flight
-
-PR #3 is ready for owner merge. After merge, the next work is the rename and move in `docs/runbooks/rename-and-move.md` (D-400).
-
-### Traps and gotchas
-
-- Skip `docs/samples/` during automatic exploration (D-403), except when the owner or the handoff points to it.
-- PR #3 is the GitHub PR number for the sprite sample. Roadmap PR-3 is the later review-gate item.
-- The interim atlas tool now fails with `no .grid file` because D-405 removed the old content. PR-34 ports the tool to 32 by 32 grids.
-- Automatic passes are paused for the period. The owner posted `Gitar review` after each push.
-
-### Open questions that block progress
-
-OQ-3 remains open for branch protection after PR-3 merges. It does not block the owner merge of this documentation PR.
-
-### Next concrete action
-
-Commit and push this review record and handoff. Then the owner can merge PR #3. The next session runs `docs/runbooks/rename-and-move.md` after the merge.
-
-## Session 8: 2026-09-14, Claude Code
-
-Author: Claude Code
-Session: draft 32 by 32 cast sprites for owner review, then a small docs PR that saves the approved look as a sample and removes the 16 by 16 test sprites, on branch `docs/pr-3-sprite-sample`.
-
-### What this session did, and why
-
-- While PR #2 waited for its repeat review, the owner asked for new sprite sheets to review. The session drew front sprites of Marrek, Bergit, Dagvar, Ottild, and Elio at 32 by 32 in the test style (D-201, D-233, D-237, D-289), on the 48-color palette, as material maps that a scratchpad script shaded and rendered. A second draft fixed banded faces, the pick of Marrek, and the cloak of Ottild.
-- The owner said that the look works and asked to save it as a sample in a small PR (D-402). The owner chose `docs/samples/`, with a rule that sessions skip the folder during automatic exploration (D-403), and the sheets and grids without the script (D-404).
-- Added `docs/samples/readme.md` and `docs/samples/2026-09-14-cast-sprites/` (two sheets and five grids), the skip rule in `CLAUDE.md` and `AGENTS.md`, revision notes on D-20 and D-233, and pointers in PR-34 and `docs/world/cast.md`.
-- PR #2 merged before this branch started, so the branch starts from `main` at `7375310`.
-- The owner asked whether the rest of `content/sprites/` was out of date. The four 16 by 16 grids and `atlas.png` were, and the palette was not: its 48 colors stay the first 48 of the palette, and the sample uses them. The owner chose to remove the grids and the atlas in PR #3 (D-405, D-407) and to keep `docs/tools/make-atlas.py` as a reference with an out-of-date notice (D-406). The session had recommended the removal of the tool. The change adds revision notes on D-119, D-233, and D-402, and updates PR-34, `docs/samples/readme.md`, and `docs/world/cast.md`.
-
-### State of the build
-
-- No code exists. `main` is `7375310` (PR #2).
-- Branch `docs/pr-3-sprite-sample` holds three commits above `main`: `e4a937e`, which opened PR #3, `6d8b5a7`, which splits one long sentence in `docs/samples/readme.md` that the STE check flagged, and the commit that holds this revision of the entry (D-405 to D-407).
-- The interim STE check passes with 0 findings. The interim atlas tool finds no grid to read, and it carries an out-of-date notice until PR-34 ports it (D-406).
-
-### In flight
-
-PR #3 answers the gitar pass, then takes a Codex review, because it adds decisions (D-401). Then the owner merges. After that, the plan of Session 4 stands: the rename and the move (D-400), then the audio, release, and roadmaps docs PRs (D-399).
-
-### Traps and gotchas
-
-- Skip `docs/samples/` during automatic exploration (D-403).
-- The branch name carries the GitHub number 3. Roadmap PR-3, the review gate, is a different item (D-13).
-- Two untracked concept images sat in `content/sprites/`: `party-characters-32.png` and `party-sample-sheet-concept.png`. This session did not make them, they never entered a commit, and they are not part of D-402. The owner asked to delete them. After D-405, `content/sprites/` holds `palette.json` alone.
-- The sample grids use the 48-color palette. PR-34 grows the palette to 64 (D-181, D-185), so the sample can change there.
-- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
-- A multi-line guard with `set -e` did not stop at the failed STE check in this shell, so `e4a937e` went out with one STE finding. Test the exit code of each check on its own before a commit.
-- `python3 docs/tools/make-atlas.py` now exits with code 1 and the message "no .grid file". That result is expected (D-405, D-406). Do not restore the 16 by 16 grids to make the tool pass.
-- The next ids are D-408, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 9.
-
-### Open questions that block progress
-
-None for PR #3. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-This session answers the gitar pass on PR #3. Then a Codex session reviews PR #3 under the `pr-review` skill and writes `docs/reviews/pr-3.md` (D-401). The owner merges. The next Claude Code session runs `docs/runbooks/rename-and-move.md` (D-400).

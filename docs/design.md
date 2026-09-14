@@ -28,6 +28,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-14 audio pass: the audio block set the music, the sound effects, and the audio settings (D-412 to D-435, D-438, D-439, D-443, D-444). In the same PR, the owner removed the day clock, and the story now sets the time of day of each map (D-436 to D-442, D-445). F-31 records the size of the rendered audio.
 
+2026-09-14 reset pass: a Codex review found no defect in PR #7, and the owner merged it. Before a context reset, a docs PR brings every document current. The story places the wrong things at any time of day (D-446), and OQ-56 holds the levers for an earlier playable build.
+
 External facts, each with the date of its check:
 
 - The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
@@ -442,7 +444,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. PR #2, PR #3, the docs audit PR #4, and the rename PR #5 merged on 2026-09-14 (D-398, D-402, D-411, D-217). The GitHub repository took its new name, and the checkout moved to the external SSD (D-400, D-410). The audio docs PR sets the music and the sound, and ends the day clock (D-412 to D-445). Then one docs PR each for the release block and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
+2. PR #2 to PR #7 merged on 2026-09-14 (D-398, D-400, D-402, D-411, D-217). The GitHub repository took its new name, and the checkout moved to the external SSD (D-400, D-410). PR #7 set the music and the sound, and ended the day clock (D-412 to D-445). Then one docs PR each for the release block and the roadmaps (D-399). The roadmaps PR asks OQ-56 before it rebuilds this sequence. The owner runs the Deck test of D-160 before PR-1.
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.
