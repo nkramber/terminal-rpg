@@ -47,7 +47,7 @@ The game runs on Godot 4 with C# (D-99). The simulation lives in an engine-free 
 
 The goal is a Steam release, and the Steam Deck is the readability and performance floor (D-85, D-92).
 
-A full roadmap comes before any code (D-142). The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is the village, one hub, and one dungeon, with lessons and a shop (D-51, D-268, D-362, D-369). The owner judges feel there, on the desktop and on the Deck. 
+A full roadmap comes before any code (D-142). The plan puts the foundations first, because every later system depends on them. Those are a deterministic core, a run record with replay, the content loader, the atlas tool, and the document gates. The first playable is the village, one hub, and one dungeon, with lessons and a shop (D-51, D-268, D-362, D-369). The owner judges feel there, on the desktop and on the Deck.
 
 The story systems come third, because they need the loop. Region one, two hubs and four dungeons in one arc, is the first release (D-56). It ships free, as a Steam demo of the full game (D-133, D-143). Every plotline converges at the end of the game (D-131). Five gated phases hold that order.
 
@@ -225,7 +225,7 @@ Gate: the job gives success on a fixture PR with an approved record, and failure
 > *In plain English:* this adds a check that turns red when a change has no approved review from the other provider. The owner then requires it on `main` (OQ-3).
 
 **PR-4: Random streams, fixed-point math, det-lint, and replay identity.**
-Implement the seeded streams, one per subsystem, split from the run seed (G-4). Implement the fixed-point types. Write the `det-lint` command in Tools as new code, with these rules (D-101, D-277). In Core: no float type, no clock, no OS random, no reflection, and no `Dictionary` where order reaches the state (G-2, G-3). In Game: no inline player string (G-7). 
+Implement the seeded streams, one per subsystem, split from the run seed (G-4). Implement the fixed-point types. Write the `det-lint` command in Tools as new code, with these rules (D-101, D-277). In Core: no float type, no clock, no OS random, no reflection, and no `Dictionary` where order reaches the state (G-2, G-3). In Game: no inline player string (G-7).
 Implement the state hash and the `replay-identity` job that runs a fixed seed set on three platforms and compares the hashes (G-5).
 
 Gate: this PR passes its own lint and its own identity job, and the lint fails a fixture that uses `double`.
@@ -258,7 +258,7 @@ Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the fou
 ### Phase 2: First playable (gate: the owner plays one hub and one dungeon with lessons and a shop, on the desktop and on the Deck, D-51, D-92, D-268, D-362)
 
 **PR-7: Tile map, movement, sight, and the map scene.**
-Define the layout content format: a grid of tile ids, doors, pickable locks, traps, chests, save points, spawn points, and markers for secrets (D-39, D-41, D-386). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core. 
+Define the layout content format: a grid of tile ids, doors, pickable locks, traps, chests, save points, spawn points, and markers for secrets (D-39, D-41, D-386). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core.
 Draw the map scene in Game at 1280 by 800, fit to the window (D-232), with the camera on the lead (D-106, D-228, D-292, D-306). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
 Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never scrolls past the edge of a map larger than the view, and a smaller map sits centered.
 > *In plain English:* this is the first thing you can open and move in. The dungeon is a grid of tiles, the party walks it one tile at a time, and the view follows.
@@ -280,7 +280,7 @@ Gate: property tests over one thousand seeds assert that a patrol never leaves t
 Implement the encounter state and the timeline, where each action pushes its user back by a delay (D-29, D-376). Implement actions, a basic attack for every character, damage in fixed-point, the eight elements with weakness, resist, and absorb, and the ten statuses (D-74, D-75, D-359). Implement haste, slow, and heavy actions as timeline shifts. One to three characters and up to six enemies (D-31, D-336). Down and party wipe (D-36).
 
 Implement a front row and a back row for each side, where melee reaches the front row while anyone stands in it (D-377). Implement a flee command whose chance rises with party speed, with a lost turn on a failure and no flight from a boss (D-378). A step to the other row and the use of an item each cost a delay (D-380, D-382).
-Gate: property tests over one thousand seeds assert that the timeline never stalls and that every status ends. Melee never reaches a back row while its front row stands, and no flee starts in a boss fight (D-377, D-378).
+Gate: property tests over one thousand seeds assert that the timeline never stalls. Every status but poison, blind, and silence ends with its battle, and those three remain after it (D-390). Melee never reaches a back row while its front row stands, and no flee starts in a boss fight (D-377, D-378).
 > *In plain English:* this is the fight itself, with the order of turns visible and shaped by speed. Nothing draws it yet.
 
 **PR-10: Battle scene.**
