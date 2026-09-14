@@ -22,7 +22,7 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-14 sample and rename: PR #2 merged, and PR #3 saved a sample of the cast sprites (D-402 to D-404). PR #3 also removed the 16 by 16 test sprites (D-405 to D-407). A name search found no conflict that stops the name, and the GitHub repository took the name the-thing-below (D-408 to D-410). An audit of every document comes before the rename PR and the move (D-411, F-30).
 
-External facts, verified 2026-09-12:
+External facts, each with the date of its check:
 
 - The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
 - Branch protection with required status checks is free on a public repository. Source: docs.github.com, "About protected branches", read 2026-09-12.
@@ -36,6 +36,11 @@ External facts, verified 2026-09-12:
 - Godot's own CI runs the engine under `xvfb-run` with `--rendering-driver opengl3`. Source: `.github/actions/godot-project-test/action.yml` in the Godot repository, read 2026-09-12.
 - In Movie Maker mode, faster hardware renders sooner, "but the visual output remains identical", and "the window size is clamped by your display's resolution". Source: Godot docs, "Creating movies", read 2026-09-12.
 - HDR for 2D works "when using the Forward+ and Mobile rendering methods", and "When using the Compatibility rendering method, glow uses a different implementation". Source: Godot docs, "Environment and post-processing", read 2026-09-12.
+- No Steam game carries the name "The Thing Below" (D-408). The store search API gave 0 results for "the thing below", "thing below", "the thing beneath", and "things below". The store search page for "the thing below" listed 50 titles, and none holds the phrase. Source: `https://store.steampowered.com/api/storesearch/?term=the+thing+below&l=english&cc=US`, one query per term, and `https://store.steampowered.com/search/?term=the+thing+below`, run 2026-09-14.
+- A free horror jam game on itch.io has the close title "The Thing Beneath". Its game page says "The Thing Beneath" 7 times and never "The Thing Below". Its devlog of August 2026 says "The Thing Below" once and "The Thing Beneath" 12 times. The itch.io search for "the thing below" lists no game with that exact title. Source: `https://studio-laaya.itch.io/the-thing-beneath`, `https://studio-laaya.itch.io/the-thing-beneath/devlog/1616272/the-thing-beneath-directors-cut`, and `https://itch.io/search?q=the+thing+below`, read 2026-09-14.
+- No USPTO record has the phrase in its word mark. A `match_phrase` query on the field `WM` gave 0 hits for "the thing below", "thing below", "thing beneath", "things below", and "thing from below". As a control, the same query gave 11 hits for "below deck" and 1,125 for "below". Each query was a POST of the body `{"query": {"match_phrase": {"WM": "<term>"}}, "size": 3}` to the search service behind the USPTO Trademark Search. The service has no public documentation, and the controls show that `WM` holds the word mark. Source: `https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch`, run 2026-09-14.
+- The EU and WIPO registers have no script check yet, so PR-40 checks them before the store page goes public (D-408). The EUIPO eSearch and TMview pages give a script no search results, and the WIPO Global Brand Database answers with a CAPTCHA. Source: `https://euipo.europa.eu/eSearch/`, `https://www.tmdn.org/tmview/`, and `https://branddb.wipo.int/en/`, read 2026-09-14.
+- "The Thing Below" is also the title of a horror film of 2004 by Jim Wynorski. Source: `https://en.wikipedia.org/wiki/The_Thing_Below`, read 2026-09-14.
 
 Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence-length counts.
 
