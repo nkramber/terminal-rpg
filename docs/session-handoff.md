@@ -5,7 +5,7 @@ Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of
 ## Session 4: 2026-09-13, Claude Code
 
 Author: Claude Code
-Session: the four critic questions left from Session 3, the arc block of the world-building interview (OQ-18), and then the systems block of the full plan, on branch `docs/pr-2-world-building`, with no PR yet (D-147).
+Session: the four critic questions left from Session 3, the arc block of the world-building interview (OQ-18), and then the systems block of the full plan, on branch `docs/pr-2-world-building`, posted for review as PR #2 at the end (D-398).
 
 ### What this session did, and why
 
@@ -22,27 +22,28 @@ Session: the four critic questions left from Session 3, the arc block of the wor
 - Levels and statuses: a downed character earns half experience, a soft cap per region holds the range, and a save point restores MP alone (D-387 to D-389). Poison, blind, and silence last past a battle, poison can down on the map, and a map wipe reloads even with a healthy reserve (D-390, D-392, D-393, D-397). Mend rites and cures work from the menu, and cures belong to Mend (D-391, D-394).
 - Mid-block, the owner moved the start of the game to a small village on the road below the mining town, where Marrek grew up (D-368 to D-373). Winter beasts are his first foes, and Bergit finds him while she guards the road for coin. D-346 is superseded, and D-284 and D-250 are revised in part.
 - The owner stopped the first systems batch to ask what a lesson is. The session explained it and now glosses the terms in every question.
+- On owner instruction, the session posted the plan through the systems block as PR #2 for review (D-398). The owner set what follows the merge: the rename and the move first, then the audio block, the release block, and the roadmaps as one docs PR each (D-399, D-400). A docs PR that adds or revises a decision takes a Codex review, and the `review-override` label stays for the other docs PRs (D-401). The session updated `CLAUDE.md`, `AGENTS.md`, the PR template, the `pr-review` skill, the runbook, the label description, and section 8 of the design doc to match.
 
 ### State of the build
 
 - No code exists. `main` is `9dd80da` (PR #1).
-- Branch `docs/pr-2-world-building` holds nine commits above `main`: the five of Session 2, the two of Session 3, `4e76c4f` (the arc block), and the commit that holds this revision of the entry (the systems block). The session pushed the branch at the end (D-147), and the remote head is the commit that holds this revision.
+- Branch `docs/pr-2-world-building` holds ten commits above `main`: the five of Session 2, the two of Session 3, `4e76c4f` (the arc block), `02051a2` (the systems block), and the commit that holds this revision of the entry (D-398 to D-401). The session pushed that commit and opened PR #2 from it.
 - The interim STE check passes on every non-exempt `.md` file, `docs/world/arc.md` included.
-- No PR exists, so gitar has not run. CI and the review gate do not exist yet.
+- PR #2 is open against `main`. The gitar pass runs after each push. CI and the review gate do not exist yet (PR-1, PR-3).
 
 ### In flight
 
-The full-plan docs PR (D-142). Blocks done: setting, technical, graphics, UI, places, cast, arc, and systems. Blocks left, in order (D-262): audio, then release. After the interview, the plan still needs:
+PR #2, the plan through the systems block (D-398). Blocks done: setting, technical, graphics, UI, places, cast, arc, and systems. PR #2 first answers the gitar pass, then takes a Codex review because it adds decisions (D-401), and then the owner merges. After the merge, in order (D-399, D-400):
 
-- The five phase roadmaps and the area roadmaps in `docs/roadmaps/` (D-144, D-145).
-- A PR-# id for every new system (C-10 of the first critic pass): particles, light, the day clock, transitions, crash files, the UI screens, and the lesson and aptitude screens. The village and the land near it ride in PR-17 (D-369, D-370), and the second visit to the cells is PR-24 (F-29).
-- Sections 7 and 8 of `docs/design.md` rebuilt from the roadmaps, then another design-critic pass.
-- The PR, the gitar pass, the label (D-67), and the owner merge. Then the rename and the move (D-216), the Deck test (D-160), and PR-1.
+- The rename to the-thing-below and the move to the external SSD, by `docs/runbooks/rename-and-move.md` (D-216, D-400).
+- The audio block as its own docs PR, then the release block as its own docs PR (D-262, D-399).
+- The roadmaps as their own docs PR: the five phase roadmaps and the area roadmaps (D-144, D-145), a PR-# id for every new system (C-10 of the first critic pass), sections 7 and 8 of `docs/design.md` rebuilt from them, and another design-critic pass. The village and the land near it ride in PR-17 (D-369, D-370), and the second visit to the cells is PR-24 (F-29).
+- Each of the three plan PRs adds decisions, so each takes the gitar pass and a Codex review (D-401). Then the Deck test (D-160) and PR-1.
 
 ### Traps and gotchas
 
 - The harness reminder asks for a co-author trailer. D-22 forbids it.
-- No PR exists for this branch until the plan is complete (D-147). Push at each session end, and open no draft.
+- PR #2 is open. Answer the gitar pass after each push (D-66), and do not apply the `review-override` label, because the PR adds decisions (D-401). The PR description and comments name no provider (D-22).
 - Relationships and reputation are gone (D-328, D-329), and D-40, D-242, and D-290 are revised in part. A systems option that uses standing, reputation, or a relationship value is void. OQ-42 and OQ-45 mark their void options.
 - The owner often answers with long free text that sets several beats at once. Split it into rows, confirm a typo as a reading inside the next question, and ask at once about any clash with an earlier decision, quoting both. D-318 records the reading "imprisoned", which the owner kept.
 - The banned list holds one FF7 device alone (D-307). The owner declined bans on a pumped power and on the death of a healer at the hand of the villain, so do not add them back.
@@ -54,7 +55,7 @@ The full-plan docs PR (D-142). Blocks done: setting, technical, graphics, UI, pl
 - The arc keeps open items for the content PRs: the names of the bishop, the priest, the captain, and the survivor, the place of the confrontation, the personal tasks (D-352), and one or two more set choices (D-355).
 - The STE checker flags "standing" after a preposition as an -ing form.
 - On the picks of this block, the owner chose against the recommendation or wrote a custom answer about half the time. Keep options that differ in kind, with honest cons.
-- The next ids are D-398, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 5.
+- The next ids are D-402, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 5.
 
 ### Open questions that block progress
 
@@ -62,7 +63,7 @@ No systems question remains open, and the audio and release blocks have no filed
 
 ### Next concrete action
 
-The next session reads this entry, then starts the audio block (D-262) in batches (D-24), then the release block. Audio already holds D-87, D-115, and D-223: music and sound effects rendered by our own synthesizer, and silent typed dialogue. The first audio topics: the style of the music after the move to sprites (D-98), music per place and per phase of the day (D-192), battle and boss music, sounds for the battle effects of D-186, and the mix settings of D-226. It records each answer from D-398 on. When both blocks close, it writes the phase roadmaps and the area roadmaps (D-144, D-145), rebuilds sections 7 and 8 of `docs/design.md`, and runs the design-critic agent.
+This session answers the gitar pass on PR #2 under the `pr-review` skill and records the pass in this entry. Then a Codex session reviews PR #2 under the same skill, writes `docs/reviews/pr-2.md`, and pushes it with its own handoff entry (D-17, D-401). The owner merges. The next Claude Code session runs the rename and the move by `docs/runbooks/rename-and-move.md` (D-400), then starts the audio block on a new branch as its own docs PR (D-399). Audio already holds D-87, D-115, and D-223. The first audio topics: the style of the music after the move to sprites (D-98), music per place and per phase of the day (D-192), battle and boss music, sounds for the battle effects of D-186, and the mix settings of D-226. That session records each answer from D-402 on.
 
 ## Session 3: 2026-09-13, Claude Code
 

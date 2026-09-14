@@ -18,6 +18,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-13 systems pass: the systems block settled the lessons, the battle rules, the items, the statuses, and the law in play (D-356 to D-397). The owner moved the start of the game to the village of Marrek (D-368 to D-373).
 
+2026-09-13 PR #2: the plan through the systems block goes to review as PR #2 (D-398). A docs PR that adds a decision takes the review of the other provider (D-401). The rename, the move, and one docs PR each for audio, release, and the roadmaps follow the merge (D-399, D-400).
+
 External facts, verified 2026-09-12:
 
 - The GitHub repository `nkramber/terminal-rpg` is public. Source: `gh repo view`, run 2026-09-12.
@@ -218,8 +220,8 @@ Gate: the checker passes on itself, on this file, and on the skills, and it fail
 > *In plain English:* this replaces the borrowed script with a tool in the project language. Documents are the project's memory, so the tool guards that memory.
 
 **PR-3: Review gate.**
-Write the `review-gate` command in Tools as new code, with its workflow on `pull_request_target` (D-15, D-101, D-277). The workflow runs the tool from the base branch and fetches the PR head as data. The tool applies the three rules of the `pr-review` skill and the override rules of D-16 with the eligible set of D-71 and D-239. It publishes a check run.
-Gate: the job gives success on a fixture PR with an approved record, and failure on a stale head. It gives success on a documentation PR with the label.
+Write the `review-gate` command in Tools as new code, with its workflow on `pull_request_target` (D-15, D-101, D-277). The workflow runs the tool from the base branch and fetches the PR head as data. The tool applies the three rules of the `pr-review` skill and the override rules of D-16 with the eligible set of D-71, D-239, and D-401. It publishes a check run.
+Gate: the job gives success on a fixture PR with an approved record, and failure on a stale head. It gives success on a documentation PR with the label, and failure on a PR with the label that changes a row of `docs/decisions.md` (D-401).
 > *In plain English:* this adds a check that turns red when a change has no approved review from the other provider. The owner then requires it on `main` (OQ-3).
 
 **PR-4: Random streams, fixed-point math, det-lint, and replay identity.**
@@ -413,7 +415,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. The full-plan docs PR: the world, the phase roadmaps, and the area roadmaps (D-142, D-144, D-146). Then the rename to the-thing-below, and the move to the external SSD (D-215 to D-217). The owner runs the Deck test of D-160 before PR-1.
+2. PR #2: the plan through the systems block, with the gitar pass and the review of the other provider (D-398, D-401). Then the rename to the-thing-below and the move to the external SSD (D-216, D-400). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.

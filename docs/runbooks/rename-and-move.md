@@ -2,7 +2,7 @@
 
 Status: runbook, planned. Owner: Nate. Written 2026-09-12 (D-215 to D-217). Written in ASD-STE100 (D-10).
 
-This runbook renames the repository from the working title to the tentative name, then moves the checkout to the external SSD. The owner and a session do it once, after the full-plan PR merges and before PR-1 starts (D-216).
+This runbook renames the repository from the working title to the tentative name, then moves the checkout to the external SSD. The owner and a session do it once, right after PR #2 merges, before the rest of the plan and before PR-1 (D-216, D-400).
 
 ## Names
 
@@ -15,7 +15,7 @@ This runbook renames the repository from the working title to the tentative name
 
 ## Before you start
 
-- The full-plan PR is merged, and no other PR is open.
+- PR #2 is merged, and no other PR is open (D-400).
 - `git fetch` and `git status --short --branch` show no `[ahead N]` on `main`.
 - The Mac shows the external SSD at `/Volumes/SSD-1TB`.
 - The name is tentative (D-215). Search the Steam store and the trademark registers for "The Thing Below" first. If a conflict shows, file it in `docs/questions.md` and stop.
