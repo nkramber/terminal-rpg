@@ -96,7 +96,7 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 - Trunk is `main`. Every change starts on a short branch named `<prefix>/pr-<n>-<slug>`, for example `feat/pr-3-review-gate`. The owner squash-merges (D-8).
 - Never commit on `main` (D-25). After PR-1, `make hooks` installs the pre-commit hook that refuses a commit on `main`.
 - Commit subjects use a conventional prefix: `feat`, `fix`, `docs`, `test`, `chore`.
-- One concern per PR (G-8). PR #2, the plan through the systems block, is the one exception (D-142, D-398).
+- One concern per PR (G-8). PR #2, the plan through the systems block, is an exception (D-142, D-398). PR #7, the audio block with the time of day, is the other (D-437).
 - Run `make where` before every commit and push, after PR-1. Until then, run `git status --short --branch` and `gh pr status`.
 
 ## Automated review pass

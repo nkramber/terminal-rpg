@@ -158,3 +158,8 @@ How to file a question (D-19, D-24):
     - No, the office alone, the recommendation. A stamp needs the seal and the ledger of the office. Stamps keep their price, and the watcher gives no free power (D-290).
     - Yes, at a cost in church standing. Each stamp on the road lowers standing when the church learns of it (D-242). The choice tests the watcher, and the standing rule needs its own tests.
     - Yes, for no cost. Elio has clear value to the party. Every found rite gets a free stamp, so the stamp half of the price of OQ-42 means nothing. A caster still needs a license (D-302).
+56. **OQ-56. An earlier playable build.** The owner asked when a build to play and feel comes. PR-17, the first playable, follows three docs PRs and 23 code PRs. Which lever, if any, brings a playable build sooner? Raised 2026-09-14. Blocks the rebuild of section 8 in the roadmaps PR (D-399).
+    - The release docs PR after the first playable. The roadmaps PR comes next, and PR-1 starts about 2 to 4 sessions sooner. Revises D-399 in part.
+    - PR-2 and PR-3 after PR-7. The STE checker in C# and the review gate wait, so the first walk comes about 4 to 8 sessions sooner. The checks on `main` of OQ-3 wait too.
+    - A throwaway feel prototype that never merges, like the Deck test scene of D-160. It gives the fastest feel, but it is not the real game, and the tenets keep it out of `main`.
+    - No change. The sequence of section 8 stands.
