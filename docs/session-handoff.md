@@ -21,11 +21,11 @@ Session: repeat review of PR #10 at effective head `7eb2abc`.
 
 - No code exists. `main` is `4f37c99` (PR #9).
 - PR #10 is open on `docs/pr-10-roadmaps`. Its effective head is `7eb2abc`.
-- The interim STE check passes with 0 findings. The repeat review metadata is not pushed yet.
+- The interim STE check passes with 0 findings. The repeat review metadata and handoff are pushed in `e8cc765`.
 
 ### In flight
 
-PR #10 is ready for owner merge after this review metadata and handoff are pushed. Then PR #11 starts the roadmaps on a new branch.
+PR #10 is ready for owner merge. Then PR #11 starts the roadmaps on a new branch.
 
 ### Traps and gotchas
 
@@ -39,7 +39,7 @@ None for PR #10. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR
 
 ### Next concrete action
 
-Push this repeat review record and handoff. The owner can merge PR #10. Then a fresh session starts PR #11 with `docs/roadmaps/area-core.md`.
+The owner can merge PR #10. Then a fresh session starts PR #11 with `docs/roadmaps/area-core.md`.
 
 ## Session 25: 2026-09-14, Claude Code
 
