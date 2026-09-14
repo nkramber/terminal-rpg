@@ -8,7 +8,7 @@ Date: 2026-09-14
 - Target: `main`
 - Base: `9dd80da`
 - Merge base: `9dd80da`
-- Head: `4b3d04e`
+- Head: `6586c7c`
 - Branch: `docs/pr-2-world-building`
 
 ## Provider gate
@@ -17,7 +17,7 @@ The handoff identifies the PR author as Claude Code. The active reviewer is Code
 
 ## Intended behavior and scope
 
-The PR records the plan through the systems block, the world files, the decision and question registers, and the project guidance that follows the new decisions. The review inspected the complete diff from `9dd80da` to `4b3d04e`, the later metadata tip `f748ee3`, the design roadmap, the decision effects, the questions register, the world files, the runbook, the changed skills, the PR description, and the automated pass.
+The PR records the plan through the systems block, the world files, the decision and question registers, and the project guidance that follows the new decisions. The repeat review inspected the new effective diff at `6586c7c`, the response file, the complete original scope, the decision effects, the design roadmap, the PR description, and the refreshed automated pass.
 
 The review covers document consistency, roadmap exit tests, decision revisions, provider and attribution rules, and the interim STE check. No code, content asset, or executable build exists in this PR.
 
@@ -25,7 +25,7 @@ The review covers document consistency, roadmap exit tests, decision revisions, 
 
 ### P1-1: The PR-9 exit test contradicts the persistent status rule
 
-Status: open.
+Status: fixed in `6586c7c`.
 
 File: `docs/design.md:283`.
 
@@ -43,7 +43,7 @@ Regression check: Run the interim STE check and review the PR-9 gate against D-3
 
 ### P3-1: The effective diff contains trailing whitespace
 
-Status: open.
+Status: fixed in `6586c7c`.
 
 File: `docs/design.md:50`, `docs/design.md:228`, `docs/design.md:261`.
 
@@ -68,8 +68,8 @@ Regression check: Run `git diff --check main...4b3d04e` after the correction.
 
 ## PR comments
 
-- The owner posted `Gitar review`; the automated reviewer ran on demand and reported approval with no issues. The review verified the comment sequence and found no unanswered automated comment.
-- The automated reviewer reported that automatic reviews were paused for the period. The owner used the documented on-demand comment, and the resulting pass approved the PR tip `f748ee3`.
+- The first automated pass approved the original effective head with no issue. The repeat pass approved `6586c7c` with no issue after the owner posted `Gitar review`.
+- The automated reviewer reported that automatic reviews were paused for the period. The owner used the documented on-demand comment for both passes, and no automated comment remains unanswered.
 
 ## Description edits
 
@@ -77,18 +77,24 @@ None.
 
 ## Verification
 
-- `git diff --check main...4b3d04e`: failed because it reported trailing whitespace at `docs/design.md:50`, `docs/design.md:228`, and `docs/design.md:261`.
+- `git diff --check origin/main`: passed with no output after the correction.
 - `cmp -s AGENTS.md CLAUDE.md`: passed. The files are identical.
 - `python3 docs/tools/ste-check.py $(git ls-files '*.md' | grep -v -e '^docs/reviews/' -e '^docs/session-handoff' -e '^docs/archive/')`: passed with 0 findings.
-- `gh pr view 2 --json ...`: passed. It verified base `9dd80da`, tip `f748ee3`, effective head `4b3d04e` from the PR description, no review records, and the automated approval comment.
+- `grep -n "every status ends" docs/design.md`: passed. It returned no line.
+- `rg -n "Every status but poison, blind, and silence" docs/design.md`: passed. It found the corrected PR-9 gate at line 283.
+- `gh pr view 2 --json ...`: passed. It verified base `9dd80da`, tip `6586c7c`, no formal review records, and the refreshed automated approval comment.
 - `gh pr checks 2`: no checks reported. CI and the review gate do not exist until later PRs, so no existing required check was skipped.
 - `git status --short --branch`: passed before review edits. The checkout was on `docs/pr-2-world-building` with no unrelated changes.
-- Push: `af7861b` is the head of `origin/docs/pr-2-world-building`, verified with `gh pr view`.
+- Push: pending. The repeat review record and handoff entry must be committed and pushed together.
 
 ## Open questions and accepted risks
 
 OQ-3 remains open for PR-3. No accepted risk changes the finding above.
 
+## Earlier verdicts
+
+- `Changes required` at `4b3d04e`. P1-1 and P3-1 were open.
+
 ## Verdict
 
-**Changes required.** This verdict applies to head `4b3d04e`. The PR-9 exit test conflicts with the approved persistent-status rule, and the effective diff has three trailing-whitespace errors.
+**Ready for owner merge.** This verdict applies to head `6586c7c`. The earlier findings are fixed, the focused checks pass, and the refreshed automated pass found no new issue.
