@@ -21,6 +21,11 @@ Session: the gitar pass on the answer to the review of PR #4, on branch `docs/pr
 - The check suite of gitar on `92926a6` stayed `queued`, with 0 check runs. The poll of the session waited for a check run on `92926a6`, and it failed at its time limit.
 - The owner saw the new dashboard comment first. The session at first read it as a pass on `92926a6`, then the check runs showed the old head.
 - This revision of the entry corrects the traps on the result of a pass. The PR description records the result of each pass on the tip.
+- The session pushed that revision as `4ce3138` at 16:08:16Z. It waited 5 minutes, then requested a pass at 16:13:17Z.
+- Gitar ran the pass on `92926a6`, not on `4ce3138`. The check run on `92926a6` started at 16:13:22Z and ended with `success` at 16:13:58Z.
+- The poll saw the new dashboard comment with no check run on `4ce3138`, and it reported that at once.
+- The check runs of every request fit one rule: a request runs the pass on the commit that was the PR head at the request before it.
+- This third revision of the entry records that rule in the traps.
 
 ### State of the build
 
@@ -37,8 +42,9 @@ PR #4 waits for a gitar pass on the tip that holds this entry. Then a Codex sess
 ### Traps and gotchas
 
 - Count a gitar pass only when a `Gitar` check run on the head commit starts after the request and ends. `gh api repos/{owner}/{repo}/commits/<sha>/check-runs` reads it.
-- The dashboard comment is not proof. A request 3 seconds after a push ran the pass on `cb6e96e`, and a request 41 seconds after a push ran it on `919a865`.
-- Each of those two dashboard comments said approved. A request 35 minutes after the push of `919a865` ran the pass on `919a865`. The shortest safe wait after a push is not known.
+- The dashboard comment is not proof. Requests 3 seconds, 41 seconds, and 5 minutes after a push ran the pass on the older commits `cb6e96e`, `919a865`, and `92926a6`. Each dashboard said approved.
+- A request runs the pass on the PR head at the previous request, so a wait after a push does not help. After a push, post `Gitar review` and wait for its check run.
+- Then post `Gitar review` again. That second request runs the pass on the new head.
 - A check suite of gitar in the state `queued`, with 0 check runs, means that no pass ran on that commit. `2072219`, `c73c19f`, and `92926a6` show that state.
 - Gitar can edit its dashboard comment or replace it with a new one. Read the newest gitar comment that contains "Code Review".
 - The REST API names the bot `gitar-bot[bot]`, and `gh pr view` names it `gitar-bot`. A filter on one exact login finds nothing in the other form.
