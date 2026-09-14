@@ -1,4 +1,4 @@
-# terminal-rpg: Design and Roadmap
+# The Thing Below: Design and Roadmap
 
 Status: **design document v2, pre-production.** This file supersedes `docs/archive/design-v1-terminal-2026-09-12.md`, the terminal plan. Its source is the decision register `docs/decisions.md`, entries D-1 onward. The owner recorded D-1 to D-25 in the repository interview and D-26 to D-65 in the roadmap interview, both on 2026-09-12. D-66 to D-98 came in the pivot interviews, and D-99 to D-122 in the engine interview. D-123 to D-397 came in the world-building interview, which D-142 widened to a full roadmap, and D-398 onward in later sessions.
 
@@ -21,6 +21,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 2026-09-13 PR #2: the plan through the systems block goes to review as PR #2 (D-398). A docs PR that adds a decision takes the review of the other provider (D-401). The rename, the move, and one docs PR each for audio, release, and the roadmaps follow the merge (D-399, D-400).
 
 2026-09-14 sample and rename: PR #2 merged, and PR #3 saved a sample of the cast sprites (D-402 to D-404). PR #3 also removed the 16 by 16 test sprites (D-405 to D-407). A name search found no conflict that stops the name, and the GitHub repository took the name the-thing-below (D-408 to D-410). An audit of every document comes before the rename PR and the move (D-411, F-30).
+
+2026-09-14 rename pass: PR #4 merged the audit (D-411, F-30). The rename PR puts the tentative name The Thing Below in the live documents and the names of D-217 in the commands. The dated records keep the working title. The move to the external SSD follows the merge (D-400).
 
 External facts, each with the date of its check:
 
@@ -46,7 +48,7 @@ Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence
 
 ## 1. Thesis
 
-terminal-rpg, a working title (D-102), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). Its tentative name is The Thing Below (D-215). A fixed cast (D-33, D-299) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Any character equips lessons, the rites and drills that give abilities, and each character does one kind of ability best (D-272, D-274, D-278).
+The Thing Below, a tentative name (D-215), is a dark fantasy role-playing game in 32-pixel sprites at 1280 by 800 (D-27, D-107, D-228). A fixed cast (D-33, D-299) travels between hubs of every shape, a castle town, a cave community, a boat, an airship (D-28). Between the hubs lie hand-authored dungeons with visible enemies, traps, puzzles, and secrets (D-37, D-39, D-41). Three fight at a time on a visible timeline where speed decides the order (D-29, D-31). Any character equips lessons, the rites and drills that give abilities, and each character does one kind of ability best (D-272, D-274, D-278).
 
 Combat is hard because enemies think and resources run out (D-35), and a fallen character stays down until a hub (D-36). Decisions close routes, lose allies outside the cast, and change hubs (D-40, D-301).
 
@@ -432,7 +434,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. PR #2 and PR #3 merged on 2026-09-14 (D-398, D-402). The GitHub repository took its new name (D-410). Then a docs audit PR, the rename PR, and the move to the external SSD (D-400, D-411). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
+2. PR #2, PR #3, and the docs audit PR #4 merged on 2026-09-14 (D-398, D-402, D-411). The GitHub repository took its new name (D-410). Then the rename PR and the move to the external SSD (D-400). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.

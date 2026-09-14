@@ -116,7 +116,7 @@ Source: ASD-STE100 Issue 8 (2021-04-30), Part 1, Writing rules. Issue 9 (2025-01
 
 The rules permit these as written. They are technical names (rule 1.5):
 
-- The working title: terminal-rpg (D-9). The tentative name, with capitals: The Thing Below (D-215).
+- The tentative name, with capitals: The Thing Below (D-215). The repository: the-thing-below (D-217). The dated records keep the working title terminal-rpg (D-9).
 - Tools and platforms: Godot, C#, .NET, xUnit, dotnet format, JSON, Steam, Steamworks, Steam Deck, Aseprite, Makefile, GitHub Actions, gitar, Python.
 - The two harnesses: Claude Code, Codex.
 - Project names: Core, Game, Tools, Tests, once PR-1 creates them (D-118).
@@ -203,7 +203,7 @@ python3 docs/tools/ste-check.py $(git ls-files '*.md' | grep -v -e '^docs/review
 After PR-2, the C# tool replaces it:
 
 ```
-dotnet run --project TerminalRpg.Tools/TerminalRpg.Tools.csproj -- ste-check --root .
+dotnet run --project TheThingBelow.Tools/TheThingBelow.Tools.csproj -- ste-check --root .
 ```
 
 The command prints one line per finding: the file, the line, the rule id, and what the rule saw. It exits 1 on any finding. The rules and the exemptions:
