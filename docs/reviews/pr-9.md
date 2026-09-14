@@ -53,7 +53,7 @@ None.
 - PR metadata check: the earlier `gh pr view 9` result verified target `main`, base `f4a1c6b`, branch `docs/pr-9-release-block`, head `5097e8a`, and the successful `Gitar` check at that head. A later `gh pr view` and `gh pr checks` attempt failed because the GitHub API was unavailable.
 - Build and test commands: not run because this repository has no solution, code, Makefile, or checks yet. PR-1 and later PRs create them under G-16.
 - Local `git fetch origin`: not completed because `.git/FETCH_HEAD` returned a permission error. Existing remote-tracking refs and the PR metadata supplied the review commits.
-- Push: `<review metadata sha>` is the head of origin/docs/pr-9-release-block, verified with `gh pr view`.
+- Push: `82b98d7497b6deeb40489b4520f094300f0b1f47` is the head of origin/docs/pr-9-release-block, verified with `gh pr view`.
 
 ## Open questions and accepted risks
 
