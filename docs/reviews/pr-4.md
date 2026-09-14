@@ -33,7 +33,7 @@ Trigger: A session follows the changed design-doc template when it edits `docs/d
 
 Expected: The design-doc skill describes the section order that its users must follow. The audit must leave the skill and the current design structure consistent (T-1, T-5, D-20).
 
-Actual: The changed skill says the defect register is section 6, guardrails are section 7, and the roadmap is section 8. The current design doc uses section 5 for the defect register, section 6 for guardrails, and section 7 for the roadmap. The focused-roadmap list also says section 6 is the guardrails section, which conflicts with its own numbered template.
+Actual: The changed skill says the defect register is section 6, guardrails are section 7, and the roadmap is section 8. The current design doc uses section 5 for the defect register, section 6 for guardrails, and section 7 for the roadmap.
 
 Consequence: A session can write a roadmap with the wrong headings or look for the design roadmap in the wrong section. The skill no longer gives one usable document structure.
 
