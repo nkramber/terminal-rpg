@@ -158,8 +158,20 @@ How to file a question (D-19, D-24):
     - No, the office alone, the recommendation. A stamp needs the seal and the ledger of the office. Stamps keep their price, and the watcher gives no free power (D-290).
     - Yes, at a cost in church standing. Each stamp on the road lowers standing when the church learns of it (D-242). The choice tests the watcher, and the standing rule needs its own tests.
     - Yes, for no cost. Elio has clear value to the party. Every found rite gets a free stamp, so the stamp half of the price of OQ-42 means nothing. A caster still needs a license (D-302).
-56. **OQ-56. An earlier playable build.** The owner asked when a build to play and feel comes. PR-17, the first playable, follows three docs PRs and 23 code PRs. Which lever, if any, brings a playable build sooner? Raised 2026-09-14. Blocks the rebuild of section 8 in the roadmaps PR (D-399).
-    - The release docs PR after the first playable. The roadmaps PR comes next, and PR-1 starts about 2 to 4 sessions sooner. Revises D-399 in part.
+56. **OQ-56. An earlier playable build.** The owner asked when a build to play and feel comes. PR-17, the first playable, follows three docs PRs and 23 code PRs. Which lever, if any, brings a playable build sooner? Raised 2026-09-14. Blocks the rebuild of section 8 in the roadmaps PR (D-399). On 2026-09-14, D-447 kept the release block before the roadmaps PR, so the first lever left the list. The other levers stay open.
+    - The release docs PR after the first playable. The roadmaps PR comes next, and PR-1 starts about 2 to 4 sessions sooner. Revises D-399 in part. The owner refused this lever on 2026-09-14 (D-447).
     - PR-2 and PR-3 after PR-7. The STE checker in C# and the review gate wait, so the first walk comes about 4 to 8 sessions sooner. The checks on `main` of OQ-3 wait too.
     - A throwaway feel prototype that never merges, like the Deck test scene of D-160. It gives the fastest feel, but it is not the real game, and the tenets keep it out of `main`.
     - No change. The sequence of section 8 stands.
+57. **OQ-57. The studio name.** D-450 puts a studio name on the store page and in the credits. D-451 sets the pick before the store page goes public, and D-471 puts that page at Gate 2. Which name? Raised 2026-09-14. Blocks the store page at Gate 2, PR-33, PR-40, and the crash address of D-473.
+    - The owner names it, the recommendation. The name is a personal choice, and PR-40 searches it for clashes (D-408).
+    - The session proposes three names with a search for clashes. The owner picks one or gives another.
+58. **OQ-58. The Steamworks binding.** PR-40 needs a C# binding for the startup and the controller type call (D-460, D-462). Every dependency needs a decision (G-13). Which binding? Raised 2026-09-14. Blocks PR-40.
+    - Steamworks.NET: MIT, a thin wrapper of the C API. Its last release came on 2026-08-02, and NuGet stops at 2024.
+    - Facepunch.Steamworks: MIT, a C# API at a higher level. Release 2.5.2 came on 2026-04-23, and NuGet stops at 2020.
+    - A small interop of our own: a few calls into the Steamworks library, with no wrapper. PR-40 first checks the C interface of the SDK.
+    - No recommendation until PR-40 reads each project again (D-462).
+59. **OQ-59. The AI disclosure on Steam.** Steam asks about "Pre-Generated" AI content in the content survey, before the review of a store page. Sessions draft the art grids, the music rows, and the text, and the owner approves each batch (D-57, D-107, D-433). How does the owner answer the survey? Raised 2026-09-14. Blocks the store page at Gate 2 (D-471, D-477).
+    - Disclose, and name no tool, the recommendation. The survey marks the art, the music, and the text as Pre-Generated, made with AI tools under the direction and approval of the owner. T-6 stands, because the answer names no agent, harness, or model.
+    - Disclose, and name the tools. The most open answer. T-6 does not list the survey, but T-6 bars any text that names an agent as the source of work.
+    - The owner answers before the store page goes public, from a fresh read of the rules of Valve (D-477).
