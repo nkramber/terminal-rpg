@@ -61,7 +61,7 @@ The names, genders, and ages come from D-297 and D-298. The aptitudes come from 
 
 Every character is an adult (D-298). The rule binds the whole cast, the later characters included, because every character takes wounds in battle (D-126, D-305).
 
-The four test sprites of D-233 become Bergit, Dagvar, Elio, and Ottild (D-289). Marrek needs a new sprite. A 32 by 32 sample of all five is in `docs/samples/` (D-402).
+The four 16 by 16 test sprites of D-233 became Bergit, Dagvar, Elio, and Ottild (D-289), and they left the repository on 2026-09-14 (D-405). A 32 by 32 sample of all five cast members of region one is in `docs/samples/` (D-402).
 
 ### Marrek, the lead
 

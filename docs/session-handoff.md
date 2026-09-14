@@ -5,7 +5,7 @@ Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of
 ## Session 8: 2026-09-14, Claude Code
 
 Author: Claude Code
-Session: draft 32 by 32 cast sprites for owner review, then a small docs PR that saves the approved look as a sample, on branch `docs/pr-3-sprite-sample`.
+Session: draft 32 by 32 cast sprites for owner review, then a small docs PR that saves the approved look as a sample and removes the 16 by 16 test sprites, on branch `docs/pr-3-sprite-sample`.
 
 ### What this session did, and why
 
@@ -13,12 +13,13 @@ Session: draft 32 by 32 cast sprites for owner review, then a small docs PR that
 - The owner said that the look works and asked to save it as a sample in a small PR (D-402). The owner chose `docs/samples/`, with a rule that sessions skip the folder during automatic exploration (D-403), and the sheets and grids without the script (D-404).
 - Added `docs/samples/readme.md` and `docs/samples/2026-09-14-cast-sprites/` (two sheets and five grids), the skip rule in `CLAUDE.md` and `AGENTS.md`, revision notes on D-20 and D-233, and pointers in PR-34 and `docs/world/cast.md`.
 - PR #2 merged before this branch started, so the branch starts from `main` at `7375310`.
+- The owner asked whether the rest of `content/sprites/` was out of date. The four 16 by 16 grids and `atlas.png` were, and the palette was not: its 48 colors stay the first 48 of the palette, and the sample uses them. The owner chose to remove the grids and the atlas in PR #3 (D-405, D-407) and to keep `docs/tools/make-atlas.py` as a reference with an out-of-date notice (D-406). The session had recommended the removal of the tool. The change adds revision notes on D-119, D-233, and D-402, and updates PR-34, `docs/samples/readme.md`, and `docs/world/cast.md`.
 
 ### State of the build
 
 - No code exists. `main` is `7375310` (PR #2).
-- Branch `docs/pr-3-sprite-sample` holds two commits above `main`: `e4a937e`, which opened PR #3, and the commit that holds this revision of the entry. The second commit splits one long sentence in `docs/samples/readme.md` that the STE check flagged.
-- The interim STE check passes with 0 findings. The interim atlas tool reads the 16 by 16 grids in `content/sprites/` alone, so it does not render the sample.
+- Branch `docs/pr-3-sprite-sample` holds three commits above `main`: `e4a937e`, which opened PR #3, `6d8b5a7`, which splits one long sentence in `docs/samples/readme.md` that the STE check flagged, and the commit that holds this revision of the entry (D-405 to D-407).
+- The interim STE check passes with 0 findings. The interim atlas tool finds no grid to read, and it carries an out-of-date notice until PR-34 ports it (D-406).
 
 ### In flight
 
@@ -28,11 +29,12 @@ PR #3 answers the gitar pass, then takes a Codex review, because it adds decisio
 
 - Skip `docs/samples/` during automatic exploration (D-403).
 - The branch name carries the GitHub number 3. Roadmap PR-3, the review gate, is a different item (D-13).
-- Two untracked concept images sat in `content/sprites/`: `party-characters-32.png` and `party-sample-sheet-concept.png`. This session did not make them, they never entered a commit, and they are not part of D-402. The owner asked to delete them. The tracked files in `content/sprites/` stay: the 16 by 16 grids, the palette, and the atlas.
+- Two untracked concept images sat in `content/sprites/`: `party-characters-32.png` and `party-sample-sheet-concept.png`. This session did not make them, they never entered a commit, and they are not part of D-402. The owner asked to delete them. After D-405, `content/sprites/` holds `palette.json` alone.
 - The sample grids use the 48-color palette. PR-34 grows the palette to 64 (D-181, D-185), so the sample can change there.
 - Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
 - A multi-line guard with `set -e` did not stop at the failed STE check in this shell, so `e4a937e` went out with one STE finding. Test the exit code of each check on its own before a commit.
-- The next ids are D-405, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 9.
+- `python3 docs/tools/make-atlas.py` now exits with code 1 and the message "no .grid file". That result is expected (D-405, D-406). Do not restore the 16 by 16 grids to make the tool pass.
+- The next ids are D-408, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 9.
 
 ### Open questions that block progress
 
