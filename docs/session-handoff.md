@@ -2,6 +2,45 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 8: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: draft 32 by 32 cast sprites for owner review, then a small docs PR that saves the approved look as a sample, on branch `docs/pr-3-sprite-sample`.
+
+### What this session did, and why
+
+- While PR #2 waited for its repeat review, the owner asked for new sprite sheets to review. The session drew front sprites of Marrek, Bergit, Dagvar, Ottild, and Elio at 32 by 32 in the test style (D-201, D-233, D-237, D-289), on the 48-color palette, as material maps that a scratchpad script shaded and rendered. A second draft fixed banded faces, the pick of Marrek, and the cloak of Ottild.
+- The owner said that the look works and asked to save it as a sample in a small PR (D-402). The owner chose `docs/samples/`, with a rule that sessions skip the folder during automatic exploration (D-403), and the sheets and grids without the script (D-404).
+- Added `docs/samples/readme.md` and `docs/samples/2026-09-14-cast-sprites/` (two sheets and five grids), the skip rule in `CLAUDE.md` and `AGENTS.md`, revision notes on D-20 and D-233, and pointers in PR-34 and `docs/world/cast.md`.
+- PR #2 merged before this branch started, so the branch starts from `main` at `7375310`.
+
+### State of the build
+
+- No code exists. `main` is `7375310` (PR #2).
+- Branch `docs/pr-3-sprite-sample` holds one commit above `main`: the commit that holds this entry. The session pushed it and opened PR #3 from it.
+- The interim STE check passes with 0 findings. The interim atlas tool reads the 16 by 16 grids in `content/sprites/` alone, so it does not render the sample.
+
+### In flight
+
+PR #3 answers the gitar pass, then takes a Codex review, because it adds decisions (D-401). Then the owner merges. After that, the plan of Session 4 stands: the rename and the move (D-400), then the audio, release, and roadmaps docs PRs (D-399).
+
+### Traps and gotchas
+
+- Skip `docs/samples/` during automatic exploration (D-403).
+- The branch name carries the GitHub number 3. Roadmap PR-3, the review gate, is a different item (D-13).
+- Two untracked images sit in `content/sprites/`: `party-characters-32.png` and `party-sample-sheet-concept.png`. This session did not make them and did not commit them, and they are not part of D-402. The concept sheet differs from the decisions: it shows an old Dagvar, where D-298 gives 35, and cross symbols that no decision gives the foreign church.
+- The sample grids use the 48-color palette. PR-34 grows the palette to 64 (D-181, D-185), so the sample can change there.
+- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
+- The next ids are D-405, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 9.
+
+### Open questions that block progress
+
+None for PR #3. OQ-3 waits for PR-3.
+
+### Next concrete action
+
+This session answers the gitar pass on PR #3. Then a Codex session reviews PR #3 under the `pr-review` skill and writes `docs/reviews/pr-3.md` (D-401). The owner merges. The next Claude Code session runs `docs/runbooks/rename-and-move.md` (D-400).
+
 ## Session 7: 2026-09-14, Codex
 
 Author: Codex

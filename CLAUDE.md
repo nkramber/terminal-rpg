@@ -19,6 +19,8 @@ Read `docs/session-handoff.md` now, before any other file and before any tool ca
 9. `docs/runbooks/`: procedures for the machine and the repository.
 10. `docs/session-handoff-archive.md`: sessions older than the 10 in the handoff. Read it only when the handoff points to it.
 
+Skip `docs/samples/` during automatic exploration. It holds dated art samples, not rules or plans. Read it only when the owner or the handoff points to it (D-403).
+
 ## Tenets
 
 The tenets are the constitution. When a tenet conflicts with speed or convenience, the tenet wins. When two tenets conflict, the earlier one in this order wins (D-5): T-5, T-2, T-3, T-4, T-7, T-1. T-6 is absolute.

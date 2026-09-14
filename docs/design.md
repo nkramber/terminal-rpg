@@ -244,7 +244,7 @@ Gate: the replay of a recorded run gives the same hash on all three platforms, a
 > *In plain English:* the game writes down its start state and every input. That record then plays any run again, so every bug becomes repeatable, and the save file is that record.
 
 **PR-34: Atlas tool, palette, and the grid format.**
-Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 32 by 32 grid, and a portrait is a 64 by 64 grid (D-228, D-234). The session redraws the four test sprites at 32 by 32 for the owner's approval (D-233). A sprite has a frame list.
+Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 32 by 32 grid, and a portrait is a 64 by 64 grid (D-228, D-234). The session redraws the four test sprites and draws Marrek at 32 by 32 from the approved sample in `docs/samples/` (D-233, D-402). A sprite has a frame list.
 
 The palette is the 64-color file (D-121, D-181). The tool also builds a normal map for each grid, with optional override grids (D-183, D-184). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
 
