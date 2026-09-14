@@ -2,6 +2,53 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 23: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the start of the roadmaps docs PR after PR #9 merged, on branch `docs/pr-10-roadmaps`.
+
+### What this session did, and why
+
+- Session 22 (Codex) reviewed PR #9 at `5097e8a` with no finding. The owner merged PR #9 as `4f37c99`.
+- The same harness run as Session 21 started the roadmaps docs PR (D-399). It asked OQ-56 first, and the owner chose no change to the sequence (D-483).
+- The session read every text that sends work to the roadmaps. The list holds PR ids for the export job, the store page work, the credits roll, the trailer capture, the debug assembly, the sound room, and the mood cues. It also holds the items of the technical, graphics, UI, and systems roadmaps.
+- The owner set the shape of the work:
+  - Two docs PRs: PR #10 holds the roadmaps and the rebuild of sections 7 and 8, and a later docs PR holds the design-critic pass (D-484).
+  - Twelve area files and five phase files in `docs/roadmaps/`, with the names in D-485.
+  - One new PR id per system or tool, about 20, from PR-43 (D-486).
+  - The roadmaps ask contract questions, and they file detail questions with the PR they block (D-487).
+  - Areas first, then phases, then the rebuild (D-488). The branch gets a push at each session end, and PR #10 opens when the work is complete (D-489).
+- No roadmap file exists yet. The session closed the shape at this boundary, because the conversation grew long, and the area files need a fresh context.
+- The handoff held eleven entries before this one, because Session 22 added its entry and moved none. Sessions 13 and 12 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `4f37c99` (PR #9).
+- The branch `docs/pr-10-roadmaps` holds D-483 to D-489 and this entry. The remote head of the branch is the commit that holds this entry. No PR is open (D-489).
+- The interim STE check passes with 0 findings.
+
+### In flight
+
+The roadmaps docs PR, on `docs/pr-10-roadmaps`. The next step writes the twelve area files, then the five phase files, then the rebuild of sections 7 and 8 (D-488).
+
+### Traps and gotchas
+
+- D-484 moves the design-critic pass out of this PR. Do not run it here.
+- D-487: ask a question here only when it changes the order, a gate, or a contract between PRs. File each detail question in `docs/questions.md` with the PR it blocks.
+- New PR ids start at PR-43 (D-486). PR-22 and PR-32 stay retired (G-10).
+- Each file follows the focused roadmap template of the `design-doc-style` skill: the status header and sections 1, 5, 7, 8, and 9. Each phase entry lists its scope, exit tests, review focus, filed questions, and area file (D-144).
+- The owner chose finer shapes than the session recommended twice in this block: two PRs, and twelve area files. Show running counts of files and PR ids in each batch.
+- Do not open PR #10 before the rebuild is complete (D-489). Push the branch at each session end.
+- The next ids are D-490, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 24.
+
+### Open questions that block progress
+
+None for the shape of PR #10. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR-40, and OQ-3 waits for PR-3.
+
+### Next concrete action
+
+A session reads D-144, D-145, D-484 to D-489, the `design-doc-style` skill, and section 7 of `docs/design.md`. Then it writes `docs/roadmaps/area-core.md` and asks the contract questions that come up (D-487).
+
 ## Session 22: 2026-09-14, Codex
 
 Author: Codex
@@ -409,98 +456,3 @@ None for PR #4.
 ### Next concrete action
 
 The owner can merge PR #4. Then run step 4 onward of `docs/runbooks/rename-and-move.md`.
-
-## Session 13: 2026-09-14, Claude Code
-
-Author: Claude Code
-Session: the gitar pass on the answer to the review of PR #4, on branch `docs/pr-4-docs-audit`.
-
-### What this session did, and why
-
-- Session 12 pushed `919a865` at 15:02:16Z. The pass on that head had no result when that session stopped, so this session read the result on GitHub.
-- The repository activity API shows no push after `919a865`. Three `Gitar review` requests came after that push, the last at 15:36:57Z.
-- Gitar edited its dashboard comment at 15:37:15Z. The comment says approved, with no issue found. The `Gitar` check run on `919a865` ended with `success` at 15:37:22Z.
-- The PR holds 0 review threads, 0 line comments, and 0 reviews. The pass on `919a865` has 0 comments, 0 with merit, and no fix commit.
-- The pass is complete (the `pr-review` skill, "The automated pass"). The PR adds decisions, so no `review-override` label applies (D-401).
-- The handoff held ten entries, so Session 3 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
-- After the first push of this entry as `92926a6`, the session requested a pass with `Gitar review` at 15:46:41Z, 41 seconds after the push.
-- Gitar ran the pass on `919a865` again, not on `92926a6`. The check run on `919a865` started at 15:46:46Z and ended with `success` at 15:47:22Z.
-- Gitar deleted its dashboard comment and posted a new one at 15:47:20Z. The new comment says approved and repeats the old summary word for word.
-- The check suite of gitar on `92926a6` stayed `queued`, with 0 check runs. The poll of the session waited for a check run on `92926a6`, and it failed at its time limit.
-- The owner saw the new dashboard comment first. The session at first read it as a pass on `92926a6`, then the check runs showed the old head.
-- This revision of the entry corrects the traps on the result of a pass. The PR description records the result of each pass on the tip.
-- The session pushed that revision as `4ce3138` at 16:08:16Z. It waited 5 minutes, then requested a pass at 16:13:17Z.
-- Gitar ran the pass on `92926a6`, not on `4ce3138`. The check run on `92926a6` started at 16:13:22Z and ended with `success` at 16:13:58Z.
-- The poll saw the new dashboard comment with no check run on `4ce3138`, and it reported that at once.
-- The check runs of every request fit one rule: a request runs the pass on the commit that was the PR head at the request before it.
-- This third revision of the entry records that rule in the traps.
-
-### State of the build
-
-- No code exists. `main` is `d29921d` (PR #3).
-- PR #4 is open. The remote head is the commit that holds this entry, above `919a865`.
-- The effective head stays `919a865`, because the commit that holds this entry changes the handoff files alone (the `pr-review` skill).
-- The gitar pass on `919a865` is complete. The PR description records the pass on the tip that holds this entry.
-- The interim STE check passes with 0 findings.
-
-### In flight
-
-PR #4 waits for a gitar pass on the tip that holds this entry. Then a Codex session runs the repeat review of `919a865` (the `pr-review` skill, "Repeat review procedure"). The owner merges. Then step 4 of the rename runbook starts the rename PR (D-411).
-
-### Traps and gotchas
-
-- Count a gitar pass only when a `Gitar` check run on the head commit starts after the request and ends. `gh api repos/{owner}/{repo}/commits/<sha>/check-runs` reads it.
-- The dashboard comment is not proof. Requests 3 seconds, 41 seconds, and 5 minutes after a push ran the pass on the older commits `cb6e96e`, `919a865`, and `92926a6`. Each dashboard said approved.
-- A request runs the pass on the PR head at the previous request, so a wait after a push does not help. After a push, post `Gitar review` and wait for its check run.
-- Then post `Gitar review` again. That second request runs the pass on the new head.
-- A check suite of gitar in the state `queued`, with 0 check runs, means that no pass ran on that commit. `2072219`, `c73c19f`, and `92926a6` show that state.
-- Gitar can edit its dashboard comment or replace it with a new one. Read the newest gitar comment that contains "Code Review".
-- The REST API names the bot `gitar-bot[bot]`, and `gh pr view` names it `gitar-bot`. A filter on one exact login finds nothing in the other form.
-- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push, and wait for the check run on the head.
-- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 14.
-
-### Open questions that block progress
-
-None for PR #4. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-This session gets a `Gitar` check run on the tip that holds this entry, and the PR description records it. Then a Codex session runs the repeat review of PR #4 at `919a865` and updates `docs/reviews/pr-4.md`. The owner merges. Then a session runs step 4 onward of `docs/runbooks/rename-and-move.md`.
-
-## Session 12: 2026-09-14, Claude Code
-
-Author: Claude Code
-Session: the answer to the review of PR #4, on branch `docs/pr-4-docs-audit`.
-
-### What this session did, and why
-
-- The review in `docs/reviews/pr-4.md` gave `Changes required` at `cb6e96e`, with P2-1 and P2-2. The session pulled the two review commits first.
-- P2-1, full merit: the template of the `design-doc-style` skill numbered the status header as item 1, so every section number sat one above the headings of `docs/design.md`. The status header is now unnumbered, and the list numbers 1 to 9 match the headings.
-- P2-2, full merit: the name search had no dated source in the repository. The session ran each check again and wrote the URLs, the queries, the results, and the controls into the external facts of `docs/design.md`. D-408 and the rename runbook point there.
-- `docs/reviews/pr-4-response.md` records both dispositions.
-- The handoff held eleven entries before this one, so Sessions 1 and 2 moved to the top of `docs/session-handoff-archive.md` (D-18).
-
-### State of the build
-
-- No code exists. `main` is `d29921d` (PR #3).
-- PR #4 is open. The commit that holds this entry is the new effective head, above the review commits `2072219` and `c73c19f`.
-- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
-
-### In flight
-
-PR #4 answers a new gitar pass, then takes a repeat review on the new effective head (the `pr-review` skill). The owner merges. Then step 4 of the rename runbook starts the rename PR (D-411).
-
-### Traps and gotchas
-
-- The USPTO search service has no public documentation. The POST body in the external facts worked on 2026-09-14, and its controls prove the `WM` field. A later change of the service can break the query.
-- The EUIPO, TMview, and WIPO checks stay open for PR-40 (D-408).
-- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
-- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 13.
-
-### Open questions that block progress
-
-None for PR #4. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-This session answers the gitar pass on the new head. Then a Codex session runs the repeat review of PR #4 and updates `docs/reviews/pr-4.md`. The owner merges.
