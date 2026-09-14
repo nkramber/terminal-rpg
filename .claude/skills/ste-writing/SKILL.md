@@ -213,10 +213,10 @@ Release terms from the release block of 2026-09-14:
 |---|---|---|
 | prologue | region one, free on Steam as the demo of the full game (D-133, D-143) | episode, chapter, free version |
 | demo | the Steam app that carries the prologue (D-143, D-478) | trial, sample |
-| export | a build of the Game project for one system and one CPU architecture (D-464) | binary, package |
+| export | a build of the Game project for one system and one CPU architecture (D-481) | binary, package |
 | build artifact | an export that CI keeps from a merge to `main` (D-449) | nightly, snapshot |
 | release tag | a git tag of the form `v0.5.0` on a build that ships (D-448) | version tag |
-| CI leg | one runner system of the CI matrix, five in all (D-474) | platform, when the text means a runner |
+| CI leg | one runner system of the CI matrix, three in all (D-481) | platform, when the text means a runner |
 | store page | the Steam page of the full game (D-471) | store presence, product page |
 | store text | the short description, the long description, and the feature list of the store page (D-452) | copy, marketing text |
 | release notes | the player notes of a release tag or a Steam update (D-453) | changelog, patch notes |

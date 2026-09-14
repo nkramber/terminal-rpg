@@ -8,10 +8,10 @@ Each line holds before the owner merges (`CLAUDE.md`, PR gate).
 
 - [ ] Tests written and green (T-3).
 - [ ] No silent failure. Every error carries context (T-2).
-- [ ] The build, test, and format job is green on every CI leg (D-2, D-117, D-474). PR-1 creates it.
+- [ ] The build, test, and format job is green on every CI leg (D-2, D-117, D-481). PR-1 creates it.
 - [ ] The `det-lint` job is green (G-2, G-3, G-7). PR-4 creates it.
-- [ ] The `replay-identity` job is green on every CI leg (G-5, D-474). PR-4 creates it.
-- [ ] The `smoke` job is green on every CI leg: the headless Godot session (D-117, D-474). PR-1 creates it.
+- [ ] The `replay-identity` job is green on every CI leg (G-5, D-481). PR-4 creates it.
+- [ ] The `smoke` job is green on every CI leg: the headless Godot session (D-117, D-481). PR-1 creates it.
 - [ ] The `night-gate` job is green (G-22). PR-15 creates it.
 - [ ] The `ste-check` job is green (G-12). PR-1 creates it.
 - [ ] The automated pass of gitar approved the head, or every comment of the pass has its answer (D-14, D-66).

@@ -13,7 +13,7 @@ Session: the release block of the full plan, and two aspect ratios, on branch `d
 - The handoff and D-399 put the release block docs PR next. The first lever of OQ-56 moves that PR after the first playable, so the session asked first. The owner kept the order (D-447).
 - Three read-only research agents read Steamworks, Apple, Microsoft, GitHub, and Godot pages. The session fetched each key page again and checked the quotes before a fact entered a document.
 - The release block ran in twelve batches, D-447 to D-480:
-  - Versions and builds: 0.MINOR.PATCH until 1.0.0, and five exports on every merge from PR-7 (D-448, D-449, D-464). Five CI legs from PR-1 and PR-4 (D-474).
+  - Versions and builds: 0.MINOR.PATCH until 1.0.0, and exports on every merge from PR-7 (D-448, D-449). The owner first added arm64 builds and arm64 CI legs (D-464, D-474).
   - Signing: macOS notarized on Steam from PR-40, and Windows unsigned (D-455, D-463). F-32 records the Apple fee that the cost model lacked.
   - GitHub: prologue tags alone on GitHub Releases, until the Steam demo (D-457, D-470). The repository goes private before paid content (D-456).
   - Steam: the native Linux build on the Deck, the rating Verified, engine input with one Steamworks call for glyphs, and Auto-Cloud on the folder `the-thing-below` (D-458 to D-461, D-465). PR-40 picks the binding (D-462, OQ-58).
@@ -21,6 +21,7 @@ Session: the release block of the full plan, and two aspect ratios, on branch `d
   - Studio and players: a studio name picked before the store page (OQ-57), a studio mark on the splash, credits in three places, crash files to a studio email, and trusted players after Gate 4 (D-450, D-451, D-467 to D-469, D-473). Achievements come with the full game alone (D-466).
   - The AI disclosure of the Steam content survey waits for OQ-59, before the store page review at Gate 2 (D-477).
 - Mid-block, the owner asked for a variety of aspect ratios and a revision of D-229. After four answers in a few minutes, the game supports 16:10 and 16:9 alone, with black bars on every other shape (D-480). The answer lands in this PR, and `CLAUDE.md` and `AGENTS.md` no longer list exceptions to G-8 (D-479).
+- After gitar approved `980e96c` with 0 comments, the owner cut the scope to four targets: Windows and Linux on x86_64, macOS on Apple silicon, and the Steam Deck (D-481). D-481 supersedes D-464 and D-474. The macOS build stays the official universal build, and the game supports Apple silicon alone (D-482).
 - F-33 records five gaps that the block closed, and F-34 records the screenshot format of Steam.
 - The session updated `docs/design.md`, `docs/questions.md`, `CLAUDE.md`, `AGENTS.md`, the PR template, three skills, the dev-machine runbook, and `docs/world/setting.md`.
 - The handoff held eleven entries before this one, because Session 20 added its entry and moved none. Sessions 11 and 10 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
@@ -41,10 +42,11 @@ PR #9 answers the gitar pass. It adds decision rows, so a Codex session reviews 
 - D-480 took several answers: a wider view, a limit at 16:9, a crop of narrow screens, then 16:9 alone, then 16:9 and 16:10. Only the last answer is a row. Any text that names 21:9, 4:3, or a crop is stale.
 - D-471 moves the Steam Direct fee, the EU and WIPO name checks, the store text, and the capsule art to Gate 2. OQ-57 and OQ-59 now block the store page at Gate 2, and OQ-57 also blocks the crash address of D-473.
 - The roadmaps PR gives PR ids to the export job after PR-7, the store page work after Gate 2, the credits roll, and the trailer capture.
-- The Steamworks pages do not say how Auto-Cloud settles a conflict, whether a demo app needs a fee, or whether Steam takes arm64 builds. PR-40 checks each one.
+- The Steamworks pages do not say how Auto-Cloud settles a conflict or whether a demo app needs a fee. PR-40 checks both.
+- D-464 and D-474 are superseded inside this PR. Any text that names arm64 builds for Windows or Linux, five exports, or five CI legs is stale.
 - The owner often gives a custom answer that widens the scope. Ask the limits in the next batch, and confirm the final state before the rows.
 - Gitar runs one pass by itself on a new PR. After a later push, post `Gitar review`, and count a pass only from a `Gitar` check run on the head.
-- The next ids are D-481, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 22.
+- The next ids are D-483, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 22.
 
 ### Open questions that block progress
 

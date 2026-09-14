@@ -90,6 +90,7 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 - Every optimization needs a profile before and a measurement after (G-14).
 - Every `Core` behavior change bumps the simulation version constant, and the review confirms it (G-17).
 - Every screen designs to 1280 by 800 with 32-pixel tiles, and it also holds the 16:9 view of about 1422 by 800 (D-480). The Steam Deck at 1x is the readability and performance floor (D-92, D-228, G-19).
+- The game supports Windows and Linux on x86_64, macOS on Apple silicon, and the Steam Deck, and nothing else (D-481, D-482).
 
 ## Git rules
 
@@ -139,10 +140,10 @@ A PR merges only when every line holds:
 
 - [ ] Tests written and green (T-3).
 - [ ] No silent failure. Every error carries context (T-2).
-- [ ] The build, test, and format job is green on every CI leg (D-2, D-117, D-474). PR-1 creates it.
-- [ ] The `smoke` job is green on every CI leg: the headless Godot session (D-117, D-474). PR-1 creates it.
+- [ ] The build, test, and format job is green on every CI leg (D-2, D-117, D-481). PR-1 creates it.
+- [ ] The `smoke` job is green on every CI leg: the headless Godot session (D-117, D-481). PR-1 creates it.
 - [ ] The `det-lint` job is green: no float, clock, or OS random in `core`, and no inline player string (G-2, G-3, G-7). PR-4 creates it.
-- [ ] The `replay-identity` job is green: the same state hash on every CI leg for the fixed seed set (G-5, D-474). PR-4 creates it.
+- [ ] The `replay-identity` job is green: the same state hash on every CI leg for the fixed seed set (G-5, D-481). PR-4 creates it.
 - [ ] The `night-gate` job is green: a success record from a night inside 48 hours (G-22). PR-15 creates it.
 - [ ] The `ste-check` job is green (G-12). PR-1 creates it with the interim checker, and PR-2 moves it to C#.
 - [ ] The automated pass of gitar approved the head, or every comment of the pass has its answer (D-14).
