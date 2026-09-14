@@ -2,6 +2,45 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 5: 2026-09-14, Codex
+
+Author: Codex
+Session: cross-provider review of PR #2 at effective head `4b3d04e`.
+
+### What this session did, and why
+
+- Verified the PR target, base, branch, tip, changed files, and automated pass on GitHub.
+- Confirmed that the tip `f748ee3` changes only the handoff, so the effective implementation head stays `4b3d04e` (D-184 rule in the `pr-review` skill).
+- Read the design, decisions, questions, world files, runbook, changed skills, PR description, and full PR diff.
+- Found P1-1: the PR-9 exit test says every status ends, but D-390 makes Poison, Blind, and Silence persist past battle.
+- Found P3-1: `git diff --check` reports trailing whitespace on three added lines in `docs/design.md`.
+- Wrote `docs/reviews/pr-2.md` with the verdict `Changes required`.
+
+### State of the build
+
+- No code exists. `main` is `9dd80da`.
+- The PR tip is `f748ee3`. The effective head under the metadata rule is `4b3d04e`.
+- The interim STE check passes with 0 findings.
+- No GitHub checks are reported. PR-1 and PR-3 create the build and review-gate checks.
+
+### In flight
+
+PR #2 waits for the author to correct P1-1 and P3-1, push the changes, and request another review pass. A new effective head needs a repeat review. The automated pass has no open comment.
+
+### Traps and gotchas
+
+- Keep the current verdict under the exact `## Verdict` heading. Keep this finding id on a repeat review.
+- Review the new effective head after the correction. Do not retain approval across a substantive push.
+- The automated pass is paused for the period. Post `Gitar review` after each push, as D-66 requires.
+
+### Open questions that block progress
+
+OQ-3 waits for PR-3. It does not block the correction of this review.
+
+### Next concrete action
+
+The author corrects the PR-9 gate and the three whitespace errors, then pushes. The next Codex session re-reviews the new effective head and updates the same review record.
+
 ## Session 4: 2026-09-13, Claude Code
 
 Author: Claude Code
