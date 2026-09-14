@@ -2,6 +2,45 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 26: 2026-09-14, Codex
+
+Author: Codex
+Session: repeat review of PR #10 at effective head `7eb2abc`.
+
+### What this session did, and why
+
+- Verified the new base, effective head, changed paths, provider gate, response file, and existing PR comments.
+- Read the correction diff, the complete PR diff, the design and decision contracts, the question register, the skills, the agent guidance, the handoff archive, and the PR description.
+- Reproduced P2-1. D-488 now uses `Revised in part by D-490`, names PR #11 as the changed part, and keeps the writing order.
+- Confirmed D-490 names D-488 among the revised decisions and that the design and handoff identify PR #11.
+- Confirmed the repeat Gitar check passed on `7eb2abc` with no new comment.
+- Updated `docs/reviews/pr-10.md`, preserved P2-1 with its earlier evidence, and set the verdict to `Ready for owner merge` for `7eb2abc`.
+- Ran the interim STE check with 0 findings, `git diff --check`, and the guidance identity check.
+
+### State of the build
+
+- No code exists. `main` is `4f37c99` (PR #9).
+- PR #10 is open on `docs/pr-10-roadmaps`. Its effective head is `7eb2abc`.
+- The interim STE check passes with 0 findings. The repeat review metadata is not pushed yet.
+
+### In flight
+
+PR #10 is ready for owner merge after this review metadata and handoff are pushed. Then PR #11 starts the roadmaps on a new branch.
+
+### Traps and gotchas
+
+- D-488 and D-489 keep `PR #10` in their topic columns as dated text. Their revision notes carry the current PR number.
+- The build, test, format, det-lint, replay-identity, smoke, night-gate, and review-gate checks do not exist until the PRs named in `AGENTS.md` create them.
+- The next ids are D-491, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 27.
+
+### Open questions that block progress
+
+None for PR #10. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR-40, and OQ-3 waits for PR-3.
+
+### Next concrete action
+
+Push this repeat review record and handoff. The owner can merge PR #10. Then a fresh session starts PR #11 with `docs/roadmaps/area-core.md`.
+
 ## Session 25: 2026-09-14, Claude Code
 
 Author: Claude Code
@@ -398,56 +437,3 @@ None for PR #7. OQ-3 waits for PR-3. The levers for an earlier playable build wa
 ### Next concrete action
 
 This session answers the gitar pass on PR #7. Then a Codex session reviews PR #7 under the `pr-review` skill and writes `docs/reviews/pr-7.md` (D-401). The owner merges. Then a session starts the release block as its own docs PR (D-399).
-
-## Session 16: 2026-09-14, Claude Code
-
-Author: Claude Code
-Session: the first session in the new checkout `/Volumes/SSD-1TB/the-thing-below`, and a docs PR that closes `docs/runbooks/rename-and-move.md`, on branch `docs/pr-6-close-move`.
-
-### What this session did, and why
-
-- PR #5 merged as `aee6f35` at 17:09:52Z, with the `review-override` label. The Session 15 entry went in before the merge, so it does not record what came after.
-- After the merge, Session 15 ran two steps of the runbook:
-  - Step 9: the clone to `/Volumes/SSD-1TB/the-thing-below`, clean at `aee6f35`.
-  - Step 10: the copy of the local session notes from `~/.claude/projects/-Users-nate-Repos-terminal-rpg/memory/` to `~/.claude/projects/-Volumes-SSD-1TB-the-thing-below/memory/`.
-- Step 11: this session opened in the new checkout. The interim STE check passed with 0 findings. `diff -r` of the two notes folders found no difference, and the session read its notes from the new folder.
-- Before step 12, the session checked that the old checkout `~/Repos/terminal-rpg` held nothing that GitHub lacks:
-  - The tree of its last branch tip `152fa62` is the tree of `aee6f35`.
-  - `git ls-remote` shows each of its five local branch tips on GitHub, as `refs/pull/1/head` to `refs/pull/5/head`.
-  - It had no stash, no untracked or ignored file, no `.claude/settings.local.json`, and no hook.
-- Step 12: the owner deleted the old checkout. A check at 17:24:12Z found no folder at that path.
-- The docs PR makes the documents show the move as complete:
-  - `docs/runbooks/rename-and-move.md`: the status is complete, and steps 7 to 12 are marked done.
-  - `docs/design.md`: a dated line for the move pass, and step 2 of section 8 shows PR #5 merged and the checkout on the SSD.
-  - `docs/runbooks/dev-machine.md`: a dated fact for the checkout path.
-- The PR changes no decision row. The owner answer on step 12 carries out a step that D-216 and D-400 already set, so it adds no row (D-68).
-- The handoff held ten entries before this one, so Session 6 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
-
-### State of the build
-
-- No code exists. `main` is `aee6f35` (PR #5).
-- The checkout is `/Volumes/SSD-1TB/the-thing-below`. The old checkout no longer exists.
-- PR #6 is open on `docs/pr-6-close-move`. The remote head is the commit that holds this entry.
-- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
-
-### In flight
-
-PR #6 answers the gitar pass. It changes no decision row, and every path is in the override set, so the session applies the `review-override` label after the pass approves the head (D-67, D-401). The owner merges. Then the audio block docs PR starts (D-399).
-
-### Traps and gotchas
-
-- The checkout is on the external SSD. A session cannot open it when the Mac does not show `/Volumes/SSD-1TB`.
-- The local session notes key on the checkout path, now `~/.claude/projects/-Volumes-SSD-1TB-the-thing-below/memory/`. The old folder `-Users-nate-Repos-terminal-rpg` still exists, and no session reads it now.
-- Gitar runs one pass by itself when a new PR opens, even while the automatic passes are paused (PR #5).
-- After a later push, post `Gitar review` two times. The first request runs the pass on the older head again, and the second runs it on the new head (Session 13).
-- Count a pass only when a `Gitar` check run on the head commit ends. The dashboard comment is not proof.
-- The dated records keep `terminal-rpg` and `~/Repos/terminal-rpg` on purpose.
-- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 17.
-
-### Open questions that block progress
-
-None for PR #6. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-This session answers the gitar pass on PR #6, and applies the `review-override` label when the pass approves the head. The owner merges. Then a session starts the audio block, the next docs PR (D-262, D-399). It reads the audio rows first: D-87, D-115, D-223, D-226, and PR-38 in `docs/design.md`. Then it asks the owner the audio questions in batches and records each answer. That PR adds decision rows, so the other provider reviews it (D-401).
