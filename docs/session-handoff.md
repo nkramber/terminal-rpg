@@ -2,6 +2,44 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 11: 2026-09-14, Codex
+
+Author: Codex
+Session: cross-provider review of PR #4 at effective head `cb6e96e`.
+
+### What this session did, and why
+
+- Verified the PR target, base, merge base, branch, effective head, changed paths, provider gate, and existing PR comments.
+- Read the complete diff, the design roadmap, the decision and question registers, the changed skills and agent files, the runbooks, the world files, and the PR description.
+- Confirmed the automated pass approved the head with no issue comments. The local interim STE check passes with 0 findings, `git diff --check` is clean, and `AGENTS.md` and `CLAUDE.md` remain identical.
+- Found P2-1: the changed `design-doc-style` skill gives section numbers that do not match `docs/design.md`.
+- Found P2-2: the material name-search record has no dated primary-source links or repeatable query record in the repository documents.
+- Wrote `docs/reviews/pr-4.md` with the verdict `Changes required` for `cb6e96e`.
+
+### State of the build
+
+- No code exists. `main` is `d29921d` (PR #3).
+- PR #4 is open at `cb6e96e` on `docs/pr-4-docs-audit`.
+- The interim STE check passes with 0 findings. No solution, Makefile, CI, review-gate, or Godot project exists yet.
+
+### In flight
+
+PR #4 waits for the author to correct P2-1 and P2-2, push the changes, request the automated pass, and take a repeat review at the new effective head.
+
+### Traps and gotchas
+
+- `docs/design.md` uses section 5 for the defect register, section 6 for guardrails, and section 7 for the roadmap. The changed design-doc skill says 6, 7, and 8.
+- The repository name search remains tentative because EUIPO, TMview, and WIPO did not answer. PR-40 owns the later verification.
+- The review record is metadata. A later metadata commit does not change the effective implementation head, but a substantive correction does.
+
+### Open questions that block progress
+
+None. OQ-3 remains open for branch protection and does not block this review.
+
+### Next concrete action
+
+Correct P2-1 and P2-2, run the focused checks and the interim STE check, then repeat the review on the new effective head.
+
 ## Session 10: 2026-09-14, Claude Code
 
 Author: Claude Code
