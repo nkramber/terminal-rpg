@@ -2,6 +2,44 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 24: 2026-09-14, Codex
+
+Author: Codex
+Session: cross-provider review of PR #10 at effective head `9355d62`.
+
+### What this session did, and why
+
+- Verified the PR target, base, merge base, branch, effective head, changed paths, provider gate, and existing PR comments.
+- Read the complete diff, the design and decision contracts, the questions register, the skills, the agent guidance, the handoff archive, and the PR description.
+- Confirmed the final Gitar check passed on `9355d62` and that its one suggestion was fixed in that commit.
+- Found P2-1: D-488 still names PR #10, while D-490 says D-488 binds PR #11 without a revision note for D-488.
+- Ran the interim STE check with 0 findings, `git diff --check`, and the guidance identity check.
+- Added `docs/reviews/pr-10.md` with the verdict `Changes required` for `9355d62`.
+
+### State of the build
+
+- No code exists. `main` is `4f37c99` (PR #9).
+- PR #10 is open on `docs/pr-10-roadmaps`. Its effective head is `9355d62`.
+- The interim STE check passes with 0 findings. The review record is not pushed yet.
+
+### In flight
+
+PR #10 needs the D-488 revision note, a new review commit, and a repeat review. The owner merges after the verdict covers the new effective head.
+
+### Traps and gotchas
+
+- D-490 must revise D-488 in part, not only D-484 and D-489. The writing order stays unchanged, and only the PR number changes to PR #11.
+- The build, test, format, det-lint, replay-identity, smoke, night-gate, and review-gate checks do not exist until the PRs named in `AGENTS.md` create them.
+- The next ids are D-491, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 25.
+
+### Open questions that block progress
+
+None for PR #10. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR-40, and OQ-3 waits for PR-3.
+
+### Next concrete action
+
+The author adds the D-488 revision note and runs a repeat Gitar pass. Then a Codex session updates `docs/reviews/pr-10.md` for the new effective head.
+
 ## Session 23: 2026-09-14, Claude Code
 
 Author: Claude Code
@@ -421,40 +459,3 @@ None for PR #5. OQ-3 waits for PR-3.
 ### Next concrete action
 
 This session answers the gitar pass on PR #5 and applies the `review-override` label when the pass approves the head. The owner merges. Then a session runs steps 9 to 12 of `docs/runbooks/rename-and-move.md`.
-
-## Session 14: 2026-09-14, Codex
-
-Author: Codex
-Session: repeat review of PR #4 at effective head `919a865`.
-
-### What this session did, and why
-
-- Read the current handoff, the prior review, the response file, the new substantive diff, and the current PR metadata.
-- Verified the provider gate remains eligible. Claude Code authored the changes, and Codex reviewed them.
-- Reproduced both prior corrections. The design-doc skill now matches the numbered sections of `docs/design.md`, and the name-search facts now include sources, queries, results, and dates.
-- Confirmed the automated pass completed successfully on `919a865` with no issue comments.
-- Updated `docs/reviews/pr-4.md`, preserved P2-1 and P2-2 with their earlier evidence, and set the verdict to `Ready for owner merge` for `919a865`.
-
-### State of the build
-
-- No code exists. `main` is `d29921d` (PR #3).
-- PR #4 is open. Its effective head is `919a865`; later commits contain metadata only.
-- The interim STE check passes with 0 findings, `git diff --check` is clean, and `AGENTS.md` and `CLAUDE.md` remain identical.
-
-### In flight
-
-PR #4 is ready for owner merge. After merge, step 4 of the rename runbook starts the rename PR (D-411).
-
-### Traps and gotchas
-
-- The live `gh pr checks` call returned a GitHub API connection error during this review. The handoff records the successful Gitar check run on `919a865`.
-- The review applies to `919a865`, not the later handoff-only tip `09ace6c`.
-- OQ-3 remains open for branch protection.
-
-### Open questions that block progress
-
-None for PR #4.
-
-### Next concrete action
-
-The owner can merge PR #4. Then run step 4 onward of `docs/runbooks/rename-and-move.md`.
