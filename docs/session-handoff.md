@@ -2,6 +2,46 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 9: 2026-09-14, Codex
+
+Author: Codex
+Session: cross-provider review of PR #3 at effective head `f684ed5`.
+
+### What this session did, and why
+
+- Verified the PR target, base, merge base, branch, effective head, changed paths, and all three substantive commits.
+- Confirmed the provider gate. The handoff identifies Claude Code as the author, and Codex is the reviewer.
+- Read the complete diff, the design roadmap, the decision and question registers, the cast file, the project guidance, the atlas script, the sample readme, the five grids, and both review sheets.
+- Confirmed that the sample grids have 32 rows of 32 characters, all keys exist in the 48-color palette, and the visual sheets match the stated sample.
+- Confirmed that the deleted 16 by 16 files have no broken current consumer. The retained atlas script fails with the documented contextual error until PR-34 ports it.
+- Wrote `docs/reviews/pr-3.md` with the verdict `Ready for owner merge`.
+
+### State of the build
+
+- No code exists. `main` is `7375310` (PR #2).
+- The effective head is `f684ed5`. The review commit and this handoff entry are metadata commits and do not change that head.
+- The interim STE check passes with 0 findings. `git diff --check origin/main...HEAD` is clean.
+- PR #3 is open. The automated pass approved the final head with zero issues. No CI or review-gate checks exist yet.
+
+### In flight
+
+PR #3 is ready for owner merge. After merge, the next work is the rename and move in `docs/runbooks/rename-and-move.md` (D-400).
+
+### Traps and gotchas
+
+- Skip `docs/samples/` during automatic exploration (D-403), except when the owner or the handoff points to it.
+- PR #3 is the GitHub PR number for the sprite sample. Roadmap PR-3 is the later review-gate item.
+- The interim atlas tool now fails with `no .grid file` because D-405 removed the old content. PR-34 ports the tool to 32 by 32 grids.
+- Automatic passes are paused for the period. The owner posted `Gitar review` after each push.
+
+### Open questions that block progress
+
+OQ-3 remains open for branch protection after PR-3 merges. It does not block the owner merge of this documentation PR.
+
+### Next concrete action
+
+Commit and push this review record and handoff. Then the owner can merge PR #3. The next session runs `docs/runbooks/rename-and-move.md` after the merge.
+
 ## Session 8: 2026-09-14, Claude Code
 
 Author: Claude Code
