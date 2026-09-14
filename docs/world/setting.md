@@ -89,6 +89,6 @@ The samples show the sound. They are not cast names.
 
 ## Open items
 
-- The release area, in its own docs PR (D-262, D-399).
+- No item is open. The release block settled the release area (D-447 onward).
 
 The places of region one are in `places.md`, the cast is in `cast.md`, and the arc is in `arc.md`.

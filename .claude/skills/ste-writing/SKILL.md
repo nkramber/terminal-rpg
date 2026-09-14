@@ -118,6 +118,7 @@ The rules permit these as written. They are technical names (rule 1.5):
 
 - The tentative name, with capitals: The Thing Below (D-215). The repository: the-thing-below (D-217). The dated records keep the working title terminal-rpg (D-9).
 - Tools and platforms: Godot, C#, .NET, xUnit, dotnet format, JSON, Steam, Steamworks, Steam Deck, Aseprite, Makefile, GitHub Actions, gitar, Python.
+- Release services: Steam Input, Steam Cloud, Auto-Cloud, Steam Playtest, Next Fest, Steam Linux Runtime, Proton, Movie Maker, Gatekeeper, SmartScreen, notarization.
 - The two harnesses: Claude Code, Codex.
 - Project names: Core, Game, Tools, Tests, once PR-1 creates them (D-118).
 - Process terms: session handoff, decision register, questions register, PR gate, cross-provider review, review record, response file, effective head, property test, seed loop, replay, state hash, simulation version, content hash, string table, night gate, smoke session.
@@ -205,6 +206,22 @@ Audio and time terms from the audio block of 2026-09-14:
 | sound effect | a short sound for an action or an event (D-423) | SFX, and effect alone when the text means a sound |
 | tracker rows | the note format of a track: one row per step, one column per voice (D-438) | pattern, score |
 | time of day | the dawn, day, dusk, or night that content and the story set for a map (D-442) | phase or clock, when the text means the time of day |
+
+Release terms from the release block of 2026-09-14:
+
+| Term | Use for | Do not use |
+|---|---|---|
+| prologue | region one, free on Steam as the demo of the full game (D-133, D-143) | episode, chapter, free version |
+| demo | the Steam app that carries the prologue (D-143, D-478) | trial, sample |
+| export | a build of the Game project for one system and one CPU architecture (D-464) | binary, package |
+| build artifact | an export that CI keeps from a merge to `main` (D-449) | nightly, snapshot |
+| release tag | a git tag of the form `v0.5.0` on a build that ships (D-448) | version tag |
+| CI leg | one runner system of the CI matrix, five in all (D-474) | platform, when the text means a runner |
+| store page | the Steam page of the full game (D-471) | store presence, product page |
+| store text | the short description, the long description, and the feature list of the store page (D-452) | copy, marketing text |
+| release notes | the player notes of a release tag or a Steam update (D-453) | changelog, patch notes |
+| studio name | the developer and publisher name on the store page and in the credits (D-450) | company, team |
+| trusted player | a player whom the owner picks to play a gate build before release (D-469) | tester, playtester |
 
 ## The checker
 

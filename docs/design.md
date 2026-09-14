@@ -30,6 +30,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-14 reset pass: a Codex review found no defect in PR #7, and the owner merged it. Before a context reset, a docs PR brings every document current. The story places the wrong things at any time of day (D-446), and OQ-56 holds the levers for an earlier playable build.
 
+2026-09-14 release pass: the release block set the builds, the versions, the Steam work, and the store (D-447 onward). The export job starts with PR-7, and the store page goes public at Gate 2 (D-449, D-471). F-32 records the Apple fee that a macOS build on Steam needs. F-33 records five gaps that the block closed, and F-34 records the screenshot format of Steam. The same PR sets two aspect ratios, 16:10 and 16:9 (D-479, D-480).
+
 External facts, each with the date of its check:
 
 - The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
@@ -49,6 +51,33 @@ External facts, each with the date of its check:
 - No USPTO record has the phrase in its word mark. A `match_phrase` query on the field `WM` gave 0 hits for "the thing below", "thing below", "thing beneath", "things below", and "thing from below". As a control, the same query gave 11 hits for "below deck" and 1,125 for "below". Each query was a POST of the body `{"query": {"match_phrase": {"WM": "<term>"}}, "size": 3}` to the search service behind the USPTO Trademark Search. The service has no public documentation, and the controls show that `WM` holds the word mark. Source: `https://tmsearch.uspto.gov/prod-stage-v1-0-0/tmsearch`, run 2026-09-14.
 - The EU and WIPO registers have no script check yet, so PR-40 checks them before the store page goes public (D-408). The EUIPO eSearch and TMview pages give a script no search results, and the WIPO Global Brand Database answers with a CAPTCHA. Source: `https://euipo.europa.eu/eSearch/`, `https://www.tmdn.org/tmview/`, and `https://branddb.wipo.int/en/`, read 2026-09-14.
 - "The Thing Below" is also the title of a horror film of 2004 by Jim Wynorski. Source: `https://en.wikipedia.org/wiki/The_Thing_Below`, read 2026-09-14.
+- Since 2019-10-14, Steam requires Apple notarization and a 64-bit build for every new macOS app. The same page states no rule on Windows code signing and names no ARM build. Source: `https://partner.steamgames.com/doc/store/application/platforms`, read 2026-09-14.
+- The Apple Developer Program costs 99 USD a year, and Mac notarization needs the paid membership. Source: `https://developer.apple.com/help/account/membership/program-enrollment` and `https://developer.apple.com/support/compare-memberships/`, read 2026-09-14.
+- On macOS Sequoia and later, a Control-click no longer opens an app that Apple did not notarize. The user opens it with Open Anyway in Privacy & Security. Source: `https://developer.apple.com/news/?id=saqachfa` and `https://support.apple.com/en-us/102445`, read 2026-09-14.
+- An unsigned Windows file from the internet shows "Windows protected your PC", and the user must choose "Run anyway". A signed file still warns until it gains reputation, and "EV certificates no longer bypass SmartScreen". Where Smart App Control is on, it blocks unsigned files with no positive reputation. Source: `https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/smartscreen-reputation`, read 2026-09-14.
+- Artifact Signing, the managed signing service of Microsoft, starts at 9.99 USD a month. An individual must live in the United States or Canada, and the certificate shows the legal name with the city, state or province, and country. Source: `https://learn.microsoft.com/en-us/azure/artifact-signing/quickstart` and the SmartScreen page above, read 2026-09-14.
+- Standard GitHub-hosted runners, arm64 Linux and arm64 Windows among them, are free on a public repository. A private repository on GitHub Free gets 2,000 minutes a month. The list rates are 0.006 USD a minute on Linux, 0.010 on Windows, and 0.062 on macOS. Source: `https://docs.github.com/en/billing/concepts/product-billing/github-actions`, `https://docs.github.com/en/billing/reference/actions-runner-pricing`, and `https://docs.github.com/en/actions/reference/runners/github-hosted-runners`, read 2026-09-14.
+- In a private repository, protected branches need GitHub Pro, Team, or Enterprise. Source: `https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches`, read 2026-09-14.
+- Each file in a GitHub release must be under 2 GiB, and a release has no limit on total size or bandwidth. Source: `https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases`, read 2026-09-14.
+- A game made with Godot must make the Godot MIT license text available to the player. A credits screen or a file that ships with the game can carry it. A copy of an OFL font must carry its copyright notice and the license. Source: `https://docs.godotengine.org/en/stable/about/complying_with_licenses.html` and `https://openfontlicense.org/open-font-license-official-text/`, read 2026-09-14.
+- Godot 4.7.2 is still the current stable release. Its .NET editor ships for Windows and Linux on x86_64 and arm64, and for macOS as a universal build. C# projects export to the desktop systems and not to the web. Source: `https://godotengine.org/download/archive/4.7.2-stable/` and `https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_basics.html`, read 2026-09-14.
+- A CI export needs `--headless`, and `--export-release` exports a preset. The docs name no command-line option that installs export templates. Source: `https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html`, read 2026-09-14.
+- `Debug.Assert` carries `[Conditional("DEBUG")]`, and the Godot .NET SDK defines `DEBUG` for `ExportDebug` alone, so a release export drops every `Debug.Assert`. Source: `Sdk.targets` of Godot.NET.Sdk at the tag `4.7.2-stable`, and `https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.debug.assert`, read 2026-09-14.
+- The project setting `application/boot_splash/show_image` hides the Godot logo, and no Godot license page asks for the splash. With `use_custom_user_dir`, the user folder is `%APPDATA%\<name>`, `~/Library/Application Support/<name>`, or `~/.local/share/<name>`. Source: `ProjectSettings.xml` of Godot at `4.7.2-stable`, and `https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html`, read 2026-09-14.
+- Movie Maker writes an OGV file in editor builds alone, an AVI file with MJPEG video, or a PNG sequence with a WAV file. Source: the Godot docs, "Creating movies", read 2026-09-14.
+- A Steam demo that comes before the full game needs the store page of the full game visible as Coming Soon. Valve recommends no achievements in a demo, and the capsules of a demo must mark it as a demo. No page that the session read states a fee for a demo app. Source: `https://partner.steamgames.com/doc/store/application/demos` and `https://partner.steamgames.com/doc/gettingstarted/appfee`, read 2026-09-14.
+- The Steam Direct fee is 100 USD per app, and Valve returns it after 1,000 USD of adjusted gross revenue. A wait of 30 days follows the payment before a release. Source: `https://partner.steamgames.com/doc/gettingstarted/appfee` and `https://partner.steamgames.com/doc/gettingstarted/onboarding`, read 2026-09-14.
+- A new product needs a Coming Soon page for at least two weeks before release. Valve recommends the page "as soon as you are ready to start talking publicly about your game". A store page review and a build review each take 3 to 5 business days, and Valve asks for 7. Source: `https://partner.steamgames.com/doc/store/coming_soon` and `https://partner.steamgames.com/doc/store/review_process`, read 2026-09-14.
+- The content survey comes "Before submitting your store page and product build for review". It asks about "Pre-Generated" AI content that ships with the game, and efficiency gains from AI tools are not its focus. After approval, some answers change only through Steam Support. Source: `https://partner.steamgames.com/doc/gettingstarted/contentsurvey`, read 2026-09-14.
+- A game enters one Next Fest alone. Its store page must be public, its demo must be playable by the start, and the game must stay unreleased until the fest ends. The rules exclude "a prologue, preview, or short-form version of an existing game already released on Steam". The next editions run 2027-02-22 to 2027-03-01 and 2027-06-14 to 2027-06-21. Source: `https://partner.steamgames.com/doc/marketing/upcoming_events/nextfest` and its edition pages, read 2026-09-14.
+- Steam Playtest is free, and it runs as a separate app with its own reviews, wishlists, and playtime. Source: `https://partner.steamgames.com/doc/features/playtest`, read 2026-09-14.
+- For the Steam Deck rating Verified, glyphs must match the input in use. No text falls below 9 pixels high at 1280 by 800. Valve tests a native Linux build first, and it tests the Windows build under Proton only when the Linux build fails. Source: `https://partner.steamgames.com/doc/steamdeck/compat`, read 2026-09-14.
+- Valve recommends Steam Linux Runtime 4.0 for new native Linux games, and a developer picks the runtime on the Steamworks site. Source: `https://github.com/ValveSoftware/steam-runtime/blob/master/README.md`, read 2026-09-14.
+- Under Steam, gamepad input "will appear in your game as regular Xbox controller input". Valve recommends the Steam Input API for glyphs, and a game without it can "detect the device type via our API". Source: `https://partner.steamgames.com/doc/features/steam_controller/getting_started_for_devs` and the Deck compatibility page, read 2026-09-14.
+- Steam Auto-Cloud syncs listed folders "when the application launches and exits", with no code in the game. The page does not say how Steam settles a conflict. Its roots include WinAppDataRoaming, MacAppSupport, and LinuxXdgDataHome. Source: `https://partner.steamgames.com/doc/features/cloud`, read 2026-09-14.
+- Capsule art shows only game art, the game name, and an official subtitle. A store page needs at least five screenshots of play, at 1920 by 1080 or larger, in 16:9. Source: `https://partner.steamgames.com/doc/store/assets/rules` and `https://partner.steamgames.com/doc/store/assets/standard`, read 2026-09-14.
+- A trailer can have up to 1920 by 1080 pixels at 30 or 60 frames per second. The file is .mov, .wmv, or .mp4, and Valve prefers H.264 with AAC. Source: `https://partner.steamgames.com/doc/store/trailer`, read 2026-09-14.
+- On 2026-09-14, Steamworks.NET last released on 2026-08-02 and Facepunch.Steamworks on 2026-04-23, both under MIT, and NuGet lags by years for both. GodotSteam has no C# version of its own, and it moved to Codeberg on 2026-09-04. Source: the GitHub releases of each project, `https://www.nuget.org/`, and `https://codeberg.org/GodotSteam/GodotSteam`, read 2026-09-14.
 
 Text rules: this file follows ASD-STE100 (D-10). Tables are exempt from sentence-length counts.
 
@@ -109,24 +138,26 @@ From the roadmap interview of 2026-09-12:
 | Debug assembly | Debug assembly | debug intents | Core state, through the seam of D-260 | High. A release build never loads it (D-260) |
 | Map scene, battle scene, hub scene, scene runner | Game | Core state, atlas, string table | screen, intents | Medium. Cosmetic by design (D-106, D-111, D-114) |
 | Dialogue box and portraits | Game | scene content, string table | screen | Medium (D-109) |
-| CRT shader and the frame | Game | settings | screen | Medium. The Deck floor (D-105, D-228) |
+| CRT shader and the frame | Game | settings | screen | Medium. The Deck floor and the two views (D-105, D-228, D-480) |
 | Light, particles, and shaders | Game | effect content, normal maps, Core state | screen | Medium. The Deck test measures them (D-139, D-160, D-182, D-183) |
 | Crash file and replay viewer | Game | run record, crash file | crash file, screen | High. The crash report, and a viewer in development builds alone (D-170, D-175) |
 | Audio player | Game | rendered audio, Core state, settings | sound | Low. Music by place and time of day, ambience, stings, and the mix (D-413, D-424, D-429, D-435) |
+| Steamworks glue | Game | Steam client | controller type for the glyphs | Low. Steam builds alone, with no cloud code (D-460, D-461) |
 | Atlas tool, audio synthesizer | Tools | grids, palette, tracker rows, parameter files | atlas PNG, rendered audio, hash list | Medium. The atlas is committed with a pixel test (D-107, F-19), and the audio renders at build against its hash list (D-432) |
 | Map preview, tile edges, screenplay | Tools | map content, edge rules, scene content | preview PNG, screenplay text | Low. The owner approves maps and scenes from them (D-165, D-173, D-204) |
 | STE checker, det-lint, review gate, night gate | Tools | source, docs, records | pass or fail | Gate |
 | Headless runner and bots | Tools | policies, seeds | run records | High. The night gate (D-64) |
-| Export and release | CI | tag | three builds | Low (D-53, D-85) |
+| Export and release | CI | merge, release tag | five exports as build artifacts, the GitHub Release of a prologue tag | Low (D-53, D-85, D-449, D-457, D-464) |
 
 ## 4. Cost model (what we pay, what we do not know)
 
 What we pay:
 
-- Owner time: the interviews, the approvals of every text batch (D-57), and the play sign-off of every phase (D-52). The owner also approves every music and sound batch by ear (D-433).
+- Owner time: the interviews, the approvals of every text batch (D-57), and the play sign-off of every phase (D-52). The owner also approves every music and sound batch by ear (D-433). The owner also cuts each trailer (D-476), and reads the crash emails and the notes of the trusted players (D-469, D-473).
 - Tokens: two harnesses, Claude Code and Codex, on every PR (D-14, D-17). The amount per PR is unknown until M-1.
-- CI: GitHub-hosted minutes on three platforms per PR (D-2), plus a nightly bot run (D-64). Free on a public repository (D-4). Wall time per PR is unknown until M-2. The build renders the audio, which adds to that time (D-432).
-- Purchases: the Steam Direct fee, 100 USD, before the Steam release (D-85). No asset license and no font fee: every font is OFL (D-104, D-122). Godot is free.
+- CI: GitHub-hosted minutes on five legs per PR (D-2, D-474), five exports on each merge (D-449, D-464), and a nightly bot run (D-64). The minutes are free while the repository stays public (D-4). From Phase 6 the repository is private, and minutes past the free quota cost money (D-456). Wall time per PR is unknown until M-2. The build renders the audio, which adds to that time (D-432).
+- Purchases: the Steam Direct fee, 100 USD, at Gate 2 (D-85, D-471). The Apple Developer Program costs 99 USD a year from PR-40 on (D-455). GitHub Pro comes before the switch to a private repository, so the required checks stay on `main` (D-456).
+- No purchase: no code signing certificate for Windows (D-463), no asset license, and no font fee, because every font is OFL (D-104, D-122). Godot is free.
 
 Measurements that answer the unknowns:
 
@@ -174,6 +205,9 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-29 | PR-23 to PR-26 held four ids for dungeons two to four, which are three dungeons. The count came unchanged from v1, and no text said what the fourth id held | 2026-09-13 | ✅ doc. The second visit to the hanging cells (D-327) makes four dungeon builds after the first, and each id names one in the order of play (D-313) |
 | F-30 | Before the rename, an audit of every document found stale text in the design, the registers, the world files, the skills, the agent files, and the runbooks. Section 8 still put PR #2 next and a font pick before PR-7. Three rules read the override set as "no code". The design-doc skill swapped two sections, and nine resolved questions lacked the later decisions that changed them | 2026-09-14 | ✅ doc. D-411. One docs PR fixes each item before the rename PR |
 | F-31 | D-115 commits every rendered WAV file. With about 25 tracks for region one, at about 21 MB for a two-minute 16-bit stereo WAV at 44.1 kHz, that is over 500 MB, and each change to a track adds a full copy to the history | 2026-09-14 | ✅ doc. D-432: the build renders the audio, and the repository commits a hash of each render. D-443 and D-444 bring the count to about 20 tracks. Binds PR-38 |
+| F-32 | The cost model listed the Steam Direct fee alone. Steam requires notarized macOS apps since 2019-10-14, and notarization needs the Apple Developer Program at 99 USD a year | 2026-09-14 | ✅ doc. D-455: the cost model gains the fee, and PR-40 signs and notarizes the macOS build |
+| F-33 | The release block found five gaps. D-54 made the repository public before D-133 made the later regions paid (L-6). D-170 named no place for a crash file, and the plan had no credits for the notices that the Godot license and the OFL need. D-62 named a config directory, and the Godot user folder on Linux is a data folder. D-464 added two arm64 builds that no CI leg tested (T-3) | 2026-09-14 | ✅ doc. D-456, D-473, D-467, D-465, and D-474 |
+| F-34 | Steam needs at least five screenshots at 1920 by 1080 or larger in 16:9, and the frame was 1280 by 800 in 16:10 (D-228). D-229 let no screen see more of the map than the Deck, so a 16:9 screenshot needed bars or a crop | 2026-09-14 | ✅ doc. D-480: the game supports a 16:9 view, and a screenshot at 1920 by 1080 comes straight from play |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -195,7 +229,7 @@ The tenets are the constitution. When a tenet conflicts with speed or convenienc
 2. **G-2.** No `float`, `double`, or `decimal` in Core. Fixed-point integers carry every rate. The `det-lint` tool enforces it (D-6).
 3. **G-3.** No `System.Random`, `DateTime`, `Stopwatch`, or `Environment.TickCount` in Core. The seed and the tick are the only sources of randomness and time (D-6).
 4. **G-4.** One seeded stream per subsystem, and a fixed iteration order wherever the order reaches the state (D-6).
-5. **G-5.** Every run records its seed, content hash, versions, and inputs from the first tick. A replay reproduces the state hash, and the `replay-identity` job proves it on three platforms before merge (D-6).
+5. **G-5.** Every run records its seed, content hash, versions, and inputs from the first tick. A replay reproduces the state hash, and the `replay-identity` job proves it on every CI leg before merge (D-6, D-474).
 6. **G-6.** Every content file validates against its schema at load and in a test. An absent field is an error. No `.tres` files (D-116).
 7. **G-7.** No inline string that the player sees. Every player string has an id in the string table (D-7, D-116).
 8. **G-8.** One concern per PR (L-1).
@@ -209,7 +243,7 @@ The tenets are the constitution. When a tenet conflicts with speed or convenienc
 16. **G-16.** A PR that creates a check passes that check. A PR names any check that does not exist yet, with the PR that creates it (L-11).
 17. **G-17.** Every `core` behavior change bumps the simulation version constant, and the review confirms it.
 18. **G-18.** No empty `catch` and no silent default. Every error carries its context (T-2).
-19. **G-19.** Every screen designs to 1280 by 800 with 32-pixel tiles. The Steam Deck at 1x with the CRT on is the floor (D-92, D-120, D-228). Other screens fit the height, with whole-number scale as a setting (D-232).
+19. **G-19.** Every screen designs to 1280 by 800 with 32-pixel tiles. It also holds the 16:9 view, about 1422 by 800 (D-480). The Steam Deck at 1x with the CRT on is the floor (D-92, D-120, D-228). Other screens fit the height, with whole-number scale as a setting (D-232). Every shape but 16:10 and 16:9 shows black bars (D-480).
 20. **G-20.** Every player string follows the `game-text-style` skill, and the owner approves each text batch in its PR (D-57, D-63).
 21. **G-21.** Every enemy profile validates at load, and a profile that can never act fails the load (D-65, T-2).
 22. **G-22.** The night gate is green before merge, once PR-15 creates it. It needs a success record from a night inside 48 hours (D-64).
@@ -223,17 +257,17 @@ Five phases. Gate 1 is a foundation gate with no play. Gates 2 to 5 are builds t
 
 An item that kept its purpose through the pivots kept its number. PR-32 is retired. New items start at PR-34 (G-10). Focused roadmaps in `docs/roadmaps/` expand each phase and each area before PR-1 (D-142, D-144). A phase roadmap gives per-PR scope and exit tests, and an area roadmap says how its area works. Each entry cites its decisions and never restates them.
 
-### Phase 1: Foundations (gate: CI green on three platforms with an identical state hash, the smoke session green, docs and PR gate live, no play)
+### Phase 1: Foundations (gate: every CI leg green with an identical state hash, the smoke session green, docs and PR gate live, no play)
 
 **PR-1: Repository scaffold.**
 Create the solution with the Core, Game, Tools, and Tests projects (D-118). Pin the .NET 10 SDK in `global.json` and Godot 4.7.2 .NET in the runbook and in CI (D-99). Core is a class library with no references. Game is a Godot .NET project that references Core. Tools is a console project. Tests is an xUnit project that references Core and Tools.
 
 Add `Directory.Build.props` with nullable on and warnings as errors. Add the Makefile with `verify`, `where`, `hooks`, `test`, `lint`, `ste-check`, and `run` (D-3). Add the pre-commit hook (D-8).
 
-Add the CI workflow that builds, tests, and checks the format on hosted Linux, Windows, and macOS (D-2, D-117). Add the `smoke` workflow that installs the pinned Godot binary and runs the headless smoke session on each platform. The session boots, starts a run, and quits with no log errors. Add the `ste-check` workflow on the interim Python script (D-10).
+Add the CI workflow that builds, tests, and checks the format on five hosted legs (D-2, D-117, D-474). The legs are Linux and Windows on x86_64 and on arm64, and macOS. Add the `smoke` workflow that installs the pinned Godot binary and runs the headless smoke session on each leg. The session boots, starts a run, and quits with no log errors. Add the `ste-check` workflow on the interim Python script (D-10).
 
 Add a test that asserts `CLAUDE.md` and `AGENTS.md` are identical (D-20) and a test that asserts the Core reference list (G-1). No game code.
-Gate: `make verify` passes on this machine, and the three CI legs, the smoke job, and `ste-check` pass on the PR.
+Gate: `make verify` passes on this machine, and the five CI legs, the smoke job, and `ste-check` pass on the PR.
 > *In plain English:* this makes the empty project with its four parts and the checks that every future change must pass. It adds nothing that plays. It is safe because it changes no behavior.
 
 **PR-2: STE checker in C#.**
@@ -248,7 +282,7 @@ Gate: the job gives success on a fixture PR with an approved record, and failure
 
 **PR-4: Random streams, fixed-point math, det-lint, and replay identity.**
 Implement the seeded streams, one per subsystem, split from the run seed (G-4). Implement the fixed-point types. Write the `det-lint` command in Tools as new code, with these rules (D-101, D-277). In Core: no float type, no clock, no OS random, no reflection, and no `Dictionary` where order reaches the state (G-2, G-3). In Game: no inline player string (G-7).
-Implement the state hash and the `replay-identity` job that runs a fixed seed set on three platforms and compares the hashes (G-5).
+Implement the state hash and the `replay-identity` job that runs a fixed seed set on every CI leg and compares the hashes (G-5, D-474).
 
 Gate: this PR passes its own lint and its own identity job, and the lint fails a fixture that uses `double`.
 > *In plain English:* different computers can give different answers for decimal math. This adds our own integer math and a check that proves the same result everywhere on every change.
@@ -261,10 +295,10 @@ Gate: a content file with an absent field fails the load test with the field nam
 **PR-6: Simulation loop, intent record, replay, and save.**
 Implement the fixed-rate loop, the intent record for keyboard, gamepad, and mouse (D-84), and the run record. The record header holds the format version, the simulation version, the content hash, the seed, and the initial state (G-5). Implement the recorder, the replay, and the compaction rule: a snapshot plus the intents since it (F-10). A load reads the snapshot of the save alone, so a patch never breaks a save (D-259).
 
-Implement the save file as a record in the platform config directory: one slot, one autosave, and a one-use resume file (D-62, D-258). A snapshot stores content ids and state, never copies of content, and each snapshot format has a version and a migration (D-163, D-166). A save writes to a temporary file with a checksum, then replaces the old save in one step (D-178). A crash writes a crash file beside the save, and every log line is one JSON object (D-170, D-179).
+Implement the save file as a record in the Godot user folder `the-thing-below` (D-62, D-465): one slot, one autosave, and a one-use resume file (D-258). A snapshot stores content ids and state, never copies of content, and each snapshot format has a version and a migration (D-163, D-166). A save writes to a temporary file with a checksum, then replaces the old save in one step (D-178). A crash writes a crash file beside the save, and every log line is one JSON object (D-170, D-179). The record header and the crash file carry the game version (D-448). The crash message names the studio email address of D-473, which waits for OQ-57.
 
 Property tests over one thousand seeds assert that a replay reproduces the end-state hash and that a version mismatch produces a contextual report.
-Gate: the replay of a recorded run gives the same hash on all three platforms, and a save reloads to the same hash.
+Gate: the replay of a recorded run gives the same hash on every CI leg, and a save reloads to the same hash.
 > *In plain English:* the game writes down its start state and every input. That record then plays any run again, so every bug becomes repeatable, and the save file is that record.
 
 **PR-34: Atlas tool, palette, and the grid format.**
@@ -284,14 +318,16 @@ Gate: the tool builds `content/sprites/atlas.png` from the five cast grids, and 
 **PR-7: Tile map, movement, sight, and the map scene.**
 Define the layout content format: a grid of tile ids, doors, pickable locks, traps, chests, save points, spawn points, and markers for secrets (D-39, D-41, D-386). A layout also sets the time of day of its map (D-442). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core.
 
-Draw the map scene in Game at 1280 by 800, fit to the window (D-232), with the camera on the lead (D-106, D-228, D-292, D-306). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
-Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never scrolls past the edge of a map larger than the view, and a smaller map sits centered.
+Draw the map scene in Game at 1280 by 800, fit to the window, with the camera on the lead (D-106, D-228, D-232, D-292, D-306). A 16:9 screen gets a view about 1422 by 800, and every other shape gets black bars (D-480). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
+
+The export job of D-449 starts with this PR. Each merge to `main` exports the five builds of D-464 as build artifacts, with the license files of D-467. The roadmaps PR gives the job its PR id.
+Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never scrolls past the edge of a map larger than the view, and a smaller map sits centered, in both views.
 > *In plain English:* this is the first thing you can open and move in. The dungeon is a grid of tiles, the party walks it one tile at a time, and the view follows.
 
 **PR-41: Screen-test job.**
 Add the Linux CI job of D-172. It installs a pinned Mesa and runs Godot under Xvfb with the OpenGL driver. It captures fixture scenes and compares the frames by pixel with a committed CI baseline.
 
-Fix every source of change at capture: the particle seeds, the CRT flicker phase, and the time of day. Capture the fit of D-232 at 1080 and 1440 screen rows, to catch aliasing in the scanlines (D-240). Add the desktop command that makes a contact sheet with the real renderer (D-172).
+Fix every source of change at capture: the particle seeds, the CRT flicker phase, and the time of day. Capture both views of D-480, and the fit of D-232 at 1080 and 1440 screen rows, to catch aliasing in the scanlines (D-240). Add the desktop command that makes a contact sheet with the real renderer (D-172).
 Gate: the job passes on the map scene of PR-7, and it fails when one pixel of the baseline changes. Two runs give the same frames.
 > *In plain English:* the computers that check each change have no screen. This job gives them one with a fixed picture, so a broken screen fails before it merges.
 
@@ -367,10 +403,10 @@ Gate: the screen-test job of PR-41 captures the toggle on and off, and the two f
 > *In plain English:* the whole screen looks like an old monitor, and one setting turns it off.
 
 **PR-38: Audio synthesizer and the first sounds.**
-Write the synthesizer in Tools as new code, with integer math, so a render gives the same bytes on all three platforms (D-101, D-277, D-432). It renders 16-bit style instrument voices with filters and reverb, for music and sound effects alike (D-412, D-423). A track is tracker rows in content, and a sound effect is a parameter file (D-438). The build renders the audio, and a committed list holds the hash of each render (D-432). Add the listen command that renders a batch and plays it for the owner (D-439). Six sound effects and one track for the first dungeon.
+Write the synthesizer in Tools as new code, with integer math, so a render gives the same bytes on every CI leg (D-101, D-277, D-432, D-474). It renders 16-bit style instrument voices with filters and reverb, for music and sound effects alike (D-412, D-423). A track is tracker rows in content, and a sound effect is a parameter file (D-438). The build renders the audio, and a committed list holds the hash of each render (D-432). Add the listen command that renders a batch and plays it for the owner (D-439). Six sound effects and one track for the first dungeon.
 
 The roadmaps PR gives PR ids to the rest of the audio player, the first music, and the sound room (D-399, D-439).
-Gate: every render matches its hash on all three platforms, a changed parameter fails the hash test, and the battle scene plays a hit sound.
+Gate: every render matches its hash on every CI leg, a changed parameter fails the hash test, and the battle scene plays a hit sound.
 > *In plain English:* every sound comes from a small text file that the tool turns into audio. Music is rows of notes, as a sprite is rows of letters. The first fight makes noise.
 
 **PR-17: The village, the first hub, and the first dungeon.**
@@ -384,6 +420,9 @@ Gate: the owner plays from the village until Dagvar joins in the hanging cells, 
 **M-4: Encounter numbers.** Record turns per encounter and party downs per dungeon by bot policy on the first dungeon. Binds the resource numbers of D-35.
 
 **M-6: The Deck.** Record the frame time on the first playable against 60 frames per second (D-161). Record the readability of the font and the sprites at 1x, with the CRT on and off (D-92, D-120, D-228, F-18).
+
+**The store page, after Gate 2.** The store page of the full game goes public as Coming Soon (D-471). The owner pays the Steam Direct fee, and a session searches the EU and WIPO registers for the game name and the studio name (D-408, OQ-57). The page needs the store text, the capsule grids, the screenshots, and the system requirements from M-6 (D-452, D-475, F-34). The content survey with its AI disclosure comes before the review (OQ-59). The roadmaps PR gives the work a PR id.
+> *In plain English:* once the first playable feels right, the game gets a public page on Steam. People can find it and add it to a wishlist years before the full game.
 
 ### Phase 3: Story systems (gate: the owner plays a branch that closes a route and a hub that changes with an earlier choice, D-329)
 
@@ -421,35 +460,41 @@ Gate: a fixture puzzle opens a door, and a hidden room stays hidden until found.
 
 **M-5: Region one play time.** The owner's play time from the first hub to the end of the arc, against the six to eight hours of D-56.
 
+**Trusted players, after Gate 4.** A few players whom the owner picks play the build artifacts of region one and send notes outside Steam (D-469). Their notes feed the fixes before the release.
+
 > *In plain English for Phase 4:* the free prologue takes shape. Four dungeons, two hubs, their lessons, the first part of the story, and the numbers tuned by robots and by play.
 
 ### Phase 5: First release, the free prologue (gate: a tagged build on GitHub that a fresh machine runs, then the Steam demo on the Deck)
 
-**PR-31: Release workflow.** Export the Game project for the three platforms on a tag and publish a GitHub Release (D-53, D-85). The runbook explains the macOS warning on an unsigned build.
+**PR-31: Release workflow.** On a release tag, publish the five exports of the prologue as a GitHub Release with its release notes (D-53, D-448, D-453, D-457). GitHub Releases stop when the demo goes live on Steam (D-470). The runbook gives the Open Anyway steps for macOS and the Run anyway step for Windows (D-455, D-463). Every export carries the license files (D-467).
 
 **PR-32: Retired.** The fallback pass of v1 has no purpose after D-98. No later item takes the id (G-10).
 
 **PR-33: The title screen, settings, and the exit.** The first screen plays the main theme (D-427). The settings hold the CRT toggle, the bindings, the audio group of D-435, and the vibration setting of D-434. A clean exit saves.
 
-**PR-39: Deck verification pass.** Walk the Steam Deck verification checklist: gamepad glyphs, default bindings, the 1x frame (D-228), text size, and suspend and resume (D-85, D-92).
+The boot splash shows the studio mark (D-468). A corner of the title screen shows the game version (D-454). The title menu holds a credits screen with the studio and the license notices (D-467).
 
-**PR-40: Steam integration.** Steamworks initialization, and Steam Cloud for the save directory with the newest-wins prompt (D-85, D-93). The store page of the full game in the "Coming Soon" state, and the prologue as its demo app (D-143). Needs the Steam Direct fee for the full game. PR-40 verifies whether the demo needs a fee of its own. Before the store page goes public, PR-40 checks the EU and WIPO trademark registers for the name (D-215, D-408).
+**PR-39: Deck verification pass.** Walk the Steam Deck checklist to the rating Verified (D-459). It checks glyphs that match the input, default bindings, and the 1x frame (D-222, D-228, D-460). It also checks text of 9 pixels or taller, and suspend and resume (D-85, D-92).
+
+**PR-40: Steam integration.** Start Steamworks through the binding of OQ-58, and add the call that reports the controller type for the glyphs (D-460, D-462). Set Auto-Cloud on the save folder, and test the conflict rule of D-93 on two machines (D-461, D-465). Publish the prologue as the demo app "The Thing Below: Prologue", and verify whether the demo needs a fee of its own (D-143, D-478).
+
+Set the Linux build on the Steam Linux Runtime that the Godot export needs, and check whether Steam takes the arm64 builds (D-458, D-474). From this PR on, CI signs and notarizes the macOS build (D-455). The store page and the name checks moved to Gate 2 (D-471).
 
 > *In plain English for Phase 5:* the prologue becomes something a person downloads and runs. Then it becomes a free demo they find on Steam and play on the Deck.
 
 ### Phase 6: Region two and later
 
-Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
+Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap. Before the first content of a paid region, the repository goes private (D-456). Phase 6 also plans the achievements of the full game and its one Next Fest (D-466, D-472).
 
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. PR #2 to PR #7 merged on 2026-09-14 (D-398, D-400, D-402, D-411, D-217). The GitHub repository took its new name, and the checkout moved to the external SSD (D-400, D-410). PR #7 set the music and the sound, and ended the day clock (D-412 to D-445). Then one docs PR each for the release block and the roadmaps (D-399). The roadmaps PR asks OQ-56 before it rebuilds this sequence. The owner runs the Deck test of D-160 before PR-1.
+2. PR #2 to PR #8 merged on 2026-09-14 (D-398, D-400, D-402, D-411, D-217, D-446). The repository took its new name, and the checkout moved to the external SSD (D-400, D-410). PR #9 holds the release block and the two aspect ratios (D-447 onward), and the roadmaps docs PR follows (D-399). The roadmaps PR asks OQ-56 before it rebuilds this sequence. It places the export job, the store page work, and the credits roll (D-449, D-467, D-471). The owner runs the Deck test of D-160 on the Linux export before PR-1 (D-458).
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.
 6. M-1, M-2.
-7. **← GATE 1 (foundation).** The identity job, `dotnet test`, the smoke job, and `ste-check` are green on three platforms.
+7. **← GATE 1 (foundation).** The identity job, `dotnet test`, the smoke job, and `ste-check` are green on every CI leg.
 8. The fonts are set: Terminus TTF and Terminus TTF Bold (D-263, D-264).
 9. PR-7, PR-41, PR-8, PR-9, PR-10.
 10. PR-11, PR-12, PR-13, PR-14, PR-36.
@@ -457,15 +502,15 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 12. PR-16, PR-35, PR-37, PR-38.
 13. PR-17.
 14. M-3, M-4, M-6.
-15. **← GATE 2 (first playable).** The owner plays the village, one hub, and one dungeon on both machines and signs off on feel (D-362).
+15. **← GATE 2 (first playable).** The owner plays the village, one hub, and one dungeon on both machines and signs off on feel (D-362). Then the owner pays the Steam Direct fee, and the store page goes public (D-471).
 16. PR-18, PR-19, PR-20, PR-21.
 17. **← GATE 3 (story systems).** The owner plays a branch and a hub that changes with an earlier choice.
 18. PR-23 to PR-26, PR-27, PR-42.
 19. PR-28, PR-29, PR-30.
 20. M-5.
-21. **← GATE 4 (region one).** The owner plays region one end to end on both machines.
+21. **← GATE 4 (region one).** The owner plays region one end to end on both machines. Then trusted players play the build artifacts (D-469).
 22. PR-31, PR-33, PR-39.
-23. Owner: pay the Steam Direct fee (D-85).
+23. Owner: join the Apple Developer Program (D-455). The Steam Direct fee moved to Gate 2 (D-471).
 24. PR-40.
 25. **← GATE 5 (first release).** A fresh machine runs the tagged build, and the Deck runs the Steam demo.
 26. Phase 6 stays parked.

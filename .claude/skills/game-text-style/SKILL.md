@@ -1,11 +1,11 @@
 ---
 name: game-text-style
-description: The voice of every string the player reads: dialogue, lore, item text, battle messages, and UI labels. Terse, concrete, grim, dry. Load before you write or review any entry in the string table or any content file with player text.
+description: The voice of every string the player reads: dialogue, lore, item text, battle messages, and UI labels, plus the store text and the release notes. Terse, concrete, grim, dry. Load before you write or review any entry in the string table, any content file with player text, the store text, or release notes.
 ---
 
 # Game text style skill
 
-This skill holds the voice of the game (D-11, D-27, D-63). It binds every string the player reads. It does not bind documents, which follow `ste-writing`. The owner approved this skill (D-70), and approves every text batch after it (D-57).
+This skill holds the voice of the game (D-11, D-27, D-63). It binds every string the player reads, and the store text and the release notes (D-452, D-453). It does not bind documents, which follow `ste-writing`. The owner approved this skill (D-70), and approves every text batch after it (D-57). The store text and the release notes stay out of the string table, because the game never shows them.
 
 ## The voice in one line
 

@@ -89,14 +89,14 @@ Set the author field to `Claude Code` or `Codex`. Commit the entry with the revi
 - Every dependency needs a decision entry (G-13).
 - Every optimization needs a profile before and a measurement after (G-14).
 - Every `Core` behavior change bumps the simulation version constant, and the review confirms it (G-17).
-- Every screen designs to 1280 by 800 with 32-pixel tiles, and the Steam Deck at 1x is the readability and performance floor (D-92, D-228, G-19).
+- Every screen designs to 1280 by 800 with 32-pixel tiles, and it also holds the 16:9 view of about 1422 by 800 (D-480). The Steam Deck at 1x is the readability and performance floor (D-92, D-228, G-19).
 
 ## Git rules
 
 - Trunk is `main`. Every change starts on a short branch named `<prefix>/pr-<n>-<slug>`, for example `feat/pr-3-review-gate`. The owner squash-merges (D-8).
 - Never commit on `main` (D-25). After PR-1, `make hooks` installs the pre-commit hook that refuses a commit on `main`.
 - Commit subjects use a conventional prefix: `feat`, `fix`, `docs`, `test`, `chore`.
-- One concern per PR (G-8). PR #2, the plan through the systems block, is an exception (D-142, D-398). PR #7, the audio block with the time of day, is the other (D-437).
+- One concern per PR (G-8).
 - Run `make where` before every commit and push, after PR-1. Until then, run `git status --short --branch` and `gh pr status`.
 
 ## Automated review pass
@@ -139,10 +139,10 @@ A PR merges only when every line holds:
 
 - [ ] Tests written and green (T-3).
 - [ ] No silent failure. Every error carries context (T-2).
-- [ ] The three-platform build, test, and format job is green (D-2, D-117). PR-1 creates it.
-- [ ] The `smoke` job is green on three platforms: the headless Godot session (D-117). PR-1 creates it.
+- [ ] The build, test, and format job is green on every CI leg (D-2, D-117, D-474). PR-1 creates it.
+- [ ] The `smoke` job is green on every CI leg: the headless Godot session (D-117, D-474). PR-1 creates it.
 - [ ] The `det-lint` job is green: no float, clock, or OS random in `core`, and no inline player string (G-2, G-3, G-7). PR-4 creates it.
-- [ ] The `replay-identity` job is green: the same state hash on the three platforms for the fixed seed set (G-5). PR-4 creates it.
+- [ ] The `replay-identity` job is green: the same state hash on every CI leg for the fixed seed set (G-5, D-474). PR-4 creates it.
 - [ ] The `night-gate` job is green: a success record from a night inside 48 hours (G-22). PR-15 creates it.
 - [ ] The `ste-check` job is green (G-12). PR-1 creates it with the interim checker, and PR-2 moves it to C#.
 - [ ] The automated pass of gitar approved the head, or every comment of the pass has its answer (D-14).

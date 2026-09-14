@@ -2,6 +2,58 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 21: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the release block of the full plan, and two aspect ratios, on branch `docs/pr-9-release-block`.
+
+### What this session did, and why
+
+- Session 20 (Codex) reviewed PR #8 at `511203c` with no finding. The owner merged PR #8 as `f4a1c6b` and asked what comes next.
+- The handoff and D-399 put the release block docs PR next. The first lever of OQ-56 moves that PR after the first playable, so the session asked first. The owner kept the order (D-447).
+- Three read-only research agents read Steamworks, Apple, Microsoft, GitHub, and Godot pages. The session fetched each key page again and checked the quotes before a fact entered a document.
+- The release block ran in twelve batches, D-447 to D-480:
+  - Versions and builds: 0.MINOR.PATCH until 1.0.0, and five exports on every merge from PR-7 (D-448, D-449, D-464). Five CI legs from PR-1 and PR-4 (D-474).
+  - Signing: macOS notarized on Steam from PR-40, and Windows unsigned (D-455, D-463). F-32 records the Apple fee that the cost model lacked.
+  - GitHub: prologue tags alone on GitHub Releases, until the Steam demo (D-457, D-470). The repository goes private before paid content (D-456).
+  - Steam: the native Linux build on the Deck, the rating Verified, engine input with one Steamworks call for glyphs, and Auto-Cloud on the folder `the-thing-below` (D-458 to D-461, D-465). PR-40 picks the binding (D-462, OQ-58).
+  - Store: the store page at Gate 2, store text and capsule grids by sessions, a trailer from replays, one Next Fest, and the demo name "The Thing Below: Prologue" (D-452, D-471, D-472, D-475, D-476, D-478).
+  - Studio and players: a studio name picked before the store page (OQ-57), a studio mark on the splash, credits in three places, crash files to a studio email, and trusted players after Gate 4 (D-450, D-451, D-467 to D-469, D-473). Achievements come with the full game alone (D-466).
+  - The AI disclosure of the Steam content survey waits for OQ-59, before the store page review at Gate 2 (D-477).
+- Mid-block, the owner asked for a variety of aspect ratios and a revision of D-229. After four answers in a few minutes, the game supports 16:10 and 16:9 alone, with black bars on every other shape (D-480). The answer lands in this PR, and `CLAUDE.md` and `AGENTS.md` no longer list exceptions to G-8 (D-479).
+- F-33 records five gaps that the block closed, and F-34 records the screenshot format of Steam.
+- The session updated `docs/design.md`, `docs/questions.md`, `CLAUDE.md`, `AGENTS.md`, the PR template, three skills, the dev-machine runbook, and `docs/world/setting.md`.
+- The handoff held eleven entries before this one, because Session 20 added its entry and moved none. Sessions 11 and 10 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `f4a1c6b` (PR #8).
+- PR #9 is open on `docs/pr-9-release-block`. The remote head is the commit that holds this entry.
+- The interim STE check passes with 0 findings, `git diff --check` is clean, and `CLAUDE.md` and `AGENTS.md` stay identical.
+
+### In flight
+
+PR #9 answers the gitar pass. It adds decision rows, so a Codex session reviews it, and no `review-override` label applies (D-401). The owner merges. Then the roadmaps docs PR starts (D-399).
+
+### Traps and gotchas
+
+- The PR holds two concerns on owner instruction (D-479). The description names the second concern, so a reviewer does not read it as a break of G-8.
+- D-480 took several answers: a wider view, a limit at 16:9, a crop of narrow screens, then 16:9 alone, then 16:9 and 16:10. Only the last answer is a row. Any text that names 21:9, 4:3, or a crop is stale.
+- D-471 moves the Steam Direct fee, the EU and WIPO name checks, the store text, and the capsule art to Gate 2. OQ-57 and OQ-59 now block the store page at Gate 2, and OQ-57 also blocks the crash address of D-473.
+- The roadmaps PR gives PR ids to the export job after PR-7, the store page work after Gate 2, the credits roll, and the trailer capture.
+- The Steamworks pages do not say how Auto-Cloud settles a conflict, whether a demo app needs a fee, or whether Steam takes arm64 builds. PR-40 checks each one.
+- The owner often gives a custom answer that widens the scope. Ask the limits in the next batch, and confirm the final state before the rows.
+- Gitar runs one pass by itself on a new PR. After a later push, post `Gitar review`, and count a pass only from a `Gitar` check run on the head.
+- The next ids are D-481, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 22.
+
+### Open questions that block progress
+
+None for PR #9. OQ-57 and OQ-59 block the store page at Gate 2, and OQ-58 blocks PR-40. OQ-56 waits for the roadmaps PR, and OQ-3 waits for PR-3.
+
+### Next concrete action
+
+This session answers the gitar pass on PR #9. Then a Codex session reviews PR #9 under the `pr-review` skill and writes `docs/reviews/pr-9.md` (D-401). The owner merges. Then a session starts the roadmaps docs PR, asks OQ-56 first, and rebuilds sections 7 and 8 of `docs/design.md` (D-399).
+
 ## Session 20: 2026-09-14, Codex
 
 Author: Codex
@@ -412,91 +464,3 @@ None for PR #4. OQ-3 waits for PR-3.
 ### Next concrete action
 
 This session answers the gitar pass on the new head. Then a Codex session runs the repeat review of PR #4 and updates `docs/reviews/pr-4.md`. The owner merges.
-
-## Session 11: 2026-09-14, Codex
-
-Author: Codex
-Session: cross-provider review of PR #4 at effective head `cb6e96e`.
-
-### What this session did, and why
-
-- Verified the PR target, base, merge base, branch, effective head, changed paths, provider gate, and existing PR comments.
-- Read the complete diff, the design roadmap, the decision and question registers, the changed skills and agent files, the runbooks, the world files, and the PR description.
-- Confirmed the automated pass approved the head with no issue comments. The local interim STE check passes with 0 findings, `git diff --check` is clean, and `AGENTS.md` and `CLAUDE.md` remain identical.
-- Found P2-1: the changed `design-doc-style` skill gives section numbers that do not match `docs/design.md`.
-- Found P2-2: the material name-search record has no dated primary-source links or repeatable query record in the repository documents.
-- Wrote `docs/reviews/pr-4.md` with the verdict `Changes required` for `cb6e96e`.
-
-### State of the build
-
-- No code exists. `main` is `d29921d` (PR #3).
-- PR #4 is open at `cb6e96e` on `docs/pr-4-docs-audit`.
-- The interim STE check passes with 0 findings. No solution, Makefile, CI, review-gate, or Godot project exists yet.
-
-### In flight
-
-PR #4 waits for the author to correct P2-1 and P2-2, push the changes, request the automated pass, and take a repeat review at the new effective head.
-
-### Traps and gotchas
-
-- `docs/design.md` uses section 5 for the defect register, section 6 for guardrails, and section 7 for the roadmap. The changed design-doc skill says 6, 7, and 8.
-- The repository name search remains tentative because EUIPO, TMview, and WIPO did not answer. PR-40 owns the later verification.
-- The review record is metadata. A later metadata commit does not change the effective implementation head, but a substantive correction does.
-
-### Open questions that block progress
-
-None. OQ-3 remains open for branch protection and does not block this review.
-
-### Next concrete action
-
-Correct P2-1 and P2-2, run the focused checks and the interim STE check, then repeat the review on the new effective head.
-
-## Session 10: 2026-09-14, Claude Code
-
-Author: Claude Code
-Session: the start of the rename runbook after PR #3 merged, then a docs PR that makes every document current before the rename PR, on branch `docs/pr-4-docs-audit`.
-
-### What this session did, and why
-
-- PR #3 merged as `d29921d`. The preconditions of `docs/runbooks/rename-and-move.md` held: no open PR, the SSD mounted, and the target path and the GitHub name free.
-- A search for "The Thing Below" found no game on Steam and no United States mark. A free jam game on itch.io is called "The Thing Beneath", and its devlog once says "The Thing Below". The EU and WIPO registers did not answer. The owner chose to go ahead and to start now (D-408, D-409).
-- Steps 1 to 3 of the runbook ran: the GitHub repository is `nkramber/the-thing-below`, and the local `origin` points at it. The owner's instruction "Ensure ALL docs are up to date before you rename/move repo" arrived after those steps. The owner kept the new name (D-410) and chose a current-state audit in its own docs PR before the rename PR (D-411).
-- Three read-only audit agents read the design, the world files with the questions register, and the process files. Two scripts checked the revision notes of the decision register and the file paths in the documents. The session verified each finding against its source before a change.
-- The fixes cover these files:
-  - `docs/design.md`: the status header, the system map, F-2, F-3, F-9, T-4, PR-1, PR-6, PR-10, PR-14, PR-17, PR-34, PR-37, PR-40, the Phase 2 gate, and section 8.
-  - `docs/questions.md`: nine notes.
-  - `docs/world/`: three items.
-  - `CLAUDE.md` and `AGENTS.md`: the override set and the Python exceptions.
-  - The PR template, four skills, and one agent file.
-  - Both runbooks, the docstring of `docs/tools/ste-check.py`, and the Rust block of `.gitignore`.
-- D-78 gained its note for D-98. F-30 records the audit.
-- Findings the session did not change: the open item on the two months after region one in `places.md` already defers to region two (D-353). PR-35 keeps "one hub and one dungeon" as the first nodes, because no decision says whether the village is a node.
-
-### State of the build
-
-- No code exists. `main` is `d29921d` (PR #3) on `nkramber/the-thing-below`.
-- Branch `docs/pr-4-docs-audit` holds one commit above `main`, the commit that holds this entry.
-- The interim STE check passes with 0 findings.
-- The local checkout is still `~/Repos/terminal-rpg`. The documents keep the working title until the rename PR.
-
-### In flight
-
-PR #4, the docs audit, answers the gitar pass, then takes a Codex review, because it adds D-408 to D-411 (D-401). The owner merges. Then step 4 of the runbook starts the rename PR, and the clone to the SSD and the copy of the session notes follow (D-400, D-411).
-
-### Traps and gotchas
-
-- The GitHub repository has a new name. The old URL redirects, but set `origin` to `git@github.com:nkramber/the-thing-below.git` in any other checkout.
-- The rename PR swaps the title and the project names alone. This PR already changed the facts about the GitHub repository in `docs/design.md` and `docs/runbooks/dev-machine.md`.
-- The session notes of Claude Code key on the checkout path. Step 10 of the runbook copies the memory folder after the clone.
-- Do not renumber the steps of `docs/runbooks/rename-and-move.md`: D-400 cites step 10 by number.
-- `grep` on this machine is `ugrep`, which rejects a long bounded repeat such as `.{0,120}`. Use Python for a context search.
-- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
-- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 11.
-
-### Open questions that block progress
-
-None for PR #4. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-This session answers the gitar pass on PR #4. Then a Codex session reviews PR #4 under the `pr-review` skill and writes `docs/reviews/pr-4.md` (D-401). The owner merges. Then a session runs step 4 onward of `docs/runbooks/rename-and-move.md`.

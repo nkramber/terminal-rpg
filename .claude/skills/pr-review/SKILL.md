@@ -122,7 +122,7 @@ Apply each relevant row. Record why an area does not apply when its omission can
 | Strings | No inline player string. Every player string has an id in the string table (G-7). |
 | Input and CI boundaries | Check size limits, file paths, and validation at affected external inputs. Inspect CI permissions, secret access, and execution of untrusted content when those boundaries change. |
 | Gameplay | The rules the design doc and the decisions set for the affected system. Trace repeated runs as well as one run. |
-| Presentation | Gamepad and keyboard play, the 1280 by 800 frame with 32-pixel tiles, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-105, D-107, D-228). Headless tests do not establish visual quality or game feel. |
+| Presentation | Gamepad and keyboard play, the 1280 by 800 frame and the 16:9 view with 32-pixel tiles, black bars for other shapes, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-105, D-107, D-228, D-480). Headless tests do not establish visual quality or game feel. |
 | Dependencies and cost | A decision justifies each dependency (G-13). Performance claims include a profile before the change and a measurement after it (G-14). |
 
 Do not reintroduce an earlier contract that a later decision supersedes.
@@ -162,7 +162,7 @@ Use the current build commands in `AGENTS.md`. Do not invent a successful comman
 - Distinguish a passed check from a skipped, unavailable, failed, or author-reported check.
 - Record the command, revision, environment, result, and relevant artifact for each required check.
 - Verify CI results against the reviewed revision and configured test target.
-- Check the three-platform `replay-identity` result once PR-4 creates it, and the smoke and night results once their PRs create them (G-5, G-22).
+- Check the `replay-identity` result on every CI leg once PR-4 creates it, and the smoke and night results once their PRs create them (G-5, G-22, D-474).
 
 Use the initial-check clause only as G-16 permits.
 Name the absent check and the PR that creates it. A PR that creates a check must pass it.
