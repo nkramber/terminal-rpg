@@ -15,25 +15,34 @@ Session: the gitar pass on the answer to the review of PR #4, on branch `docs/pr
 - The PR holds 0 review threads, 0 line comments, and 0 reviews. The pass on `919a865` has 0 comments, 0 with merit, and no fix commit.
 - The pass is complete (the `pr-review` skill, "The automated pass"). The PR adds decisions, so no `review-override` label applies (D-401).
 - The handoff held ten entries, so Session 3 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
-- After the push of this entry, the session requested a pass on the new tip with `Gitar review`. The PR description records that result and the pass on `919a865`.
+- After the first push of this entry as `92926a6`, the session requested a pass with `Gitar review` at 15:46:41Z, 41 seconds after the push.
+- Gitar ran the pass on `919a865` again, not on `92926a6`. The check run on `919a865` started at 15:46:46Z and ended with `success` at 15:47:22Z.
+- Gitar deleted its dashboard comment and posted a new one at 15:47:20Z. The new comment says approved and repeats the old summary word for word.
+- The check suite of gitar on `92926a6` stayed `queued`, with 0 check runs. The poll of the session waited for a check run on `92926a6`, and it failed at its time limit.
+- The owner saw the new dashboard comment first. The session at first read it as a pass on `92926a6`, then the check runs showed the old head.
+- This revision of the entry corrects the traps on the result of a pass. The PR description records the result of each pass on the tip.
 
 ### State of the build
 
 - No code exists. `main` is `d29921d` (PR #3).
 - PR #4 is open. The remote head is the commit that holds this entry, above `919a865`.
 - The effective head stays `919a865`, because the commit that holds this entry changes the handoff files alone (the `pr-review` skill).
+- The gitar pass on `919a865` is complete. The PR description records the pass on the tip that holds this entry.
 - The interim STE check passes with 0 findings.
 
 ### In flight
 
-PR #4 waits for a repeat review of `919a865` by a Codex session (the `pr-review` skill, "Repeat review procedure"). The owner merges. Then step 4 of the rename runbook starts the rename PR (D-411).
+PR #4 waits for a gitar pass on the tip that holds this entry. Then a Codex session runs the repeat review of `919a865` (the `pr-review` skill, "Repeat review procedure"). The owner merges. Then step 4 of the rename runbook starts the rename PR (D-411).
 
 ### Traps and gotchas
 
-- Gitar keeps one dashboard comment and edits it on each pass. Read its edit time, not its creation time, and compare the time with the last push.
-- The `Gitar` check run on the head commit gives the same result with a time. `gh api repos/{owner}/{repo}/commits/<sha>/check-runs` reads it.
+- Count a gitar pass only when a `Gitar` check run on the head commit starts after the request and ends. `gh api repos/{owner}/{repo}/commits/<sha>/check-runs` reads it.
+- The dashboard comment is not proof. A request 3 seconds after a push ran the pass on `cb6e96e`, and a request 41 seconds after a push ran it on `919a865`.
+- Each of those two dashboard comments said approved. A request 35 minutes after the push of `919a865` ran the pass on `919a865`. The shortest safe wait after a push is not known.
+- A check suite of gitar in the state `queued`, with 0 check runs, means that no pass ran on that commit. `2072219`, `c73c19f`, and `92926a6` show that state.
+- Gitar can edit its dashboard comment or replace it with a new one. Read the newest gitar comment that contains "Code Review".
 - The REST API names the bot `gitar-bot[bot]`, and `gh pr view` names it `gitar-bot`. A filter on one exact login finds nothing in the other form.
-- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
+- Automatic passes of gitar are paused for the period. Post `Gitar review` after each push, and wait for the check run on the head.
 - The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 14.
 
 ### Open questions that block progress
@@ -42,7 +51,7 @@ None for PR #4. OQ-3 waits for PR-3.
 
 ### Next concrete action
 
-A Codex session runs the repeat review of PR #4 at `919a865` and updates `docs/reviews/pr-4.md`. The owner merges. Then a session runs step 4 onward of `docs/runbooks/rename-and-move.md`.
+This session gets a `Gitar` check run on the tip that holds this entry, and the PR description records it. Then a Codex session runs the repeat review of PR #4 at `919a865` and updates `docs/reviews/pr-4.md`. The owner merges. Then a session runs step 4 onward of `docs/runbooks/rename-and-move.md`.
 
 ## Session 12: 2026-09-14, Claude Code
 
