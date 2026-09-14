@@ -26,6 +26,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-14 move pass: PR #5 merged the rename (D-217). The checkout moved to the external SSD, and the owner deleted the old checkout, so the runbook `docs/runbooks/rename-and-move.md` is complete (D-400). The docs PRs for audio, release, and the roadmaps follow, one PR each (D-399).
 
+2026-09-14 audio pass: the audio block set the music, the sound effects, and the audio settings (D-412 to D-435, D-438, D-439, D-443, D-444). In the same PR, the owner removed the day clock, and the story now sets the time of day of each map (D-436 to D-442, D-445). F-31 records the size of the rendered audio.
+
 External facts, each with the date of its check:
 
 - The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
@@ -95,7 +97,7 @@ From the roadmap interview of 2026-09-12:
 | String table | Core | JSON files | text by id | Medium |
 | Run record, replay, and save | Core | state, intents | record file, save file | Total. The crash report and the save (D-62) |
 | Tile map, movement, and sight | Core | layout content, intents | party position, sight | High. Patrols and ambushes (D-37) |
-| Day clock | Core | ticks | time of day | High. Light and patrols follow it, and the snapshot holds it (D-190, D-193) |
+| Time of day | Core | layout content, story flags | the time of day of each map | Medium. Light, patrols, enemies, and music follow it, and the story sets it (D-193, D-442) |
 | Battle and timeline | Core | party, enemies, abilities | turn order, damage, statuses | Total. The design risk (D-29, D-35) |
 | Evaluator and profiles | Core | battle state, enemy profile | enemy actions | High. The largest single system (D-65) |
 | Lessons, aptitudes, and levels | Core | lesson content, experience | character state | High. The build decision (D-34, D-272, D-274) |
@@ -108,8 +110,8 @@ From the roadmap interview of 2026-09-12:
 | CRT shader and the frame | Game | settings | screen | Medium. The Deck floor (D-105, D-228) |
 | Light, particles, and shaders | Game | effect content, normal maps, Core state | screen | Medium. The Deck test measures them (D-139, D-160, D-182, D-183) |
 | Crash file and replay viewer | Game | run record, crash file | crash file, screen | High. The crash report, and a viewer in development builds alone (D-170, D-175) |
-| Audio player | Game | WAV files | sound | Low (D-115) |
-| Atlas tool, audio synthesizer | Tools | grids, palette, parameter files | atlas PNG, WAV files | Medium. Committed artifacts with a match test (D-107) |
+| Audio player | Game | rendered audio, Core state, settings | sound | Low. Music by place and time of day, ambience, stings, and the mix (D-413, D-424, D-429, D-435) |
+| Atlas tool, audio synthesizer | Tools | grids, palette, tracker rows, parameter files | atlas PNG, rendered audio, hash list | Medium. The atlas is committed with a pixel test (D-107, F-19), and the audio renders at build against its hash list (D-432) |
 | Map preview, tile edges, screenplay | Tools | map content, edge rules, scene content | preview PNG, screenplay text | Low. The owner approves maps and scenes from them (D-165, D-173, D-204) |
 | STE checker, det-lint, review gate, night gate | Tools | source, docs, records | pass or fail | Gate |
 | Headless runner and bots | Tools | policies, seeds | run records | High. The night gate (D-64) |
@@ -119,9 +121,9 @@ From the roadmap interview of 2026-09-12:
 
 What we pay:
 
-- Owner time: the interviews, the approvals of every text batch (D-57), and the play sign-off of every phase (D-52).
+- Owner time: the interviews, the approvals of every text batch (D-57), and the play sign-off of every phase (D-52). The owner also approves every music and sound batch by ear (D-433).
 - Tokens: two harnesses, Claude Code and Codex, on every PR (D-14, D-17). The amount per PR is unknown until M-1.
-- CI: GitHub-hosted minutes on three platforms per PR (D-2), plus a nightly bot run (D-64). Free on a public repository (D-4). Wall time per PR is unknown until M-2.
+- CI: GitHub-hosted minutes on three platforms per PR (D-2), plus a nightly bot run (D-64). Free on a public repository (D-4). Wall time per PR is unknown until M-2. The build renders the audio, which adds to that time (D-432).
 - Purchases: the Steam Direct fee, 100 USD, before the Steam release (D-85). No asset license and no font fee: every font is OFL (D-104, D-122). Godot is free.
 
 Measurements that answer the unknowns:
@@ -169,6 +171,7 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-28 | The second critic pass of 2026-09-13 read the plan after the job system change and found 14 defects. A player choice could remove a cast member (C-1), the PR-12 gate needed the tasks of PR-19 (C-2), PR-42 came before its places (C-3), two notes overstated the aptitude count (C-4), and the law split between a license and a stamp (C-5). Stale text and notes stayed (C-6), and session readings had no owner (C-7). No PR drew the lead or wrote the tasks (C-8), a reserve swap gave fresh MP (C-9), and the watcher could stamp rites (C-10). OQ-41 gave the wrong cost of the death (C-11), three cases had no rule (C-12), words clashed (C-13), and the distance rule covers FFT alone (C-14) | 2026-09-13 | ✅ doc for C-2, C-4, C-6, C-8, C-11, and C-13. The session rejected one claim of C-6: D-282 refines D-268 and D-274 and does not revise them. D-301 to D-304 settle C-1, C-3, C-5, and the reading of D-274 in C-7. D-305 and D-306 settle the other two readings of C-7, D-307 settles C-14, and D-308 settles C-10. D-309 and D-351 settle OQ-48 and OQ-49 of C-12. D-356 settles C-9: a swap at a save point can bring fresh MP, and the balance must hold with it. D-363 and D-375 settle OQ-50 and OQ-51, the rest of C-12 |
 | F-29 | PR-23 to PR-26 held four ids for dungeons two to four, which are three dungeons. The count came unchanged from v1, and no text said what the fourth id held | 2026-09-13 | ✅ doc. The second visit to the hanging cells (D-327) makes four dungeon builds after the first, and each id names one in the order of play (D-313) |
 | F-30 | Before the rename, an audit of every document found stale text in the design, the registers, the world files, the skills, the agent files, and the runbooks. Section 8 still put PR #2 next and a font pick before PR-7. Three rules read the override set as "no code". The design-doc skill swapped two sections, and nine resolved questions lacked the later decisions that changed them | 2026-09-14 | ✅ doc. D-411. One docs PR fixes each item before the rename PR |
+| F-31 | D-115 commits every rendered WAV file. With about 25 tracks for region one, at about 21 MB for a two-minute 16-bit stereo WAV at 44.1 kHz, that is over 500 MB, and each change to a track adds a full copy to the history | 2026-09-14 | ✅ doc. D-432: the build renders the audio, and the repository commits a hash of each render. D-443 and D-444 bring the count to about 20 tracks. Binds PR-38 |
 
 ## 6. Guardrails (the safety contract for every PR)
 
@@ -277,7 +280,8 @@ Gate: the tool builds `content/sprites/atlas.png` from the five cast grids, and 
 ### Phase 2: First playable (gate: the owner plays the village, one hub, and one dungeon with lessons and a shop, on the desktop and on the Deck, D-51, D-92, D-268, D-362, D-369)
 
 **PR-7: Tile map, movement, sight, and the map scene.**
-Define the layout content format: a grid of tile ids, doors, pickable locks, traps, chests, save points, spawn points, and markers for secrets (D-39, D-41, D-386). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core.
+Define the layout content format: a grid of tile ids, doors, pickable locks, traps, chests, save points, spawn points, and markers for secrets (D-39, D-41, D-386). A layout also sets the time of day of its map (D-442). Implement tile-locked movement, sight, and the fog over tiles the party never saw, in Core.
+
 Draw the map scene in Game at 1280 by 800, fit to the window (D-232), with the camera on the lead (D-106, D-228, D-292, D-306). Map the arrow keys and the gamepad stick and pad to intents (D-84, D-219).
 Gate: the party walks a fixture dungeon on all three platforms with a keyboard and with a gamepad. The camera never scrolls past the edge of a map larger than the view, and a smaller map sits centered.
 > *In plain English:* this is the first thing you can open and move in. The dungeon is a grid of tiles, the party walks it one tile at a time, and the view follows.
@@ -292,7 +296,7 @@ Gate: the job passes on the map scene of PR-7, and it fails when one pixel of th
 **PR-8: Enemies on the map.**
 Implement fixed enemies and patrols with sight (D-37). A patrol that sees the party starts an encounter, and the side that reaches the other from behind acts first (D-265). After a flee, the group returns to its route, and no battle with it starts for a short grace time (D-381). No random encounters. Enemies that move walk with three views, and enemies that stand flip on the tick (D-108, D-207).
 
-Gate: property tests over one thousand seeds assert that a patrol never leaves the route of its phase and never sees through a wall. A large enemy never leaves its area (D-193, D-209). A fled group starts no battle inside its grace time (D-381).
+Gate: property tests over one thousand seeds assert that a patrol never leaves its route and never sees through a wall. The time of day of the map picks the route (D-193, D-442). A large enemy never leaves its area (D-209). A fled group starts no battle inside its grace time (D-381).
 > *In plain English:* enemies stand and walk in the dungeon where you can see them. You choose the fight, or you sneak past, or they catch you.
 
 **PR-9: Battle core and timeline.**
@@ -334,7 +338,7 @@ Gate: a fixture party of four walks the hub, rests, buys, swaps the reserve and 
 > *In plain English:* the hub is a place you walk through, where the party recovers, trades, and reshapes itself before the next dungeon.
 
 **PR-36: Scene runner, dialogue box, and portraits.**
-Define the scene script format (D-109, D-114). Sprites move and face by script. A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. Fixture portraits as 64 by 64 grids, because PR-28 and PR-29 draw the portraits of the cast (D-234).
+Define the scene script format (D-109, D-114). Sprites move and face by script, and a script can name a music cue (D-418). A dialogue box with the portrait and the choices sits at the bottom. Implement the runner in Game and the choice result in Core. Fixture portraits as 64 by 64 grids, because PR-28 and PR-29 draw the portraits of the cast (D-234).
 Gate: a fixture scene walks two sprites, shows a line with a portrait, and records a choice in the run record.
 > *In plain English:* the story plays out on the map with the characters you already know, and your choices land in the box under them.
 
@@ -361,9 +365,11 @@ Gate: the screen-test job of PR-41 captures the toggle on and off, and the two f
 > *In plain English:* the whole screen looks like an old monitor, and one setting turns it off.
 
 **PR-38: Audio synthesizer and the first sounds.**
-Write the synthesizer in Tools as new code (D-101, D-115, D-277). Render WAV files from parameter content at build time, with a test that the committed files match. Six effects and one track for the first dungeon.
-Gate: the tool reproduces every committed WAV file, and the battle scene plays a hit sound.
-> *In plain English:* every sound comes from a small text file that the tool turns into audio. The first fight makes noise.
+Write the synthesizer in Tools as new code, with integer math, so a render gives the same bytes on all three platforms (D-101, D-277, D-432). It renders 16-bit style instrument voices with filters and reverb, for music and sound effects alike (D-412, D-423). A track is tracker rows in content, and a sound effect is a parameter file (D-438). The build renders the audio, and a committed list holds the hash of each render (D-432). Add the listen command that renders a batch and plays it for the owner (D-439). Six sound effects and one track for the first dungeon.
+
+The roadmaps PR gives PR ids to the rest of the audio player, the first music, and the sound room (D-399, D-439).
+Gate: every render matches its hash on all three platforms, a changed parameter fails the hash test, and the battle scene plays a hit sound.
+> *In plain English:* every sound comes from a small text file that the tool turns into audio. Music is rows of notes, as a sprite is rows of letters. The first fight makes noise.
 
 **PR-17: The village, the first hub, and the first dungeon.**
 Author the village and the land near it, the mining town, and the hanging cells as content (D-28, D-39, D-110, D-313, D-369, D-370). That is the tile sets, the layouts, the enemies with their sprites and profiles, and the backdrop. It also holds the treasure, the shop stock, the NPC sprites, the sprite set of Marrek, and a placeholder scene (D-292). Marrek, Bergit, and Dagvar and the lessons of the first playable have their text in the voice (G-20, D-362).
@@ -380,7 +386,7 @@ Gate: the owner plays from the village until Dagvar joins in the hanging cells, 
 ### Phase 3: Story systems (gate: the owner plays a branch that closes a route and a hub that changes with an earlier choice, D-329)
 
 **PR-18: Story flags, branches, and scene choices.**
-Implement the flag set, the branch conditions in content, and the choice effects (D-40, D-329). A closed route, a lost ally outside the cast, and a changed hub are three flag effects (D-301).
+Implement the flag set, the branch conditions in content, and the choice effects (D-40, D-329). A closed route, a lost ally outside the cast, a changed hub, and a new time of day are four flag effects (D-301, D-442).
 Gate: a fixture branch closes a route on the region map, and a replay reproduces the branch.
 
 **PR-19: Quests and the rumor board.**
@@ -421,7 +427,7 @@ Gate: a fixture puzzle opens a door, and a hidden room stays hidden until found.
 
 **PR-32: Retired.** The fallback pass of v1 has no purpose after D-98. No later item takes the id (G-10).
 
-**PR-33: The title screen, settings, and the exit.** The first screen, the settings with the CRT toggle and the bindings, and a clean exit that saves.
+**PR-33: The title screen, settings, and the exit.** The first screen plays the main theme (D-427). The settings hold the CRT toggle, the bindings, the audio group of D-435, and the vibration setting of D-434. A clean exit saves.
 
 **PR-39: Deck verification pass.** Walk the Steam Deck verification checklist: gamepad glyphs, default bindings, the 1x frame (D-228), text size, and suspend and resume (D-85, D-92).
 
@@ -436,7 +442,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. PR #2, PR #3, the docs audit PR #4, and the rename PR #5 merged on 2026-09-14 (D-398, D-402, D-411, D-217). The GitHub repository took its new name, and the checkout moved to the external SSD (D-400, D-410). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
+2. PR #2, PR #3, the docs audit PR #4, and the rename PR #5 merged on 2026-09-14 (D-398, D-402, D-411, D-217). The GitHub repository took its new name, and the checkout moved to the external SSD (D-400, D-410). The audio docs PR sets the music and the sound, and ends the day clock (D-412 to D-445). Then one docs PR each for the release block and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.

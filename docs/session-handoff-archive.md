@@ -2,6 +2,45 @@
 
 Sessions older than the 10 in `docs/session-handoff.md`, newest first (D-18). Move an entry here word for word.
 
+## Session 7: 2026-09-14, Codex
+
+Author: Codex
+Session: repeat review of PR #2 at effective head `6586c7c`.
+
+### What this session did, and why
+
+- Verified the author response and the new effective head after the two prior findings.
+- Reproduced P1-1 and P3-1 from the earlier review. Both corrections pass.
+- Confirmed that the PR-9 gate now separates persistent Poison, Blind, and Silence from statuses that end with battle (D-390).
+- Confirmed that `git diff --check origin/main` reports no whitespace error.
+- Confirmed that the refreshed automated pass approved the corrected head with no new comment.
+- Updated `docs/reviews/pr-2.md` with the prior finding history and the verdict `Ready for owner merge`.
+
+### State of the build
+
+- No code exists. `main` is `9dd80da`.
+- The effective head is `6586c7c`. The pushed review commit is `3b73229`. Later metadata commits do not change the effective head.
+- The interim STE check passes with 0 findings.
+- No GitHub checks are reported. PR-1 and PR-3 create the build and review-gate checks.
+
+### In flight
+
+PR #2 is ready for owner merge after the repeat review. The next work is the rename and move in `docs/runbooks/rename-and-move.md` (D-400).
+
+### Traps and gotchas
+
+- Keep both finding ids and the earlier verdict in `docs/reviews/pr-2.md`.
+- A new substantive head needs another repeat review. Metadata commits do not change the effective head.
+- The automated pass is paused for the period. Post `Gitar review` after each substantive push, as D-66 requires.
+
+### Open questions that block progress
+
+None for PR #2. OQ-3 waits for PR-3.
+
+### Next concrete action
+
+Commit and push this review record and handoff. Then the owner can merge PR #2. A later session runs the rename and move procedure.
+
 ## Session 6: 2026-09-14, Claude Code
 
 Author: Claude Code
