@@ -89,6 +89,6 @@ The samples show the sound. They are not cast names.
 
 ## Open items
 
-- The audio and release areas, one docs PR each (D-262, D-399).
+- The release area, in its own docs PR (D-262, D-399).
 
 The places of region one are in `places.md`, the cast is in `cast.md`, and the arc is in `arc.md`.

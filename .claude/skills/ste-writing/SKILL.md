@@ -192,6 +192,20 @@ World terms from the world-building interview of 2026-09-12:
 | stamp | the mark of the foreign church on a rite, which a legal use needs together with a license (D-302) | seal, license, when the text means the mark on a rite |
 | old faith | the banned faith of region one (D-137) | old church, pagans |
 
+Audio and time terms from the audio block of 2026-09-14:
+
+| Term | Use for | Do not use |
+|---|---|---|
+| track | a piece of music that loops, for a place, a battle, or a scene (D-413) | song, tune, when the text means the file |
+| night version | the version of a place track that plays at dusk or night (D-443) | night track, variant |
+| theme | a short recurring tune that other tracks borrow (D-419) | leitmotif, motif |
+| cue | a track that a scene script names, from the mood set or for a key scene (D-418) | scene track, stinger |
+| sting | a short musical piece of a few seconds for an event (D-422) | jingle, fanfare |
+| ambience | the low background sound of a map (D-424) | ambient sound, soundscape |
+| sound effect | a short sound for an action or an event (D-423) | SFX, and effect alone when the text means a sound |
+| tracker rows | the note format of a track: one row per step, one column per voice (D-438) | pattern, score |
+| time of day | the dawn, day, dusk, or night that content and the story set for a map (D-442) | phase or clock, when the text means the time of day |
+
 ## The checker
 
 Until PR-2, the Python script `docs/tools/ste-check.py` is the checker (D-10). Run it before you commit:
