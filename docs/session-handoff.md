@@ -2,6 +2,59 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 16: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the first session in the new checkout `/Volumes/SSD-1TB/the-thing-below`, and a docs PR that closes `docs/runbooks/rename-and-move.md`, on branch `docs/pr-6-close-move`.
+
+### What this session did, and why
+
+- PR #5 merged as `aee6f35` at 17:09:52Z, with the `review-override` label. The Session 15 entry went in before the merge, so it does not record what came after.
+- After the merge, Session 15 ran two steps of the runbook:
+  - Step 9: the clone to `/Volumes/SSD-1TB/the-thing-below`, clean at `aee6f35`.
+  - Step 10: the copy of the local session notes from `~/.claude/projects/-Users-nate-Repos-terminal-rpg/memory/` to `~/.claude/projects/-Volumes-SSD-1TB-the-thing-below/memory/`.
+- Step 11: this session opened in the new checkout. The interim STE check passed with 0 findings. `diff -r` of the two notes folders found no difference, and the session read its notes from the new folder.
+- Before step 12, the session checked that the old checkout `~/Repos/terminal-rpg` held nothing that GitHub lacks:
+  - The tree of its last branch tip `152fa62` is the tree of `aee6f35`.
+  - `git ls-remote` shows each of its five local branch tips on GitHub, as `refs/pull/1/head` to `refs/pull/5/head`.
+  - It had no stash, no untracked or ignored file, no `.claude/settings.local.json`, and no hook.
+- Step 12: the owner deleted the old checkout. A check at 17:24:12Z found no folder at that path.
+- The docs PR makes the documents show the move as complete:
+  - `docs/runbooks/rename-and-move.md`: the status is complete, and steps 7 to 12 are marked done.
+  - `docs/design.md`: a dated line for the move pass, and step 2 of section 8 shows PR #5 merged and the checkout on the SSD.
+  - `docs/runbooks/dev-machine.md`: a dated fact for the checkout path.
+- The PR changes no decision row. The owner answer on step 12 carries out a step that D-216 and D-400 already set, so it adds no row (D-68).
+- The handoff held ten entries before this one, so Session 6 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `aee6f35` (PR #5).
+- The checkout is `/Volumes/SSD-1TB/the-thing-below`. The old checkout no longer exists.
+- PR #6 is open on `docs/pr-6-close-move`. The remote head is the commit that holds this entry.
+- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
+
+### In flight
+
+PR #6 answers the gitar pass. It changes no decision row, and every path is in the override set, so the session applies the `review-override` label after the pass approves the head (D-67, D-401). The owner merges. Then the audio block docs PR starts (D-399).
+
+### Traps and gotchas
+
+- The checkout is on the external SSD. A session cannot open it when the Mac does not show `/Volumes/SSD-1TB`.
+- The local session notes key on the checkout path, now `~/.claude/projects/-Volumes-SSD-1TB-the-thing-below/memory/`. The old folder `-Users-nate-Repos-terminal-rpg` still exists, and no session reads it now.
+- Gitar runs one pass by itself when a new PR opens, even while the automatic passes are paused (PR #5).
+- After a later push, post `Gitar review` two times. The first request runs the pass on the older head again, and the second runs it on the new head (Session 13).
+- Count a pass only when a `Gitar` check run on the head commit ends. The dashboard comment is not proof.
+- The dated records keep `terminal-rpg` and `~/Repos/terminal-rpg` on purpose.
+- The next ids are D-412, OQ-56, F-31, L-16, G-26, PR-43, M-7, and Session 17.
+
+### Open questions that block progress
+
+None for PR #6. OQ-3 waits for PR-3.
+
+### Next concrete action
+
+This session answers the gitar pass on PR #6, and applies the `review-override` label when the pass approves the head. The owner merges. Then a session starts the audio block, the next docs PR (D-262, D-399). It reads the audio rows first: D-87, D-115, D-223, D-226, and PR-38 in `docs/design.md`. Then it asks the owner the audio questions in batches and records each answer. That PR adds decision rows, so the other provider reviews it (D-401).
+
 ## Session 15: 2026-09-14, Claude Code
 
 Author: Claude Code
@@ -389,43 +442,3 @@ None for PR #2. OQ-3 waits for PR-3.
 ### Next concrete action
 
 Commit and push this review record and handoff. Then the owner can merge PR #2. A later session runs the rename and move procedure.
-
-## Session 6: 2026-09-14, Claude Code
-
-Author: Claude Code
-Session: the author's answer to the review of PR #2 (`docs/reviews/pr-2.md`, verdict `Changes required` at `4b3d04e`), on branch `docs/pr-2-world-building`.
-
-### What this session did, and why
-
-- Read the review record and reproduced both findings on `d42a1a1`, the tip after the review commits.
-- P1-1, full merit: the PR-9 gate asserted that every status ends, against D-390. The gate now asserts two classes: every status but poison, blind, and silence ends with its battle, and those three remain after it. The map and menu rules of the three stay in PR-16.
-- P3-1, full merit: removed the trailing space from three lines of `docs/design.md` (the thesis, PR-4, and PR-7). `git diff --check origin/main` is clean.
-- Wrote `docs/reviews/pr-2-response.md` with each disposition, correction, and regression check. No new D-#, OQ-#, or F-# id.
-- Checked the PR for other feedback: no new automated comment, no line comment, and no review on GitHub.
-
-### State of the build
-
-- No code exists. `main` is `9dd80da` (PR #1).
-- PR #2 is open. The commit that holds this entry changes `docs/design.md`, so it is the new effective head, and the verdict on `4b3d04e` no longer covers it.
-- The interim STE check passes with 0 findings, and `git diff --check origin/main` is clean.
-- The session requested an automated pass on the new head with the comment `Gitar review`, and the PR description records the result. CI and the review gate do not exist yet (PR-1, PR-3).
-
-### In flight
-
-PR #2 waits for a repeat review of the new effective head (the `pr-review` skill, "Repeat review procedure"). When the review record reads `Ready for owner merge` for that head, the owner merges. After the merge, the plan of Session 4 stands: the rename and the move (D-400), then the audio, release, and roadmaps docs PRs (D-399).
-
-### Traps and gotchas
-
-- The reviewer updates the same `docs/reviews/pr-2.md`: keep the finding ids, set each status line, and put the earlier verdict under `## Earlier verdicts`.
-- The response file is a convention, and the review gate does not read it.
-- Automatic passes are paused for the trial period. Post `Gitar review` after each push, and read the newest dashboard comment by its time.
-- Session 5 cites D-184 for the metadata rule. D-184 is the normal-map tool, and the rule lives in the `pr-review` skill with no D-# id.
-- The next ids are D-402, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 7.
-
-### Open questions that block progress
-
-None for PR #2. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-A Codex session runs the repeat review of PR #2 at the new effective head, verifies P1-1 and P3-1 against their regression checks, and updates `docs/reviews/pr-2.md` with its own handoff entry. If the verdict is `Ready for owner merge`, the owner merges. Then a Claude Code session runs `docs/runbooks/rename-and-move.md` (D-400).

@@ -24,6 +24,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-14 rename pass: PR #4 merged the audit (D-411, F-30). The rename PR puts the tentative name The Thing Below in the live documents and the names of D-217 in the commands. The dated records keep the working title. The move to the external SSD follows the merge (D-400).
 
+2026-09-14 move pass: PR #5 merged the rename (D-217). The checkout moved to the external SSD, and the owner deleted the old checkout, so the runbook `docs/runbooks/rename-and-move.md` is complete (D-400). The docs PRs for audio, release, and the roadmaps follow, one PR each (D-399).
+
 External facts, each with the date of its check:
 
 - The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
@@ -434,7 +436,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap.
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. PR #2, PR #3, and the docs audit PR #4 merged on 2026-09-14 (D-398, D-402, D-411). The GitHub repository took its new name (D-410). Then the rename PR and the move to the external SSD (D-400). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
+2. PR #2, PR #3, the docs audit PR #4, and the rename PR #5 merged on 2026-09-14 (D-398, D-402, D-411, D-217). The GitHub repository took its new name, and the checkout moved to the external SSD (D-400, D-410). Then one docs PR each for the audio block, the release block, and the roadmaps (D-399). The owner runs the Deck test of D-160 before PR-1.
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.
