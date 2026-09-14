@@ -19,7 +19,7 @@ Session: repeat review of PR #2 at effective head `6586c7c`.
 ### State of the build
 
 - No code exists. `main` is `9dd80da`.
-- The effective head is `6586c7c`. Later review and handoff commits are metadata.
+- The effective head is `6586c7c`. The pushed review commit is `3b73229`. Later metadata commits do not change the effective head.
 - The interim STE check passes with 0 findings.
 - No GitHub checks are reported. PR-1 and PR-3 create the build and review-gate checks.
 

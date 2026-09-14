@@ -85,7 +85,7 @@ None.
 - `gh pr view 2 --json ...`: passed. It verified base `9dd80da`, tip `6586c7c`, no formal review records, and the refreshed automated approval comment.
 - `gh pr checks 2`: no checks reported. CI and the review gate do not exist until later PRs, so no existing required check was skipped.
 - `git status --short --branch`: passed before review edits. The checkout was on `docs/pr-2-world-building` with no unrelated changes.
-- Push: pending. The repeat review record and handoff entry must be committed and pushed together.
+- Push: `3b73229` is the pushed repeat-review commit on `origin/docs/pr-2-world-building`, verified with `gh pr view`.
 
 ## Open questions and accepted risks
 
