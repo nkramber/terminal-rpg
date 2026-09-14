@@ -53,7 +53,7 @@ None.
 - `gh pr checks 3`: not completed because the GitHub API connection failed during the final read. The successful PR read reported no checks, so no existing required check was skipped.
 - Build, test, format, smoke, det-lint, replay-identity, night-gate, and review-gate checks: not run because the repository has no code yet, and the project instructions assign these checks to PR-1, PR-4, PR-15, or roadmap PR-3.
 - `git status --short --branch`: passed before review edits. The checkout had no unrelated changes.
-- Push: the review record and handoff will be on `origin/docs/pr-3-sprite-sample`, verified with `gh pr view` after the commit and push.
+- Push: `429ff2f40d83963e388994dc11c9e53216e49877` is the review record and handoff commit on `origin/docs/pr-3-sprite-sample`, verified with `git push`.
 
 ## Open questions and accepted risks
 
