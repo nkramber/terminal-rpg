@@ -32,6 +32,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-14 release pass: the release block set the builds, the versions, the Steam work, and the store (D-447 onward). The export job starts with PR-7, and the store page goes public at Gate 2 (D-449, D-471). F-32 records the Apple fee that a macOS build on Steam needs. F-33 records five gaps that the block closed, and F-34 records the screenshot format of Steam. The same PR sets two aspect ratios, 16:10 and 16:9, and four supported targets (D-479 to D-482).
 
+2026-09-14 roadmaps shape pass: the review of the other provider found no defect in PR #9, and the owner merged it. OQ-56 closed with no change to the sequence (D-483). The owner split the roadmaps work into three docs PRs (D-484 to D-490). PR #10 holds the shape and brings every document current. PR #11 holds twelve area files, five phase files, and the rebuild of sections 7 and 8, and PR #12 holds the next design-critic pass.
+
 External facts, each with the date of its check:
 
 - The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
@@ -256,7 +258,7 @@ The tenets are the constitution. When a tenet conflicts with speed or convenienc
 
 Five phases. Gate 1 is a foundation gate with no play. Gates 2 to 5 are builds that the owner plays on the desktop and on the Deck. Each has a written exit test and a sign-off on feel (D-52, D-92). Ids: PR-# code changes, M-# measurements.
 
-An item that kept its purpose through the pivots kept its number. PR-32 is retired. New items start at PR-34 (G-10). Focused roadmaps in `docs/roadmaps/` expand each phase and each area before PR-1 (D-142, D-144). A phase roadmap gives per-PR scope and exit tests, and an area roadmap says how its area works. Each entry cites its decisions and never restates them.
+An item that kept its purpose through the pivots kept its number. PR-32 is retired. New items start at PR-34 (G-10). Five phase files and twelve area files in `docs/roadmaps/` expand each phase and each area before PR-1 (D-142, D-144, D-485). A phase roadmap gives per-PR scope and exit tests, and an area roadmap says how its area works. Each entry cites its decisions and never restates them.
 
 ### Phase 1: Foundations (gate: every CI leg green with an identical state hash, the smoke session green, docs and PR gate live, no play)
 
@@ -490,7 +492,7 @@ Parked until Gate 5. Each later region repeats Phase 4 with its own roadmap. Bef
 ## 8. Sequence (strict order, single owner)
 
 1. Owner: create no label, install no tool. gitar and the label exist (D-66, D-67).
-2. PR #2 to PR #8 merged on 2026-09-14 (D-398, D-400, D-402, D-411, D-217, D-446). The repository took its new name, and the checkout moved to the external SSD (D-400, D-410). PR #9 holds the release block and the two aspect ratios (D-447 onward), and the roadmaps docs PR follows (D-399). The roadmaps PR asks OQ-56 before it rebuilds this sequence. It places the export job, the store page work, and the credits roll (D-449, D-467, D-471). The owner runs the Deck test of D-160 on the Linux export before PR-1 (D-458).
+2. PR #2 to PR #9 merged on 2026-09-14 (D-398, D-400, D-402, D-411, D-217, D-446, D-447). OQ-56 closed with no change to this sequence (D-483). PR #10 holds the shape of the roadmaps, and PR #11 writes them and rebuilds sections 7 and 8 (D-484 to D-490). PR #11 places the export job, the store page work, and the credits roll (D-449, D-467, D-471). PR #12 holds the next design-critic pass. The owner runs the Deck test of D-160 on the Linux export before PR-1 (D-458).
 3. PR-1, PR-2, PR-3.
 4. Owner: require the checks on `main` (OQ-3).
 5. PR-4, PR-5, PR-6, PR-34.

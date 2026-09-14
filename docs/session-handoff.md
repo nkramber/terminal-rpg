@@ -5,7 +5,7 @@ Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of
 ## Session 23: 2026-09-14, Claude Code
 
 Author: Claude Code
-Session: the start of the roadmaps docs PR after PR #9 merged, on branch `docs/pr-10-roadmaps`.
+Session: the shape of the roadmaps after PR #9 merged, as docs PR #10 on branch `docs/pr-10-roadmaps`.
 
 ### What this session did, and why
 
@@ -13,41 +13,42 @@ Session: the start of the roadmaps docs PR after PR #9 merged, on branch `docs/p
 - The same harness run as Session 21 started the roadmaps docs PR (D-399). It asked OQ-56 first, and the owner chose no change to the sequence (D-483).
 - The session read every text that sends work to the roadmaps. The list holds PR ids for the export job, the store page work, the credits roll, the trailer capture, the debug assembly, the sound room, and the mood cues. It also holds the items of the technical, graphics, UI, and systems roadmaps.
 - The owner set the shape of the work:
-  - Two docs PRs: PR #10 holds the roadmaps and the rebuild of sections 7 and 8, and a later docs PR holds the design-critic pass (D-484).
+  - Two docs PRs for the roadmaps work: one for the roadmaps and the rebuild of sections 7 and 8, and a later one for the design-critic pass (D-484).
   - Twelve area files and five phase files in `docs/roadmaps/`, with the names in D-485.
   - One new PR id per system or tool, about 20, from PR-43 (D-486).
   - The roadmaps ask contract questions, and they file detail questions with the PR they block (D-487).
-  - Areas first, then phases, then the rebuild (D-488). The branch gets a push at each session end, and PR #10 opens when the work is complete (D-489).
-- No roadmap file exists yet. The session closed the shape at this boundary, because the conversation grew long, and the area files need a fresh context.
+  - Areas first, then phases, then the rebuild (D-488). The roadmaps PR opens when its work is complete (D-489).
+- The owner asked whether every document was current, and why no PR was open. The session quoted D-489, and the owner chose to merge the shape now as PR #10 (D-490). The roadmaps move to PR #11, and the critic pass to PR #12.
+- The session brought the design current: a dated line, the file set in section 7, and step 2 of section 8. Notes on D-399, D-484, D-488, and D-489 record the later answers. No roadmap file exists yet, and the area files wait for a fresh context.
 - The handoff held eleven entries before this one, because Session 22 added its entry and moved none. Sessions 13 and 12 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
 
 ### State of the build
 
 - No code exists. `main` is `4f37c99` (PR #9).
-- The branch `docs/pr-10-roadmaps` holds D-483 to D-489 and this entry. The remote head of the branch is the commit that holds this entry. No PR is open (D-489).
+- PR #10 is open on `docs/pr-10-roadmaps` with D-483 to D-490. The remote head is the commit that holds this entry.
 - The interim STE check passes with 0 findings.
 
 ### In flight
 
-The roadmaps docs PR, on `docs/pr-10-roadmaps`. The next step writes the twelve area files, then the five phase files, then the rebuild of sections 7 and 8 (D-488).
+PR #10 answers the gitar pass. It adds decision rows, so a Codex session reviews it, and no `review-override` label applies (D-401). The owner merges. Then PR #11 starts the roadmaps on a new branch (D-488, D-490).
 
 ### Traps and gotchas
 
-- D-484 moves the design-critic pass out of this PR. Do not run it here.
-- D-487: ask a question here only when it changes the order, a gate, or a contract between PRs. File each detail question in `docs/questions.md` with the PR it blocks.
+- D-484 and D-490 put the design-critic pass in PR #12. Do not run it in PR #10 or PR #11.
+- D-487: in PR #11, ask a question only when it changes the order, a gate, or a contract between PRs. File each detail question in `docs/questions.md` with the PR it blocks.
 - New PR ids start at PR-43 (D-486). PR-22 and PR-32 stay retired (G-10).
 - Each file follows the focused roadmap template of the `design-doc-style` skill: the status header and sections 1, 5, 7, 8, and 9. Each phase entry lists its scope, exit tests, review focus, filed questions, and area file (D-144).
 - The owner chose finer shapes than the session recommended twice in this block: two PRs, and twelve area files. Show running counts of files and PR ids in each batch.
-- Do not open PR #10 before the rebuild is complete (D-489). Push the branch at each session end.
-- The next ids are D-490, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 24.
+- D-489 now binds PR #11: push its branch at each session end, and open it when the roadmaps and the rebuild are complete (D-490). PR #11 needs a branch of its own, such as `docs/pr-11-roadmaps`.
+- The next ids are D-491, OQ-60, F-35, L-16, G-26, PR-43, M-7, and Session 24.
 
 ### Open questions that block progress
 
-None for the shape of PR #10. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR-40, and OQ-3 waits for PR-3.
+None for PR #10. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR-40, and OQ-3 waits for PR-3.
 
 ### Next concrete action
 
-A session reads D-144, D-145, D-484 to D-489, the `design-doc-style` skill, and section 7 of `docs/design.md`. Then it writes `docs/roadmaps/area-core.md` and asks the contract questions that come up (D-487).
+This session answers the gitar pass on PR #10. Then a Codex session reviews PR #10 under the `pr-review` skill and writes `docs/reviews/pr-10.md` (D-401). The owner merges. Then a session starts PR #11 on a new branch. It reads D-144, D-145, D-484 to D-490, the `design-doc-style` skill, and section 7 of `docs/design.md`, and it writes `docs/roadmaps/area-core.md` first (D-488).
 
 ## Session 22: 2026-09-14, Codex
 
