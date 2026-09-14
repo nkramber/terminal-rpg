@@ -116,7 +116,7 @@ Source: ASD-STE100 Issue 8 (2021-04-30), Part 1, Writing rules. Issue 9 (2025-01
 
 The rules permit these as written. They are technical names (rule 1.5):
 
-- The working title: terminal-rpg (D-9).
+- The working title: terminal-rpg (D-9). The tentative name, with capitals: The Thing Below (D-215).
 - Tools and platforms: Godot, C#, .NET, xUnit, dotnet format, JSON, Steam, Steamworks, Steam Deck, Aseprite, Makefile, GitHub Actions, gitar, Python.
 - The two harnesses: Claude Code, Codex.
 - Project names: Core, Game, Tools, Tests, once PR-1 creates them (D-118).
@@ -145,16 +145,22 @@ Game terms from the roadmap interview of 2026-09-12:
 
 | Term | Use for | Do not use |
 |---|---|---|
-| job | a character's class, changed at a hub (D-32) | class, vocation, role |
-| ability | a learned action from a job (D-32) | skill, technique, move |
+| lesson | a rite or a drill that a character equips to gain an ability (D-278) | job, class, materia, skill book |
+| rite | a lesson for a spell, on a page or a strip of soft metal (D-275) | scroll, spellbook |
+| drill | a lesson for a physical ability, as a written form (D-275) | technique, manual |
+| kind | one of the eight families of ability, written with a capital letter: Mend, Harm, Blight, Boon, Blade, Guard, Shot, Theft (D-281) | school, family, when the text means these eight |
+| main aptitude | the kind that a character does best (D-274) | class, role, specialty |
+| side aptitude | the second kind of a character, which a personal task unlocks (D-282) | side role, side job, subclass |
+| lead | the one character whom scenes center on (D-267) | hero, protagonist, main character |
+| ability | an action that a lesson gives (D-272, D-278) | skill, technique, move |
 | spell | an ability that costs MP (D-42) | magic, cast |
 | party | the three characters in battle (D-31) | team, group |
 | reserve | the characters who wait outside the party (D-58) | bench, backup |
-| cast | the five story characters (D-33, D-58) | roster, heroes |
+| cast | the story characters who can join the party, eight in the whole game (D-33, D-299) | roster, heroes |
 | hub | a settlement with services, of any shape (D-28) | town, city, base |
 | dungeon | an authored area with enemies and a goal (D-39) | level, zone, map |
 | region | a slice of the game with hubs and dungeons (D-56) | chapter, act, world |
-| arc | the story of one region (D-56) | plot, chapter |
+| arc | the part of the main story that one region tells (D-56, D-131) | plot, chapter |
 | encounter | one battle against one enemy group | fight, combat, when a noun |
 | timeline | the visible turn order in battle (D-29) | queue, initiative |
 | turn | one action of one combatant on the timeline | move, round |
@@ -164,17 +170,27 @@ Game terms from the roadmap interview of 2026-09-12:
 | item | a thing in the inventory that is not gear (D-45) | consumable, object |
 | gold | the currency (D-60) | money, coins, gil |
 | character level | the level from experience (D-34) | level, alone |
-| job level | the level of one job from ability points (D-34) | rank, mastery |
 | profile | an enemy's personality data (D-65) | personality, brain |
 | evaluator | the tactical scorer in core (D-65) | planner, AI, alone |
-| tile | one 16 by 16 map position (D-103) | cell, square, glyph |
+| tile | one 32 by 32 map position (D-228) | cell, square, glyph |
 | sprite | the drawing of a character, an enemy, or an item (D-107) | glyph, icon, image |
 | grid | the text source of a sprite or a tile (D-107) | matrix, bitmap |
 | atlas | the PNG the tool renders from every grid (D-107) | sheet, texture |
-| portrait | the 32 by 32 face in the dialogue box (D-109) | avatar, face |
+| portrait | the 64 by 64 face in the dialogue box (D-109, D-234) | avatar, face |
 | backdrop | the battle background of a place (D-111) | background, stage |
 | region map | the node and route screen between places (D-113) | overworld, world map |
 | scene | a scripted story beat on the map (D-114) | cutscene, event |
+
+World terms from the world-building interview of 2026-09-12:
+
+| Term | Use for | Do not use |
+|---|---|---|
+| the thing below | the power under the old ground that answers spilled blood (D-128). With capitals, The Thing Below is the tentative name of the game (D-215) | the old evil, the demon |
+| wrong things | the rare creatures that appear near spilled blood (D-155) | monsters, demons |
+| waystone | the standing stone of an older age, as an object in the world (D-134, D-141) | save point, when the text means the stone |
+| foreign church | the church of the enemy crown, which holds the license law (D-137) | new church, the church, alone |
+| stamp | the mark of the foreign church on a rite, which a legal use needs together with a license (D-302) | seal, license, when the text means the mark on a rite |
+| old faith | the banned faith of region one (D-137) | old church, pagans |
 
 ## The checker
 

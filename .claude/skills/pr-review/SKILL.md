@@ -122,7 +122,7 @@ Apply each relevant row. Record why an area does not apply when its omission can
 | Strings | No inline player string. Every player string has an id in the string table (G-7). |
 | Input and CI boundaries | Check size limits, file paths, and validation at affected external inputs. Inspect CI permissions, secret access, and execution of untrusted content when those boundaries change. |
 | Gameplay | The rules the design doc and the decisions set for the affected system. Trace repeated runs as well as one run. |
-| Presentation | Gamepad and keyboard play, the 640 by 360 frame, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-103, D-105, D-107). Headless tests do not establish visual quality or game feel. |
+| Presentation | Gamepad and keyboard play, the 1280 by 800 frame with 32-pixel tiles, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-105, D-107, D-228). Headless tests do not establish visual quality or game feel. |
 | Dependencies and cost | A decision justifies each dependency (G-13). Performance claims include a profile before the change and a measurement after it (G-14). |
 
 Do not reintroduce an earlier contract that a later decision supersedes.
@@ -445,7 +445,7 @@ Do these steps after each push.
 3. For a comment with no merit, reply on its thread with the reason, and resolve the thread.
 4. For a comment with merit, make the smallest change that restores the contract. Commit, push, and reply on the thread with the commit.
 5. Wait for the next pass, and repeat from step 2 for each new comment.
-6. Stop when the pass approves the PR, or when every comment has its answer and a new pass adds none. Tell the owner that the PR is ready for the other provider. On a documentation PR, apply the `review-override` label yourself at this point (D-67).
+6. Stop when the pass approves the PR, or when every comment has its answer and a new pass adds none. Tell the owner that the PR is ready for the other provider. On a documentation PR that changes no row of `docs/decisions.md`, apply the `review-override` label yourself at this point (D-67, D-401).
 
 A reply names no provider, harness, or model as the source of the work (T-6, D-22). It states the evidence: the command, the test, the decision id, or the commit. Never accept a comment only to close the pass faster, and never widen a change past the contract that the comment names.
 

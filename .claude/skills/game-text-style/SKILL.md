@@ -23,8 +23,9 @@ Short sentences. Physical detail. No purple prose. Dry understatement. The world
 8. Battle messages state the fact and the number. "Vess takes 41." "The wolf falls."
 9. Item text gives what the item does in one line, and one line of flavor at most.
 10. The player finds lore. Nobody tells it. A page, a carving, a corpse. Never a narrator lecture.
-11. Names are short and pronounceable. One or two syllables for people. Places can take three.
-12. Never name a mechanic in a story line. A save point is a shrine, a campfire, a bell, whatever the hub makes it.
+11. Names are short and pronounceable. One or two syllables for people, and up to three for a foreign person (D-300). Places can take three.
+12. Never name a mechanic in a story line. A save point is a waystone in the world (D-134).
+13. Show violence in short physical detail, in the flat tone of rule 3. Never show sexual violence. Never show harm to a child directly. A line can imply that harm or state it without detail (D-126, D-335). A scene can show the aftermath, the dead of any age included.
 
 ## Length limits
 
@@ -36,7 +37,7 @@ Short sentences. Physical detail. No purple prose. Dry understatement. The world
 | Dialogue line | 3 lines at 80 characters |
 | Lore entry | 12 lines at 80 characters |
 
-The frame is 640 by 360 with an 8-pixel font (D-103, D-104), about 80 characters across. A panel holds less. The limit is the panel, not the frame.
+The frame is 1280 by 800 with a 16-pixel font (D-228). The font pick sets how many characters fit across. A panel holds less. The limit is the panel, not the frame.
 
 ## Examples
 
