@@ -2,6 +2,43 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 14: 2026-09-14, Codex
+
+Author: Codex
+Session: repeat review of PR #4 at effective head `919a865`.
+
+### What this session did, and why
+
+- Read the current handoff, the prior review, the response file, the new substantive diff, and the current PR metadata.
+- Verified the provider gate remains eligible. Claude Code authored the changes, and Codex reviewed them.
+- Reproduced both prior corrections. The design-doc skill now matches the numbered sections of `docs/design.md`, and the name-search facts now include sources, queries, results, and dates.
+- Confirmed the automated pass completed successfully on `919a865` with no issue comments.
+- Updated `docs/reviews/pr-4.md`, preserved P2-1 and P2-2 with their earlier evidence, and set the verdict to `Ready for owner merge` for `919a865`.
+
+### State of the build
+
+- No code exists. `main` is `d29921d` (PR #3).
+- PR #4 is open. Its effective head is `919a865`; later commits contain metadata only.
+- The interim STE check passes with 0 findings, `git diff --check` is clean, and `AGENTS.md` and `CLAUDE.md` remain identical.
+
+### In flight
+
+PR #4 is ready for owner merge. After merge, step 4 of the rename runbook starts the rename PR (D-411).
+
+### Traps and gotchas
+
+- The live `gh pr checks` call returned a GitHub API connection error during this review. The handoff records the successful Gitar check run on `919a865`.
+- The review applies to `919a865`, not the later handoff-only tip `09ace6c`.
+- OQ-3 remains open for branch protection.
+
+### Open questions that block progress
+
+None for PR #4.
+
+### Next concrete action
+
+The owner can merge PR #4. Then run step 4 onward of `docs/runbooks/rename-and-move.md`.
+
 ## Session 13: 2026-09-14, Claude Code
 
 Author: Claude Code
