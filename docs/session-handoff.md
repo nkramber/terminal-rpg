@@ -17,7 +17,7 @@ Session: draft 32 by 32 cast sprites for owner review, then a small docs PR that
 ### State of the build
 
 - No code exists. `main` is `7375310` (PR #2).
-- Branch `docs/pr-3-sprite-sample` holds one commit above `main`: the commit that holds this entry. The session pushed it and opened PR #3 from it.
+- Branch `docs/pr-3-sprite-sample` holds two commits above `main`: `e4a937e`, which opened PR #3, and the commit that holds this revision of the entry. The second commit splits one long sentence in `docs/samples/readme.md` that the STE check flagged.
 - The interim STE check passes with 0 findings. The interim atlas tool reads the 16 by 16 grids in `content/sprites/` alone, so it does not render the sample.
 
 ### In flight
@@ -28,9 +28,10 @@ PR #3 answers the gitar pass, then takes a Codex review, because it adds decisio
 
 - Skip `docs/samples/` during automatic exploration (D-403).
 - The branch name carries the GitHub number 3. Roadmap PR-3, the review gate, is a different item (D-13).
-- Two untracked images sit in `content/sprites/`: `party-characters-32.png` and `party-sample-sheet-concept.png`. This session did not make them and did not commit them, and they are not part of D-402. The concept sheet differs from the decisions: it shows an old Dagvar, where D-298 gives 35, and cross symbols that no decision gives the foreign church.
+- Two untracked concept images sat in `content/sprites/`: `party-characters-32.png` and `party-sample-sheet-concept.png`. This session did not make them, they never entered a commit, and they are not part of D-402. The owner asked to delete them. The tracked files in `content/sprites/` stay: the 16 by 16 grids, the palette, and the atlas.
 - The sample grids use the 48-color palette. PR-34 grows the palette to 64 (D-181, D-185), so the sample can change there.
 - Automatic passes of gitar are paused for the period. Post `Gitar review` after each push.
+- A multi-line guard with `set -e` did not stop at the failed STE check in this shell, so `e4a937e` went out with one STE finding. Test the exit code of each check on its own before a commit.
 - The next ids are D-405, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 9.
 
 ### Open questions that block progress
