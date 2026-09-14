@@ -1,6 +1,6 @@
 # Rename and move the repository
 
-Status: runbook, in progress. Owner: Nate. Written 2026-09-12 (D-215 to D-217). Steps 1 to 3 ran on 2026-09-14 (D-410). Steps 4 to 6 ran on 2026-09-14 in the rename PR. Written in ASD-STE100 (D-10).
+Status: runbook, complete. Owner: Nate. Written 2026-09-12 (D-215 to D-217). Steps 1 to 3 ran on 2026-09-14 (D-410), and steps 4 to 8 ran the same day in the rename PR #5. Steps 9 to 12 ran after the merge. Written in ASD-STE100 (D-10).
 
 This runbook renames the repository from the working title to the tentative name, then moves the checkout to the external SSD. The owner and a session do it once, after PR #2 merges, before the rest of the plan and before PR-1 (D-216, D-400). A docs audit PR merges between step 3 and step 4 (D-411).
 
@@ -29,12 +29,12 @@ This runbook renames the repository from the working title to the tentative name
 4. After the docs audit PR merges, start a short branch from `main` for the rename PR (D-8, D-411). Done 2026-09-14.
 5. Replace the working title with the new names in `README.md`, the documents, the agent files, and the skills (D-217). Done 2026-09-14.
 6. Keep the dated records as they are: `docs/reviews/`, the handoff entries, `docs/archive/`, and the rows of the two registers. Done 2026-09-14.
-7. Run the STE check. Open the rename PR, and answer the automated pass (D-66). When the PR changes no decision row, the session applies the `review-override` label after the pass approves (D-67, D-401).
-8. The owner merges the rename PR.
-9. Clone the repository to the SSD: `git clone git@github.com:nkramber/the-thing-below.git /Volumes/SSD-1TB/the-thing-below`.
-10. Copy the local session notes that key on the old checkout path to the key of the new path.
-11. Open a session in the new checkout, and run the STE check there.
-12. The owner deletes the old checkout, only after the new checkout passes.
+7. Run the STE check. Open the rename PR, and answer the automated pass (D-66). When the PR changes no decision row, the session applies the `review-override` label after the pass approves (D-67, D-401). Done 2026-09-14 in PR #5.
+8. The owner merges the rename PR. Done 2026-09-14. PR #5 merged as `aee6f35`.
+9. Clone the repository to the SSD: `git clone git@github.com:nkramber/the-thing-below.git /Volumes/SSD-1TB/the-thing-below`. Done 2026-09-14.
+10. Copy the local session notes that key on the old checkout path to the key of the new path. Done 2026-09-14. The new key is `-Volumes-SSD-1TB-the-thing-below`.
+11. Open a session in the new checkout, and run the STE check there. Done 2026-09-14, with 0 findings.
+12. The owner deletes the old checkout, only after the new checkout passes. Done 2026-09-14.
 
 ## Notes
 

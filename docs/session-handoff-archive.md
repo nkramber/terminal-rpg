@@ -2,6 +2,46 @@
 
 Sessions older than the 10 in `docs/session-handoff.md`, newest first (D-18). Move an entry here word for word.
 
+## Session 6: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the author's answer to the review of PR #2 (`docs/reviews/pr-2.md`, verdict `Changes required` at `4b3d04e`), on branch `docs/pr-2-world-building`.
+
+### What this session did, and why
+
+- Read the review record and reproduced both findings on `d42a1a1`, the tip after the review commits.
+- P1-1, full merit: the PR-9 gate asserted that every status ends, against D-390. The gate now asserts two classes: every status but poison, blind, and silence ends with its battle, and those three remain after it. The map and menu rules of the three stay in PR-16.
+- P3-1, full merit: removed the trailing space from three lines of `docs/design.md` (the thesis, PR-4, and PR-7). `git diff --check origin/main` is clean.
+- Wrote `docs/reviews/pr-2-response.md` with each disposition, correction, and regression check. No new D-#, OQ-#, or F-# id.
+- Checked the PR for other feedback: no new automated comment, no line comment, and no review on GitHub.
+
+### State of the build
+
+- No code exists. `main` is `9dd80da` (PR #1).
+- PR #2 is open. The commit that holds this entry changes `docs/design.md`, so it is the new effective head, and the verdict on `4b3d04e` no longer covers it.
+- The interim STE check passes with 0 findings, and `git diff --check origin/main` is clean.
+- The session requested an automated pass on the new head with the comment `Gitar review`, and the PR description records the result. CI and the review gate do not exist yet (PR-1, PR-3).
+
+### In flight
+
+PR #2 waits for a repeat review of the new effective head (the `pr-review` skill, "Repeat review procedure"). When the review record reads `Ready for owner merge` for that head, the owner merges. After the merge, the plan of Session 4 stands: the rename and the move (D-400), then the audio, release, and roadmaps docs PRs (D-399).
+
+### Traps and gotchas
+
+- The reviewer updates the same `docs/reviews/pr-2.md`: keep the finding ids, set each status line, and put the earlier verdict under `## Earlier verdicts`.
+- The response file is a convention, and the review gate does not read it.
+- Automatic passes are paused for the trial period. Post `Gitar review` after each push, and read the newest dashboard comment by its time.
+- Session 5 cites D-184 for the metadata rule. D-184 is the normal-map tool, and the rule lives in the `pr-review` skill with no D-# id.
+- The next ids are D-402, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 7.
+
+### Open questions that block progress
+
+None for PR #2. OQ-3 waits for PR-3.
+
+### Next concrete action
+
+A Codex session runs the repeat review of PR #2 at the new effective head, verifies P1-1 and P3-1 against their regression checks, and updates `docs/reviews/pr-2.md` with its own handoff entry. If the verdict is `Ready for owner merge`, the owner merges. Then a Claude Code session runs `docs/runbooks/rename-and-move.md` (D-400).
+
 ## Session 5: 2026-09-14, Codex
 
 Author: Codex

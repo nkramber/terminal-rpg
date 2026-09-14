@@ -1,6 +1,6 @@
 # Runbook: the development machine
 
-Status: procedure, written 2026-09-12 for the owner's Mac, revised the same day for D-99, and on 2026-09-14 for the new repository name (D-410). Written in ASD-STE100.
+Status: procedure, written 2026-09-12 for the owner's Mac, revised the same day for D-99, and on 2026-09-14 for the new repository name (D-410). Revised again on 2026-09-14 for the move to the external SSD (D-400). Written in ASD-STE100.
 
 Facts checked on 2026-09-12:
 
@@ -8,6 +8,7 @@ Facts checked on 2026-09-12:
 - The .NET 10 SDK is present: `dotnet --version` gives 10.0.400.
 - Godot 4.7.2 .NET is present at `/Applications/Godot_mono.app`, because what-you-carry uses it. The name `Godot` is not on the command path.
 - `gh` has a login as the owner, and `git` has the `origin` remote for `nkramber/the-thing-below`, checked 2026-09-14 (D-410).
+- The checkout is at `/Volumes/SSD-1TB/the-thing-below`, on the external SSD, checked 2026-09-14 (D-400).
 - Python 3.9.6 is present. The interim STE checker needs it until PR-2 (D-10, D-101).
 - The repository on GitHub is public (D-4, D-54).
 
