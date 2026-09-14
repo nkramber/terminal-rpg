@@ -154,7 +154,7 @@ Game terms from the roadmap interview of 2026-09-12:
 | lead | the one character whom scenes center on (D-267) | hero, protagonist, main character |
 | ability | an action that a lesson gives (D-272, D-278) | skill, technique, move |
 | spell | an ability that costs MP (D-42) | magic, cast |
-| party | the three characters in battle (D-31) | team, group |
+| party | the one to three characters in battle (D-31, D-336) | team, group |
 | reserve | the characters who wait outside the party (D-58) | bench, backup |
 | cast | the story characters who can join the party, eight in the whole game (D-33, D-299) | roster, heroes |
 | hub | a settlement with services, of any shape (D-28) | town, city, base |

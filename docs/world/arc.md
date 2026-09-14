@@ -118,7 +118,7 @@ Two months pass after region one, and the arc of region two sets what they chang
 - The one or two more set choices, which PR-28 and PR-29 propose (D-350, D-355).
 - The personal task of each character, which PR-28 and PR-29 propose (D-352).
 - The names of the bishop, the priest, the captain of the wardens, and the survivor of the raid.
-- Where the wardens and the priest confront the party (D-318).
+- Where the wardens and the priest confront the party, before the party wakes in the cells (D-318, D-327).
 - The layout of the second passage in the gallery (D-343).
 - The fate of the parent of Marrek past the crawlway (D-291, D-344).
 - The region of the death of Elio (D-321).

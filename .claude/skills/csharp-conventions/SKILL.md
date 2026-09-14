@@ -11,13 +11,20 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 
 - `Core` is the simulation. It has no reference to Godot, the file system, the network, the clock, or the OS (G-1, D-100). It takes a seed, content, and inputs, and it returns state.
 - `Game` is the Godot project. It reads `Core` state, draws it, plays audio, and turns input into intents. Godot physics, timers, and navigation never feed the simulation.
-- `Tools` holds the STE checker, the review gate, the det-lint, the night gate, the atlas tool, the audio synthesizer, and the headless runner.
+- `Tools` holds the STE checker, the review gate, the det-lint, the night gate, the atlas tool, the audio synthesizer, and the headless runner. It also holds the map preview, the tile-edge tool, and the screenplay tool (D-165, D-173, D-204).
 - `Tests` holds the xUnit tests for `Core` and `Tools`, and the smoke test that starts the Game headless.
+- The debug assembly is the fifth project, and only development builds reference it (D-260).
 - A test asserts the reference list of `Core`. A new package in any project needs a decision entry (G-13).
+
+## Shape of Core code (D-168)
+
+- State is plain C# records and classes with no engine types.
+- Each system is a static class. It takes the state and the intents of one tick, changes the state in a fixed order, and emits events for `Game`.
+- No framework, and no entity component system library in `Core`.
 
 ## Determinism in Core (T-7)
 
-- No `float`, `double`, or `decimal`. Percentages, multipliers, and rates use fixed-point integers. Name the scale in the type or the constant, for example `Permille` or `BasisPoints`.
+- No `float`, `double`, or `decimal`. Percentages, multipliers, and rates use fixed-point integers. Content writes each fraction in basis points, where 10000 means 100% (D-169). Name the scale in the type or the constant, for example `BasisPoints`.
 - No `System.Random`, `DateTime`, `Stopwatch`, or `Environment.TickCount`. The seed and the tick are the only sources of randomness and time (G-3).
 - One random stream per subsystem, split from the run seed. A subsystem never borrows another stream.
 - Iterate in a fixed order. Use `List<T>` and `SortedDictionary<TKey, TValue>`, and never `Dictionary<TKey, TValue>` or `HashSet<T>`, where the order reaches the state (G-4).

@@ -388,6 +388,8 @@ PR-3 adds a `review-gate` check (D-15). It applies three rules:
 2. The verdict is `Ready for owner merge`.
 3. The head in the Identity list is the effective head.
 
+The check also passes a PR in the override set that has the `review-override` label and changes no decision row (D-16, D-401).
+
 The check has three states. Read the color before you start:
 
 | Color | Meaning | What to do |
@@ -436,7 +438,7 @@ Stop at the third assessment of one id. Write the pattern in the review record, 
 
 ## The automated pass
 
-An automated reviewer, gitar, comments on every PR after a push (D-14). The author answers every comment before the hand-over to the other provider, or before the override request on a documentation PR. This pass comes before the cross-provider review and never replaces it (T-4). A documentation PR answers the pass too (D-66).
+An automated reviewer, gitar, comments on every PR after a push (D-14). The author answers every comment before the hand-over to the other provider, or before the session applies the `review-override` label (D-67). This pass comes before the cross-provider review and never replaces it (T-4). A documentation PR answers the pass too (D-66).
 
 Do these steps after each push.
 
