@@ -244,11 +244,11 @@ Gate: the replay of a recorded run gives the same hash on all three platforms, a
 > *In plain English:* the game writes down its start state and every input. That record then plays any run again, so every bug becomes repeatable, and the save file is that record.
 
 **PR-34: Atlas tool, palette, and the grid format.**
-Port `docs/tools/make-atlas.py` into Tools as the `atlas` command (D-107, D-119). Define the grid schema (D-108, D-109). A sprite or a tile is a 32 by 32 grid, and a portrait is a 64 by 64 grid (D-228, D-234). The session redraws the four test sprites at 32 by 32 for the owner's approval (D-233). A sprite has a frame list.
+Port `docs/tools/make-atlas.py` into Tools as the `atlas` command for the 32 by 32 grids (D-107, D-119, D-406). Define the grid schema (D-108, D-109). A sprite or a tile is a 32 by 32 grid, and a portrait is a 64 by 64 grid (D-228, D-234). The cast grids come into `content/sprites/` from the approved sample in `docs/samples/` (D-233, D-402, D-405). A sprite has a frame list.
 
 The palette is the 64-color file (D-121, D-181). The tool also builds a normal map for each grid, with optional override grids (D-183, D-184). A test decodes the committed atlas and proves that its pixels match the grids. It never compares file bytes, because the compressed bytes depend on the encoder (F-19). Retire the Python script.
 
-Gate: the tool reproduces the pixels of `content/sprites/atlas.png` from the four grids. A grid with an unknown key fails with the file, the line, and the column. A palette with a repeated key fails with the key.
+Gate: the tool builds `content/sprites/atlas.png` from the five cast grids, and the pixel test of F-19 passes. A grid with an unknown key fails with the file, the line, and the column. A palette with a repeated key fails with the key.
 > *In plain English:* every picture in the game is a text file of letters, one per pixel. A tool turns those letters into the image the engine draws, and a test proves the image matches the letters.
 
 **M-1: Tokens per PR.** Record the harness usage per PR for the first ten PRs.

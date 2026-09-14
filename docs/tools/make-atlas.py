@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """Render content/sprites/atlas.png from the grids and the palette (D-107, D-119).
 
+OUT OF DATE (D-406). The 16 by 16 grids and atlas.png that this tool reads left
+the repository on 2026-09-14 (D-405), so a run now fails with "no .grid file".
+The sprite format is 32 by 32 (D-228), and the approved sample grids live in
+docs/samples/2026-09-14-cast-sprites/ (D-402). Keep this file as a reference:
+PR-34 ports it to the C# atlas command for the new format, then retires it.
+
 Interim tool until PR-34 ports it to C#. A grid is 16 lines of 16 characters.
 Each character is a palette key from content/sprites/palette.json, and a dot
 is transparent. The atlas holds every grid in file name order, left to right.
