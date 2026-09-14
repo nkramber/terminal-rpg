@@ -12,7 +12,7 @@ No character has a job or a class (D-268, D-272). A character gains abilities fr
 
 - A lesson is a rite or a drill (D-275). A rite teaches a spell, on a page or a strip of soft metal. A drill teaches a physical ability as a written form.
 - A lesson holds no power. Every caster draws on the thing below (D-148).
-- A legal use of a rite needs a church license on the caster and a church stamp on the rite. A use without either can hang the caster (D-130, D-302). A stamp needs the seal and the ledger of the license office (D-308).
+- A legal use of a rite needs a church license on the caster and a church stamp on the rite. A use without either can hang the caster (D-130, D-302). A stamp needs the seal and the ledger of the license office (D-308). The party never gets a license or a stamp, and the story alone carries the risk (D-366, D-367).
 
 Each character has two aptitudes (D-274):
 
@@ -23,7 +23,7 @@ The eight kinds (D-281):
 
 | Kind | Lesson | What it covers |
 |---|---|---|
-| Mend | Rite | Healing |
+| Mend | Rite | Healing, and cures for afflictions (D-394) |
 | Harm | Rite | Damage spells |
 | Blight | Rite | Poison, sleep, and other statuses |
 | Boon | Rite | Shields and haste |
@@ -39,7 +39,7 @@ The rules of the aptitudes:
 - A side aptitude never matches the main aptitude of the same character (D-281).
 - The whole cast holds eight characters at most, the replacement included, because each needs a side aptitude of its own (D-281).
 
-How lessons sit, grow, and reach the party is open (OQ-38 to OQ-47).
+Lessons sit in slots on the character and swap at hubs and save points (D-356). An equipped lesson grows for the character who carries it, and that character keeps the growth (D-357, D-361). An aptitude adds a bonus to lessons of its kind, and a side aptitude adds half (D-358, D-360). Lessons come from treasure, shops, and people in the story (D-365). Every character has a basic attack, and any character wears any gear (D-359, D-374).
 
 ## The lead
 
@@ -51,7 +51,7 @@ Five characters join during region one: four local and one from the enemy crown 
 
 | Name | Who | Origin | Age | Main aptitude | Side aptitude |
 |---|---|---|---|---|---|
-| Marrek, a man | The lead, a commoner of the mining town | Local | 19 | Blade | Guard |
+| Marrek, a man | The lead, a commoner of a village near the mining town | Local | 19 | Blade | Guard |
 | Bergit, a woman | A warden of the miners' guild, who lost her mark | Local | 31 | Guard | Shot |
 | Dagvar, a man | A hexer of the old faith | Local | 35 | Harm | Blight |
 | Ottild, a woman | A cutpurse and smuggler | Local | 21 | Theft | Blade |
@@ -65,11 +65,11 @@ The four test sprites of D-233 become Bergit, Dagvar, Elio, and Ottild (D-289). 
 
 ### Marrek, the lead
 
-Marrek grew up in the mining town under the ban (D-284). He fights up close with what a miner carries (D-285). A parent of Marrek went down into the deep mine and did not come back, and he goes down to learn why (D-291). His road starts at the thing below. He fights alone at first, in the cellars and drains under the town (D-346). In the deep mine, he finds the sealed crew but not his parent, and the mark of the parent leads toward the pass (D-311, D-344).
+Marrek grew up under the ban in a small village on the road below the mining town (D-284, D-368). He fights up close with what a miner carries (D-285). A parent of Marrek went down into the deep mine and did not come back, and he goes down to learn why (D-291). His road starts at the thing below. He fights alone at first, near the village (D-370). In the deep mine, he finds the sealed crew but not his parent, and the mark of the parent leads toward the pass (D-311, D-344).
 
 ### Bergit, the warden
 
-The guild took the mark of Bergit because she refused to seal a level of the deep mine with a crew still inside (D-294, D-311). She knows that the crew was alive behind the seal, that the collapse is a lie, and where the level is. She does not know what waits below, or who was in the crew (D-338). She is the first to join, because she needs a witness that the crew went down alive (D-342). She crosses the pass because nothing is left for her in region one (D-347).
+The guild took the mark of Bergit because she refused to seal a level of the deep mine with a crew still inside (D-294, D-311). She knows that the crew was alive behind the seal, that the collapse is a lie, and where the level is. She does not know what waits below, or who was in the crew (D-338). She is the first to join, because she needs a witness that the crew went down alive (D-342). She guards carts on the road in for coin, and she finds Marrek near his village (D-370, D-372). She crosses the pass because nothing is left for her in region one (D-347).
 
 ### Dagvar, the hexer
 
@@ -99,7 +99,7 @@ Three characters join after region one: two new characters and the replacement (
 
 ## The death
 
-The story kills one character in the whole game, at a set point, and the player has no choice in it (D-270, D-279). That character is Elio (D-321). After region one, he dies in a fight against the foreign church, and his death proves his loyalty to the party (D-309). The lead never dies (D-309). The replacement can share Mend, the main aptitude of Elio, and its side aptitude differs (D-274). No choice of the player removes a cast member, and a lost ally is someone outside the cast (D-301).
+The story kills one character in the whole game, at a set point, and the player has no choice in it (D-270, D-279). That character is Elio, and his lessons and his gear leave the game with him (D-321, D-364). After region one, he dies in a fight against the foreign church, and his death proves his loyalty to the party (D-309). The lead never dies (D-309). The replacement can share Mend, the main aptitude of Elio, and its side aptitude differs (D-274). No choice of the player removes a cast member, and a lost ally is someone outside the cast (D-301).
 
 ## Names
 
@@ -107,9 +107,8 @@ The names follow the two sound palettes of `setting.md` (D-159). The four local 
 
 ## Open items
 
-- The region of the death of Elio. What happens to his lessons and his gear (OQ-41).
+- The region of the death of Elio (D-321).
 - Any turn of Elio stays clear of a climb to power through betrayal, a banned device (D-290, `banned-devices.md`).
 - The fate of the parent of Marrek past the crawlway (D-291, D-344).
 - The personal task of each character, which PR-28 and PR-29 propose (D-282, D-352).
 - The two new characters and the replacement (D-299).
-- How lessons sit, grow, and reach the party (OQ-38 to OQ-47).

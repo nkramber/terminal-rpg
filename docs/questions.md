@@ -71,7 +71,7 @@ How to file a question (D-19, D-24):
     - Gold at a hub office, the recommendation. The papers cost gold once per character at a hub. Gold gains a use (D-60), and the law shows at a counter. A poor party waits for its second job.
     - Free with the job change. The papers are story texture, and no rule prices them. The simplest rule. The law has no weight in play.
     - Standing with the church or a guild. A low standing refuses the papers (D-40). The law and the factions meet in play. A bad standing can lock a party out of its healer.
-35. **OQ-35. The feeding as a battle rule.** Every caster feeds the thing below a little (D-148). Does a battle rule track it? Blocks the systems roadmap.
+35. **OQ-35. The feeding as a battle rule.** Every caster feeds the thing below a little (D-148). Does a battle rule track it? Blocks the systems roadmap. Resolved 2026-09-13: D-379, no rule.
     - No rule, the recommendation. The feeding is a story fact alone, as a down is a battle fact alone (D-135). No new system, and every spell stays a budget choice (D-42). A player never feels the cost in play.
     - A region count. Each cast adds to a hidden count per region, and a high count wakes more wrong things (D-155). The cost reaches play. A new system with balance work, and the bots must test it (D-64).
     - A cost per caster. A character who casts often gains a mark or a status. A personal cost, strong for the cast. A new rule on every caster, and it punishes a character who carries many rites (D-275).
@@ -84,44 +84,46 @@ How to file a question (D-19, D-24):
     - A CI software render alone. Fully automatic. Effects that Compatibility lacks never reach a gate.
     - Desktop sheets alone, as what-you-carry chose (its D-306). The true look. No automatic screen gate between milestones.
     - No screen gates. No image tools. The gates of PR-10 and PR-37 need a rewrite.
-38. **OQ-38. Where lessons go.** Any character can equip any lesson (D-274, D-278). Where does a lesson sit, how many can a character equip, and where can a character change them? Blocks the systems roadmap and PR-12.
+38. **OQ-38. Where lessons go.** Any character can equip any lesson (D-274, D-278). Where does a lesson sit, how many can a character equip, and where can a character change them? Blocks the systems roadmap and PR-12. Resolved 2026-09-13: D-356, slots on the character, changed at hubs and save points.
     - Slots on the character, changed at hubs alone, the recommendation. The slot count grows with the character level, and the load before a dungeon holds for the whole visit (D-35). A reserve character still brings fresh MP at a swap, with only the rites it carried in.
     - Slots on the character, changed anywhere outside battle. At a save point, a fresh reserve character can take the rites of a spent caster (D-58). One visit then holds five MP pools, not three, against D-35.
     - Slots on gear, in the shape of the materia of D-272. A weapon or a piece of armor holds slots, so gear and lessons affect each other. Every gear item needs a slot count, and the balance work grows.
     - Slots on the character, changed at hubs and save points. The load before a dungeon carries weight, but a swap of fresh casters at a save point stays open (D-58).
-39. **OQ-39. How a lesson grows.** D-268 removed the job level, the source of abilities in D-34. Does a lesson stay fixed, or does it grow with use? Blocks the systems roadmap and PR-12.
+39. **OQ-39. How a lesson grows.** D-268 removed the job level, the source of abilities in D-34. Does a lesson stay fixed, or does it grow with use? Blocks the systems roadmap and PR-12. Resolved 2026-09-13: D-357, it grows while equipped.
     - Growth with use, the recommendation. A lesson gains points in battle and opens stronger forms of its ability. No lesson ever copies itself, so the loot table stays finite (D-45).
     - Fixed lessons. A stronger ability is a separate lesson to find, so every find in a dungeon matters (D-41). No progress bar for abilities exists.
     - Growth with use and a copy at the top. A lesson at its last level makes a copy, as the materia of D-272 does. D-45 changes, because the loot table grows without end.
-40. **OQ-40. What an aptitude does.** The main aptitude names the kind of ability that a character does best (D-274). How does that show in the numbers? Blocks the systems roadmap and PR-12.
+40. **OQ-40. What an aptitude does.** The main aptitude names the kind of ability that a character does best (D-274). How does that show in the numbers? Blocks the systems roadmap and PR-12. Resolved 2026-09-13: D-358, a bonus on lessons of its kind.
     - A bonus on lessons of the kind, the recommendation. The aptitude adds a basis-point bonus to lessons of its kind (D-169). Any character uses any lesson, and the right character uses it best.
     - Forms that the aptitude alone opens. A lesson shows its top forms only to a character with the matching aptitude. The difference is sharp, and other characters meet a ceiling.
     - Both. A bonus and the top forms together. The strongest difference between characters, with two rules to tune for each kind.
-41. **OQ-41. The lessons and gear of the dead character.** The story kills Elio after region one (D-279, D-321). What happens to the lessons and the gear that he carries? Blocks the systems roadmap.
+41. **OQ-41. The lessons and gear of the dead character.** The story kills Elio after region one (D-279, D-321). What happens to the lessons and the gear that he carries? Blocks the systems roadmap. Resolved 2026-09-13: D-364, they go with him.
     - They pass to the party, the recommendation. Another character uses each lesson, less well than the dead character did (D-274). The death costs the side aptitude for good, because no later character can hold it.
     - They go with the character. The death costs every lesson and every piece of gear that character carried. On a first play, a player who loaded that character heavily loses a large share of the build (D-270).
     - The replacement brings them. The replacement joins with the lessons and the gear of the dead character. The party gets its build back at once, so the death costs little in play.
-42. **OQ-42. Licenses and stamped rites.** A legal use of a rite needs a church license on the caster and a stamp on the rite (D-302). How does a character get a license, and how does a party get a stamped rite? It replaces OQ-34, which D-268 closed. A stamp comes from the license office alone (D-308). Blocks the systems roadmap.
-    - Gold at the license office, the recommendation. The office in the mining town sells a license to each caster and a stamp for each rite (D-247). Gold gains two uses (D-60), and the law shows at a counter.
-    - Church training for a license, and gold for a stamp. A license needs a task or a course with the church, and a stamp costs gold. The license carries weight, and a party that the church distrusts never gets one.
+42. **OQ-42. Licenses and stamped rites.** A legal use of a rite needs a church license on the caster and a stamp on the rite (D-302). How does a character get a license, and how does a party get a stamped rite? It replaces OQ-34, which D-268 closed. A stamp comes from the license office alone (D-308). Blocks the systems roadmap. Resolved 2026-09-13: D-366, story only.
+    - Story only, the recommendation at the ask. The party never gets a license or a stamp, and only Elio casts legally. The arc made the party outlaws (D-319, D-330), so the session changed its recommendation before the ask.
+    - Gold at the license office, the first recommendation. The office in the mining town sells a license to each caster and a stamp for each rite (D-247). The office closes to the party at the breakout (D-319).
+    - Forged by Ottild. Ottild forges stamps and papers for gold once she joins (D-342). A forgery needs a rule for when it fails.
+    - Church training for a license, and gold for a stamp. Not asked: a party that frees a hexer takes no church course (D-330).
     - Standing with the church. Void since D-329: no faction tracks standing.
-43. **OQ-43. Limits on gear.** D-44 bound gear to job restrictions, and no job exists now (D-268). Does anything limit what a character wears? Blocks PR-13.
+43. **OQ-43. Limits on gear.** D-44 bound gear to job restrictions, and no job exists now (D-268). Does anything limit what a character wears? Blocks PR-13. Resolved 2026-09-13: D-374, nothing.
     - Nothing, the recommendation. Any character wears any gear, as any character equips any lesson (D-274). The aptitude carries the difference between characters, and the rule stays simple.
     - A list per character. Each character wears some kinds of gear and not others. Each character reads as a person with a trade, and each needs a gear table.
     - A stat limit. Heavy gear needs a strength value that the item shows. The player reads the rule on the item, and a weak character stays out of heavy gear.
-44. **OQ-44. An action with no MP.** F-8 gave every job one ability with no MP cost. No job exists now, and a character can carry rites alone (D-274). Does every character keep an action that needs no MP and no lesson? Blocks PR-9 and PR-12.
+44. **OQ-44. An action with no MP.** F-8 gave every job one ability with no MP cost. No job exists now, and a character can carry rites alone (D-274). Does every character keep an action that needs no MP and no lesson? Blocks PR-9 and PR-12. Resolved 2026-09-13: D-359, a basic attack for every character.
     - A basic attack for every character, the recommendation. Each character can attack with the weapon in hand, and no lesson gives it. A caster with empty MP still acts, and F-8 holds.
     - At least one drill. The load rules make every character equip one drill or more. The player keeps the choice, and the rule needs a check at every change.
     - No such action. A caster with empty MP waits or uses an item (D-45). The scarcity of D-35 bites hardest, and a turn with nothing useful to do feels bad.
-45. **OQ-45. Unlawful rites in play.** A use of a rite without a license or a stamp can hang the caster (D-302). Does a rule in play track that risk, or does the story alone carry it? Blocks the systems roadmap.
+45. **OQ-45. Unlawful rites in play.** A use of a rite without a license or a stamp can hang the caster (D-302). Does a rule in play track that risk, or does the story alone carry it? Blocks the systems roadmap. Resolved 2026-09-13: D-367, the story alone.
     - The story alone, the recommendation. Scenes and dialogue carry the risk, and no new system enters Core. The law never reaches play.
     - A search at gates. Guards search the party at set places, and an unstamped rite or a caster with no license starts a fight. The law reaches play, and the system needs its own tests and bot runs (D-64). D-329 removed the cost to reputation.
     - A witness rule. Void since D-329: no church standing exists.
-46. **OQ-46. The first playable.** D-256 put two jobs at Gate 2, and D-268 removed jobs. Which characters and lessons does the first playable hold? The story sets the joins: Marrek alone, then Bergit, then Dagvar in the cells, then Elio after them (D-336, D-342). Blocks PR-12, PR-17, and the Phase 2 roadmap.
+46. **OQ-46. The first playable.** D-256 put two jobs at Gate 2, and D-268 removed jobs. Which characters and lessons does the first playable hold? The story sets the joins: Marrek alone, then Bergit, then Dagvar in the cells, then Elio after them (D-336, D-342). Blocks PR-12, PR-17, and the Phase 2 roadmap. Resolved 2026-09-13: D-362, Marrek, Bergit, and Dagvar.
     - Marrek, Bergit, Dagvar, and Elio, with a small set of lessons, the recommendation. The first playable runs past the cells until Elio joins. Three fight, one waits in reserve, and the swap gate of PR-14 can pass.
     - Marrek, Bergit, and Dagvar, with more lessons. The first playable ends at the cells, so nobody waits in reserve, and the swap gate of PR-14 moves to a later PR.
     - All five characters of region one. Void since D-342: Ottild joins before the deep mine, after the first dungeon.
-47. **OQ-47. Where lessons come from.** D-268 left the old-faith hexer and the fence of the cave community with no job to teach (D-246). Where does a party get lessons? Blocks the systems roadmap and PR-13.
+47. **OQ-47. Where lessons come from.** D-268 left the old-faith hexer and the fence of the cave community with no job to teach (D-246). Where does a party get lessons? Blocks the systems roadmap and PR-13. Resolved 2026-09-13: D-365, treasure, shops, and people.
     - Four sources, the recommendation. Treasure in dungeons, shops in hubs, stamped rites from the church, and unstamped rites and drills from the two in the cave community. Each faction and each dungeon gives something.
     - Treasure and story alone. Lessons come from chests and scenes (D-41, D-45). Every lesson has a place, and gold buys none of them.
     - Shops and the church alone. Gold buys every lesson (D-60). The economy carries the build, and dungeons give gear and items alone.
@@ -133,11 +135,11 @@ How to file a question (D-19, D-24):
     - No, the recommendation. The player always picks the three who fight. No scene puts a weak character in a fight alone, so no run can stick on one difficulty and one save slot (D-61, D-62).
     - Yes, and every character gets full experience. A scene can force a fight, and nobody falls behind in level. D-73 changes, and the reserve loses its cost.
     - Yes, with no change to experience. The story gets set fights. Each forced fight needs a check that the set party can win, and a bot test (D-64).
-50. **OQ-50. The level of a late character.** A character who joins late, such as the replacement, needs a level (D-270, D-299). At what character level does a late character join? Blocks the systems roadmap.
+50. **OQ-50. The level of a late character.** A character who joins late, such as the replacement, needs a level (D-270, D-299). At what character level does a late character join? Blocks the systems roadmap. Resolved 2026-09-13: D-363, a set level in content.
     - The mean level of the cast, the recommendation. The newcomer can fight at once and replace what the dead character did (D-270). The bots test the rule (D-64).
     - A fixed level in content. Each newcomer has an authored level. A player far above or below that level meets a weak or a strong newcomer.
     - Level one. The newcomer starts from nothing. A newcomer who cannot fight cannot replace the dead character (D-270).
-51. **OQ-51. When a missed task closes.** A player can miss a personal task, and its side aptitude stays hidden (D-282, D-283). When does a task close for good? Blocks the systems roadmap and PR-19.
+51. **OQ-51. When a missed task closes.** A player can miss a personal task, and its side aptitude stays hidden (D-282, D-283). When does a task close for good? Blocks the systems roadmap and PR-19. Resolved 2026-09-13: D-375, at the end of the region.
     - At a set story point, with a notice, the recommendation. The notice of D-221 tells the player that a chance passed. The save of the prologue carries the result into the full game (D-163).
     - At the end of the region. Each region closes its own tasks, and the player has most of a region to find each one.
     - Never. A task stays open for the whole game. The player loses nothing for good, so a missed task has no weight.

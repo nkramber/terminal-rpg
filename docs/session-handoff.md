@@ -5,30 +5,37 @@ Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of
 ## Session 4: 2026-09-13, Claude Code
 
 Author: Claude Code
-Session: the four critic questions left from Session 3, then the arc block of the world-building interview (OQ-18), on branch `docs/pr-2-world-building`, with no PR yet (D-147).
+Session: the four critic questions left from Session 3, the arc block of the world-building interview (OQ-18), and then the systems block of the full plan, on branch `docs/pr-2-world-building`, with no PR yet (D-147).
 
 ### What this session did, and why
 
 - Resumed from the Session 3 entry and asked OQ-52 to OQ-55 as one batch (D-305 to D-308). Every cast member is an adult, the lead always walks the map, the banned list gains one FF7 device (a gem or orb that stores power), and Elio stamps rites at the license office alone. Before the ask, the session corrected an overstated con in OQ-55 and added a third row to OQ-54. The owner chose the gem or orb alone.
 - Ran the arc block of region one in eleven batches (D-309 to D-355). `docs/world/arc.md` holds the story in order.
-- The spine: Marrek fights alone under the town, and Bergit joins because she needs a witness. The party frees Dagvar from the hanging cells, the church sends Elio to spy, and Ottild joins with the way into the deep mine. In the mine the party finds the crew that the guild sealed in alive, a wrong thing made by the blood of the war, and the mark of Marrek's parent, who got out alive. Elio turns. Church wardens capture the party, which breaks out of the cells, kills the bishop, flees through the gallery to the refuge, and passes the town by night. The wardens raid the refuge. The bandits of the fort sell the party, and the last fight is the captain of the wardens on the ice. The one set choice so far: spare or kill the captain.
+- The spine: Marrek fights alone near his village, and Bergit joins because she needs a witness. The party frees Dagvar from the hanging cells, the church sends Elio to spy, and Ottild joins with the way into the deep mine. In the mine the party finds the crew that the guild sealed in alive, a wrong thing made by the blood of the war, and the mark of Marrek's parent, who got out alive. Elio turns. Church wardens capture the party, which breaks out of the cells, kills the bishop, flees through the gallery to the refuge, and passes the town by night. The wardens raid the refuge. The bandits of the fort sell the party, and the last fight is the captain of the wardens on the ice. The one set choice so far: spare or kill the captain.
 - Owner reframings: the relationship value per character and faction reputation left the game, and a choice is a fixed story flag (D-328, D-329). Elio is the one death in the cast, after region one, and he must be innocent and lovable (D-321, D-322). Harm to a child is never shown directly, but text can imply or state it, and scenes can show aftermaths (D-335). Marrek fights alone first, and the others join one at a time (D-336). The guild is neither evil nor good (D-324).
 - Two clashes surfaced, and the owner settled both: D-290 against the set turn of Elio (D-328), and one picked choice against "two or three" (D-355).
-- Swept the registers, `cast.md`, `places.md`, `setting.md`, `banned-devices.md`, rule 13 of the `game-text-style` skill, and `docs/design.md`. PR-9 plans one to three fighters, PR-17 builds the town, the area under it, and the cells, and PR-19 lost reputation and relationships. The Phase 3 gate changed, and PR-23 to PR-26 each name one dungeon build (F-29). OQ-42, OQ-45, and OQ-46 lost options that the new decisions void, and OQ-41 now names Elio.
+- Swept the registers, `cast.md`, `places.md`, `setting.md`, `banned-devices.md`, rule 13 of the `game-text-style` skill, and `docs/design.md`. PR-9 plans one to three fighters, PR-17 builds the village, the town, and the cells, and PR-19 lost reputation and relationships. The Phase 3 gate changed, and PR-23 to PR-26 each name one dungeon build (F-29). OQ-42, OQ-45, and OQ-46 lost options that the new decisions void, and OQ-41 now names Elio.
+- The arc block landed as `4e76c4f` and was pushed. On owner instruction, the session then ran the systems block in the same session (D-356 to D-397).
+- Lessons: slots on the character that swap at hubs and save points, growth per character and per lesson, and an aptitude bonus, half for a side aptitude (D-356 to D-361). Every character has a basic attack (D-359). The first playable holds Marrek, Bergit, and Dagvar (D-362), and a newcomer joins at a set level (D-363).
+- Battle: action delay on the timeline, a front row and a back row per side, a step between rows that costs time, and a flee with a chance and a grace time on the map (D-376 to D-381). Items restore less in battle, stacks are small, a find over the limit stays where it lies, and a small set of items gets used up (D-382 to D-385). A steal takes from a list per enemy, and a Theft drill opens marked locks and disarms traps (D-383, D-386).
+- The law and lessons: the party never gets a license or a stamp, and the story alone carries the risk (D-366, D-367). Lessons come from treasure, shops, and people (D-365), and the lessons and gear of Elio die with him (D-364).
+- Levels and statuses: a downed character earns half experience, a soft cap per region holds the range, and a save point restores MP alone (D-387 to D-389). Poison, blind, and silence last past a battle, poison can down on the map, and a map wipe reloads even with a healthy reserve (D-390, D-392, D-393, D-397). Mend rites and cures work from the menu, and cures belong to Mend (D-391, D-394).
+- Mid-block, the owner moved the start of the game to a small village on the road below the mining town, where Marrek grew up (D-368 to D-373). Winter beasts are his first foes, and Bergit finds him while she guards the road for coin. D-346 is superseded, and D-284 and D-250 are revised in part.
+- The owner stopped the first systems batch to ask what a lesson is. The session explained it and now glosses the terms in every question.
 
 ### State of the build
 
 - No code exists. `main` is `9dd80da` (PR #1).
-- Branch `docs/pr-2-world-building` holds eight commits above `main`: the five of Session 2, the two of Session 3, and the commit that holds this entry (the arc block and this handoff). The session pushed the branch at the end (D-147), and the remote head is the commit that holds this entry.
+- Branch `docs/pr-2-world-building` holds nine commits above `main`: the five of Session 2, the two of Session 3, `4e76c4f` (the arc block), and the commit that holds this revision of the entry (the systems block). The session pushed the branch at the end (D-147), and the remote head is the commit that holds this revision.
 - The interim STE check passes on every non-exempt `.md` file, `docs/world/arc.md` included.
 - No PR exists, so gitar has not run. CI and the review gate do not exist yet.
 
 ### In flight
 
-The full-plan docs PR (D-142). Blocks done: setting, technical, graphics, UI, places, cast, and arc. Blocks left, in order (D-262): systems, audio, and release. After the interview, the plan still needs:
+The full-plan docs PR (D-142). Blocks done: setting, technical, graphics, UI, places, cast, arc, and systems. Blocks left, in order (D-262): audio, then release. After the interview, the plan still needs:
 
 - The five phase roadmaps and the area roadmaps in `docs/roadmaps/` (D-144, D-145).
-- A PR-# id for every new system (C-10 of the first critic pass): particles, light, the day clock, transitions, crash files, the UI screens, and the lesson and aptitude screens. The area under the town rides in PR-17 (D-346), and the second visit to the cells is PR-24 (F-29).
+- A PR-# id for every new system (C-10 of the first critic pass): particles, light, the day clock, transitions, crash files, the UI screens, and the lesson and aptitude screens. The village and the land near it ride in PR-17 (D-369, D-370), and the second visit to the cells is PR-24 (F-29).
 - Sections 7 and 8 of `docs/design.md` rebuilt from the roadmaps, then another design-critic pass.
 - The PR, the gitar pass, the label (D-67), and the owner merge. Then the rename and the move (D-216), the Deck test (D-160), and PR-1.
 
@@ -39,20 +46,23 @@ The full-plan docs PR (D-142). Blocks done: setting, technical, graphics, UI, pl
 - Relationships and reputation are gone (D-328, D-329), and D-40, D-242, and D-290 are revised in part. A systems option that uses standing, reputation, or a relationship value is void. OQ-42 and OQ-45 mark their void options.
 - The owner often answers with long free text that sets several beats at once. Split it into rows, confirm a typo as a reading inside the next question, and ask at once about any clash with an earlier decision, quoting both. D-318 records the reading "imprisoned", which the owner kept.
 - The banned list holds one FF7 device alone (D-307). The owner declined bans on a pumped power and on the death of a healer at the hand of the villain, so do not add them back.
-- A battle holds one, two, or three characters (D-336). The first playable holds Marrek, Bergit, and Dagvar, and Elio if it runs past the cells, so the swap gate of PR-14 depends on OQ-46.
+- A battle holds one, two, or three characters (D-336). The first playable holds Marrek, Bergit, and Dagvar (D-362), so PR-14 and PR-16 test the swaps with a fixture party of four.
+- Lesson growth belongs to the character, not to the item: a lesson passed back resumes at the level of its earlier owner (D-361).
+- D-346 is superseded: the first fights happen near the village, and the cellars under the town have no role (D-370). D-45 lost its line on consumables (D-384). The owner switched the map-wipe rule twice: D-395 and D-396 are superseded, and D-397 keeps a wipe with no reserve, on the map and in battle.
+- Gloss lesson, rite, drill, kind, and aptitude in every question batch. The owner does not answer a batch until each term is plain.
 - Several decisions carry a known cost from their option: the gallery needs a second passage (D-343), the old galleries reach toward the pass (D-344), the fort repeats the beat of the cells (D-341), and a spared captain must return (D-354). The roadmaps and the content PRs must meet them.
 - The arc keeps open items for the content PRs: the names of the bishop, the priest, the captain, and the survivor, the place of the confrontation, the personal tasks (D-352), and one or two more set choices (D-355).
 - The STE checker flags "standing" after a preposition as an -ing form.
 - On the picks of this block, the owner chose against the recommendation or wrote a custom answer about half the time. Keep options that differ in kind, with honest cons.
-- The next ids are D-356, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 5.
+- The next ids are D-398, OQ-56, F-30, L-16, G-26, PR-43, M-7, and Session 5.
 
 ### Open questions that block progress
 
-The systems block: OQ-35, OQ-38 to OQ-47, OQ-50, and OQ-51. OQ-41 (the lessons and the gear of Elio) and OQ-46 (the first playable) now have the story facts they need. OQ-3 waits for PR-3. The owner runs the Deck test of D-160 before PR-1, and D-261 leaves its fallback to the owner.
+No systems question remains open, and the audio and release blocks have no filed questions yet. OQ-3 waits for PR-3. The owner runs the Deck test of D-160 before PR-1, and D-261 leaves its fallback to the owner.
 
 ### Next concrete action
 
-The next session reads this entry, then starts the systems block (D-262) in batches (D-24). The first topics: OQ-38 (where lessons sit), OQ-39 (how a lesson grows), OQ-40 (what an aptitude does), and OQ-46 (the first playable, with the joins of D-342). Then OQ-41 to OQ-45, OQ-47, OQ-50, OQ-51, and OQ-35, plus the system questions the arc raised: the quest state for the personal tasks, the story flags of PR-18, and a party of one to three (D-336). It records each answer from D-356 on and writes the systems area roadmap when the block closes.
+The next session reads this entry, then starts the audio block (D-262) in batches (D-24), then the release block. Audio already holds D-87, D-115, and D-223: music and sound effects rendered by our own synthesizer, and silent typed dialogue. The first audio topics: the style of the music after the move to sprites (D-98), music per place and per phase of the day (D-192), battle and boss music, sounds for the battle effects of D-186, and the mix settings of D-226. It records each answer from D-398 on. When both blocks close, it writes the phase roadmaps and the area roadmaps (D-144, D-145), rebuilds sections 7 and 8 of `docs/design.md`, and runs the design-critic agent.
 
 ## Session 3: 2026-09-13, Claude Code
 

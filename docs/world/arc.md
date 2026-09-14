@@ -12,7 +12,7 @@ Region one is a fixed story with set choices (D-328, D-350). The party grows fro
 
 | Step | Place | What happens |
 |---|---|---|
-| Start | The area under the mining town | Marrek fights alone, and Bergit finds him (D-346) |
+| Start | The village of Marrek, on the road in | Marrek fights winter beasts alone, and Bergit finds him (D-370, D-373) |
 | First dungeon | The hanging cells | The party frees Dagvar (D-330) |
 | Second dungeon | The deep mine | The sealed crew, the trace of the parent, and a wrong thing (D-311, D-312, D-344) |
 | First dungeon, again | The hanging cells | The party breaks out and kills the bishop (D-319, D-327) |
@@ -21,9 +21,9 @@ Region one is a fixed story with set choices (D-328, D-350). The party grows fro
 | Third dungeon | The border fort | The bandits sell the party to the church wardens (D-341) |
 | Fourth dungeon | The ice crossing | The last fight, against the captain of the wardens (D-345) |
 
-The mining town is the hub from the start. The refuge of the old faith opens as the second hub late in the region (D-331).
+The game starts in the village, a small start area with no services (D-368, D-369). The mining town is the first hub, and the refuge of the old faith opens as the second hub late in the region (D-331).
 
-## What lies under the town
+## What lies in the deep mine
 
 In the war, blood spilled in the deep galleries, and a wrong thing came of it (D-323). It waited at the bottom of the deep mine before the crew came.
 
@@ -47,9 +47,9 @@ Church wardens, the armed men of the church, capture the party and later hunt it
 
 ## The story in order
 
-1. Marrek goes under the mining town to look for a way into the deep mine (D-291, D-346).
-2. He fights beasts and scavengers there alone (D-336).
-3. Bergit finds him. She needs a witness that the crew went down alive (D-342).
+1. The game starts in the village where Marrek grew up, below the mining town (D-368, D-371). His parent went down into the deep mine and did not come back (D-291).
+2. Marrek fights hungry winter beasts near the village alone (D-336, D-370, D-373).
+3. Bergit, who guards carts on the road for coin, finds him. She needs a witness that the crew went down alive (D-342, D-372).
 4. The witness is Dagvar, a hexer who waits to hang in the cells (D-337).
 5. Marrek and Bergit break Dagvar out of the hanging cells (D-330).
 6. The church sends Elio to learn where the freed hexer goes (D-316, D-325).
@@ -84,7 +84,7 @@ Each character needs a reason to follow the party out of region one (D-315). The
 | Character | Joins | Reason to cross the pass |
 |---|---|---|
 | Marrek | At the start | The trail of his parent leads over the pass (D-314, D-344) |
-| Bergit | Under the town, first (D-342, D-346) | Nothing is left for her in region one (D-347) |
+| Bergit | Near the village, first (D-342, D-370) | Nothing is left for her in region one (D-347) |
 | Dagvar | In the hanging cells (D-330) | To find waystones beyond the reach of the church (D-348) |
 | Elio | After the cells (D-316) | Loyalty to the party, and the goal to stop the foreign church (D-320) |
 | Ottild | Before the deep mine (D-342) | Loyalty she did not expect (D-349) |
@@ -93,7 +93,7 @@ Each character needs a reason to follow the party out of region one (D-315). The
 
 Elio is an innocent type: lovable, a character the player loves (D-322). The church sends him to spy, and he turns when he sees what lives below (D-316, D-317). His turn is a set part of the story, and no relationship value changes it (D-328). He stays with the party after a long and hard talk, and the party trusts him with reluctance (D-320).
 
-After region one, Elio dies in a fight against the foreign church, and his death proves his loyalty (D-309, D-321). He is the one death in the cast, and the lead never dies. Any turn of Elio stays clear of a climb to power through betrayal (`banned-devices.md`).
+After region one, Elio dies in a fight against the foreign church, and his death proves his loyalty (D-309, D-321). He is the one death in the cast, and the lead never dies. His lessons and his gear leave the game with him (D-364). Any turn of Elio stays clear of a climb to power through betrayal (`banned-devices.md`).
 
 ## Choices
 
@@ -121,5 +121,5 @@ Two months pass after region one, and the arc of region two sets what they chang
 - Where the wardens and the priest confront the party (D-318).
 - The layout of the second passage in the gallery (D-343).
 - The fate of the parent of Marrek past the crawlway (D-291, D-344).
-- The region of the death of Elio, and what happens to his lessons and his gear (OQ-41).
+- The region of the death of Elio (D-321).
 - The replacement and the two new characters (D-299, D-321).

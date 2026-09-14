@@ -29,7 +29,7 @@ Humans are the only people in the world. No elves, dwarves, or beast-folk exist.
 
 Under the old ground lies a thing that answers spilled blood. The war dug into that ground and woke it (D-128). A few powerful people know it and use it. It stays rare in region one, and it is never a stock demon (D-128, D-155).
 
-All magic draws on the thing below, and a caster does not need to know it (D-148). A licensed mender and a hanged hexer tap the same source. Every caster feeds the thing a little. Whether a battle rule tracks that feeding is open (OQ-35).
+All magic draws on the thing below, and a caster does not need to know it (D-148). A licensed mender and a hanged hexer tap the same source. Every caster feeds the thing a little, and no battle rule tracks that feeding (D-379).
 
 Holy and dark are names that people give to two ways the thing below answers (D-158). Each church claims the holy side. Battle text keeps the two words, and the story treats them as claims. No text presents holy damage as proof of a god.
 
@@ -63,7 +63,7 @@ No character has a job (D-268). A character gains abilities from lessons: rites 
 
 A legal use of a rite needs two things: a church license on the caster and a church stamp on the rite (D-130, D-302). A use without either can hang the caster. A stamp needs the seal and the ledger of the license office, so nobody stamps a rite on the road (D-308). The guild marks its wardens, and a warden can lose the mark (D-294).
 
-How a party gets a license or a stamped rite is open (OQ-42). Whether a rule in play tracks an unlawful use is open too (OQ-45).
+The party never gets a license or a stamp, so every rite outside the hands of Elio breaks the law (D-366). The story alone carries that risk, and no rule in play tracks it (D-367).
 
 ## Rules that stay out of the story
 
@@ -89,8 +89,6 @@ The samples show the sound. They are not cast names.
 
 ## Open items
 
-- Whether a battle rule tracks the feeding of the thing below (OQ-35).
-- How a party gets a license or a stamped rite (OQ-42).
 - The systems, audio, and release areas (D-262).
 
 The places of region one are in `places.md`, the cast is in `cast.md`, and the arc is in `arc.md`.
