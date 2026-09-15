@@ -2,6 +2,67 @@
 
 Rule (D-18): this file keeps the 10 newest sessions, newest first. At the end of a session, add a new entry at the top. Move any entry beyond the tenth to the top of `docs/session-handoff-archive.md`. Read the first entry first.
 
+## Session 30: 2026-09-15, Claude Code
+
+Author: Claude Code
+Session: the fourth area file of PR #11, `docs/roadmaps/area-art.md`, on branch `docs/pr-11-roadmaps`.
+
+### What this session did, and why
+
+- The session resumed PR #11 from the handoff of Session 29. The remote head was `4d68a01`, and no other session pushed after it.
+- The owner reported two changes to the repository settings: "Allow rebase merging" is off, and "Require actions to be pinned to a full-length commit SHA" is on. `gh api` confirmed both, and squash merging is the only merge method. The runbook, `area-ci.md`, D-8, and D-511 record it.
+- The session read the design, the whole decision register, the questions register, the three finished area files, the skills, the runbook, the PR template, the palette, and the old atlas script.
+- Two read-only research agents read GitHub pages and the Godot docs and source at `4.7.2-stable`. The session checked each key fact again before it entered a document: the `gh` help and release notes, the GitHub docs source, the README of `upload-artifact`, and the Godot XML, shader, and C++ files.
+- A new fact settled the trap of Session 29: `gh` 2.99.0 of 2026-09-01 uploads an image into a PR description with `--attach`, and the Mac has 2.100.0.
+- The owner took all six contract recommendations in two batches:
+  - The owner sees each art batch as review sheets that `gh --attach` puts in the PR description, and no review image enters git (D-514).
+  - A drawing is one JSON file with rows as strings (D-515). This settles G-6 and D-116 against the `.grid` files of D-119 and D-404.
+  - A large picture places drawn pieces (D-516), because one full-screen grid holds about 1.1 million palette keys (F-44). PR-55 builds the format right before PR-10 (D-518).
+  - Core holds the record of every content file, a file that no rule reads included (D-517).
+  - An art file names the content ids that it draws, and a rule file never names art (D-519).
+- The question of D-516 named the file a layout. A layout already names a map file (D-39, D-386), so the rows and the documents use the term large picture (D-12). The Effect column of D-516 says so, and the owner can ask for another term.
+- The Godot checks removed one question: both renderer families correct the normal map of a sprite that `flip_h` mirrors, so the atlas holds no mirrored frame. F-45 records three Godot defaults that meet the pixel art.
+- The session filed seven detail questions for PR-34, PR-7, PR-33, and PR-55 (OQ-85 to OQ-91), as D-487 asks. None blocks PR #11.
+- The session wrote `docs/roadmaps/area-art.md`. It updated `docs/design.md` (a dated line, the system map, the cost model, F-44, F-45, G-24, and G-25), `area-tools.md`, `area-core.md`, `area-ci.md`, the runbook of the machine, the `ste-writing`, `csharp-conventions`, and `pr-review` skills, and eleven earlier decision rows with notes.
+- The handoff held ten entries before this one, so Session 20 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `63803d9` (PR #10).
+- The branch `docs/pr-11-roadmaps` holds four commits on `main`, and its remote head is the commit that holds this entry. No PR is open, because PR #11 opens when the roadmaps and the rebuild are complete (D-489).
+- The interim STE check passes with 0 findings, `git diff --check` is clean, and `CLAUDE.md` and `AGENTS.md` stay identical.
+- On 2026-09-14, `gh api` showed `allow_rebase_merge` false, `allow_merge_commit` false, and `sha_pinning_required` true.
+
+### In flight
+
+PR #11: four of twelve area files are done. Next comes `area-effects.md`, then the other seven area files in the order of D-485. Then come the five phase files and the rebuild of sections 7 and 8 (D-488).
+
+### Traps and gotchas
+
+- The rebuild changes more than sections 7 and 8. These texts still name the old plan:
+  - G-22 in `docs/design.md`: PR-49 (D-496), the night counts (D-507), a night on the head of a PR (D-510), and docs-only PRs (D-513).
+  - The PR gate of `CLAUDE.md` and `AGENTS.md`, lines 145 to 147: det-lint in PR-46, the identity file (D-504), the night gate in PR-49, and a new line for the bot runs of PR-15 (D-505). Line 130 still says det-lint comes "after PR-4".
+  - Lines 12, 13, and 15 of `.github/pull_request_template.md`, with the same changes and the bot line.
+  - Section 7 still puts the export job in PR-7 and the night gate in PR-15, and M-3 reads one night count. The owner step of D-511 is done, so section 8 needs no step for it.
+  - Section 7 still gives PR-34 the normal maps and "the grid schema", and PR-10 "A backdrop per place" as one grid. PR-17 names the sprite set of Marrek alone, and section 7.9 of `area-art.md` adds the frames of Bergit and Dagvar (D-200, D-362). PR-55 needs an entry right before PR-10 (D-518).
+- Keep the word layout for map files alone. The glossary of the `ste-writing` skill has the new art terms: drawing file, piece, large picture, atlas index, and review sheet.
+- The dated row D-204 says "edge pieces" for edge tiles. `area-tools.md` now says "border tile", because piece is a glossary term.
+- `area-effects.md` meets three facts: a custom shader that writes `NORMAL_MAP` gets no flip correction (issue 101277), 2D light draws at the pixel size of the Viewport whatever the texture filter (the 2D lights tutorial, read 2026-09-14), and each piece of a large picture has a normal map (D-516).
+- `area-ui-input.md` must set the stretch, because the 4.7 editor writes `canvas_items` and `expand` into a new project (F-45). The fonts load from the Game assembly (D-508). A research agent read in the source that `FontFile.data` takes the bytes of a dynamic font, and no doc or test confirms it.
+- OQ-86 meets `area-exploration.md`: a `TileMapLayer` needs its tiles on a regular grid in the atlas.
+- The boot splash image is a PNG path that the engine reads at the start, so the studio mark of D-468 cannot come from the atlas (OQ-90).
+- The samples readme still describes the `.grid` files, and the note on D-404 carries D-515. Sessions skip `docs/samples/` (D-403).
+- New PR ids so far: PR-43 to PR-55, thirteen of about 20 (D-486). The next id is PR-56.
+- The next ids are D-520, OQ-92, F-46, L-16, G-26, PR-56, M-7, and Session 31.
+
+### Open questions that block progress
+
+None for PR #11. OQ-85 to OQ-91 block PR-34, PR-7, PR-33, and PR-55. OQ-75 to OQ-84 block PR-1, PR-15, PR-41, PR-49, and PR-54. OQ-67 to OQ-74 block PR-2, PR-3, PR-46, PR-47, PR-48, and PR-15. OQ-60 to OQ-66 block PR-4, PR-5, PR-6, and PR-43. OQ-57 and OQ-59 block the store page at Gate 2, OQ-58 blocks PR-40, and OQ-3 waits for PR-3.
+
+### Next concrete action
+
+A session continues PR #11 on `docs/pr-11-roadmaps`. It reads `docs/roadmaps/area-core.md`, `area-tools.md`, `area-ci.md`, `area-art.md`, D-491 to D-519, and the effects entries of `docs/design.md`, such as D-139, D-160, D-180 to D-196, and D-240. Then it writes `docs/roadmaps/area-effects.md`, places PR-48 and the first PR that draws light, asks the contract questions, and files detail questions with their PRs (D-487, D-488).
+
 ## Session 29: 2026-09-14, Claude Code
 
 Author: Claude Code
@@ -432,42 +493,3 @@ None for PR #9. OQ-57 and OQ-59 block the store page at Gate 2, and OQ-58 blocks
 ### Next concrete action
 
 This session answers the gitar pass on PR #9. Then a Codex session reviews PR #9 under the `pr-review` skill and writes `docs/reviews/pr-9.md` (D-401). The owner merges. Then a session starts the roadmaps docs PR, asks OQ-56 first, and rebuilds sections 7 and 8 of `docs/design.md` (D-399).
-
-## Session 20: 2026-09-14, Codex
-
-Author: Codex
-Session: cross-provider review of PR #8 at effective head `511203c`, on branch `docs/pr-8-docs-current`.
-
-### What this session did, and why
-
-- Verified the PR target, base, merge base, branch, effective head, changed paths, author provider, and the automated pass.
-- Confirmed the provider gate. Session 19 identifies Claude Code as the author of the substantive changes, and Codex is the eligible reviewer.
-- Read the complete diff, the design sequence, the decision and question registers, the project guidance, the handoff archive, and the PR description.
-- Checked D-446 against D-442 and D-193. The partial revision leaves the other time rules of D-442 current.
-- Confirmed that `AGENTS.md` and `CLAUDE.md` stay identical, the handoff has ten current sessions, and Sessions 9 and 8 moved word for word to the archive.
-- Wrote `docs/reviews/pr-8.md` with no finding and the verdict `Ready for owner merge` for `511203c`.
-
-### State of the build
-
-- No code exists. `main` is `cf2b197` (PR #7).
-- PR #8 is open on `docs/pr-8-docs-current`. The remote head is the review commit that holds this entry and `docs/reviews/pr-8.md`.
-- The interim STE check passes with 0 findings, `git diff --check` is clean, and `AGENTS.md` and `CLAUDE.md` are identical.
-
-### In flight
-
-PR #8 is ready for the owner to merge. OQ-56 blocks only the roadmaps PR's rebuild of section 8. The release block docs PR follows this PR (D-399).
-
-### Traps and gotchas
-
-- The effective head is `511203c`, not the later metadata commit that publishes the review record (D-184).
-- D-446 revises the rule for wrong things only. D-442 still sets the time of day for maps, and D-443 still governs night versions of place music.
-- The build, test, format, det-lint, replay-identity, smoke, night-gate, and review-gate checks do not exist yet. The PRs named in `AGENTS.md` create them.
-- OQ-3 remains open for branch protection and does not block this documentation PR.
-
-### Open questions that block progress
-
-OQ-56 waits for the roadmaps PR. OQ-3 waits for PR-3.
-
-### Next concrete action
-
-The owner merges PR #8. Then a session starts the release block docs PR and reads D-53, D-85, D-93, D-143, and the Phase 5 entries of `docs/design.md` before it asks the release questions.

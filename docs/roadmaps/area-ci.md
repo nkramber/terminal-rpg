@@ -16,7 +16,7 @@ External facts, each with the date of its check:
 - In a new repository of a personal account, the token of a workflow "only has read access for the `contents` and `packages` scopes". When a workflow names one permission, "all of those that are not specified are set to `none`". Sources: the settings page above and `https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax`, read 2026-09-14.
 - A workflow that a path filter skips leaves its checks "Pending", and a PR that requires those checks cannot merge. A job that a condition skips "will report its status" as a success. Sources: the workflow syntax page above and `https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-jobs-with-conditions`, read 2026-09-14.
 - "Pull request merge queues are available in any public repository owned by an organization, or in private repositories owned by organizations using GitHub Enterprise Cloud." Source: `https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue`, read 2026-09-14.
-- A personal account owns `nkramber/the-thing-below`. Its default workflow permission is `read`, its setting for SHA pins is off, and `main` has no branch protection. Source: `gh api repos/nkramber/the-thing-below` and its Actions and branch endpoints, run 2026-09-14.
+- A personal account owns `nkramber/the-thing-below`. Its default workflow permission is `read`, and `main` has no branch protection. Its setting for SHA pins was off, and the owner enabled it later that day, when `gh api` showed `sha_pinning_required` as true. Source: `gh api repos/nkramber/the-thing-below` and its Actions and branch endpoints, run 2026-09-14.
 - The actions `actions/checkout`, `actions/setup-dotnet`, `actions/upload-artifact`, `actions/download-artifact`, and `actions/cache` carry the MIT license. Their latest releases were `v7.0.1`, `v6.0.0`, `v7.0.1`, `v8.0.1`, and `v6.1.0`. Source: `gh api repos/actions/<name>` and its latest release, run 2026-09-14.
 - The Godot options `--headless`, `--quit`, and `--` work in "editor builds, debug export templates and release export templates". The options `--import`, `--export-release`, and `--build-solutions` work in editor builds alone. "Using the --headless command line argument is required on platforms that do not have GPU access (such as continuous integration)." Source: `https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html`, read 2026-09-14.
 - "It is possible to use either an editor or export template (debug or release) binary in headless mode." Source: `https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_dedicated_servers.html`, read 2026-09-14.
@@ -74,7 +74,7 @@ Built by PR-1. Phase file: `phase-1-foundations.md`.
 Built by PR-1, and kept by every later workflow PR. Phase file: `phase-1-foundations.md`.
 
 - A workflow uses the five actions of D-511 alone, each pinned to a full commit SHA. D-511 is their decision entry (G-13).
-- The owner enables the repository setting that requires the pin before PR-1, so an action with no pin fails at once (D-511). On 2026-09-14 the setting was off.
+- The owner enabled the repository setting that requires the pin on 2026-09-14, so an action with no pin fails at once (D-511).
 - A new action from the `actions` organization of GitHub needs a new decision row. An action from any other author never enters (D-511).
 - Each other download runs as a shell step that checks its SHA-512 against a value in the workflow (T-2). The Godot .NET editor and the export templates come from the release `4.7.2-stable` of `godotengine/godot-builds`.
 - OQ-83 holds whether the cache action keeps the Godot files between runs.
@@ -89,7 +89,7 @@ Built by PR-1. Phase file: `phase-1-foundations.md`.
 - Each leg builds the solution, runs every test outside the Smoke category, and checks the format with `dotnet format` (D-2, D-481).
 - OQ-75 holds the test runner mode. The test command in `CLAUDE.md` works in VSTest mode alone, so an answer of MTP changes the commands (F-40).
 - PR-1 adds two tests. One proves that `CLAUDE.md` and `AGENTS.md` stay identical (D-20), and one asserts the reference list of Core (G-1).
-- The test job also runs the pixel tests of the atlas and the normal maps, and the hash test of the rendered audio (F-19, D-432, D-502).
+- The test job also runs the pixel tests of the atlas, the normal maps, and large pictures (F-19, D-502, D-516). It runs the hash test of the rendered audio too (D-432).
 - PR-1 publishes a coverage report on every PR, and no number fails the build (D-174, D-506). OQ-76 holds the package and the form of the report.
 
 > *In plain English:* every change must build, pass every test, and keep a clean code format on all three systems. A coverage report shows the reviewer which code the tests reach.
@@ -273,6 +273,7 @@ The table names the jobs that run in CI while another area file holds their cont
 | Job | Area file | PR |
 |---|---|---|
 | The pixel tests of the atlas and the normal maps, inside the test job | `area-art.md` and `area-effects.md` | PR-34 and PR-48 |
+| The pixel test of the render of large pictures, inside the test job | `area-art.md` | PR-55 |
 | The hash test of the rendered audio, inside the test job | `area-audio.md` | PR-38 |
 | The release workflow on a release tag | `area-release.md` | PR-31 |
 | The signature and the notarization of the macOS build | `area-release.md` | PR-40 |
@@ -295,7 +296,7 @@ Each later PR that adds or changes a workflow keeps this list. The phase files m
 
 The global order lives in section 8 of `docs/design.md`, and the rebuild of PR #11 sets it (D-488). The CI work keeps this order inside it:
 
-1. Owner: enable the setting that requires SHA pins for actions (D-511).
+1. Owner: enable the setting that requires SHA pins for actions (D-511). Done on 2026-09-14.
 2. PR-1: the CI legs, the build, test, format, smoke, and STE jobs, the coverage report, and the local gate.
 3. PR-2: the STE job moves to the C# checker.
 4. PR-3: the review gate. Its live check first runs on the next PR (D-500).

@@ -175,7 +175,7 @@ Game terms from the roadmap interview of 2026-09-12:
 | evaluator | the tactical scorer in core (D-65) | planner, AI, alone |
 | tile | one 32 by 32 map position (D-228) | cell, square, glyph |
 | sprite | the drawing of a character, an enemy, or an item (D-107) | glyph, icon, image |
-| grid | the text source of a sprite or a tile (D-107) | matrix, bitmap |
+| grid | the rows of palette keys of one frame in a drawing file, for a sprite, a tile, a portrait, or a piece (D-107, D-515) | matrix, bitmap |
 | atlas | the PNG the tool renders from every grid (D-107) | sheet, texture |
 | portrait | the 64 by 64 face in the dialogue box (D-109, D-234) | avatar, face |
 | backdrop | the battle background of a place (D-111) | background, stage |
@@ -237,6 +237,16 @@ CI terms from the roadmaps PR of 2026-09-14:
 | identity file | the committed file that lists each run of the replay-identity set and its expected state hash (D-504) | golden file, baseline, hash list |
 | night record | the result file that one leg of a night uploads as an artifact of its run (D-509) | night result, night report |
 | docs-only PR | a PR that changes only `docs/`, `README.md`, `CLAUDE.md`, `AGENTS.md`, `.claude/`, and the PR template (D-513) | documentation PR, when the text means this set |
+
+Art terms from the roadmaps PR of 2026-09-14:
+
+| Term | Use for | Do not use |
+|---|---|---|
+| drawing file | the JSON file of one drawing: its id, its size, the content ids that it draws, and its frames of grids (D-515, D-519) | grid file, sprite file |
+| piece | a drawing file that a large picture places, such as a 64 by 64 rock (D-516) | part, chunk, or tile, when the text means a piece |
+| large picture | the JSON file that places pieces to make a backdrop layer, full-screen art, or a store image (D-516) | layout, which names a map file (D-39), and composition |
+| atlas index | the committed file that gives the place of each frame in the atlas (D-517) | frame list, atlas map |
+| review sheet | a PNG that a tool renders to show an art batch to the owner, attached to the PR description (D-514) | contact sheet, when the text means art |
 
 ## The checker
 

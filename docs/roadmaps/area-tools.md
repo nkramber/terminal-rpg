@@ -118,12 +118,13 @@ Built by PR-47. Phase file: `phase-1-foundations.md`.
 
 Built by PR-34. Phase file: `phase-1-foundations.md`.
 
-- The `atlas` command renders the grids into `content/sprites/atlas.png`, and it replaces `docs/tools/make-atlas.py` (D-107, D-119, D-406).
-- `area-art.md` holds the grid format, the frames, the sizes, and the palette. This file holds the command.
+- The `atlas` command renders the drawing files into the atlas in `content/sprites/`, and it replaces `docs/tools/make-atlas.py` (D-107, D-119, D-406, D-515).
+- Beside the atlas, the command writes the atlas index, the place of each frame in the atlas. Core holds its record (D-517).
+- `area-art.md` holds the drawing files, the frames, the sizes, and the palette. This file holds the command.
 - The command uses integer math alone, and each color is a palette lookup (D-502).
 - A grid with an unknown key fails with the file, the line, and the column. A palette with a repeated key fails with the key (F-20, T-2).
-- A test decodes the committed atlas and compares its pixels with the grids on every CI leg (F-19, G-24).
-- The command also renders the swatch sheet of the palette for the owner (D-185).
+- A test decodes the committed atlas and compares its pixels with the drawing files on every CI leg (F-19, G-24). The same test reads the atlas index.
+- The command also renders the swatch sheet and the review sheets of a batch, and the session attaches them to the PR description (D-185, D-514).
 
 > *In plain English:* every picture in the game starts as a text grid of letters. This command turns the grids into the one image that the engine draws, and a test proves that the image still matches the letters.
 
@@ -134,7 +135,8 @@ Built by PR-48. Phase file: the phase file of the first PR that draws light, whi
 - The command builds a normal map for each grid from its shape, with an optional override grid (D-183, D-184). It lands before the first PR that draws light (D-496).
 - It uses integer math alone, with an integer square root, so every CI leg gives the same pixels (D-502, F-38).
 - The normal-map atlas takes the same pixel test as the color atlas (D-184, F-19).
-- A preview shows each sprite under a moving light for the owner (D-184). OQ-73 holds the form of the preview.
+- A preview shows each sprite under a moving light for the owner, and the session attaches it to the PR description (D-184, D-514). OQ-73 holds the form of the preview.
+- Each piece of a large picture gets a normal map too (D-516).
 
 > *In plain English:* a normal map tells the light which way each pixel faces, so a torch can light one side of a face. The tool builds it from the drawing with whole-number math, so every computer makes the same map.
 
@@ -177,7 +179,7 @@ Built by PR-50. Phase file: `phase-2-first-playable.md`.
 
 Built by PR-51. Phase file: `phase-2-first-playable.md`.
 
-- The command reads a PNG that the owner edited by hand and writes the grid again from its pixels (D-107). It lands before PR-17 (D-497).
+- The command reads a PNG that the owner edited by hand and writes the frame of its drawing file again from its pixels (D-107, D-515). It lands before PR-17 (D-497).
 - A pixel with a color outside the palette fails with the file, the pixel, and the color. The command never picks a near color (T-2).
 - The PNG code refuses an indexed PNG, so a hand edit exports as RGB or RGBA (D-176).
 
@@ -188,6 +190,7 @@ Built by PR-51. Phase file: `phase-2-first-playable.md`.
 Built by PR-52. Phase file: `phase-2-first-playable.md`.
 
 - The command renders a map file as a PNG from the atlas, for the owner's approval (D-165). It lands before PR-17 (D-497).
+- The session attaches each preview to the PR description (D-514).
 - `area-exploration.md` holds the layout format.
 - From PR-53 on, the preview draws the tiles of the edge file of each map (D-501).
 
@@ -203,7 +206,7 @@ Built by PR-53. Phase file: `phase-2-first-playable.md`.
 - Game reads the map and its edge file, and Core reads the map alone (D-501, G-1).
 - A terrain pattern that no rule covers fails with the map, the position, and the pattern (T-2).
 
-> *In plain English:* a map names the ground, such as snow or rock, and this tool picks the right border piece for each edge. The picks live in a file of their own, so a new border drawing never breaks an old replay.
+> *In plain English:* a map names the ground, such as snow or rock, and this tool picks the right border tile for each edge. The picks live in a file of their own, so a new border drawing never breaks an old replay.
 
 ### 7.14 Tools that other area files hold
 
@@ -214,6 +217,7 @@ The table names the tools that live in Tools while another area file holds their
 | Audio synthesizer, hash list, and listen command | `area-audio.md` | PR-38 |
 | The runs that the `replay-identity` job compares | `area-ci.md` | PR-4 |
 | Frame compare of the screen tests | `area-ci.md` | PR-41 |
+| The render of large pictures | `area-art.md` | PR-55 |
 
 The synthesizer keeps the integer math of D-432, and det-lint reads its code (D-502).
 
@@ -243,11 +247,12 @@ The global order lives in section 8 of `docs/design.md`, and the rebuild of PR #
 6. PR-47: the PNG code, right before the atlas (D-496).
 7. PR-34: the atlas.
 8. **← GATE 1 (foundation).** The gate tools and the atlas test pass on every CI leg.
-9. PR-50: the screenplay tool, right after PR-36 (D-497).
-10. PR-15: the headless runner and the bots.
-11. PR-49: the night gate. Its live check first runs after the first night (D-500).
-12. PR-51, PR-52, and PR-53: the PNG import, the map preview, and the tile-edge tool, before PR-17 (D-497).
-13. **← GATE 2 (first playable).**
+9. PR-55: the render of large pictures, right before PR-10 (D-518).
+10. PR-50: the screenplay tool, right after PR-36 (D-497).
+11. PR-15: the headless runner and the bots.
+12. PR-49: the night gate. Its live check first runs after the first night (D-500).
+13. PR-51, PR-52, and PR-53: the PNG import, the map preview, and the tile-edge tool, before PR-17 (D-497).
+14. **← GATE 2 (first playable).**
 
 PR-48 lands before the first PR that draws light, and `area-effects.md` gives it a place in this list (D-496).
 

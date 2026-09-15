@@ -120,6 +120,8 @@ Built by PR-5. Phase file: `phase-1-foundations.md`.
 - The content hash reads the same bytes on every CI leg. The `eol=lf` rule of `.gitattributes` keeps each checkout on LF line ends, where Git for Windows otherwise defaults to CRLF (the external facts above).
 - Game embeds the files of `content/` in its assembly, and a test proves that the embedded set matches the folder (D-508). PR-5 adds the embed, the folder reader in Tools, and the test, and `area-ci.md` holds the details.
 - The string table maps ids to text, and Core events name string ids alone (G-7, D-167). Game reads the text for an id. A test proves that each string id that content names exists in the table (T-2).
+- Core also holds the record of each content file that no rule reads, such as the palette and the atlas index (D-517). The content hash still reads the rule files alone (D-495).
+- An art file names the content ids that it draws, and a rule file never names art (D-519). `area-art.md` holds the art files.
 
 > *In plain English:* every enemy, item, and map lives in a strict data file. A gap or a typo stops the load with the file and the field, and an art or text change never breaks an old replay.
 

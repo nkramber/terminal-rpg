@@ -2,6 +2,45 @@
 
 Sessions older than the 10 in `docs/session-handoff.md`, newest first (D-18). Move an entry here word for word.
 
+## Session 20: 2026-09-14, Codex
+
+Author: Codex
+Session: cross-provider review of PR #8 at effective head `511203c`, on branch `docs/pr-8-docs-current`.
+
+### What this session did, and why
+
+- Verified the PR target, base, merge base, branch, effective head, changed paths, author provider, and the automated pass.
+- Confirmed the provider gate. Session 19 identifies Claude Code as the author of the substantive changes, and Codex is the eligible reviewer.
+- Read the complete diff, the design sequence, the decision and question registers, the project guidance, the handoff archive, and the PR description.
+- Checked D-446 against D-442 and D-193. The partial revision leaves the other time rules of D-442 current.
+- Confirmed that `AGENTS.md` and `CLAUDE.md` stay identical, the handoff has ten current sessions, and Sessions 9 and 8 moved word for word to the archive.
+- Wrote `docs/reviews/pr-8.md` with no finding and the verdict `Ready for owner merge` for `511203c`.
+
+### State of the build
+
+- No code exists. `main` is `cf2b197` (PR #7).
+- PR #8 is open on `docs/pr-8-docs-current`. The remote head is the review commit that holds this entry and `docs/reviews/pr-8.md`.
+- The interim STE check passes with 0 findings, `git diff --check` is clean, and `AGENTS.md` and `CLAUDE.md` are identical.
+
+### In flight
+
+PR #8 is ready for the owner to merge. OQ-56 blocks only the roadmaps PR's rebuild of section 8. The release block docs PR follows this PR (D-399).
+
+### Traps and gotchas
+
+- The effective head is `511203c`, not the later metadata commit that publishes the review record (D-184).
+- D-446 revises the rule for wrong things only. D-442 still sets the time of day for maps, and D-443 still governs night versions of place music.
+- The build, test, format, det-lint, replay-identity, smoke, night-gate, and review-gate checks do not exist yet. The PRs named in `AGENTS.md` create them.
+- OQ-3 remains open for branch protection and does not block this documentation PR.
+
+### Open questions that block progress
+
+OQ-56 waits for the roadmaps PR. OQ-3 waits for PR-3.
+
+### Next concrete action
+
+The owner merges PR #8. Then a session starts the release block docs PR and reads D-53, D-85, D-93, D-143, and the Phase 5 entries of `docs/design.md` before it asks the release questions.
+
 ## Session 19: 2026-09-14, Claude Code
 
 Author: Claude Code

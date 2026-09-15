@@ -50,6 +50,8 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 - Content is JSON. A schema validates each file at load and in a test. An unknown field and an absent field are both errors.
 - The JSON reader of `Core` runs with no runtime reflection (F-36).
 - Game reads content bytes from the resources of its own assembly, and `Tools` holds the one reader of the `content/` folder (D-508). A resource read that returns null fails with the resource name (T-2).
+- `Core` holds the record of every content file, also the palette and the atlas index, which no rule reads (D-517).
+- An art file names the content ids that it draws, and a rule file never names art (D-519).
 - A load error names the file, the field, and the reason.
 - One test loads every file under `content/` and fails on the first error.
 - Player-visible text is a string id, never a string literal in code (G-7). Game puts it on screen through the one text helper, and det-lint fails a Godot text property outside it (D-499).
@@ -60,6 +62,8 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 - Scenes are C# classes that build their nodes in code, or minimal `.tscn` files that hold layout alone. Game data never lives in a scene.
 - The Game loop calls `Core` at a fixed rate. Game draws each step as a slide between tiles, and `Core` positions stay on whole tiles (D-106, D-203).
 - The camera, the CRT shader, the audio, and the input map live in `Game` and never reach `Core`.
+- Game draws art from the atlas bytes with the Nearest filter, and no Godot resource file holds art (D-508, F-45).
+- A Godot call that reports a failure in the log alone, such as `ImageTexture.CreateFromImage`, gets a check right after it (T-2, F-45).
 - The Godot editor writes files: `project.godot`, `.csproj` target frameworks, and `.import` files. The PR review reads each one it touches.
 
 ## Style
