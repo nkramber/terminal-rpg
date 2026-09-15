@@ -175,3 +175,29 @@ How to file a question (D-19, D-24):
     - Disclose, and name no tool, the recommendation. The survey marks the art, the music, and the text as Pre-Generated, made with AI tools under the direction and approval of the owner. T-6 stands, because the answer names no agent, harness, or model.
     - Disclose, and name the tools. The most open answer. T-6 does not list the survey, but T-6 bars any text that names an agent as the source of work.
     - The owner answers before the store page goes public, from a fresh read of the rules of Valve (D-477).
+60. **OQ-60. The rounding rule of fixed-point math.** A product or a quotient of two fixed-point values can fall between two integers (D-169). Which way does Core round? Raised 2026-09-14. Blocks PR-4. The C# rule for integer division comes from `https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators`, read 2026-09-14.
+    - Toward zero, the recommendation. The C# division operator on integers already rounds "toward zero", so Core needs no helper. A small value of either sign loses its fraction.
+    - Toward negative infinity. Each result takes the integer below it, so a fraction never adds a point. A negative result needs a helper and its own tests.
+    - To the nearest integer, with a half away from zero. A long chain of steps stays closest to the exact value. Each operation needs a helper, and the half needs a test.
+61. **OQ-61. The random generator and the stream split.** G-4 gives each subsystem one stream from the run seed. F-35 bans `GetHashCode` from the split. Which split rule does Core use? PR-4 names the generator with the source of its published test results. Raised 2026-09-14. Blocks PR-4.
+    - A seed for each stream from the run seed and a fixed stream number, the recommendation. A new stream never moves the numbers of another stream. The snapshot holds the position of each stream (D-259).
+    - One master generator seeds each stream in the order of the stream numbers, at the start of a run. The rule has one seed path. A stream that joins early in the order moves the seeds of every stream after it.
+62. **OQ-62. The hash function of Core.** The state hash, the content hash, and the stream split need a hash function in Core (F-35). Which function? Raised 2026-09-14. Blocks PR-4 and PR-5.
+    - One 64-bit function that Core holds for every hash, the recommendation. One function needs one set of test vectors. It gives no guard against a file that somebody builds to collide, and no rule of the project asks for one.
+    - A 64-bit function for the state hash, and SHA-256 in Core code for the content hash. The content hash then resists a built collision. Core holds two functions, and SHA-256 needs its own published test vectors.
+    - A 64-bit function in Core for the state hash, and SHA-256 from .NET in Storage for the content hash. Core holds no cryptographic code. Core then cannot check the content hash of a record by itself (G-1, D-494).
+63. **OQ-63. The form of a content id.** Every content entry has a permanent id, and no later entry takes that id (D-166). What form does an id take, and what test proves the rule? Raised 2026-09-14. Blocks PR-5.
+    - A readable text id, with a committed list of retired ids that a test reads, the recommendation. Content files and diffs stay readable. The list grows with each removal.
+    - An integer id, with a committed register of each id and its name. Snapshots stay small. Content files and diffs show numbers that a reader must find in the register.
+    - A readable text id with no list. The review checks each new id by hand. No test proves the rule, against T-3.
+64. **OQ-64. The tick while a menu is open.** A menu pauses the world (D-162), and a menu action is an intent (D-493). Does the tick count rise while a menu is open? Raised 2026-09-14. Blocks PR-6.
+    - Yes, the recommendation. Each step adds one to the tick, and the world systems skip their work while a menu is open. The tick of a log line always rises. The record holds more ticks.
+    - No. The tick stops while a menu is open, and each menu intent takes an order number in that tick. The tick counts world time alone. The record and the log need the order number too.
+65. **OQ-65. When the run record takes a new snapshot.** The record keeps a snapshot and the intents after it (F-10). D-259 writes a full snapshot at each save. When does the record take a new snapshot? Raised 2026-09-14. Blocks PR-6 and PR-43.
+    - At each save, the recommendation. The record uses the snapshot of the save, and a crash file holds the intents since the last save. A long walk with no save makes a long replay.
+    - At a fixed count of ticks. A crash replay stays short. The record holds snapshots that no save needs, and each snapshot costs time on its tick.
+    - At each change of map. The replay of a crash starts on the map of the crash. A long stay on one map makes a long replay.
+66. **OQ-66. The encoding of records and snapshots.** A crash file carries the run record to the studio email (D-170, D-473). Logs are JSON lines (D-179). Which encoding do records and snapshots use? Raised 2026-09-14. Blocks PR-6 and PR-43.
+    - JSON text, the recommendation. The record takes one JSON object per line, like the logs, and a snapshot takes one JSON object. A person can read both in a diff, a review, and a crash email. The files are larger than a binary form.
+    - A binary form with a version. The files stay small. A person needs a dump command to read one.
+    - JSON text with compression in Storage. The files stay small, and a tool reads them. Every read and write needs the compression step, and a person needs the tool.

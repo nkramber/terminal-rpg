@@ -9,11 +9,12 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 
 ## Project boundaries
 
-- `Core` is the simulation. It has no reference to Godot, the file system, the network, the clock, or the OS (G-1, D-100). It takes a seed, content, and inputs, and it returns state.
+- `Core` is the simulation. It has no reference to Godot, the file system, the network, the clock, or the OS (G-1, D-100). It takes a seed, content bytes, and intents, and it returns state, bytes, and events (D-168, D-493).
 - `Game` is the Godot project. It reads `Core` state, draws it, plays audio, and turns input into intents. Godot physics, timers, and navigation never feed the simulation.
 - `Tools` holds the STE checker, the review gate, the det-lint, the night gate, the atlas tool, the audio synthesizer, and the headless runner. It also holds the map preview, the tile-edge tool, and the screenplay tool (D-165, D-173, D-204).
-- `Tests` holds the xUnit tests for `Core` and `Tools`, and the smoke test that starts the Game headless.
+- `Tests` holds the xUnit tests for `Core`, `Storage`, and `Tools`, and the smoke test that starts the Game headless.
 - The debug assembly is the fifth project, and only development builds reference it (D-260).
+- `Storage` is the sixth project. It holds the file code for saves, run records, crash files, and log files. Game and Tools reference it, and `Core` never does (D-494).
 - A test asserts the reference list of `Core`. A new package in any project needs a decision entry (G-13).
 
 ## Shape of Core code (D-168)
@@ -31,6 +32,7 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 - Every `Core` behavior change bumps the simulation version constant (G-17).
 - Check every arithmetic operation that a content value can drive with `checked`. An overflow is an error with context, never a wrap.
 - No reflection, no `dynamic`, no LINQ in a hot loop, no conditional compilation in `Core`.
+- No hash from `GetHashCode` or from the .NET hash classes in `Core`. Use the hash function that `Core` holds (F-35).
 - Debug intents and their handlers live in a separate debug assembly that only development builds reference (D-260).
 
 ## Errors (T-2)
@@ -44,6 +46,7 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 ## Content (D-116)
 
 - Content is JSON. A schema validates each file at load and in a test. An unknown field and an absent field are both errors.
+- The JSON reader of `Core` runs with no runtime reflection (F-36).
 - A load error names the file, the field, and the reason.
 - One test loads every file under `content/` and fails on the first error.
 - Player-visible text is a string id, never a string literal in code (G-7). The det-lint reads `Game` for the string rule.

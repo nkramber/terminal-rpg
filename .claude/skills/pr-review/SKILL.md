@@ -97,7 +97,7 @@ State the invariant that each boundary must preserve.
 ### Correctness and system effects
 
 - Check normal use, boundary values, absent data, invalid data, repeated actions, and interrupted actions where applicable.
-- Trace state ownership and lifetime across Core, Game, Tools, and Tests.
+- Trace state ownership and lifetime across Core, Storage, Game, Tools, Tests, and the debug assembly.
 - Inspect initialization, cancellation, cleanup, restart, and replay when the change affects those paths.
 - Check event order, resource disposal, integer bounds, and overflow where they affect the result.
 - Inspect compatibility with current callers, content, saves, and records.
@@ -116,7 +116,7 @@ Apply each relevant row. Record why an area does not apply when its omission can
 |---|---|
 | Core boundary | No engine dependency or gameplay input from Godot physics, timers, or navigation in Core. Trace data flow, not only imports (G-1, D-100). |
 | Determinism | Integer math, seed ownership, one stream per subsystem, fixed iteration and event order, no clock or OS random (T-7, G-2 to G-4). |
-| Replay | The record holds the seed, the content hash, the versions, and every input. A replay reproduces the state hash. Verify the simulation version bump for a Core behavior change (G-5, G-17). |
+| Replay | The record holds the seed, the content hash, the versions, and every intent (D-493). A replay reproduces the state hash. Verify the simulation version bump for a Core behavior change (G-5, G-17). |
 | Errors | Required context, visible failure, safe recovery, and assertions in release builds. An empty `catch` or a silent default violates T-2 (G-18). |
 | Content | JSON schemas at load and in tests. An absent field reports the file, the field, and the reason. Check identifier references and file name case (D-116, G-6). |
 | Strings | No inline player string. Every player string has an id in the string table (G-7). |

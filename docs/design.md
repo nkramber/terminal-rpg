@@ -34,6 +34,8 @@ Nothing in this file is code. Each plan item ships as one pull request.
 
 2026-09-14 roadmaps shape pass: the review of the other provider found no defect in PR #9, and the owner merged it. OQ-56 closed with no change to the sequence (D-483). The owner split the roadmaps work into three docs PRs (D-484 to D-490). PR #10 holds the shape and brings every document current. PR #11 holds twelve area files, five phase files, and the rebuild of sections 7 and 8, and PR #12 holds the next design-critic pass.
 
+2026-09-14 roadmaps pass: PR #11 writes the focused roadmaps. The core area moves saves, crash files, and log files from PR-6 to PR-43 and PR-44, and PR-45 creates the debug assembly (D-491, D-492). The run record holds intents, a storage project holds the file code, and the content hash covers the rule files (D-493 to D-495). F-35 and F-36 record two defaults of .NET that break Core rules. Sections 7 and 8 change in the rebuild at the end of PR #11 (D-488).
+
 External facts, each with the date of its check:
 
 - The GitHub repository `nkramber/the-thing-below` is public. Its name changed from the working title on 2026-09-14 (D-410). Source: `gh repo view`, run 2026-09-14.
@@ -129,7 +131,7 @@ From the roadmap interview of 2026-09-12:
 | Random streams | Core | seed | numbers | Total. Cross-platform identity |
 | Content loader and schemas | Core | JSON files | typed content, content hash | High. A silent default here breaks the economy |
 | String table | Core | JSON files | text by id | Medium |
-| Run record, replay, and save | Core | state, intents | record file, save file | Total. The crash report and the save (D-62) |
+| Run record, replay, and snapshot | Core | state, intents | record bytes, snapshot bytes | Total. The crash report and the save (D-62, D-493) |
 | Tile map, movement, and sight | Core | layout content, intents | party position, sight | High. Patrols and ambushes (D-37) |
 | Time of day | Core | layout content, story flags | the time of day of each map | Medium. Light, patrols, enemies, and music follow it, and the story sets it (D-193, D-442) |
 | Battle and timeline | Core | party, enemies, abilities | turn order, damage, statuses | Total. The design risk (D-29, D-35) |
@@ -139,11 +141,12 @@ From the roadmap interview of 2026-09-12:
 | Story flags and quests | Core | scene and decision content, choices | flags, hub state | High. Branches multiply (D-40, D-59, D-329) |
 | Hub services and the region map | Core | hub content, route content, gold | party, saves, position | Medium (D-59, D-113) |
 | Debug assembly | Debug assembly | debug intents | Core state, through the seam of D-260 | High. A release build never loads it (D-260) |
+| Save, record, crash, and log files | Storage | record bytes, snapshot bytes, crash context, log entries | save files, record files, crash files, log files | High. A torn write loses a save (D-178, D-494) |
 | Map scene, battle scene, hub scene, scene runner | Game | Core state, atlas, string table | screen, intents | Medium. Cosmetic by design (D-106, D-111, D-114) |
 | Dialogue box and portraits | Game | scene content, string table | screen | Medium (D-109) |
 | CRT shader and the frame | Game | settings | screen | Medium. The Deck floor and the two views (D-105, D-228, D-480) |
 | Light, particles, and shaders | Game | effect content, normal maps, Core state | screen | Medium. The Deck test measures them (D-139, D-160, D-182, D-183) |
-| Crash file and replay viewer | Game | run record, crash file | crash file, screen | High. The crash report, and a viewer in development builds alone (D-170, D-175) |
+| Crash file and replay viewer | Game | run record, crash file | screen, and a crash file through Storage | High. The crash report, and a viewer in development builds alone (D-170, D-175, D-494) |
 | Audio player | Game | rendered audio, Core state, settings | sound | Low. Music by place and time of day, ambience, stings, and the mix (D-413, D-424, D-429, D-435) |
 | Steamworks glue | Game | Steam client | controller type for the glyphs | Low. Steam builds alone, with no cloud code (D-460, D-461) |
 | Atlas tool, audio synthesizer | Tools | grids, palette, tracker rows, parameter files | atlas PNG, rendered audio, hash list | Medium. The atlas is committed with a pixel test (D-107, F-19), and the audio renders at build against its hash list (D-432) |
@@ -211,6 +214,8 @@ Status: ✅ done (code merged, or "doc" for a document-only correction) · 🔧 
 | F-32 | The cost model listed the Steam Direct fee alone. Steam requires notarized macOS apps since 2019-10-14, and notarization needs the Apple Developer Program at 99 USD a year | 2026-09-14 | ✅ doc. D-455: the cost model gains the fee, and PR-40 signs and notarizes the macOS build |
 | F-33 | The release block found five gaps. D-54 made the repository public before D-133 made the later regions paid (L-6). D-170 named no place for a crash file, and the plan had no credits for the notices that the Godot license and the OFL need. D-62 named a config directory, and the Godot user folder on Linux is a data folder. D-464 added two arm64 builds that no CI leg tested (T-3) | 2026-09-14 | ✅ doc. D-456, D-473, D-467, D-465, and D-474. D-481 later removed the arm64 builds |
 | F-34 | Steam needs at least five screenshots at 1920 by 1080 or larger in 16:9, and the frame was 1280 by 800 in 16:10 (D-228). D-229 let no screen see more of the map than the Deck, so a 16:9 screenshot needed bars or a crop | 2026-09-14 | ✅ doc. D-480: the game supports a 16:9 view, and a screenshot at 1920 by 1080 comes straight from play |
+| F-35 | Two hash paths of .NET break Core rules. The hash classes "defer to the OS libraries", against G-1. The hash code of a string "is not guaranteed to be stable", and two runs of one program can differ, against T-7. Sources: `https://learn.microsoft.com/en-us/dotnet/standard/security/cross-platform-cryptography` and `https://learn.microsoft.com/en-us/dotnet/api/system.string.gethashcode`, read 2026-09-14 | 2026-09-14 | ⚠ Binds PR-4 and PR-5: the state hash, the content hash, and the stream split use a hash function that Core holds, and never `GetHashCode` (OQ-61, OQ-62). The det-lint of PR-4 refuses both paths in Core |
+| F-36 | D-177 puts the content reader on the JSON support of .NET, and the det-lint of PR-4 bans reflection in Core. "System.Text.Json uses reflection by default". Source: `https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/source-generation`, read 2026-09-14 | 2026-09-14 | ⚠ Binds PR-5: the reader runs with no runtime reflection, through generated metadata or a hand reader, and the Core project sets `JsonSerializerIsReflectionEnabledByDefault` to `false` |
 
 ## 6. Guardrails (the safety contract for every PR)
 
