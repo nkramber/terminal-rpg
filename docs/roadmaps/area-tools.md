@@ -50,6 +50,7 @@ Built by PR-1 and PR-2. Phase file: `phase-1-foundations.md`.
 - PR-1 creates Tools as a console project with no command, and PR-2 adds the first command (D-118).
 - One program holds every command, and the first argument names the command, as the commands in `CLAUDE.md` show.
 - Tools references Core and Storage. It reads Core state, and it writes records through Storage (D-494).
+- Tools holds the one reader of the `content/` folder for the tools and Tests, and PR-5 adds it (D-508). Game reads content from its own assembly.
 - Each package in Tools needs a decision (G-13). D-498 is the first, for det-lint.
 - A gate tool prints one line per finding with the file, the line, the rule id, and what it saw. It exits 1 on any finding (the `ste-writing` skill).
 - A tool that cannot finish names the file and the reason, and it exits with a code other than 0 (T-2).
@@ -144,7 +145,7 @@ Built by PR-15. Phase file: `phase-2-first-playable.md`.
 - The runner plays runs in Tools with no Godot, from a seed and a policy (D-64, D-100). A policy makes the same intents that Game makes (D-493).
 - The two policies are random and greedy (D-64). A policy takes its random numbers from a source outside the rule streams (G-4, `area-core.md` section 7.4).
 - Each run writes its run record through Storage (D-494). It ends as complete, softlock, crash, or budget, and each failure names its seed. OQ-74 holds how the runner finds a softlock.
-- A few hundred runs play on each PR (D-64). `area-ci.md` holds the job.
+- A few hundred runs play on each PR, on every CI leg (D-64, D-505). OQ-80 holds the count, and `area-ci.md` holds the job.
 - The `playtest-bot` agent drives the runner and reports what it finds (D-21).
 
 > *In plain English:* simple robots play the game with no screen. They make the same choices that a player makes, and every crash they find comes with the seed that repeats it.
@@ -153,13 +154,14 @@ Built by PR-15. Phase file: `phase-2-first-playable.md`.
 
 Built by PR-49. Phase file: `phase-2-first-playable.md`.
 
-- The night job plays ten thousand runs each night and writes a result record (D-64, G-22). It lands right after PR-15 (D-496).
+- The night job plays ten thousand runs on Linux, and two thousand each on Windows and macOS (D-507). Each leg writes a night record (D-509). It lands right after PR-15 (D-496).
 - The `night-gate` command fails a PR when no success record comes from a night inside the last 48 hours (G-22).
 - The night job runs on `schedule`, which GitHub starts only from `main` (F-37). PR-49 proves the command in Tests on a fixture record, and the live check first runs after the first night (D-500).
-- `area-ci.md` holds where the night record lives and how the check finds it.
+- The night record is an artifact of its run, and the check finds it through the GitHub API (D-509).
+- A night on the head commit of a PR passes that PR alone, and a docs-only PR passes the gate (D-510, D-513). `area-ci.md` holds the jobs.
 - M-3 records the wall time and the crash and softlock counts of the first seven nights.
 
-> *In plain English:* every night the robots play ten thousand runs. No change merges unless a recent night ended with no crash and no softlock.
+> *In plain English:* every night the robots play thousands of runs on all three systems. No change merges unless a recent night ended with no crash and no softlock.
 
 ### 7.10 The screenplay tool
 

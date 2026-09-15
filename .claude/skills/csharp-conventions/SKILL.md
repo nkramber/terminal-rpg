@@ -49,6 +49,7 @@ Load this skill before you write or review C# in this repo (D-21, D-99). It appl
 
 - Content is JSON. A schema validates each file at load and in a test. An unknown field and an absent field are both errors.
 - The JSON reader of `Core` runs with no runtime reflection (F-36).
+- Game reads content bytes from the resources of its own assembly, and `Tools` holds the one reader of the `content/` folder (D-508). A resource read that returns null fails with the resource name (T-2).
 - A load error names the file, the field, and the reason.
 - One test loads every file under `content/` and fails on the first error.
 - Player-visible text is a string id, never a string literal in code (G-7). Game puts it on screen through the one text helper, and det-lint fails a Godot text property outside it (D-499).

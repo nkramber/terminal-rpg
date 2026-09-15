@@ -46,7 +46,7 @@ Built by PR-1 and PR-4. Phase file: `phase-1-foundations.md`.
 - Core is a class library with no package reference and no project reference, and a test asserts that list (G-1, D-100). PR-1 adds the test.
 - Core opens no file, no socket, and no process, and it reads no clock and no OS random (G-1, G-3). It takes bytes, a seed, and intents, and it returns state, bytes, and events (D-168, D-493).
 - Game, Tools, Storage, Tests, and the debug assembly reference Core, and Core references none of them (D-260, D-494).
-- The host, which is Game, Tools, or Tests, reads each content file and gives Core the bytes. Core never sees a disk path (G-1).
+- The host gives Core the bytes of each content file. Game reads them from its own assembly, and Tools and Tests read `content/` through the reader in Tools (D-508). Core never sees a disk path (G-1).
 - The det-lint of PR-46 enforces G-2 and G-3 in Core, and F-35 adds the two hash paths (D-496). The file `area-tools.md` holds the lint rules.
 
 > *In plain English:* Core is the rules of the game with no screen, no files, and no clock. Everything else hands it data, then shows or saves what it decides.
@@ -118,6 +118,7 @@ Built by PR-5. Phase file: `phase-1-foundations.md`.
 - Every content entry has a permanent id that no later entry takes (D-166). OQ-63 holds the form of an id and the test that proves the rule.
 - The content hash covers the rule files alone (D-495). PR-5 draws the line in the layout of `content/`, and a test proves that no other file reaches the hash.
 - The content hash reads the same bytes on every CI leg. The `eol=lf` rule of `.gitattributes` keeps each checkout on LF line ends, where Git for Windows otherwise defaults to CRLF (the external facts above).
+- Game embeds the files of `content/` in its assembly, and a test proves that the embedded set matches the folder (D-508). PR-5 adds the embed, the folder reader in Tools, and the test, and `area-ci.md` holds the details.
 - The string table maps ids to text, and Core events name string ids alone (G-7, D-167). Game reads the text for an id. A test proves that each string id that content names exists in the table (T-2).
 
 > *In plain English:* every enemy, item, and map lives in a strict data file. A gap or a typo stops the load with the file and the field, and an art or text change never breaks an old replay.
@@ -144,7 +145,7 @@ Built by PR-6. Phase file: `phase-1-foundations.md`.
 - The record keeps a snapshot and the intents after it, so its size stays bounded (F-10). OQ-65 holds the moment of each new snapshot, and OQ-66 holds the encoding.
 - A replay of a record on the same simulation version and content hash reproduces the state hash (G-5). A mismatch stops with a report that names both values (T-2).
 - Replay and the bots run in Tools and Tests with no Godot (D-100, D-493). The replay viewer of development builds plays a record in Game (D-175).
-- The replay-identity job runs a fixed set of records on every CI leg and compares the hashes (G-5, D-481). The file `area-ci.md` holds the job, and each later Core PR adds a fixture run to its set.
+- The replay-identity job runs a fixed set of records on every CI leg and compares each hash with the committed identity file (G-5, D-481, D-504). The file `area-ci.md` holds the job, and each later Core PR adds a fixture run and its expected hash.
 
 > *In plain English:* the game stores the start of a run and every choice after it. A replay of that record gives the same run on any machine, so every bug can happen again on demand.
 
@@ -207,7 +208,7 @@ Each Core PR after Phase 1 keeps this list. The phase files make exit tests from
 2. Draw random numbers from a stream of the new system alone (G-4).
 3. Add the new state to the state hash and to the snapshot (sections 7.5 and 7.11).
 4. Bump the snapshot format version, and add a migration with its fixture save (D-166).
-5. Add a fixture run to the replay-identity set (G-5).
+5. Add a fixture run and its expected hash to the identity file (G-5, D-504).
 6. Give each new content type a C# record and a load test (D-177, G-6).
 7. Name every player string by its id alone (G-7).
 

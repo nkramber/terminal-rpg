@@ -35,11 +35,15 @@ Facts checked on 2026-09-12:
 
 ## Owner actions on GitHub
 
-1. After PR-3 merges, require the `ci`, `smoke`, `ste-check`, and `review-gate` checks on `main` (OQ-3, D-4). GitHub lists a check as a choice only after it ran once.
-2. Turn off "Allow merge commits" and "Allow rebase merging", and keep "Allow squash merging" (D-8).
-3. Before any paid content lands, have a session check that every tool works on a private repository (D-456).
-4. Upgrade the account to GitHub Pro, so the required checks stay on `main` (D-456).
-5. Make the repository private.
+1. Before PR-1, enable "Require actions to be pinned to a full-length commit SHA" in the Actions settings of the repository (D-511).
+2. After PR-3 merges, require the `ci`, `smoke`, `ste-check`, and `review-gate` checks on `main` (OQ-3, D-4). GitHub lists a check as a choice only after it ran once.
+3. Require each later check on `main` after its first run, such as the bot runs and `night-gate` (D-505, G-22).
+4. When GitHub disables the night schedule after 60 days with no activity, enable the workflow again (F-41).
+5. Then have a session run a night by hand on `main` (D-509).
+6. Turn off "Allow merge commits" and "Allow rebase merging", and keep "Allow squash merging" (D-8).
+7. Before any paid content lands, have a session check that every tool works on a private repository (D-456).
+8. Upgrade the account to GitHub Pro, so the required checks stay on `main` (D-456).
+9. Make the repository private.
 
 ## Session start
 

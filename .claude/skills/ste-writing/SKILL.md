@@ -230,6 +230,14 @@ Tools terms from the roadmaps PR of 2026-09-14:
 | edge file | the generated file of the edge and corner tiles of one map, outside the rule files (D-501) | tile cache, edge map |
 | text helper | the one Game helper that puts a string table entry on screen (D-499) | text wrapper, label helper |
 
+CI terms from the roadmaps PR of 2026-09-14:
+
+| Term | Use for | Do not use |
+|---|---|---|
+| identity file | the committed file that lists each run of the replay-identity set and its expected state hash (D-504) | golden file, baseline, hash list |
+| night record | the result file that one leg of a night uploads as an artifact of its run (D-509) | night result, night report |
+| docs-only PR | a PR that changes only `docs/`, `README.md`, `CLAUDE.md`, `AGENTS.md`, `.claude/`, and the PR template (D-513) | documentation PR, when the text means this set |
+
 ## The checker
 
 Until PR-2, the Python script `docs/tools/ste-check.py` is the checker (D-10). Run it before you commit:

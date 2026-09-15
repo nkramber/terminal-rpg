@@ -2,6 +2,52 @@
 
 Sessions older than the 10 in `docs/session-handoff.md`, newest first (D-18). Move an entry here word for word.
 
+## Session 19: 2026-09-14, Claude Code
+
+Author: Claude Code
+Session: the audit of every document before a context reset, after PR #7 merged, on branch `docs/pr-8-docs-current`.
+
+### What this session did, and why
+
+- Session 18 (Codex) reviewed PR #7 at `138e5cf` with no finding and the verdict `Ready for owner merge`. The owner merged PR #7 as `cf2b197`.
+- The owner asked: "Ensure ALL docs are up to date in preparation for context reset."
+- A search of the live documents for the old clock, the old audio rules, and the state of PR #7 found two stale texts:
+  - `CLAUDE.md` and `AGENTS.md` named PR #2 as the one exception to G-8, but D-437 made PR #7 a second exception.
+  - Step 2 of section 8 in `docs/design.md` did not show PR #6 and PR #7 as merged.
+- Two owner items lived only in the conversation, and a reset would lose them. The session asked both:
+  - The reading of D-442 on the wrong things. The owner chose placement by the story, at any time of day (D-446). D-442, D-193, and the effect of D-414 gained notes.
+  - The levers for an earlier playable build. The owner filed them as OQ-56 for the roadmaps PR.
+- The skills, the agents, the runbooks, the README, the PR template, and the world files hold no stale text. There, "clock" means the wall clock, and "phase" means a roadmap phase or a boss phase.
+- `docs/design.md` gained a dated line for this pass.
+- The handoff held eleven entries before this one, because Session 18 added its entry and moved none. Sessions 9 and 8 moved word for word to the top of `docs/session-handoff-archive.md` (D-18).
+
+### State of the build
+
+- No code exists. `main` is `cf2b197` (PR #7).
+- PR #8 is open on `docs/pr-8-docs-current`. The remote head is the commit that holds this entry.
+- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
+
+### In flight
+
+PR #8 answers the gitar pass. It adds D-446, so it takes a Codex review, and no `review-override` label applies (D-401). The owner merges. Then the release block docs PR starts (D-399).
+
+### Traps and gotchas
+
+- The push line of `docs/reviews/pr-7.md` keeps the placeholder `<review metadata sha>`. The review commit is `a0cf252`. The record belongs to the reviewer, so this session left it as it is.
+- The wrong things have no time rule now (D-446). Outside the dated records and the superseded rows, a text that says they walk after dusk or at night is stale.
+- OQ-56 blocks only the rebuild of section 8 in the roadmaps PR. The release block docs PR comes first, unless the owner answers OQ-56 sooner.
+- Gitar runs one pass by itself on a new PR. After a later push, post `Gitar review`. When a new dashboard appears with no `Gitar` check run on the head, post the second request within a minute.
+- In the audio block, the owner often picked the fullest option, then cut scope for cost. Show the running count of tracks, light setups, or tests in each batch.
+- The next ids are D-447, OQ-57, F-32, L-16, G-26, PR-43, M-7, and Session 20.
+
+### Open questions that block progress
+
+None for PR #8. OQ-3 waits for PR-3. OQ-56 waits for the roadmaps PR.
+
+### Next concrete action
+
+This session answers the gitar pass on PR #8. Then a Codex session reviews PR #8 under the `pr-review` skill and writes `docs/reviews/pr-8.md` (D-401). The owner merges. Then a session starts the release block as its own docs PR (D-262, D-399). It reads D-53, D-85, D-93, D-143, and the Phase 5 entries of `docs/design.md`, then asks the owner the release questions in batches.
+
 ## Session 18: 2026-09-14, Codex
 
 Author: Codex
