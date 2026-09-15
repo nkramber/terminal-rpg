@@ -33,6 +33,7 @@ The register in section 5 of `docs/design.md` holds every finding. These rows bi
 | F-27 | The debug console of D-171 meets the rule of no conditional compilation in Core | PR-6 and PR-45: the seam and the assembly of D-260 and D-492 |
 | F-35 | Two hash paths of .NET break G-1 and T-7 | PR-4 and PR-5: a hash function that Core holds (OQ-61, OQ-62) |
 | F-36 | The JSON support of .NET uses reflection by default | PR-5: a reader with no runtime reflection |
+| F-39 | The default string order of .NET follows the culture and the ICU version of the machine | PR-4: an ordinal comparer for every string order in Core |
 
 ## 7. Roadmap
 
@@ -46,7 +47,7 @@ Built by PR-1 and PR-4. Phase file: `phase-1-foundations.md`.
 - Core opens no file, no socket, and no process, and it reads no clock and no OS random (G-1, G-3). It takes bytes, a seed, and intents, and it returns state, bytes, and events (D-168, D-493).
 - Game, Tools, Storage, Tests, and the debug assembly reference Core, and Core references none of them (D-260, D-494).
 - The host, which is Game, Tools, or Tests, reads each content file and gives Core the bytes. Core never sees a disk path (G-1).
-- The det-lint of PR-4 enforces G-2 and G-3 in Core, and F-35 adds the two hash paths. The file `area-tools.md` holds the lint rules.
+- The det-lint of PR-46 enforces G-2 and G-3 in Core, and F-35 adds the two hash paths (D-496). The file `area-tools.md` holds the lint rules.
 
 > *In plain English:* Core is the rules of the game with no screen, no files, and no clock. Everything else hands it data, then shows or saves what it decides.
 
@@ -89,6 +90,7 @@ Built by PR-4. Phase file: `phase-1-foundations.md`.
 Built by PR-4. Phase file: `phase-1-foundations.md`.
 
 - Every loop that reaches the state walks a fixed order. `List<T>` and `SortedDictionary<TKey, TValue>` keep that order, and `Dictionary<TKey, TValue>` and `HashSet<T>` never reach the state (G-4).
+- A `SortedDictionary` with string keys takes `StringComparer.Ordinal`. The default comparer follows the culture and the ICU version of the machine (F-39). The det-lint of PR-46 fails every other string order in Core.
 - The state hash reads the whole state in that fixed order, with the hash function of OQ-62 (F-35). PR-4 creates it, and each later Core PR adds its state to it.
 - The simulation version is a constant in Core. PR-4 creates it, and each Core behavior change bumps it (G-17).
 
@@ -111,7 +113,7 @@ Built by PR-4. Phase file: `phase-1-foundations.md`.
 Built by PR-5. Phase file: `phase-1-foundations.md`.
 
 - Each content type is a C# record, and a strict reader refuses an absent field, an unknown field, and a wrong type (D-116, D-177, G-6).
-- The reader runs with no runtime reflection, through generated metadata or a hand reader (F-36). The det-lint of PR-4 bans reflection in Core.
+- The reader runs with no runtime reflection, through generated metadata or a hand reader (F-36). The det-lint of PR-46 bans reflection in Core (D-496).
 - A number in content is an integer. A number with a fraction or an exponent fails the load, with the file and the field (D-169, G-2).
 - Every content entry has a permanent id that no later entry takes (D-166). OQ-63 holds the form of an id and the test that proves the rule.
 - The content hash covers the rule files alone (D-495). PR-5 draws the line in the layout of `content/`, and a test proves that no other file reaches the hash.

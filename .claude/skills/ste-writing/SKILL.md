@@ -223,6 +223,13 @@ Release terms from the release block of 2026-09-14:
 | studio name | the developer and publisher name on the store page and in the credits (D-450) | company, team |
 | trusted player | a player whom the owner picks to play a gate build before release (D-469) | tester, playtester |
 
+Tools terms from the roadmaps PR of 2026-09-14:
+
+| Term | Use for | Do not use |
+|---|---|---|
+| edge file | the generated file of the edge and corner tiles of one map, outside the rule files (D-501) | tile cache, edge map |
+| text helper | the one Game helper that puts a string table entry on screen (D-499) | text wrapper, label helper |
+
 ## The checker
 
 Until PR-2, the Python script `docs/tools/ste-check.py` is the checker (D-10). Run it before you commit:

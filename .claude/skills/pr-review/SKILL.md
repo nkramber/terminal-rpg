@@ -115,11 +115,11 @@ Apply each relevant row. Record why an area does not apply when its omission can
 | Area | Required examination |
 |---|---|
 | Core boundary | No engine dependency or gameplay input from Godot physics, timers, or navigation in Core. Trace data flow, not only imports (G-1, D-100). |
-| Determinism | Integer math, seed ownership, one stream per subsystem, fixed iteration and event order, no clock or OS random (T-7, G-2 to G-4). |
+| Determinism | Integer math, seed ownership, one stream per subsystem, fixed iteration and event order, an ordinal order for strings, no clock or OS random (T-7, G-2 to G-4, F-39). A tool whose output a test compares on every CI leg keeps the same rules (D-502). |
 | Replay | The record holds the seed, the content hash, the versions, and every intent (D-493). A replay reproduces the state hash. Verify the simulation version bump for a Core behavior change (G-5, G-17). |
 | Errors | Required context, visible failure, safe recovery, and assertions in release builds. An empty `catch` or a silent default violates T-2 (G-18). |
 | Content | JSON schemas at load and in tests. An absent field reports the file, the field, and the reason. Check identifier references and file name case (D-116, G-6). |
-| Strings | No inline player string. Every player string has an id in the string table (G-7). |
+| Strings | No inline player string. Every player string has an id in the string table and reaches the screen through the text helper (G-7, D-499). |
 | Input and CI boundaries | Check size limits, file paths, and validation at affected external inputs. Inspect CI permissions, secret access, and execution of untrusted content when those boundaries change. |
 | Gameplay | The rules the design doc and the decisions set for the affected system. Trace repeated runs as well as one run. |
 | Presentation | Gamepad and keyboard play, the 1280 by 800 frame and the 16:9 view with 32-pixel tiles, black bars for other shapes, the Deck readability floor, the CRT toggle, and the atlas test (D-84, D-92, D-105, D-107, D-228, D-480). Headless tests do not establish visual quality or game feel. |
@@ -402,7 +402,7 @@ Rule 3 fails when the author pushes code after the approval. That result is corr
 Reassess the new diff, then update the head field and the verdict together.
 Rule 3 does not fail when the last commit changes only the metadata paths.
 
-Until PR-3 merges, the check does not exist. The owner reads the verdict in the review record by hand, and the PR template names PR-3 as the creator of the check (G-16).
+Until PR-3 merges, the check does not exist. The owner reads the verdict in the review record by hand, and the PR template names PR-3 as the creator of the check (G-16). The check cannot run on PR-3 itself, because GitHub starts `pull_request_target` only from `main`. PR-3 proves the command in Tests, and the first live run comes on the next PR (D-500).
 
 ## Repeat review procedure
 

@@ -2,6 +2,44 @@
 
 Sessions older than the 10 in `docs/session-handoff.md`, newest first (D-18). Move an entry here word for word.
 
+## Session 18: 2026-09-14, Codex
+
+Author: Codex
+Session: review of PR #7 at effective head `138e5cf`, on branch `docs/pr-7-audio-block`.
+
+### What this session did, and why
+
+- Read the handoff, the project instructions, the `pr-review` and `ste-writing` skills, the design, decisions, questions, world, review, and PR documents.
+- Verified the provider gate: Claude Code authored the substantive PR changes, and Codex reviewed them.
+- Reviewed the complete PR diff. The audio decisions, the time-of-day supersession chain, the roadmap entries, the glossary, and the document dispositions agree at `138e5cf`.
+- Verified the Gitar comment. The added D-190 note in `138e5cf` completes the back-reference to D-436.
+- The effective head is `138e5cf`, not `f8ca3c3`, because `138e5cf` changes `docs/decisions.md`, which is outside the metadata set.
+- The review record is `docs/reviews/pr-7.md`. It has no finding and gives the verdict `Ready for owner merge` for `138e5cf`.
+
+### State of the build
+
+- No code exists. `main` is `11498f1` (PR #6).
+- PR #7 is open on `docs/pr-7-audio-block`. The remote head is the review commit that holds this entry and `docs/reviews/pr-7.md`.
+- The interim STE check passes with 0 findings, and `CLAUDE.md` and `AGENTS.md` stay identical.
+
+### In flight
+
+PR #7 waits for the owner to merge. Then the release block docs PR starts, followed by the roadmaps docs PR (D-399).
+
+### Traps and gotchas
+
+- A commit that changes `docs/decisions.md` is substantive. The effective head rule excludes only `docs/reviews/`, `docs/session-handoff.md`, and `docs/session-handoff-archive.md`.
+- The Gitar dashboard comment is not the only evidence of a pass. The Gitar check passed, but `gh pr checks` also reported a GitHub API connection error.
+- The build, test, format, Godot, and later gate checks do not exist until the PRs named in `docs/design.md` create them.
+
+### Open questions that block progress
+
+None for PR #7. OQ-3 waits for PR-3. The EUIPO, TMview, and WIPO checks wait for PR-40.
+
+### Next concrete action
+
+The owner merges PR #7. Then a session starts the release block docs PR.
+
 ## Session 17: 2026-09-14, Claude Code
 
 Author: Claude Code

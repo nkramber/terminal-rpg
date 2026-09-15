@@ -201,3 +201,28 @@ How to file a question (D-19, D-24):
     - JSON text, the recommendation. The record takes one JSON object per line, like the logs, and a snapshot takes one JSON object. A person can read both in a diff, a review, and a crash email. The files are larger than a binary form.
     - A binary form with a version. The files stay small. A person needs a dump command to read one.
     - JSON text with compression in Storage. The files stay small, and a tool reads them. Every read and write needs the compression step, and a person needs the tool.
+67. **OQ-67. The rule for numbered items.** F-5 found two rules. The interim checker limits each sentence of a numbered item to 20 words. The C# checker of what-you-carry applied the limit under a Sequence or Procedure heading alone. Which rule does the checker of PR-2 carry? Raised 2026-09-14. Blocks PR-2.
+    - Every numbered item, the recommendation. The skill text and every document already follow this rule, so no document changes. A long numbered item outside a procedure must split.
+    - Under a Sequence or Procedure heading alone. A numbered list elsewhere takes the limit of 25 words. The skill text changes, and the checker needs a heading rule.
+68. **OQ-68. What the reference check covers.** PR-2 carries a reference check (D-101), and no document says what it reads. What does the check fail? Raised 2026-09-14. Blocks PR-2.
+    - Three things, the recommendation: an id that no register holds, a path in backticks with no file, and a superseded decision cited alone. Each rule of `CLAUDE.md` on citations then has a check. A document that names a file of a later PR needs a mark for that path.
+    - Ids and paths alone. The check stays small. A citation of a superseded decision stays a matter for the review.
+    - Ids alone. The check is the smallest. A dead path stays a matter for the review, as in the audit of F-30.
+69. **OQ-69. A change to a decision row.** A docs PR that "adds or revises a row" in `docs/decisions.md` takes the review (D-401). What does the review gate count as that change? Raised 2026-09-14. Blocks PR-3.
+    - A line of a decision table that the PR adds, removes, or changes, the recommendation. The rule matches the words of D-401. A change to the text above the tables keeps a docs PR eligible for the label.
+    - Any change to `docs/decisions.md`. The rule is the simplest. A typo fix in the text above the tables then takes a full review.
+70. **OQ-70. How det-lint finds Godot text.** The text rule reads Godot types in Game code (D-499). The Roslyn reader needs the Godot assembly to see those types (D-498). How does det-lint find the assembly and each text member? Raised 2026-09-14. Blocks PR-46.
+    - The assembly of the Game build, a name rule, and a short list, the recommendation. The rule fails each member of a Godot type whose name holds Text or Title. A committed list adds the other members that draw text, such as `DrawString`.
+    - The assembly of the Game build and a full list. A committed list names each text member. A member that a PR starts to use and the list lacks passes in silence, against T-2.
+71. **OQ-71. Dictionary and HashSet in Core.** The `csharp-conventions` skill keeps `Dictionary` and `HashSet` out of Core wherever the order reaches the state (G-4). A lint cannot see where the order reaches the state. Which use does det-lint fail in Core? Raised 2026-09-14. Blocks PR-46.
+    - A walk alone, the recommendation: a `foreach`, the key list, the value list, or a query over the whole collection. A lookup by key stays legal, so Core keeps fast lookups. The lint needs a rule for each way to walk a collection.
+    - Any use of either type in Core. The rule is the simplest, and nothing slips past. Core uses `SortedDictionary` for lookups too, and a lookup costs more time.
+72. **OQ-72. The CRC-32 of the PNG code.** Each PNG chunk ends with a CRC-32 of its bytes. The `Crc32` class of .NET comes in the package `System.IO.Hashing` (the external facts of `area-tools.md`). Where does PR-47 get the CRC-32? Raised 2026-09-14. Blocks PR-47.
+    - A short CRC-32 in Tools, the recommendation. No package and no decision entry. A test checks it against fixture PNG files that other programs wrote.
+    - The package `System.IO.Hashing`, from Microsoft. No code of our own. The package needs a decision entry with its license (G-13).
+73. **OQ-73. The preview of normal maps.** The owner approves each normal map from a preview under a moving light (D-184). What form does the preview take? Raised 2026-09-14. Blocks PR-48.
+    - A sheet of fixed light angles from Tools, the recommendation. The tool draws each sprite under eight light directions in one PNG. It needs no Game code, so PR-48 can land before the first PR that draws light.
+    - A scene in a development build, with a light that moves. The owner sees the real renderer. PR-48 then needs a Game light, and the first PR that draws light needs the normal maps, so the two PRs merge or change places.
+74. **OQ-74. How the runner finds a softlock.** Each bot run ends as complete, softlock, crash, or budget (PR-15). The `playtest-bot` agent reads a softlock as a state with no legal action that makes progress. What does the runner count as a softlock? Raised 2026-09-14. Blocks PR-15.
+    - No legal intent that changes the state, the recommendation. The runner asks Core for the legal intents at each tick, so the class is exact. A loop of legal moves with no progress ends as budget.
+    - No progress mark for a set count of ticks. Content marks progress, such as an open door or a battle won. The class also catches a loop, and each map needs its marks and a count.
